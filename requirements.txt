@@ -1,0 +1,50 @@
+# ── Data ──────────────────────────────────────────────────────────────────────
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.4.2
+xgboost==2.0.3
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.30
+alembic==1.13.1          # DB migrations (useful when schema evolves)
+
+# ── Scraping ──────────────────────────────────────────────────────────────────
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.2.1
+playwright==1.44.0       # for JS-rendered pages if needed
+fake-useragent==1.5.1
+
+# ── NLP / Sentiment ───────────────────────────────────────────────────────────
+transformers==4.41.1
+torch==2.3.0             # CPU-only is fine locally
+spacy==3.7.4
+vaderSentiment==3.3.2    # lightweight fallback for fast sentiment
+
+# ── Explainability ────────────────────────────────────────────────────────────
+shap==0.45.1
+
+# ── API ───────────────────────────────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn==0.29.0
+pydantic==2.7.1
+
+# ── Dashboard ─────────────────────────────────────────────────────────────────
+streamlit==1.35.0
+plotly==5.22.0
+
+# ── Scheduling / Automation ───────────────────────────────────────────────────
+apscheduler==3.10.4
+python-dotenv==1.0.1
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+loguru==0.7.2             # better logging than stdlib
+tenacity==8.3.0           # retry logic for scrapers
+tqdm==4.66.4
+python-dateutil==2.9.0
+fuzzywuzzy==0.18.0        # fuzzy name matching (Pereira vs A.Pereira)
+python-Levenshtein==0.25.1
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest==8.2.1
+pytest-cov==5.0.0
