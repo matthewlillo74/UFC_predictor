@@ -1,0 +1,776 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: EMMETT VS. VALLEJOS
+  Generated: 2026-03-09 23:25 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Josh Emmett vs Kevin Vallejos
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Josh Emmett: 9.4%
+  Kevin Vallejos: 90.6%
+  → Predicted winner: Kevin Vallejos (90.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.8%
+  Submission:  16.0%
+  Decision:    58.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 83.0%
+  Goes the distance:            17.0%
+
+KEY FACTORS FOR Josh Emmett
+  + Elo advantage (+0.164)
+  + Avg Opponent Elo advantage (+0.130)
+  + Sapm advantage (+0.086)
+  + Win Streak advantage (+0.027)
+
+KEY FACTORS FOR Kevin Vallejos
+  + Age advantage (+1.060)
+  + Slpm advantage (+0.702)
+  + Strike Acc advantage (+0.375)
+  + Td Def advantage (+0.305)
+  + Days Since Last Fight advantage (+0.111)
+
+BETTING VALUE
+  Market implied probability (Josh Emmett): 50.0%
+  Model probability (Josh Emmett):          9.4%
+  Edge: -40.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Amanda Lemos vs Gillian Robertson
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Amanda Lemos: 40.4%
+  Gillian Robertson: 59.6%
+  → Predicted winner: Gillian Robertson (59.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.6%
+  Submission:  18.3%
+  Decision:    53.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 84.8%
+  Goes the distance:            15.2%
+
+KEY FACTORS FOR Amanda Lemos
+  + Avg Opponent Elo advantage (+0.223)
+  + Td Def advantage (+0.160)
+  + Strike Acc advantage (+0.092)
+  + Finish Rate advantage (+0.031)
+  + Win Streak advantage (+0.030)
+
+KEY FACTORS FOR Gillian Robertson
+  + Age advantage (+0.412)
+  + Elo advantage (+0.285)
+  + Td Avg advantage (+0.153)
+  + Sapm advantage (+0.050)
+  + Sub Avg advantage (+0.031)
+
+BETTING VALUE
+  Market implied probability (Amanda Lemos): 50.0%
+  Model probability (Amanda Lemos):          40.4%
+  Edge: -9.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ion Cutelaba vs Oumar Sy
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ion Cutelaba: 33.6%
+  Oumar Sy: 66.4%
+  → Predicted winner: Oumar Sy (66.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.9%
+  Submission:  15.4%
+  Decision:    48.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 73.7%
+  Goes the distance:            26.3%
+
+KEY FACTORS FOR Ion Cutelaba
+  + Slpm advantage (+0.303)
+  + Days Since Last Fight advantage (+0.176)
+  + Td Avg advantage (+0.174)
+  + Avg Opponent Elo advantage (+0.083)
+
+KEY FACTORS FOR Oumar Sy
+  + Strike Def advantage (+0.471)
+  + Sapm advantage (+0.352)
+  + Td Def advantage (+0.294)
+  + Reach advantage (+0.131)
+  + Elo advantage (+0.079)
+
+BETTING VALUE
+  Market implied probability (Ion Cutelaba): 50.0%
+  Model probability (Ion Cutelaba):          33.6%
+  Edge: -16.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Andre Fili vs Jose Delgado
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Andre Fili: 28.1%
+  Jose Delgado: 71.9%
+  → Predicted winner: Jose Delgado (71.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.4%
+  Submission:  17.1%
+  Decision:    55.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 88.2%
+  Goes the distance:            11.8%
+
+KEY FACTORS FOR Andre Fili
+  + Sapm advantage (+0.202)
+  + Elo advantage (+0.189)
+  + Td Avg advantage (+0.038)
+  + Reach advantage (+0.034)
+
+KEY FACTORS FOR Jose Delgado
+  + Slpm advantage (+0.573)
+  + Age advantage (+0.422)
+  + Strike Acc advantage (+0.156)
+  + Avg Opponent Elo advantage (+0.139)
+  + Finish Rate advantage (+0.092)
+
+BETTING VALUE
+  Market implied probability (Andre Fili): 50.0%
+  Model probability (Andre Fili):          28.1%
+  Edge: -21.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Marwan Rahiki vs Harry Hardwick
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Marwan Rahiki: 52.3%
+  Harry Hardwick: 47.7%
+  → Predicted winner: Marwan Rahiki (52.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.1%
+  Submission:  22.8%
+  Decision:    41.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 84.4%
+  Goes the distance:            15.6%
+
+KEY FACTORS FOR Marwan Rahiki
+  + Elo advantage (+0.202)
+  + Strike Acc advantage (+0.032)
+  + Td Def advantage (+0.032)
+  + Finish Rate advantage (+0.019)
+  + Height advantage (+0.017)
+
+KEY FACTORS FOR Harry Hardwick
+  + Avg Opponent Elo advantage (+0.158)
+  + Slpm advantage (+0.021)
+  + Sub Avg advantage (+0.015)
+  + Strike Def advantage (+0.013)
+
+BETTING VALUE
+  Market implied probability (Marwan Rahiki): 50.0%
+  Model probability (Marwan Rahiki):          52.3%
+  Edge: +2.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Vitor Petrino vs Steven Asplund
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Vitor Petrino: 29.6%
+  Steven Asplund: 70.4%
+  → Predicted winner: Steven Asplund (70.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.7%
+  Submission:  35.0%
+  Decision:    24.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 85.1%
+  Goes the distance:            14.9%
+
+KEY FACTORS FOR Vitor Petrino
+  + Sapm advantage (+0.428)
+  + Td Avg advantage (+0.227)
+  + Avg Opponent Elo advantage (+0.130)
+  + Sub Avg advantage (+0.090)
+
+KEY FACTORS FOR Steven Asplund
+  + Slpm advantage (+0.597)
+  + Td Def advantage (+0.362)
+  + Strike Acc advantage (+0.288)
+  + Td Acc advantage (+0.181)
+  + Win Rate advantage (+0.109)
+
+BETTING VALUE
+  Market implied probability (Vitor Petrino): 50.0%
+  Model probability (Vitor Petrino):          29.6%
+  Edge: -20.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Charles Johnson vs Bruno Silva
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Charles Johnson: 56.8%
+  Bruno Silva: 43.2%
+  → Predicted winner: Charles Johnson (56.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.1%
+  Submission:  12.3%
+  Decision:    52.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 79.0%
+  Goes the distance:            21.0%
+
+KEY FACTORS FOR Charles Johnson
+  + Slpm advantage (+0.266)
+  + Sapm advantage (+0.211)
+  + Elo advantage (+0.111)
+  + Age advantage (+0.092)
+  + Reach advantage (+0.082)
+
+KEY FACTORS FOR Bruno Silva
+  + Td Avg advantage (+0.147)
+  + Finish Rate advantage (+0.119)
+  + Avg Opponent Elo advantage (+0.119)
+  + Height advantage (+0.099)
+  + Win Streak advantage (+0.068)
+
+BETTING VALUE
+  Market implied probability (Charles Johnson): 50.0%
+  Model probability (Charles Johnson):          56.8%
+  Edge: +6.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Brad Tavares vs Eryk Anders
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Brad Tavares: 57.6%
+  Eryk Anders: 42.4%
+  → Predicted winner: Brad Tavares (57.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.6%
+  Submission:  16.7%
+  Decision:    51.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 74.8%
+  Goes the distance:            25.2%
+
+KEY FACTORS FOR Brad Tavares
+  + Sapm advantage (+0.171)
+  + Avg Opponent Elo advantage (+0.162)
+  + Elo advantage (+0.149)
+  + Age advantage (+0.089)
+  + Days Since Last Fight advantage (+0.060)
+
+KEY FACTORS FOR Eryk Anders
+  + Finish Rate advantage (+0.099)
+  + Td Avg advantage (+0.095)
+  + Strike Acc advantage (+0.086)
+  + Reach advantage (+0.026)
+
+BETTING VALUE
+  Market implied probability (Brad Tavares): 50.0%
+  Model probability (Brad Tavares):          57.6%
+  Edge: +7.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Chris Curtis vs Myktybek Orolbai
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Chris Curtis: 39.0%
+  Myktybek Orolbai: 61.0%
+  → Predicted winner: Myktybek Orolbai (61.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.5%
+  Submission:  18.8%
+  Decision:    47.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 89.8%
+  Goes the distance:            10.2%
+
+KEY FACTORS FOR Chris Curtis
+  + Slpm advantage (+0.671)
+  + Td Def advantage (+0.423)
+  + Avg Opponent Elo advantage (+0.147)
+  + Strike Acc advantage (+0.110)
+
+KEY FACTORS FOR Myktybek Orolbai
+  + Age advantage (+0.460)
+  + Td Avg advantage (+0.409)
+  + Sapm advantage (+0.371)
+  + Elo advantage (+0.193)
+  + Td Acc advantage (+0.174)
+
+BETTING VALUE
+  Market implied probability (Chris Curtis): 50.0%
+  Model probability (Chris Curtis):          39.0%
+  Edge: -11.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Bolaji Oki vs Manoel Sousa
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Bolaji Oki: 46.4%
+  Manoel Sousa: 53.6%
+  → Predicted winner: Manoel Sousa (53.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.7%
+  Submission:  24.7%
+  Decision:    41.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 87.0%
+  Goes the distance:            13.0%
+
+KEY FACTORS FOR Bolaji Oki
+  + Age advantage (+0.031)
+  + Height advantage (+0.018)
+  + Td Def advantage (+0.018)
+  + Strike Acc advantage (+0.016)
+  + Finish Rate advantage (+0.014)
+
+KEY FACTORS FOR Manoel Sousa
+  + Elo advantage (+0.119)
+  + Slpm advantage (+0.034)
+  + Avg Opponent Elo advantage (+0.027)
+  + Sub Avg advantage (+0.022)
+  + Win Rate advantage (+0.012)
+
+BETTING VALUE
+  Market implied probability (Bolaji Oki): 50.0%
+  Model probability (Bolaji Oki):          46.4%
+  Edge: -3.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Luan Lacerda vs Hecher Sosa
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Luan Lacerda: 43.6%
+  Hecher Sosa: 56.4%
+  → Predicted winner: Hecher Sosa (56.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.7%
+  Submission:  24.5%
+  Decision:    40.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 87.1%
+  Goes the distance:            12.9%
+
+KEY FACTORS FOR Luan Lacerda
+  + Age advantage (+0.029)
+  + Height advantage (+0.016)
+  + Td Def advantage (+0.016)
+  + Strike Acc advantage (+0.016)
+  + Finish Rate advantage (+0.013)
+
+KEY FACTORS FOR Hecher Sosa
+  + Elo advantage (+0.131)
+  + Avg Opponent Elo advantage (+0.121)
+  + Slpm advantage (+0.035)
+  + Sub Avg advantage (+0.021)
+  + Td Acc advantage (+0.015)
+
+BETTING VALUE
+  Market implied probability (Luan Lacerda): 50.0%
+  Model probability (Luan Lacerda):          43.6%
+  Edge: -6.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Bia Mesquita vs Montse Rendon
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Bia Mesquita: 84.7%
+  Montse Rendon: 15.3%
+  → Predicted winner: Bia Mesquita (84.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    46.2%
+  Submission:  30.8%
+  Decision:    23.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 89.7%
+  Goes the distance:            10.3%
+
+KEY FACTORS FOR Bia Mesquita
+  + Slpm advantage (+0.520)
+  + Sapm advantage (+0.423)
+  + Strike Acc advantage (+0.333)
+  + Sub Avg advantage (+0.248)
+  + Age advantage (+0.243)
+
+KEY FACTORS FOR Montse Rendon
+  + Td Def advantage (+0.461)
+  + Elo advantage (+0.084)
+
+BETTING VALUE
+  Market implied probability (Bia Mesquita): 50.0%
+  Model probability (Bia Mesquita):          84.7%
+  Edge: +34.7%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Elijah Smith vs SuYoung You
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Elijah Smith: 32.2%
+  SuYoung You: 67.8%
+  → Predicted winner: SuYoung You (67.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.9%
+  Submission:  18.6%
+  Decision:    50.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 84.4%
+  Goes the distance:            15.6%
+
+KEY FACTORS FOR Elijah Smith
+  + Slpm advantage (+0.507)
+  + Reach advantage (+0.228)
+  + Age advantage (+0.165)
+
+KEY FACTORS FOR SuYoung You
+  + Strike Def advantage (+0.947)
+  + Sapm advantage (+0.208)
+  + Elo advantage (+0.132)
+  + Avg Opponent Elo advantage (+0.122)
+  + Sub Avg advantage (+0.068)
+
+BETTING VALUE
+  Market implied probability (Elijah Smith): 50.0%
+  Model probability (Elijah Smith):          32.2%
+  Edge: -17.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Emmett vs. Vallejos
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Piera Rodriguez vs Sam Hughes
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Piera Rodriguez: 41.9%
+  Sam Hughes: 58.1%
+  → Predicted winner: Sam Hughes (58.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.4%
+  Submission:  25.2%
+  Decision:    40.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 87.2%
+  Goes the distance:            12.8%
+
+KEY FACTORS FOR Piera Rodriguez
+  + Age advantage (+0.032)
+  + Strike Acc advantage (+0.019)
+  + Td Def advantage (+0.017)
+  + Height advantage (+0.016)
+
+KEY FACTORS FOR Sam Hughes
+  + Elo advantage (+0.216)
+  + Avg Opponent Elo advantage (+0.081)
+  + Slpm advantage (+0.051)
+  + Sub Avg advantage (+0.021)
+  + Td Acc advantage (+0.015)
+
+BETTING VALUE
+  Market implied probability (Piera Rodriguez): 50.0%
+  Model probability (Piera Rodriguez):          41.9%
+  Edge: -8.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-09 23:25 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────

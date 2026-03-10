@@ -83,6 +83,18 @@ FEATURE_COLUMNS = [
     # Elo
     "elo_diff",
     "avg_opponent_elo_diff",
+    # Style matchup features (continuous scores — model learns degree of mismatch)
+    "style_pressure_diff",      # forward pressure style diff
+    "style_wrestling_diff",     # wrestling reliance diff
+    "style_striker_diff",       # striking reliance diff
+    "style_finisher_diff",      # finishing ability diff
+    "grappling_defense_diff",   # grappling defense diff
+    # Recent form (recency-weighted — combats favorite bias)
+    "momentum_score_diff",      # weighted win streak, recent fights count more
+    "recent_finish_rate_diff",  # finishing rate in last 3 fights
+    # Weight class context
+    "slpm_pctile_diff",         # striking volume percentile within weight class
+    "td_avg_pctile_diff",       # wrestling volume percentile within weight class
     # Narrative signals
     "sentiment_diff",
     "fighter_a_injury_flag",
