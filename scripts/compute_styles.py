@@ -164,7 +164,7 @@ def compute_weight_class_percentiles(session: Session):
 
     # Write back to DB
     for _, row in df.iterrows():
-        stats = session.query(FighterStats).get(int(row["stats_id"]))
+        stats = session.get(FighterStats, int(row["stats_id"]))
         if stats:
             stats.slpm_pctile = round(float(row["slpm_pctile"]), 4)
             stats.td_avg_pctile = round(float(row["td_avg_pctile"]), 4)

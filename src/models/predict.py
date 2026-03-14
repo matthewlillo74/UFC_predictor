@@ -112,20 +112,50 @@ class UFCPredictor:
         self.method_model.fit(X, y_method)
 
         # ── Round model (binary: finish early vs go late) ──────────────────
+        # CRITICAL: Train on ALL fights, not just finishes.
+        # Training only on finishes was asking "given a finish, was it early?"
+        # which is the wrong question. We want "will this fight end early?"
+        # For decisions, finish_round = NaN → we fill with the scheduled rounds
+        # (3 for normal fights, 5 for title/main events) so they always count as "late."
+        #
+        # Threshold is fight-type aware:
+        #   3-round fights: early = rounds 1-2  (under 2.5)
+        #   5-round fights: early = rounds 1-3  (under 3.5)
+
+        def get_early_label(row):
+            """1 = ended early, 0 = went late/distance."""
+            is_five_round = row.get("is_title_fight", 0) == 1
+            threshold = 3.5 if is_five_round else 2.5
+            # Decisions always count as going the distance (late)
+            if row["method"] == "Decision":
+                return 0
+            # Finish — did it end before the threshold?
+            finish_r = row.get("finish_round")
+            if finish_r is None or (isinstance(finish_r, float) and finish_r != finish_r):
+                return 0  # unknown → conservative, call it late
+            return 1 if float(finish_r) <= threshold else 0
+
+        y_early = df_clean.apply(get_early_label, axis=1)
+        early_rate = y_early.mean()
+        logger.info(f"Round model — early finish rate in training: {early_rate:.1%}")
+
         self.round_model = XGBClassifier(
-            n_estimators=100,
+            n_estimators=150,
             max_depth=3,
             learning_rate=0.05,
+            subsample=0.8,
             random_state=42,
             verbosity=0,
         )
-        df_finish = df_clean[df_clean["method"] != "Decision"]
-        if len(df_finish) > 50:
-            X_finish = df_finish[FEATURE_COLUMNS].fillna(0)
-            y_finish_filtered = (df_finish["finish_round"].fillna(3) <= 2.5).astype(int)
-            self.round_model.fit(X_finish, y_finish_filtered)
-        else:
-            logger.warning("Not enough finish data for round model")
+        self.round_model.fit(X, y_early)
+
+        # Calibrate round model with Platt scaling to fix overconfidence
+        from sklearn.calibration import CalibratedClassifierCV
+        self.round_model_calibrated = CalibratedClassifierCV(
+            self.round_model, method="sigmoid", cv="prefit"
+        )
+        self.round_model_calibrated.fit(X, y_early)
+        logger.info("Round model calibrated with Platt scaling")
 
         # ── SHAP explainer ─────────────────────────────────────────────────
         self.shap_explainer = shap.TreeExplainer(self.winner_model)
@@ -165,9 +195,18 @@ class UFCPredictor:
         method_label_map = getattr(self, "method_classes_", {0: "Decision", 1: "KO_TKO", 2: "Submission"})
         method_dict = {method_label_map[i]: float(p) for i, p in enumerate(method_probs)}
 
-        # Round probability
+        # Round probability — use calibrated model, title-fight aware threshold
         round_probs = {}
-        if self.round_model and self.round_model.n_features_in_:
+        is_title = bool(features.get("is_title_fight", 0))
+        if hasattr(self, "round_model_calibrated") and self.round_model_calibrated:
+            rp = self.round_model_calibrated.predict_proba(X)[0]
+            # rp[0] = prob late (class 0), rp[1] = prob early (class 1)
+            if is_title:
+                round_probs = {"under_3_5": float(rp[1]), "over_3_5": float(rp[0])}
+            else:
+                round_probs = {"under_2_5": float(rp[1]), "over_2_5": float(rp[0])}
+        elif self.round_model and self.round_model.n_features_in_:
+            # Fallback to uncalibrated if calibrated not available (old saved model)
             rp = self.round_model.predict_proba(X)[0]
             round_probs = {"under_2_5": float(rp[1]), "over_2_5": float(rp[0])}
 
@@ -177,7 +216,7 @@ class UFCPredictor:
             shap_values[0], FEATURE_COLUMNS, fighter_a_name, fighter_b_name
         )
 
-        return {
+        result = {
             "fighter_a": fighter_a_name,
             "fighter_b": fighter_b_name,
             "prob_fighter_a": round(prob_a, 4),
@@ -195,6 +234,79 @@ class UFCPredictor:
             "model_version": self.model_version,
             "predicted_at": datetime.utcnow().isoformat(),
         }
+
+        result["consistency"] = self._check_consistency(result)
+        return result
+
+    def _check_consistency(self, result: dict) -> dict:
+        """
+        Detect contradictions between method and round predictions.
+
+        The method and round models are trained independently, so they can
+        disagree. This post-processing layer catches the most common conflicts
+        and surfaces them in the UI rather than silently showing contradictory info.
+
+        Returns a dict with:
+            status:  "consistent" | "warning" | "contradiction"
+            message: human-readable explanation of what conflicts and why
+        """
+        methods = result.get("method_probabilities", {})
+        rounds  = result.get("round_probabilities", {})
+
+        if not methods or not rounds:
+            return {"status": "consistent", "message": ""}
+
+        p_decision  = methods.get("decision", 0)
+        p_finish    = methods.get("ko_tko", 0) + methods.get("submission", 0)
+        # Handle both 3-round (under_2_5) and 5-round (under_3_5) fights
+        p_under_2_5 = rounds.get("under_2_5", rounds.get("under_3_5", 0))
+        p_over_2_5  = rounds.get("over_2_5",  rounds.get("over_3_5",  0))
+        is_title    = "under_3_5" in rounds
+
+        round_label = "3.5" if is_title else "2.5"
+
+        # Hard contradiction: model strongly predicts decision AND strongly predicts early finish
+        if p_decision > 0.55 and p_under_2_5 > 0.65:
+            return {
+                "status": "contradiction",
+                "message": (
+                    f"Method model says Decision ({p_decision:.0%}) "
+                    f"but Round model says early finish ({p_under_2_5:.0%} Under {round_label}). "
+                    f"These models disagree — treat method prediction with caution."
+                )
+            }
+
+        # Hard contradiction: strong finish prediction + strong over rounds
+        if p_finish > 0.65 and p_over_2_5 > 0.75:
+            return {
+                "status": "contradiction",
+                "message": (
+                    f"Method model says finish ({p_finish:.0%} KO/Sub) "
+                    f"but Round model says late fight ({p_over_2_5:.0%} Over {round_label}). "
+                    f"A late finish is possible but unusual — low confidence on method."
+                )
+            }
+
+        # Soft warning: moderate disagreement
+        if p_decision > 0.50 and p_under_2_5 > 0.55:
+            return {
+                "status": "warning",
+                "message": (
+                    f"Mild disagreement: Decision likely ({p_decision:.0%}) "
+                    f"but early finish not ruled out ({p_under_2_5:.0%} Under {round_label})."
+                )
+            }
+
+        if p_finish > 0.55 and p_over_2_5 > 0.60:
+            return {
+                "status": "warning",
+                "message": (
+                    f"Mild disagreement: Finish likely ({p_finish:.0%}) "
+                    f"but could go late ({p_over_2_5:.0%} Over {round_label})."
+                )
+            }
+
+        return {"status": "consistent", "message": ""}
 
     def _build_explanation(
         self,
@@ -235,6 +347,10 @@ class UFCPredictor:
             pickle.dump(self.method_model, f)
         with open(path / "round_model.pkl", "wb") as f:
             pickle.dump(self.round_model, f)
+        # Save calibrated round model separately — used for all live predictions
+        if hasattr(self, "round_model_calibrated") and self.round_model_calibrated:
+            with open(path / "round_model_calibrated.pkl", "wb") as f:
+                pickle.dump(self.round_model_calibrated, f)
         logger.success(f"Models saved to {path}")
 
     def load(self, version: str = None):
@@ -247,6 +363,13 @@ class UFCPredictor:
             self.method_model = pickle.load(f)
         with open(path / "round_model.pkl", "rb") as f:
             self.round_model = pickle.load(f)
+        # Load calibrated round model if available
+        cal_path = path / "round_model_calibrated.pkl"
+        if cal_path.exists():
+            with open(cal_path, "rb") as f:
+                self.round_model_calibrated = pickle.load(f)
+        else:
+            self.round_model_calibrated = None
         self.shap_explainer = shap.TreeExplainer(self.winner_model)
         self._is_trained = True
         logger.success(f"Models loaded from {path}")

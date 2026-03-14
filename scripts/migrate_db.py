@@ -34,6 +34,8 @@ migrations = [
     ("fighter_stats", "momentum_score",     "REAL DEFAULT NULL"),
     ("fighter_stats", "slpm_pctile",        "REAL DEFAULT NULL"),
     ("fighter_stats", "td_avg_pctile",      "REAL DEFAULT NULL"),
+    ("fighter_stats", "ufc_fights",         "INTEGER DEFAULT 0"),
+    ("fighter_stats", "ufc_wins",           "INTEGER DEFAULT 0"),
 ]
 
 for table, column, col_type in migrations:

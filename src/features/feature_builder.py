@@ -84,6 +84,34 @@ class FeatureBuilder:
                 return (as_of_date - fighter.date_of_birth).days / 365.25
             return None
 
+        # ── Stance encoding ───────────────────────────────────────────────────
+        # Southpaw vs Orthodox is a geometric mismatch — southpaws win at a
+        # statistically higher rate vs orthodox due to foot angle + power hand
+        # alignment. We encode as two asymmetric flags (not a diff) so the model
+        # learns that A-southpaw-vs-B-orthodox is different from A-orthodox-vs-B-southpaw.
+        # Switch treated as orthodox (mixed patterns average out).
+        def to_stance(fighter):
+            if not fighter or not fighter.stance:
+                return "orthodox"
+            raw = fighter.stance.lower().strip()
+            return "southpaw" if "south" in raw else "orthodox"
+
+        stance_a = to_stance(fa)
+        stance_b = to_stance(fb)
+        # Fighter A has the southpaw geometric edge
+        is_southpaw_a_vs_orthodox_b = 1.0 if (stance_a == "southpaw" and stance_b == "orthodox") else 0.0
+        # Fighter A is at the southpaw disadvantage (B has the edge)
+        is_orthodox_a_vs_southpaw_b = 1.0 if (stance_a == "orthodox" and stance_b == "southpaw") else 0.0
+
+        # ── Short-notice flag ─────────────────────────────────────────────────
+        # Fighter on <21 days notice = less camp time, potentially rushed weight cut,
+        # often a replacement. Derived from days_since_last_fight — no external data.
+        SHORT_NOTICE_DAYS = 21
+        days_a = s("days_since_last_fight")
+        days_b = t("days_since_last_fight")
+        short_notice_a = 1.0 if (days_a is not None and 0 < days_a < SHORT_NOTICE_DAYS) else 0.0
+        short_notice_b = 1.0 if (days_b is not None and 0 < days_b < SHORT_NOTICE_DAYS) else 0.0
+
         features = {
             # Physical
             "reach_diff":  _diff(fa.reach_cm if fa else None,  fb.reach_cm if fb else None),
@@ -121,12 +149,23 @@ class FeatureBuilder:
             # Weight class percentiles — same stat means different things at HW vs FW
             "slpm_pctile_diff":   _diff(s("slpm_pctile"),   t("slpm_pctile")),
             "td_avg_pctile_diff": _diff(s("td_avg_pctile"), t("td_avg_pctile")),
-            # Narrative signals — filled in by sentiment module (default 0)
+            # UFC experience — debut vs veteran dynamic
+            # A 10-fight UFC vet is very different from a debuting prospect
+            "ufc_fights_diff": _diff(s("ufc_fights"), t("ufc_fights")),
+            "ufc_wins_diff":   _diff(s("ufc_wins"),   t("ufc_wins")),
+            # Fight context — title fights have different dynamics
+            # Filled in by training loop; default 0 for live predictions
+            "is_title_fight": 0.0,
+            # Stance mismatch — southpaw geometric advantage (asymmetric, not a diff)
+            "is_southpaw_a_vs_orthodox_b": is_southpaw_a_vs_orthodox_b,
+            "is_orthodox_a_vs_southpaw_b": is_orthodox_a_vs_southpaw_b,
+            # Short notice — derived from days_since_last_fight (<21 days)
+            "fighter_a_short_notice": short_notice_a,
+            "fighter_b_short_notice": short_notice_b,
+            # Injury flags — not yet automated, remain 0 until news scraper added
             "sentiment_diff":        0.0,
             "fighter_a_injury_flag": 0.0,
             "fighter_b_injury_flag": 0.0,
-            "fighter_a_short_notice": 0.0,
-            "fighter_b_short_notice": 0.0,
         }
 
         missing = [col for col in FEATURE_COLUMNS if col not in features]
@@ -224,6 +263,9 @@ def build_training_dataset(session: Session) -> pd.DataFrame:
                 fighter_b_id=fight.fighter_b_id,
                 as_of_date=fight.fight_date,
             )
+
+            # Fill in fight-level context features
+            features["is_title_fight"] = 1.0 if fight.is_title_fight else 0.0
 
             # Labels
             winner = 1 if fight.winner_id == fight.fighter_a_id else 0

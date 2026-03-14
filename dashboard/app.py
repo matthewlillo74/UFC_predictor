@@ -417,9 +417,19 @@ def render_fight_card(pred_dict: dict, odds_data: dict = None, weight_class: str
         top_method = max(methods, key=methods.get) if methods else "Decision"
         method_label = {"ko_tko": "KO/TKO", "submission": "Submission", "decision": "Decision"}.get(top_method, top_method)
         rounds_val = pred_dict.get("round_probabilities", {})
-        ending = "early finish" if rounds_val.get("under_2_5", 0) > 0.6 else "likely decision"
+        consistency = pred_dict.get("consistency", {})
+
+        # Only show round prediction in summary if models agree
+        if consistency.get("status") == "consistent":
+            ending = "early finish" if rounds_val.get("under_2_5", 0) > 0.6 else "likely decision"
+            ending_str = f" — {ending}"
+        elif consistency.get("status") == "warning":
+            ending_str = ""  # suppress conflicting round info from summary
+        else:
+            ending_str = ""  # hard contradiction — omit entirely
+
         confidence_word = "strongly" if winner_prob > 0.65 else "narrowly" if winner_prob < 0.55 else "comfortably"
-        summary = f"Model {confidence_word} favors **{winner_name}** ({winner_prob:.0%}) via {method_label} — {ending}."
+        summary = f"Model {confidence_word} favors **{winner_name}** ({winner_prob:.0%}) via {method_label}{ending_str}."
         st.markdown(f"*{summary}*")
         st.markdown("")
 
@@ -453,14 +463,40 @@ def render_fight_card(pred_dict: dict, odds_data: dict = None, weight_class: str
 
         with col_r:
             st.markdown("**Rounds**")
-            for label, val in [("Under 2.5", rounds.get("under_2_5", 0)),
-                               ("Over 2.5", rounds.get("over_2_5", 0))]:
+            rounds = pred_dict.get("round_probabilities", {})
+            # Label switches to O/U 3.5 for 5-round (title) fights
+            if "under_3_5" in rounds:
+                round_pairs = [("Under 3.5", rounds.get("under_3_5", 0)),
+                               ("Over 3.5",  rounds.get("over_3_5",  0))]
+            else:
+                round_pairs = [("Under 2.5", rounds.get("under_2_5", 0)),
+                               ("Over 2.5",  rounds.get("over_2_5",  0))]
+            for label, val in round_pairs:
                 st.markdown(f"""
                     <div class="factor-row">
                         <span style="color:#aaa">{label}</span>
                         <span style="color:#e94560;font-weight:600">{val:.0%}</span>
                     </div>
                 """, unsafe_allow_html=True)
+
+        # Consistency indicator — shown only when models disagree
+        consistency = pred_dict.get("consistency", {})
+        c_status  = consistency.get("status", "consistent")
+        c_message = consistency.get("message", "")
+        if c_status == "contradiction" and c_message:
+            st.markdown(
+                f"<div style='margin-top:8px;padding:8px 12px;border-left:3px solid #e94560;"
+                f"background:#1a0a0a;border-radius:4px;font-size:0.8rem;color:#e94560'>"
+                f"⚠️ Model conflict: {c_message}</div>",
+                unsafe_allow_html=True
+            )
+        elif c_status == "warning" and c_message:
+            st.markdown(
+                f"<div style='margin-top:8px;padding:8px 12px;border-left:3px solid #f5a623;"
+                f"background:#1a1400;border-radius:4px;font-size:0.8rem;color:#f5a623'>"
+                f"⚡ {c_message}</div>",
+                unsafe_allow_html=True
+            )
 
         # Key factors expander
         with st.expander("Key factors"):
@@ -486,7 +522,7 @@ def render_fight_card(pred_dict: dict, odds_data: dict = None, weight_class: str
 
 # ── Pages ─────────────────────────────────────────────────────────────────────
 
-def page_upcoming_event(session):
+def page_upcoming_event(session, odds_lookup: dict):
     st.markdown("# 🥊 Upcoming Event")
 
     event_data, fights_raw = load_upcoming_card()
@@ -508,29 +544,8 @@ def page_upcoming_event(session):
         st.warning("Could not load fight card")
         return
 
-    # Fetch live odds
-    @st.cache_data(ttl=1800)
-    def get_live_odds():
-        try:
-            from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response
-            from src.ingestion.data_loader import normalize_name
-            raw = fetch_mma_odds()
-            if not raw:
-                return {}
-            parsed = parse_odds_response(raw)
-            odds_lookup = {}
-            for o in parsed:
-                odds_lookup[normalize_name(o["fighter_a"]) + "|" + normalize_name(o["fighter_b"])] = o
-                odds_lookup[normalize_name(o["fighter_b"]) + "|" + normalize_name(o["fighter_a"])] = {
-                    **o, "fighter_a": o["fighter_b"], "fighter_b": o["fighter_a"],
-                    "odds_a": o["odds_b"], "odds_b": o["odds_a"],
-                    "fair_prob_a": o["fair_prob_b"], "fair_prob_b": o["fair_prob_a"],
-                }
-            return odds_lookup
-        except Exception as e:
-            return {}
-
-    live_odds = get_live_odds()
+    # Odds passed in from session_state — no API call here
+    live_odds = odds_lookup
 
     # Run predictions
     from src.ingestion.data_loader import get_or_create_fighter, normalize_name
@@ -793,7 +808,7 @@ def page_leaderboard(session):
 
 # ── Sidebar + routing ─────────────────────────────────────────────────────────
 
-def page_value_bets(session):
+def page_value_bets(session, parsed_odds: list, odds_lookup: dict):
     st.markdown("# ⚡ Value Bets & Upsets")
     st.markdown("Fights where the model meaningfully disagrees with the market")
 
@@ -804,14 +819,7 @@ def page_value_bets(session):
     from src.models.calibrate import find_value_bets, find_upset_candidates
     from rapidfuzz import fuzz
 
-    # Get odds
-    try:
-        from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response
-        raw = fetch_mma_odds()
-        parsed_odds = parse_odds_response(raw) if raw else []
-    except Exception:
-        parsed_odds = []
-
+    # Odds passed in — no API call
     if not parsed_odds:
         st.warning("No odds available. Add ODDS_API_KEY to .env")
         return
@@ -953,7 +961,7 @@ def page_value_bets(session):
 
 
 
-def page_parlays(session):
+def page_parlays(session, parsed_odds: list, odds_lookup: dict):
     st.markdown("# 🎰 Parlay Builder")
     st.markdown("Data-backed parlays built from model edge — not just favorites")
 
@@ -964,14 +972,7 @@ def page_parlays(session):
     from src.betting.parlay_builder import build_parlays, build_candidate_legs
     from rapidfuzz import fuzz
 
-    # Fetch odds
-    try:
-        from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response
-        raw = fetch_mma_odds()
-        parsed_odds = parse_odds_response(raw) if raw else []
-    except Exception:
-        parsed_odds = []
-
+    # Odds passed in — no API call
     # Build odds map
     odds_map = {}
     for o in parsed_odds:
@@ -1137,6 +1138,35 @@ The variance is extreme even with positive EV.
         """)
 
 
+@st.cache_data(ttl=1800)
+def load_odds_once():
+    """
+    Fetch odds from the API exactly once per 30-min window.
+    All tabs read from session_state — never call fetch_mma_odds() directly in a tab.
+    """
+    try:
+        from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response
+        from src.ingestion.data_loader import normalize_name
+        raw = fetch_mma_odds()
+        if not raw:
+            return {}, []
+        parsed = parse_odds_response(raw)
+        odds_lookup = {}
+        for o in parsed:
+            key_fwd = normalize_name(o["fighter_a"]) + "|" + normalize_name(o["fighter_b"])
+            key_rev = normalize_name(o["fighter_b"]) + "|" + normalize_name(o["fighter_a"])
+            odds_lookup[key_fwd] = o
+            odds_lookup[key_rev] = {
+                **o,
+                "fighter_a": o["fighter_b"], "fighter_b": o["fighter_a"],
+                "odds_a": o["odds_b"],       "odds_b": o["odds_a"],
+                "fair_prob_a": o["fair_prob_b"], "fair_prob_b": o["fair_prob_a"],
+            }
+        return odds_lookup, parsed
+    except Exception:
+        return {}, []
+
+
 def main():
     with st.sidebar:
         st.markdown("## 🥊 UFC Predictor")
@@ -1153,6 +1183,8 @@ def main():
 
         if st.button("🔄 Refresh Predictions", width="stretch"):
             st.cache_data.clear()
+            for key in ["odds_lookup", "parsed_odds", "all_preds"]:
+                st.session_state.pop(key, None)
             st.rerun()
 
         st.markdown("---")
@@ -1167,12 +1199,24 @@ def main():
 
     session = get_db()
 
+    # ── Load odds once, store in session_state ────────────────────────────────
+    # Tab switches never trigger another API call.
+    # "Refresh Predictions" button clears and re-fetches.
+    if "odds_lookup" not in st.session_state:
+        with st.spinner("Fetching odds (once per session)..."):
+            odds_lookup, parsed_odds = load_odds_once()
+            st.session_state["odds_lookup"] = odds_lookup
+            st.session_state["parsed_odds"] = parsed_odds
+
+    odds_lookup = st.session_state["odds_lookup"]
+    parsed_odds = st.session_state["parsed_odds"]
+
     if page == "Upcoming Event":
-        page_upcoming_event(session)
+        page_upcoming_event(session, odds_lookup)
     elif page == "⚡ Value Bets":
-        page_value_bets(session)
+        page_value_bets(session, parsed_odds, odds_lookup)
     elif page == "🎰 Parlays":
-        page_parlays(session)
+        page_parlays(session, parsed_odds, odds_lookup)
     elif page == "Fighter Matchup":
         page_fighter_compare(session)
     elif page == "Performance":

@@ -95,12 +95,23 @@ FEATURE_COLUMNS = [
     # Weight class context
     "slpm_pctile_diff",         # striking volume percentile within weight class
     "td_avg_pctile_diff",       # wrestling volume percentile within weight class
+    # UFC experience — debut vs veteran dynamic
+    "ufc_fights_diff",          # total UFC fights difference
+    "ufc_wins_diff",            # UFC wins difference
+    # Fight context flags (per-fight, not per-fighter)
+    "is_title_fight",           # 1 if championship fight
+    # Stance mismatch — southpaw geometric advantage
+    # Encoded asymmetrically: two flags, not a diff, because the effect is directional
+    "is_southpaw_a_vs_orthodox_b",  # 1 = fighter A has southpaw edge over orthodox B
+    "is_orthodox_a_vs_southpaw_b",  # 1 = fighter A is at southpaw disadvantage
+    # Short-notice flags — derived from days_since_last_fight < 21 days
+    # Already populated from existing data, no external source needed
+    "fighter_a_short_notice",
+    "fighter_b_short_notice",
     # Narrative signals
     "sentiment_diff",
     "fighter_a_injury_flag",
     "fighter_b_injury_flag",
-    "fighter_a_short_notice",
-    "fighter_b_short_notice",
 ]
 
 TARGET_WINNER = "winner"          # binary: 1 = fighter_A wins, 0 = fighter_B wins

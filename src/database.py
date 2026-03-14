@@ -97,6 +97,25 @@ class FighterStats(Base):
     days_since_last_fight = Column(Integer)
     avg_opponent_elo = Column(Float)              # strength of schedule
 
+    # Style fingerprint (derived from stats, used for matchup analysis)
+    style_pressure = Column(Float)    # high slpm + td_avg = forward pressure style
+    style_wrestling = Column(Float)   # td_avg / (slpm + 0.1) = wrestling reliance
+    style_striker = Column(Float)     # slpm / (td_avg + 0.1) = striking reliance
+    style_finisher = Column(Float)    # finish_rate weighted by method
+    grappling_defense = Column(Float) # composite td_def + sub resistance
+
+    # Recent form (last 3 fights weighted more than career)
+    recent_finish_rate = Column(Float)   # finish rate in last 3 fights
+    momentum_score = Column(Float)       # weighted win streak with recency
+
+    # UFC experience
+    ufc_fights = Column(Integer, default=0)    # number of UFC fights before this date
+    ufc_wins   = Column(Integer, default=0)    # UFC wins specifically
+
+    # Weight class normalized stats
+    slpm_pctile = Column(Float)       # percentile within weight class
+    td_avg_pctile = Column(Float)
+
     fighter = relationship("Fighter", back_populates="stats_history")
 
 
