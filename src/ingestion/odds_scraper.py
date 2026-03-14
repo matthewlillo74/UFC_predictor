@@ -28,9 +28,14 @@ SPORT_KEY = "mma_mixed_martial_arts"
 
 # ── API Fetching ──────────────────────────────────────────────────────────────
 
-def fetch_mma_odds(regions: str = "us", markets: str = "h2h") -> list[dict]:
+def fetch_mma_odds(regions: str = "us", markets: str = "h2h", api_key: str = None) -> list[dict]:
     """
     Fetch current MMA moneyline odds from The Odds API.
+
+    Args:
+        api_key: Optional override. If not provided, falls back to ODDS_API_KEY
+                 from config (set via .env or Streamlit secrets). Pass this when
+                 users supply their own key via the dashboard UI.
 
     Returns raw API response list. Each item is one event with odds
     from multiple sportsbooks.
@@ -38,13 +43,14 @@ def fetch_mma_odds(regions: str = "us", markets: str = "h2h") -> list[dict]:
     Free tier reminder: each call costs 1 request from your monthly quota.
     Check remaining: the response headers include x-requests-remaining.
     """
-    if not ODDS_API_KEY:
-        logger.warning("ODDS_API_KEY not set in .env — skipping odds fetch")
+    key = api_key or ODDS_API_KEY
+    if not key:
+        logger.warning("ODDS_API_KEY not set — skipping odds fetch")
         return []
 
     url = f"{ODDS_API_BASE_URL}/sports/{SPORT_KEY}/odds"
     params = {
-        "apiKey":      ODDS_API_KEY,
+        "apiKey":      key,
         "regions":     regions,
         "markets":     markets,
         "oddsFormat":  "american",
@@ -57,6 +63,12 @@ def fetch_mma_odds(regions: str = "us", markets: str = "h2h") -> list[dict]:
         used = resp.headers.get("x-requests-used", "?")
         logger.info(f"Odds fetched. API quota: {used} used, {remaining} remaining")
         return resp.json()
+    except requests.exceptions.HTTPError as e:
+        if e.response is not None and e.response.status_code == 401:
+            logger.error("Odds API: Invalid API key (401)")
+            raise ValueError("Invalid Odds API key — check your key and try again.")
+        logger.error(f"Odds API error: {e}")
+        return []
     except requests.RequestException as e:
         logger.error(f"Odds API error: {e}")
         return []

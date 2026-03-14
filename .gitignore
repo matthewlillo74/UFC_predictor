@@ -1,9 +1,47 @@
+# Environment & secrets
+.env
+.streamlit/secrets.toml
 venv/
+.venv/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
-.ipynb_checkpoints/
-logs/
+.Python
+*.egg-info/
+dist/
+build/
+
+# Data (raw scraped data and DB — too large for git)
 data/raw/
-data/processed/
+data/ufc_predictor.db
+
+# Saved models — committed separately or rebuilt on deploy
+models_saved/
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Keep these tracked (empty dir placeholders)
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+!data/predictions/.gitkeep
+
+# Keep deployment config tracked
+!.streamlit/config.toml
+!.streamlit/secrets.toml.template

@@ -1139,17 +1139,18 @@ The variance is extreme even with positive EV.
 
 
 @st.cache_data(ttl=1800)
-def load_odds_once():
+def load_odds_once(api_key: str = ""):
     """
-    Fetch odds from the API exactly once per 30-min window.
+    Fetch odds from the API exactly once per 30-min window (cached).
     All tabs read from session_state — never call fetch_mma_odds() directly in a tab.
+    api_key is included in cache key so different users get independent caches.
     """
     try:
         from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response
         from src.ingestion.data_loader import normalize_name
-        raw = fetch_mma_odds()
+        raw = fetch_mma_odds(api_key=api_key or None)
         if not raw:
-            return {}, []
+            return {}, [], None
         parsed = parse_odds_response(raw)
         odds_lookup = {}
         for o in parsed:
@@ -1162,9 +1163,11 @@ def load_odds_once():
                 "odds_a": o["odds_b"],       "odds_b": o["odds_a"],
                 "fair_prob_a": o["fair_prob_b"], "fair_prob_b": o["fair_prob_a"],
             }
-        return odds_lookup, parsed
-    except Exception:
-        return {}, []
+        return odds_lookup, parsed, None   # None = no error
+    except ValueError as e:
+        return {}, [], str(e)              # pass error message back to UI
+    except Exception as e:
+        return {}, [], str(e)
 
 
 def main():
@@ -1179,11 +1182,49 @@ def main():
         )
 
         st.markdown("---")
+
+        # ── Odds API Key ───────────────────────────────────────────────────────
+        # Users supply their own free key from the-odds-api.com
+        # It lives in session_state only — never stored or logged
+        st.markdown("### 🔑 Odds API Key")
+
+        # Check if a key is baked in via Streamlit secrets (for the host's own deployment)
+        import os
+        host_key = ""
+        try:
+            host_key = st.secrets.get("ODDS_API_KEY", "") or os.getenv("ODDS_API_KEY", "")
+        except Exception:
+            host_key = os.getenv("ODDS_API_KEY", "")
+
+        if host_key:
+            # Host has a key configured — use it silently, no input shown
+            st.caption("✅ Odds API connected")
+            api_key = host_key
+        else:
+            # Users supply their own key
+            user_key = st.text_input(
+                "Enter your Odds API key",
+                type="password",
+                placeholder="Paste key from the-odds-api.com",
+                help="Free tier: 500 requests/month. Get yours at the-odds-api.com",
+                key="user_odds_api_key",
+            )
+            api_key = user_key.strip() if user_key else ""
+            if not api_key:
+                st.caption("No key = predictions only, no odds/edge data")
+                st.markdown(
+                    "[Get a free key →](https://the-odds-api.com)",
+                    unsafe_allow_html=False,
+                )
+            else:
+                st.caption("🔑 Key stored for this session only")
+
+        st.markdown("---")
         st.markdown("### Quick Actions")
 
-        if st.button("🔄 Refresh Predictions", width="stretch"):
+        if st.button("🔄 Refresh Predictions", use_container_width=True):
             st.cache_data.clear()
-            for key in ["odds_lookup", "parsed_odds", "all_preds"]:
+            for key in ["odds_lookup", "parsed_odds", "odds_error", "all_preds", "odds_api_key_used"]:
                 st.session_state.pop(key, None)
             st.rerun()
 
@@ -1199,17 +1240,30 @@ def main():
 
     session = get_db()
 
-    # ── Load odds once, store in session_state ────────────────────────────────
-    # Tab switches never trigger another API call.
-    # "Refresh Predictions" button clears and re-fetches.
-    if "odds_lookup" not in st.session_state:
-        with st.spinner("Fetching odds (once per session)..."):
-            odds_lookup, parsed_odds = load_odds_once()
-            st.session_state["odds_lookup"] = odds_lookup
-            st.session_state["parsed_odds"] = parsed_odds
+    # ── Load odds once, keyed by api_key so each user gets their own cache ────
+    # Re-fetch if the key changed since last load (user pasted a new key)
+    key_changed = st.session_state.get("odds_api_key_used") != api_key
+    if "odds_lookup" not in st.session_state or key_changed:
+        if api_key:
+            with st.spinner("Fetching odds (once per session)..."):
+                odds_lookup, parsed_odds, odds_error = load_odds_once(api_key)
+                st.session_state["odds_lookup"] = odds_lookup
+                st.session_state["parsed_odds"] = parsed_odds
+                st.session_state["odds_error"]  = odds_error
+                st.session_state["odds_api_key_used"] = api_key
+        else:
+            st.session_state["odds_lookup"] = {}
+            st.session_state["parsed_odds"] = []
+            st.session_state["odds_error"]  = None
+            st.session_state["odds_api_key_used"] = ""
 
     odds_lookup = st.session_state["odds_lookup"]
     parsed_odds = st.session_state["parsed_odds"]
+    odds_error  = st.session_state.get("odds_error")
+
+    # Show error banner if key was invalid
+    if odds_error:
+        st.error(f"⚠️ Odds API: {odds_error}")
 
     if page == "Upcoming Event":
         page_upcoming_event(session, odds_lookup)

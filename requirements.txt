@@ -1,4 +1,4 @@
-# ── Data ──────────────────────────────────────────────────────────────────────
+# ── Core data ─────────────────────────────────────────────────────────────────
 pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.4.2
@@ -6,7 +6,6 @@ xgboost==2.0.3
 
 # ── Database ──────────────────────────────────────────────────────────────────
 sqlalchemy==2.0.30
-alembic==1.13.1
 
 # ── Scraping ──────────────────────────────────────────────────────────────────
 requests==2.31.0
@@ -14,20 +13,22 @@ beautifulsoup4==4.12.3
 lxml==5.2.1
 fake-useragent==1.5.1
 
-# ── NLP / Sentiment ───────────────────────────────────────────────────────────
-# NOTE: transformers + torch are large (~2GB). Install separately when you reach Phase 6.
-# pip install transformers torch
-vaderSentiment==3.3.2    # lightweight sentiment — used from Phase 3 onward
+# ── NLP ───────────────────────────────────────────────────────────────────────
+vaderSentiment==3.3.2
 
 # ── Explainability ────────────────────────────────────────────────────────────
 shap==0.45.1
 
-# ── API ───────────────────────────────────────────────────────────────────────
-fastapi==0.111.0
-uvicorn==0.29.0
-pydantic==2.7.1
-
 # ── Dashboard ─────────────────────────────────────────────────────────────────
+streamlit==1.35.0
+plotly==5.22.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+loguru==0.7.2
+tqdm==4.66.4
+rapidfuzz==3.9.3
+anthropic==0.28.0
 streamlit==1.35.0
 plotly==5.22.0
 
