@@ -89,10 +89,37 @@ def main(eval_only: bool = False, save_dataset: bool = False):
     print("═" * 50)
     print()
 
-    # Baseline comparison: always pick the fighter listed first (fighter_a)
+    # Baseline comparison
     baseline_acc = df_test["winner"].mean()
     print(f"  Baseline (always pick fighter_a): {baseline_acc:.1%}")
     print(f"  Model improvement: +{(metrics['accuracy'] - baseline_acc):.1%}")
+    print()
+
+    # ── Era accuracy breakdown ────────────────────────────────────────────────
+    # Accuracy by year tells us if the model is getting stale over time.
+    # If recent years show declining accuracy, we need more aggressive
+    # recency weighting or more frequent retraining.
+    print("  ACCURACY BY ERA")
+    print("  " + "─" * 40)
+    from config import FEATURE_COLUMNS as FC
+    df_test_sorted = df_test.sort_values("fight_date").copy()
+    df_test_sorted["year"] = pd.to_datetime(df_test_sorted["fight_date"]).dt.year
+    df_test_sorted["pred_winner"] = (
+        predictor.winner_model.predict_proba(
+            df_test_sorted[FC].fillna(0)
+        )[:, list(predictor.winner_model.classes_).index(1)] >= 0.5
+    ).astype(int)
+    df_test_sorted["correct"] = (df_test_sorted["pred_winner"] == df_test_sorted["winner"]).astype(int)
+
+    era_stats = df_test_sorted.groupby("year").agg(
+        fights=("correct", "count"),
+        accuracy=("correct", "mean")
+    ).reset_index()
+
+    for _, row in era_stats.iterrows():
+        bar = "█" * int(row["accuracy"] * 30)
+        trend = "📈" if row["accuracy"] >= metrics["accuracy"] else "📉"
+        print(f"  {int(row['year'])}  {row['accuracy']:.1%}  ({int(row['fights'])} fights)  {bar} {trend}")
     print()
 
     # ── Step 5: Save ──────────────────────────────────────────────────────────
