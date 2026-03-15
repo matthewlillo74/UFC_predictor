@@ -77,12 +77,21 @@ def get_or_create_fighter(session: Session, name: str, fighter_url: str = "") ->
                     logger.debug(f"Fuzzy matched '{name}' → '{fighter_obj.name}' ({score:.0f}%)")
                     return fighter_obj
 
-    # Create new fighter
-    fighter = Fighter(name=name, name_normalized=norm, url=fighter_url or "")
-    session.add(fighter)
-    session.flush()  # get ID without committing
-    logger.debug(f"Created new fighter: {name}")
-    return fighter
+    # Create new fighter — will fail on read-only DB (e.g. Streamlit Cloud)
+    # In that case return None and let the caller skip this fight gracefully
+    try:
+        fighter = Fighter(name=name, name_normalized=norm, url=fighter_url or "")
+        session.add(fighter)
+        session.flush()  # get ID without committing
+        logger.debug(f"Created new fighter: {name}")
+        return fighter
+    except Exception as e:
+        logger.warning(f"Cannot create fighter '{name}' (read-only DB?): {e}")
+        try:
+            session.rollback()
+        except Exception:
+            pass
+        return None
 
 
 def enrich_fighter(session: Session, fighter: Fighter, fighter_url: str):

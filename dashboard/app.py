@@ -569,6 +569,10 @@ def page_upcoming_event(session, odds_lookup: dict):
             try:
                 fa = get_or_create_fighter(session, f["fighter_a_name"], f.get("fighter_a_url", ""))
                 fb = get_or_create_fighter(session, f["fighter_b_name"], f.get("fighter_b_url", ""))
+                if fa is None or fb is None:
+                    # Fighter not in DB and DB is read-only (cloud) — skip silently
+                    logger.warning(f"Skipping unknown fighter(s): {f.get('fighter_a_name')} vs {f.get('fighter_b_name')}")
+                    continue
                 features = builder.build_matchup_features(fa.id, fb.id, fight_date)
                 pred = predictor.predict(features, fa.name, fb.name)
 
@@ -852,6 +856,8 @@ def page_value_bets(session, parsed_odds: list, odds_lookup: dict):
         try:
             fa = get_or_create_fighter(session, f["fighter_a_name"], f.get("fighter_a_url", ""))
             fb = get_or_create_fighter(session, f["fighter_b_name"], f.get("fighter_b_url", ""))
+            if fa is None or fb is None:
+                continue
             features = builder.build_matchup_features(fa.id, fb.id, fight_date)
             pred = predictor.predict(features, fa.name, fb.name)
             pred["weight_class"] = f.get("weight_class", "")
@@ -1002,6 +1008,8 @@ def page_parlays(session, parsed_odds: list, odds_lookup: dict):
             try:
                 fa = get_or_create_fighter(session, f["fighter_a_name"], f.get("fighter_a_url", ""))
                 fb = get_or_create_fighter(session, f["fighter_b_name"], f.get("fighter_b_url", ""))
+                if fa is None or fb is None:
+                    continue
                 features = builder.build_matchup_features(fa.id, fb.id, fight_date)
                 pred = predictor.predict(features, fa.name, fb.name)
                 pred["weight_class"] = f.get("weight_class", "")
