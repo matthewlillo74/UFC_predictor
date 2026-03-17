@@ -212,13 +212,25 @@ class UFCPredictor:
         raw_a = float(win_probs_raw[idx_a])
         raw_b = float(win_probs_raw[idx_b])
 
-        # Apply isotonic calibration if available
-        # Calibrator maps raw prob → calibrated prob for fighter_a winning
+        # Apply probability cap — raw XGBoost becomes overconfident for debut fighters
+        # or fighters with sparse stats (large feature gaps push extreme probabilities).
+        # From calibration report: 80-90% bucket hits 76.6%, 90%+ hits 83.3%.
+        # We cap at 90% since we have no validated data above that range.
+        # This makes 97-99% predictions display as 90% which better reflects true confidence.
         if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
             prob_a = float(self.winner_calibrator.predict([raw_a])[0])
             prob_b = 1.0 - prob_a
         else:
             prob_a, prob_b = raw_a, raw_b
+
+        # Cap at 90% max — never report more confidence than we can validate
+        MAX_PROB = 0.90
+        if prob_a > MAX_PROB:
+            prob_a = MAX_PROB
+            prob_b = 1.0 - MAX_PROB
+        elif prob_b > MAX_PROB:
+            prob_b = MAX_PROB
+            prob_a = 1.0 - MAX_PROB
 
         # Method probabilities — map integer classes back to string names
         method_probs = self.method_model.predict_proba(X)[0]
@@ -425,16 +437,11 @@ class UFCPredictor:
         X = df_test[FEATURE_COLUMNS].fillna(0)
         y = df_test["winner"]
 
-        # Get raw probabilities then apply isotonic calibration if available
+        # Get raw probabilities (calibrator is None, raw XGBoost used directly)
         raw_probs = self.winner_model.predict_proba(X)
         classes = list(self.winner_model.classes_)
         idx_1 = classes.index(1) if 1 in classes else 1
-        raw_p = raw_probs[:, idx_1]
-
-        if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
-            probs = np.array([float(self.winner_calibrator.predict([p])[0]) for p in raw_p])
-        else:
-            probs = raw_p
+        probs = raw_probs[:, idx_1]
         preds = (probs >= 0.5).astype(int)
 
         # ── Confidence calibration ─────────────────────────────────────────────
