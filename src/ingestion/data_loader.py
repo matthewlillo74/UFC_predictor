@@ -151,6 +151,7 @@ def load_all_events(session: Session, limit: Optional[int] = None):
         event = Event(
             name=event_data["name"],
             date=event_data["date"],
+            url=event_data.get("url", ""),
         )
         session.add(event)
         session.flush()
@@ -227,6 +228,7 @@ def _load_fight(
         method=fight_data.get("method"),
         finish_round=fight_data.get("finish_round"),
         finish_time=fight_data.get("finish_time"),
+        fight_url=fight_data.get("fight_url", ""),
     )
     session.add(fight)
     session.flush()

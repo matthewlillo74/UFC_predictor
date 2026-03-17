@@ -65,6 +65,10 @@ FEATURE_COLUMNS = [
     "reach_diff",
     "height_diff",
     "age_diff",
+    # Age curve by weight class — distance from divisional prime age
+    # More meaningful than raw age: a 32-year-old flyweight is past peak,
+    # a 32-year-old heavyweight is at peak
+    "age_vs_peak_diff",
     # Performance diffs (fighter_A - fighter_B, all pre-fight)
     "slpm_diff",              # strikes landed per minute
     "strike_acc_diff",        # striking accuracy
@@ -83,29 +87,63 @@ FEATURE_COLUMNS = [
     # Elo
     "elo_diff",
     "avg_opponent_elo_diff",
+    # Elo dynamics — trajectory matters as much as current level
+    "elo_trend_diff",         # Elo change over last 3 fights (rising vs declining)
+    "elo_uncertainty_diff",   # how well-known is each fighter (debut vs veteran)
+    "elo_vs_peak_diff",       # distance from career peak Elo (decline from prime)
     # Style matchup features (continuous scores — model learns degree of mismatch)
-    "style_pressure_diff",      # forward pressure style diff
-    "style_wrestling_diff",     # wrestling reliance diff
-    "style_striker_diff",       # striking reliance diff
-    "style_finisher_diff",      # finishing ability diff
-    "grappling_defense_diff",   # grappling defense diff
+    "style_pressure_diff",
+    "style_wrestling_diff",
+    "style_striker_diff",
+    "style_finisher_diff",
+    "grappling_defense_diff",
     # Recent form (recency-weighted — combats favorite bias)
-    "momentum_score_diff",      # weighted win streak, recent fights count more
-    "recent_finish_rate_diff",  # finishing rate in last 3 fights
+    "momentum_score_diff",
+    "recent_finish_rate_diff",
     # Weight class context
-    "slpm_pctile_diff",         # striking volume percentile within weight class
-    "td_avg_pctile_diff",       # wrestling volume percentile within weight class
+    "slpm_pctile_diff",
+    "td_avg_pctile_diff",
     # UFC experience — debut vs veteran dynamic
-    "ufc_fights_diff",          # total UFC fights difference
-    "ufc_wins_diff",            # UFC wins difference
+    "ufc_fights_diff",
+    "ufc_wins_diff",
+    # Durability — derived from fight-level knockdown data
+    # These replace the proxy durability score with real measured data
+    "durability_diff",             # composite proxy (SAPM + KO loss rate)
+    "kd_absorbed_per_fight_diff",  # avg knockdowns absorbed per fight — chin/durability
+    "kd_ratio_diff",               # KD landed / absorbed — KO offensive dominance
+    # Rolling style windows — last 3 and last 5 fights
+    # Captures style evolution; diff between career and recent = style shift
+    "style_pressure_l3_diff",
+    "style_wrestling_l3_diff",
+    "style_striker_l3_diff",
+    "style_pressure_l5_diff",
+    "style_wrestling_l5_diff",
+    "style_striker_l5_diff",
+    # Cardio decay — from round-level data (does output hold up late?)
+    "cardio_decay_diff",         # round3_output / round1_output (1.0 = no fade)
+    "early_output_share_diff",   # fraction of strikes thrown in round 1 (front-loaded)
+    # Strike location rates — matchup-specific targeting patterns
+    "head_strike_rate_diff",     # head hunter vs body/leg worker
+    "leg_strike_rate_diff",      # leg kick specialist signal
+    "ground_strike_share_diff",  # striker from top vs pure standup
+    # These are matchup interaction features — how does A perform vs B's specific style?
+    # Formula: A_winrate_vs_wrestlers * B_style_wrestling (weighted by how much B is a wrestler)
+    # Negative diff = A is MORE vulnerable to B's style than B is to A's style
+    "style_vuln_wrestling_diff",   # A's wrestler vulnerability vs B's wrestling style
+    "style_vuln_striker_diff",     # A's striker vulnerability vs B's striking style
+    "style_vuln_pressure_diff",    # A's pressure vulnerability vs B's pressure style
+    # XGBoost can learn these but needs ~50k fights; we inject them manually
+    "td_success_prob_diff",   # A_td_avg * (1 - B_td_def): actual TD success likelihood
+    "striking_edge_diff",     # net effective striking (output*acc - absorbed)
+    "grapple_dom_diff",       # td_avg * sub_avg * (1 - opp_td_def): submission via wrestling
+    "finish_threat_diff",     # finish_rate * (1 - opp_strike_defense): finishing vs chin
+    "reach_strike_diff",      # reach * accuracy: reach only matters if you use it
     # Fight context flags (per-fight, not per-fighter)
-    "is_title_fight",           # 1 if championship fight
-    # Stance mismatch — southpaw geometric advantage
-    # Encoded asymmetrically: two flags, not a diff, because the effect is directional
-    "is_southpaw_a_vs_orthodox_b",  # 1 = fighter A has southpaw edge over orthodox B
-    "is_orthodox_a_vs_southpaw_b",  # 1 = fighter A is at southpaw disadvantage
-    # Short-notice flags — derived from days_since_last_fight < 21 days
-    # Already populated from existing data, no external source needed
+    "is_title_fight",
+    # Stance mismatch — southpaw geometric advantage (asymmetric, not a diff)
+    "is_southpaw_a_vs_orthodox_b",
+    "is_orthodox_a_vs_southpaw_b",
+    # Short-notice flags
     "fighter_a_short_notice",
     "fighter_b_short_notice",
     # Narrative signals

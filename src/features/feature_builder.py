@@ -40,6 +40,118 @@ class FeatureBuilder:
 
     def __init__(self, db_session: Session):
         self.session = db_session
+        self._fighters_cache = None       # fighter_id → Fighter
+        self._stats_cache = None          # fighter_id → sorted [(as_of_date, FighterStats)]
+        self._opp_elo_cache = None        # fighter_id → list of (fight_date, opp_elo)
+        self._fight_history = None        # fighter_id → sorted [(fight_date, opp_id)]
+        self._elo_calc = None             # shared EloCalculator (preloaded for bulk use)
+
+    def preload(self):
+        """
+        Load all fighters, stats snapshots, and Elo history into memory.
+        Call once before building a large training dataset — avoids thousands
+        of individual DB queries and speeds up dataset building by ~50-100x.
+        """
+        from src.database import Fighter, FighterStats, EloRating, Fight
+        from src.features.elo_calculator import EloCalculator
+        from collections import defaultdict
+
+        logger.info("Preloading feature cache...")
+
+        # All fighters
+        self._fighters_cache = {f.id: f for f in self.session.query(Fighter).all()}
+
+        # All FighterStats — sorted by as_of_date per fighter
+        stats_raw = self.session.query(FighterStats).order_by(
+            FighterStats.fighter_id, FighterStats.as_of_date
+        ).all()
+        stats_by_fighter = defaultdict(list)
+        for s in stats_raw:
+            stats_by_fighter[s.fighter_id].append(s)
+        self._stats_cache = dict(stats_by_fighter)
+
+        # Opponent Elo per fight per fighter (for avg_opponent_elo)
+        # Build: fighter_id → [(fight_date, opp_elo)]
+        elo_by_fighter = defaultdict(list)
+        elo_rows = (
+            self.session.query(EloRating, Fight.fight_date, Fight.fighter_a_id, Fight.fighter_b_id)
+            .join(Fight, EloRating.after_fight_id == Fight.id)
+            .filter(Fight.fight_date.isnot(None))
+            .all()
+        )
+        # Build fight_id → (date, fighter_a, fighter_b) and elo snapshots
+        elo_by_fight = defaultdict(list)  # fight_id → [(fighter_id, rating)]
+        for elo, fight_date, fa_id, fb_id in elo_rows:
+            elo_by_fight[(fight_date, fa_id, fb_id)].append((elo.fighter_id, elo.rating, fight_date))
+
+        # For avg_opponent_elo: fighter_id → [(fight_date, opp_rating_before_fight)]
+        # We approximate opp rating as the pre-fight snapshot = their current elo at fight time
+        # This is precomputed in the EloCalculator preload, so we delegate to it
+        self._opp_elo_cache = {}  # will use elo_calc.preload() instead
+
+        # Shared EloCalculator with full preload
+        self._elo_calc = EloCalculator(self.session)
+        self._elo_calc.preload()
+
+        # Fight history per fighter: fighter_id → [(fight_date, opponent_id)]
+        # Used for avg_opponent_elo without hitting DB per fight
+        from src.database import Fight as FightModel
+        all_fights = (
+            self.session.query(FightModel)
+            .filter(
+                FightModel.fight_date.isnot(None),
+                FightModel.winner_id.isnot(None),
+            )
+            .all()
+        )
+        fight_history = defaultdict(list)
+        for f in all_fights:
+            fight_history[f.fighter_a_id].append((f.fight_date, f.fighter_b_id))
+            fight_history[f.fighter_b_id].append((f.fight_date, f.fighter_a_id))
+        # Sort by date
+        for fid in fight_history:
+            fight_history[fid].sort(key=lambda x: x[0])
+        self._fight_history = dict(fight_history)
+
+        logger.info(f"Cache loaded: {len(self._fighters_cache)} fighters, "
+                    f"{sum(len(v) for v in self._stats_cache.values())} stat snapshots, "
+                    f"{len(all_fights)} fights")
+
+    def _get_fighter(self, fighter_id: int):
+        """Get fighter from cache or DB."""
+        if self._fighters_cache is not None:
+            return self._fighters_cache.get(fighter_id)
+        return self.session.query(__import__('src.database', fromlist=['Fighter']).Fighter).get(fighter_id)
+
+    def _get_stats_cached(self, fighter_id: int, as_of_date: datetime):
+        """Get most recent FighterStats before as_of_date from cache."""
+        if self._stats_cache is not None:
+            snapshots = self._stats_cache.get(fighter_id, [])
+            result = None
+            for snap in snapshots:
+                if snap.as_of_date and snap.as_of_date < as_of_date:
+                    result = snap
+                else:
+                    break
+            return result
+        return self._get_stats_before(fighter_id, as_of_date)
+
+    def _avg_opp_elo_cached(self, fighter_id: int, as_of_date: datetime) -> float:
+        """Compute avg opponent Elo — fully in-memory when cache is loaded."""
+        if self._fight_history is not None and self._elo_calc and self._elo_calc._is_cached():
+            prior_fights = [
+                (fd, opp_id)
+                for fd, opp_id in self._fight_history.get(fighter_id, [])
+                if fd < as_of_date
+            ]
+            if not prior_fights:
+                return ELO_BASE_RATING
+            opp_elos = [
+                self._elo_calc.get_rating_before(opp_id, fight_date)
+                for fight_date, opp_id in prior_fights
+            ]
+            return sum(opp_elos) / len(opp_elos)
+        return self._avg_opponent_elo(fighter_id, as_of_date)
 
     def build_matchup_features(
         self,
@@ -50,27 +162,40 @@ class FeatureBuilder:
         """
         Build the full feature vector for a matchup.
         Returns a dict with all FEATURE_COLUMNS as keys.
+        Uses preloaded cache if available (fast), otherwise queries DB (live predictions).
         """
         from src.database import Fighter, FighterStats
         from src.features.elo_calculator import EloCalculator
 
-        elo_calc = EloCalculator(self.session)
+        # Use shared preloaded calculator if available, else create per-call
+        elo_calc = self._elo_calc if self._elo_calc else EloCalculator(self.session)
 
-        # Load physical attributes
-        fa = self.session.query(Fighter).get(fighter_a_id)
-        fb = self.session.query(Fighter).get(fighter_b_id)
+        # Load physical attributes (from cache if available)
+        fa = self._get_fighter(fighter_a_id) if self._fighters_cache else self.session.query(Fighter).get(fighter_a_id)
+        fb = self._get_fighter(fighter_b_id) if self._fighters_cache else self.session.query(Fighter).get(fighter_b_id)
 
-        # Load pre-fight stats snapshots
-        stats_a = self._get_stats_before(fighter_a_id, as_of_date)
-        stats_b = self._get_stats_before(fighter_b_id, as_of_date)
+        # Load pre-fight stats snapshots (from cache if available)
+        stats_a = self._get_stats_cached(fighter_a_id, as_of_date)
+        stats_b = self._get_stats_cached(fighter_b_id, as_of_date)
 
         # Load Elo ratings before fight
         elo_a = elo_calc.get_rating_before(fighter_a_id, as_of_date)
         elo_b = elo_calc.get_rating_before(fighter_b_id, as_of_date)
 
+        # Elo dynamics — trend, uncertainty, peak
+        elo_trend_a    = elo_calc.get_elo_trend(fighter_a_id, as_of_date)
+        elo_trend_b    = elo_calc.get_elo_trend(fighter_b_id, as_of_date)
+        elo_uncert_a   = elo_calc.get_elo_uncertainty(fighter_a_id, as_of_date)
+        elo_uncert_b   = elo_calc.get_elo_uncertainty(fighter_b_id, as_of_date)
+        elo_peak_a     = elo_calc.get_career_peak_elo(fighter_a_id, as_of_date)
+        elo_peak_b     = elo_calc.get_career_peak_elo(fighter_b_id, as_of_date)
+        # Distance from peak — negative means fighter is below their best form
+        elo_vs_peak_a  = elo_a - elo_peak_a
+        elo_vs_peak_b  = elo_b - elo_peak_b
+
         # Average opponent Elo (strength of schedule)
-        avg_opp_elo_a = self._avg_opponent_elo(fighter_a_id, as_of_date)
-        avg_opp_elo_b = self._avg_opponent_elo(fighter_b_id, as_of_date)
+        avg_opp_elo_a = self._avg_opp_elo_cached(fighter_a_id, as_of_date)
+        avg_opp_elo_b = self._avg_opp_elo_cached(fighter_b_id, as_of_date)
 
         def s(attr):
             """Safely get attribute from stats object."""
@@ -83,6 +208,45 @@ class FeatureBuilder:
             if fighter and fighter.date_of_birth and as_of_date:
                 return (as_of_date - fighter.date_of_birth).days / 365.25
             return None
+
+        # ── Age curve by weight class ──────────────────────────────────────────
+        # Raw age_diff treats a 30-year-old flyweight and heavyweight identically.
+        # In reality, smaller fighters peak and decline earlier.
+        # age_vs_peak_diff = (A's distance from their class peak) - (B's distance)
+        # Negative = A is closer to their prime than B = advantage for A.
+        WEIGHT_CLASS_PEAK = {
+            "Strawweight": 28, "Flyweight": 29, "Bantamweight": 30,
+            "Featherweight": 30, "Lightweight": 31, "Welterweight": 32,
+            "Middleweight": 33, "Light Heavyweight": 33, "Heavyweight": 34,
+            "Women's Strawweight": 27, "Women's Flyweight": 28,
+            "Women's Bantamweight": 29, "Women's Featherweight": 30,
+        }
+        def age_vs_peak(fighter):
+            age = age_at(fighter)
+            if age is None:
+                return None
+            wc = (fighter.weight_class or "").strip()
+            peak = WEIGHT_CLASS_PEAK.get(wc, 31)  # default 31 if unknown
+            return age - peak  # 0 = at peak, positive = past peak, negative = pre-peak
+
+        # ── Durability / damage accumulation ──────────────────────────────────
+        # Fighters degrade from absorbed damage over their career.
+        # We use SAPM (strikes absorbed per minute) as a career damage proxy,
+        # weighted toward recent fights via recent_finish_rate (how often they
+        # get finished). High SAPM + high recent finish rate = durability concern.
+        def durability_score(stats_obj):
+            if not stats_obj:
+                return 0.0
+            sapm = getattr(stats_obj, "sapm", None) or 0.0
+            recent_finish = getattr(stats_obj, "recent_finish_rate", None) or 0.0
+            ko_losses = getattr(stats_obj, "losses_ko_tko", None) or 0
+            losses = max(getattr(stats_obj, "losses", None) or 1, 1)
+            ko_loss_rate = ko_losses / losses
+            # Composite: high sapm, high recent finishes, high KO loss rate = worse durability
+            return round(sapm * 0.4 + recent_finish * 0.3 + ko_loss_rate * 0.3, 4)
+
+        durability_a = durability_score(stats_a)
+        durability_b = durability_score(stats_b)
 
         # ── Stance encoding ───────────────────────────────────────────────────
         # Southpaw vs Orthodox is a geometric mismatch — southpaws win at a
@@ -117,6 +281,9 @@ class FeatureBuilder:
             "reach_diff":  _diff(fa.reach_cm if fa else None,  fb.reach_cm if fb else None),
             "height_diff": _diff(fa.height_cm if fa else None, fb.height_cm if fb else None),
             "age_diff":    _diff(age_at(fa), age_at(fb)),
+            # Age curve by weight class — distance from divisional prime
+            # 0 = at peak, positive = past peak (declining), negative = pre-peak
+            "age_vs_peak_diff": _diff(age_vs_peak(fa), age_vs_peak(fb)),
             # Striking
             "slpm_diff":         _diff(s("slpm"),            t("slpm")),
             "strike_acc_diff":   _diff(s("strike_accuracy"), t("strike_accuracy")),
@@ -134,8 +301,13 @@ class FeatureBuilder:
             "days_since_last_fight_diff": _diff(s("days_since_last_fight"), t("days_since_last_fight")),
             "win_streak_diff":            _diff(s("win_streak"),        t("win_streak")),
             # Elo
-            "elo_diff":             _diff(elo_a,         elo_b),
-            "avg_opponent_elo_diff": _diff(avg_opp_elo_a, avg_opp_elo_b),
+            "elo_diff":              _diff(elo_a,           elo_b),
+            "avg_opponent_elo_diff": _diff(avg_opp_elo_a,   avg_opp_elo_b),
+            # Elo dynamics — trend, uncertainty, peak distance
+            # These capture trajectory not captured by a single rating snapshot
+            "elo_trend_diff":      _diff(elo_trend_a,   elo_trend_b),    # rising vs falling
+            "elo_uncertainty_diff": _diff(elo_uncert_a, elo_uncert_b),   # debut vs veteran
+            "elo_vs_peak_diff":    _diff(elo_vs_peak_a, elo_vs_peak_b),  # decline from prime
             # Style matchup features — continuous scores, not labels
             # Model learns degree of mismatch (e.g. pure wrestler vs pure striker)
             "style_pressure_diff":    _diff(s("style_pressure"),    t("style_pressure")),
@@ -162,6 +334,71 @@ class FeatureBuilder:
             # Short notice — derived from days_since_last_fight (<21 days)
             "fighter_a_short_notice": short_notice_a,
             "fighter_b_short_notice": short_notice_b,
+            # Durability — composite proxy (SAPM + KO loss rate)
+            "durability_diff": _diff(durability_a, durability_b),
+            # Knockdown durability — real measured data from fight detail pages
+            # kd_absorbed_per_fight: how often does this fighter get knocked down?
+            # kd_ratio: does this fighter knock people down more than they get knocked down?
+            "kd_absorbed_per_fight_diff": _diff(s("kd_absorbed_per_fight"), t("kd_absorbed_per_fight")),
+            "kd_ratio_diff":              _diff(s("kd_ratio"),              t("kd_ratio")),
+            # Opponent style vulnerability matchup features
+            #   how well does A do vs the kind of fighter B actually is?
+            # Negative diff = A is MORE vulnerable to B's style than vice versa
+            "style_vuln_wrestling_diff": _diff(
+                _safe(s("winrate_vs_wrestlers")) * _safe(t("style_wrestling")),
+                _safe(t("winrate_vs_wrestlers")) * _safe(s("style_wrestling")),
+            ),
+            "style_vuln_striker_diff": _diff(
+                _safe(s("winrate_vs_strikers")) * _safe(t("style_striker")),
+                _safe(t("winrate_vs_strikers")) * _safe(s("style_striker")),
+            ),
+            "style_vuln_pressure_diff": _diff(
+                _safe(s("winrate_vs_pressure")) * _safe(t("style_pressure")),
+                _safe(t("winrate_vs_pressure")) * _safe(s("style_pressure")),
+            ),
+            # ── Interaction features ───────────────────────────────────────────
+            # XGBoost can learn interactions but needs many fights to do so reliably.
+            # With ~8k fights, explicit domain-knowledge interactions add real signal.
+            #
+            # Takedown success probability — wrestler vs fighter who can stuff TDs
+            "td_success_prob_diff": _diff(
+                _safe(s("td_avg")) * (1 - _safe(t("td_defense"))),
+                _safe(t("td_avg")) * (1 - _safe(s("td_defense"))),
+            ),
+            # Striking exchange edge — net effective striking (output × accuracy - absorbed)
+            "striking_edge_diff": _diff(
+                _safe(s("slpm")) * _safe(s("strike_accuracy")) - _safe(s("sapm")),
+                _safe(t("slpm")) * _safe(t("strike_accuracy")) - _safe(t("sapm")),
+            ),
+            # Grappling dominance — td_avg × sub_avg × (1 - opp_td_def)
+            "grapple_dom_diff": _diff(
+                _safe(s("td_avg")) * _safe(s("sub_avg")) * (1 - _safe(t("td_defense"))),
+                _safe(t("td_avg")) * _safe(t("sub_avg")) * (1 - _safe(s("td_defense"))),
+            ),
+            # Finish threat vs durability — finish_rate × (1 - opp_strike_defense)
+            "finish_threat_diff": _diff(
+                _safe(s("finish_rate")) * (1 - _safe(t("strike_defense"))),
+                _safe(t("finish_rate")) * (1 - _safe(s("strike_defense"))),
+            ),
+            # Reach × striking accuracy — reach only matters if you use it
+            "reach_strike_diff": _diff(
+                _safe(fa.reach_cm if fa else None) * _safe(s("strike_accuracy")),
+                _safe(fb.reach_cm if fb else None) * _safe(t("strike_accuracy")),
+            ),
+            # Cardio decay — from round-level data
+            "cardio_decay_diff":       _diff(s("cardio_decay"),       t("cardio_decay")),
+            "early_output_share_diff": _diff(s("early_output_share"), t("early_output_share")),
+            # Strike location rates
+            "head_strike_rate_diff":    _diff(s("head_strike_rate"),    t("head_strike_rate")),
+            "leg_strike_rate_diff":     _diff(s("leg_strike_rate"),     t("leg_strike_rate")),
+            "ground_strike_share_diff": _diff(s("ground_strike_share"), t("ground_strike_share")),
+            # Rolling style windows — career avg vs recent trend
+            "style_pressure_l3_diff":  _diff(s("style_pressure_l3"),  t("style_pressure_l3")),
+            "style_wrestling_l3_diff": _diff(s("style_wrestling_l3"), t("style_wrestling_l3")),
+            "style_striker_l3_diff":   _diff(s("style_striker_l3"),   t("style_striker_l3")),
+            "style_pressure_l5_diff":  _diff(s("style_pressure_l5"),  t("style_pressure_l5")),
+            "style_wrestling_l5_diff": _diff(s("style_wrestling_l5"), t("style_wrestling_l5")),
+            "style_striker_l5_diff":   _diff(s("style_striker_l5"),   t("style_striker_l5")),
             # Injury flags — not yet automated, remain 0 until news scraper added
             "sentiment_diff":        0.0,
             "fighter_a_injury_flag": 0.0,
@@ -253,6 +490,9 @@ def build_training_dataset(session: Session) -> pd.DataFrame:
     logger.info(f"Processing {len(fights)} completed fights...")
 
     builder = FeatureBuilder(session)
+    # Preload all data into memory — avoids ~100k individual DB queries
+    # Brings dataset build time from hours down to ~10 minutes
+    builder.preload()
     rows = []
     skipped = 0
 
@@ -302,3 +542,8 @@ def _diff(a, b) -> float:
     if a is None or b is None:
         return 0.0
     return float(a) - float(b)
+
+
+def _safe(x) -> float:
+    """Convert None to 0.0 for use in multiplication. Never raises."""
+    return float(x) if x is not None else 0.0

@@ -122,6 +122,39 @@ def main(eval_only: bool = False, save_dataset: bool = False):
         print(f"  {int(row['year'])}  {row['accuracy']:.1%}  ({int(row['fights'])} fights)  {bar} {trend}")
     print()
 
+    # ── Confidence calibration ────────────────────────────────────────────────
+    # How accurate is the model at each confidence level?
+    # A well-calibrated model should hit ~70% accuracy on 70% confidence picks.
+    # If 80% confidence picks only hit 60%, the model is overconfident → trust less.
+    # If 80% confidence picks hit 88%, the model is underconfident → trust more.
+    print("  CONFIDENCE CALIBRATION")
+    print("  " + "─" * 52)
+    print(f"  {'Confidence':12s}  {'Fights':6s}  {'Actual%':8s}  {'vs Model':8s}  {'Status'}")
+    print("  " + "─" * 52)
+    for row in metrics.get("calibration", []):
+        n = int(row["fights"])
+        if n == 0:
+            continue
+        actual = row["accuracy"]
+        bucket = str(row["bucket"])
+        # Mid-point of bucket as expected accuracy
+        try:
+            lo = float(bucket.split("-")[0].rstrip("%")) / 100
+            hi = float(bucket.split("-")[1].rstrip("%+").rstrip("%")) / 100
+            expected = (lo + hi) / 2
+        except Exception:
+            expected = actual
+        gap = actual - expected
+        if abs(gap) < 0.04:
+            status = "✅ calibrated"
+        elif gap > 0.04:
+            status = "📈 underconfident (trust more)"
+        else:
+            status = "⚠️  overconfident (trust less)"
+        bar = "█" * int(actual * 25)
+        print(f"  {bucket:12s}  {n:6d}  {actual:7.1%}  {gap:+7.1%}   {status}")
+    print()
+
     # ── Step 5: Save ──────────────────────────────────────────────────────────
     predictor.save()
     logger.success("Training complete. Models saved.")

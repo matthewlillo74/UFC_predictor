@@ -164,13 +164,72 @@ def compute_weight_class_percentiles(session: Session):
 
     # Write back to DB
     for _, row in df.iterrows():
-        stats = session.get(FighterStats, int(row["stats_id"]))
+        stats = session.query(FighterStats).get(int(row["stats_id"]))
         if stats:
             stats.slpm_pctile = round(float(row["slpm_pctile"]), 4)
             stats.td_avg_pctile = round(float(row["td_avg_pctile"]), 4)
 
     session.commit()
     logger.success(f"Percentiles computed for {len(df)} fighters across {df['weight_class'].nunique()} weight classes")
+
+
+def compute_rolling_style(fighter_id: int, as_of_date, session: Session, window: int) -> dict:
+    """
+    Compute style fingerprint from the last N fights' stat snapshots.
+    Uses the FighterStats snapshot closest to each recent fight date.
+
+    This captures style evolution — a fighter who switched from wrestling
+    to striking over the last 3 fights will have different l3 vs career scores.
+    """
+    recent_fights = (
+        session.query(Fight)
+        .filter(
+            ((Fight.fighter_a_id == fighter_id) | (Fight.fighter_b_id == fighter_id)),
+            Fight.fight_date < as_of_date,
+            Fight.winner_id.isnot(None),
+        )
+        .order_by(Fight.fight_date.desc())
+        .limit(window)
+        .all()
+    )
+
+    if len(recent_fights) < max(2, window // 2):
+        return {}  # not enough fights for meaningful window
+
+    # Get stats snapshots just before each fight
+    snap_stats = []
+    for fight in recent_fights:
+        snap = (
+            session.query(FighterStats)
+            .filter(
+                FighterStats.fighter_id == fighter_id,
+                FighterStats.as_of_date < fight.fight_date,
+            )
+            .order_by(FighterStats.as_of_date.desc())
+            .first()
+        )
+        if snap and snap.slpm is not None:
+            snap_stats.append(snap)
+
+    if not snap_stats:
+        return {}
+
+    # Average the raw stats across the window, then compute style scores
+    avg_slpm   = sum(s.slpm or 0 for s in snap_stats) / len(snap_stats)
+    avg_td_avg = sum(s.td_avg or 0 for s in snap_stats) / len(snap_stats)
+    avg_sapm   = sum(s.sapm or 0 for s in snap_stats) / len(snap_stats)
+
+    total = avg_slpm + avg_td_avg + 0.01
+    style_pressure  = float(np.clip((avg_slpm / 6.0) * 0.4 + (avg_td_avg / 5.0) * 0.3 + (1 - avg_sapm / 6.0) * 0.3, 0, 1))
+    style_wrestling = float(np.clip(avg_td_avg / total, 0, 1))
+    style_striker   = float(np.clip(avg_slpm / total, 0, 1))
+
+    suffix = f"_l{window}"
+    return {
+        f"style_pressure{suffix}":  round(style_pressure, 4),
+        f"style_wrestling{suffix}": round(style_wrestling, 4),
+        f"style_striker{suffix}":   round(style_striker, 4),
+    }
 
 
 def run():
@@ -193,6 +252,14 @@ def run():
             stats.grappling_defense = style["grappling_defense"]
             stats.momentum_score    = form["momentum_score"]
             stats.recent_finish_rate = form["recent_finish_rate"]
+
+            # Rolling style windows — last 3 and last 5 fights
+            if stats.as_of_date:
+                for window in [3, 5]:
+                    rolling = compute_rolling_style(stats.fighter_id, stats.as_of_date, session, window)
+                    for k, v in rolling.items():
+                        setattr(stats, k, v)
+
             updated += 1
         except Exception as e:
             logger.debug(f"Failed stats {stats.id}: {e}")

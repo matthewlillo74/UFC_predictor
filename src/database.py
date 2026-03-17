@@ -112,6 +112,39 @@ class FighterStats(Base):
     ufc_fights = Column(Integer, default=0)    # number of UFC fights before this date
     ufc_wins   = Column(Integer, default=0)    # UFC wins specifically
 
+    # Durability — derived from fight-level knockdown data
+    # These replace the proxy durability score with real measured data
+    kd_landed_per_fight    = Column(Float)   # avg knockdowns landed per fight
+    kd_absorbed_per_fight  = Column(Float)   # avg knockdowns absorbed per fight
+    kd_ratio               = Column(Float)   # landed / (absorbed + 0.1) — offensive KD dominance
+
+    # Opponent style vulnerability — weighted win rate by opponent style
+    # e.g. a 70% overall fighter might be only 45% vs heavy wrestlers
+    winrate_vs_wrestlers  = Column(Float)
+    winrate_vs_strikers   = Column(Float)
+    winrate_vs_pressure   = Column(Float)
+
+    # Cardio decay — derived from round-by-round stats
+    # cardio_decay: round3_output / round1_output (1.0 = no fade, <0.7 = heavy fade)
+    cardio_decay           = Column(Float)
+    # early_output_share: round1 sig strikes / total sig strikes (front-loaded fighter?)
+    early_output_share     = Column(Float)
+
+    # Rolling style windows — style computed from last 3 and last 5 fights
+    # Captures style evolution (e.g. Oliveira became a finisher over time)
+    style_pressure_l3  = Column(Float)   # last 3 fights
+    style_wrestling_l3 = Column(Float)
+    style_striker_l3   = Column(Float)
+    style_pressure_l5  = Column(Float)   # last 5 fights
+    style_wrestling_l5 = Column(Float)
+    style_striker_l5   = Column(Float)
+
+    # Strike location rates — derived from fight-level sig strike location data
+    head_strike_rate    = Column(Float)   # head_landed / sig_strikes_landed
+    body_strike_rate    = Column(Float)
+    leg_strike_rate     = Column(Float)   # leg kick specialist signal
+    ground_strike_share = Column(Float)   # ground_landed / sig_strikes_landed
+
     # Weight class normalized stats
     slpm_pctile = Column(Float)       # percentile within weight class
     td_avg_pctile = Column(Float)
@@ -160,6 +193,7 @@ class Fight(Base):
     method = Column(String(20))              # KO_TKO | Submission | Decision | NC | Draw
     finish_round = Column(Integer)
     finish_time = Column(String(10))         # e.g. "2:47"
+    fight_url = Column(String(300), default="")  # ufcstats fight detail URL
 
     # Relationships
     event = relationship("Event", back_populates="fights")
@@ -173,7 +207,88 @@ class Fight(Base):
         return f"<Fight {self.fighter_a_id} vs {self.fighter_b_id} on {self.fight_date}>"
 
 
-# ── Event ─────────────────────────────────────────────────────────────────────
+# ── FightStats ────────────────────────────────────────────────────────────────
+
+class FightStats(Base):
+    """
+    Per-fight, per-fighter statistics scraped from ufcstats fight detail pages.
+    Stores raw fight-level data for durability feature computation.
+    One row per fighter per fight (so 2 rows per fight).
+    """
+    __tablename__ = "fight_stats"
+    __table_args__ = (
+        UniqueConstraint("fight_id", "fighter_id", name="uq_fight_stats"),
+    )
+
+    id          = Column(Integer, primary_key=True, autoincrement=True)
+    fight_id    = Column(Integer, ForeignKey("fights.id"), nullable=False)
+    fighter_id  = Column(Integer, ForeignKey("fighters.id"), nullable=False)
+
+    # Totals from the fight
+    knockdowns          = Column(Integer, default=0)   # KD landed
+    knockdowns_absorbed = Column(Integer, default=0)   # KD taken (opponent's KD)
+    sig_strikes_landed  = Column(Integer)
+    sig_strikes_attempted = Column(Integer)
+    sig_strikes_absorbed = Column(Integer)             # opponent's sig_strikes_landed
+    total_strikes_landed = Column(Integer)
+    takedowns_landed    = Column(Integer)
+    takedowns_attempted = Column(Integer)
+    submission_attempts = Column(Integer)
+    reversals           = Column(Integer)
+    control_time_secs   = Column(Integer)              # ground control time in seconds
+
+    # Strike location breakdown (from significant strikes table)
+    head_landed     = Column(Integer)
+    head_attempted  = Column(Integer)
+    body_landed     = Column(Integer)
+    body_attempted  = Column(Integer)
+    leg_landed      = Column(Integer)
+    leg_attempted   = Column(Integer)
+    # Position breakdown
+    distance_landed = Column(Integer)   # standing at distance
+    clinch_landed   = Column(Integer)
+    ground_landed   = Column(Integer)   # striking from top/bottom position
+
+    scraped_at = Column(DateTime, default=datetime.utcnow)
+
+
+# ── RoundStats ────────────────────────────────────────────────────────────────
+
+class RoundStats(Base):
+    """
+    Per-round, per-fighter statistics for cardio decay and round-level features.
+    One row per fighter per round per fight.
+    """
+    __tablename__ = "round_stats"
+    __table_args__ = (
+        UniqueConstraint("fight_id", "fighter_id", "round_num", name="uq_round_stats"),
+    )
+
+    id          = Column(Integer, primary_key=True, autoincrement=True)
+    fight_id    = Column(Integer, ForeignKey("fights.id"), nullable=False)
+    fighter_id  = Column(Integer, ForeignKey("fighters.id"), nullable=False)
+    round_num   = Column(Integer, nullable=False)   # 1, 2, 3, 4, 5
+
+    # Round totals
+    knockdowns         = Column(Integer, default=0)
+    sig_strikes_landed = Column(Integer)
+    sig_strikes_attempted = Column(Integer)
+    total_strikes_landed = Column(Integer)
+    takedowns_landed   = Column(Integer)
+    takedowns_attempted = Column(Integer)
+    submission_attempts = Column(Integer)
+    reversals          = Column(Integer)
+    control_time_secs  = Column(Integer)
+
+    # Round sig strike locations
+    head_landed    = Column(Integer)
+    body_landed    = Column(Integer)
+    leg_landed     = Column(Integer)
+    distance_landed = Column(Integer)
+    clinch_landed  = Column(Integer)
+    ground_landed  = Column(Integer)
+
+    scraped_at = Column(DateTime, default=datetime.utcnow)
 
 class Event(Base):
     """UFC event (e.g. UFC 300, UFC Fight Night: Nashville)"""
@@ -184,6 +299,7 @@ class Event(Base):
     date = Column(DateTime, nullable=True)
     location = Column(String(200))
     is_ppv = Column(Boolean, default=False)
+    url = Column(String(300), default="")    # ufcstats event page URL
 
     fights = relationship("Fight", back_populates="event")
 

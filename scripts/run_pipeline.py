@@ -149,13 +149,25 @@ def step_enrich_new_fighters(session) -> int:
 # ── Step 2b: Compute style features ──────────────────────────────────────────
 
 def step_compute_styles() -> bool:
-    """Compute style fingerprints and momentum scores for all stat snapshots."""
+    """Compute style fingerprints, rolling windows, and momentum scores."""
     logger.info("Computing style features...")
     result = subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), "compute_styles.py")])
     if result.returncode == 0:
         logger.success("Style features computed")
     else:
         logger.error("Style computation failed")
+    return result.returncode == 0
+
+
+def step_compute_vulnerability() -> bool:
+    """Compute opponent style vulnerability features."""
+    logger.info("Computing style vulnerability features...")
+    script = os.path.join(os.path.dirname(__file__), "compute_style_vulnerability.py")
+    result = subprocess.run([sys.executable, script])
+    if result.returncode == 0:
+        logger.success("Style vulnerability computed")
+    else:
+        logger.warning("Style vulnerability computation failed (non-critical)")
     return result.returncode == 0
 
 
@@ -353,11 +365,12 @@ def main():
         logger.info("Post-event mode: scoring predictions")
         step_score_predictions(session)
     else:
-        logger.info("Pre-event mode: scrape → enrich → styles → (retrain) → predict")
+        logger.info("Pre-event mode: scrape → enrich → styles → vulnerability → (retrain) → predict")
         new_events = step_scrape_new_events(session)
         if new_events > 0:
             step_enrich_new_fighters(session)
-            step_compute_styles()   # recompute after new fighters enriched
+            step_compute_styles()
+            step_compute_vulnerability()
         step_retrain(force=args.full_retrain, new_events=new_events)
         odds = step_fetch_odds(session, skip=args.no_odds)
         step_predict_next_event(session, odds)

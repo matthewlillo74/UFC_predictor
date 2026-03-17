@@ -75,6 +75,27 @@ class UFCPredictor:
         X = df_clean[FEATURE_COLUMNS].fillna(0)
         y_winner = df_clean["winner"]
 
+        # ── Recency weighting ──────────────────────────────────────────────────
+        # Modern MMA (2020+) is very different from early UFC. Fights from 1994
+        # have different pacing, ruleset, and fighter caliber. We give recent
+        # fights exponentially more weight so the model learns from modern patterns.
+        #
+        # Decay: 2-year half-life — a fight from 2 years ago gets weight 0.5,
+        # 4 years ago gets 0.25, etc. Fights from 2024-2026 get weight ~1.0.
+        # This makes the model more sensitive to current trends without discarding
+        # historical data entirely.
+        now = pd.Timestamp.utcnow().tz_localize(None)
+        fight_dates = pd.to_datetime(df_clean["fight_date"]).dt.tz_localize(None)
+        days_ago = (now - fight_dates).dt.days.clip(lower=0)
+        half_life_days = 365 * 2  # 2-year half-life
+        sample_weights = np.power(0.5, days_ago / half_life_days)
+        sample_weights = (sample_weights / sample_weights.mean()).values  # normalize to mean=1
+        sample_weights = sample_weights.astype(np.float32)  # sklearn calibration requires float32
+
+        recent_pct = (days_ago < 365).mean()
+        logger.info(f"Recency weights: {recent_pct:.1%} of fights within last year, "
+                    f"weight range {sample_weights.min():.3f}–{sample_weights.max():.3f}")
+
         # XGBoost multi-class needs integer labels — encode method strings
         method_map = {"Decision": 0, "KO_TKO": 1, "Submission": 2}
         y_method = df_clean["method"].map(method_map)
@@ -97,7 +118,8 @@ class UFCPredictor:
             random_state=42,
             verbosity=0,
         )
-        self.winner_model.fit(X, y_winner)
+        self.winner_model.fit(X, y_winner, sample_weight=sample_weights)
+        self.winner_calibrator = None  # raw XGBoost probabilities are used directly
 
         # ── Method model (multinomial) ─────────────────────────────────────
         self.method_model = XGBClassifier(
@@ -109,7 +131,7 @@ class UFCPredictor:
             random_state=42,
             verbosity=0,
         )
-        self.method_model.fit(X, y_method)
+        self.method_model.fit(X, y_method, sample_weight=sample_weights)
 
         # ── Round model (binary: finish early vs go late) ──────────────────
         # CRITICAL: Train on ALL fights, not just finishes.
@@ -147,14 +169,14 @@ class UFCPredictor:
             random_state=42,
             verbosity=0,
         )
-        self.round_model.fit(X, y_early)
+        self.round_model.fit(X, y_early, sample_weight=sample_weights)
 
         # Calibrate round model with Platt scaling to fix overconfidence
         from sklearn.calibration import CalibratedClassifierCV
         self.round_model_calibrated = CalibratedClassifierCV(
             self.round_model, method="sigmoid", cv="prefit"
         )
-        self.round_model_calibrated.fit(X, y_early)
+        self.round_model_calibrated.fit(X, y_early, sample_weight=sample_weights)
         logger.info("Round model calibrated with Platt scaling")
 
         # ── SHAP explainer ─────────────────────────────────────────────────
@@ -182,13 +204,21 @@ class UFCPredictor:
 
         X = pd.DataFrame([features])[FEATURE_COLUMNS].fillna(0)
 
-        # Winner probabilities — use classes_ to avoid hardcoded index assumptions
-        win_probs = self.winner_model.predict_proba(X)[0]
+        # Raw winner probabilities from XGBoost
+        win_probs_raw = self.winner_model.predict_proba(X)[0]
         classes = list(self.winner_model.classes_)
         idx_a = classes.index(1) if 1 in classes else 1
         idx_b = classes.index(0) if 0 in classes else 0
-        prob_a = float(win_probs[idx_a])
-        prob_b = float(win_probs[idx_b])
+        raw_a = float(win_probs_raw[idx_a])
+        raw_b = float(win_probs_raw[idx_b])
+
+        # Apply isotonic calibration if available
+        # Calibrator maps raw prob → calibrated prob for fighter_a winning
+        if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
+            prob_a = float(self.winner_calibrator.predict([raw_a])[0])
+            prob_b = 1.0 - prob_a
+        else:
+            prob_a, prob_b = raw_a, raw_b
 
         # Method probabilities — map integer classes back to string names
         method_probs = self.method_model.predict_proba(X)[0]
@@ -347,7 +377,11 @@ class UFCPredictor:
             pickle.dump(self.method_model, f)
         with open(path / "round_model.pkl", "wb") as f:
             pickle.dump(self.round_model, f)
-        # Save calibrated round model separately — used for all live predictions
+        # Isotonic calibrator for winner probabilities
+        if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
+            with open(path / "winner_calibrator.pkl", "wb") as f:
+                pickle.dump(self.winner_calibrator, f)
+        # Calibrated round model
         if hasattr(self, "round_model_calibrated") and self.round_model_calibrated:
             with open(path / "round_model_calibrated.pkl", "wb") as f:
                 pickle.dump(self.round_model_calibrated, f)
@@ -363,10 +397,17 @@ class UFCPredictor:
             self.method_model = pickle.load(f)
         with open(path / "round_model.pkl", "rb") as f:
             self.round_model = pickle.load(f)
-        # Load calibrated round model if available
-        cal_path = path / "round_model_calibrated.pkl"
-        if cal_path.exists():
-            with open(cal_path, "rb") as f:
+        # Load isotonic calibrator for winner probabilities
+        win_cal_path = path / "winner_calibrator.pkl"
+        if win_cal_path.exists():
+            with open(win_cal_path, "rb") as f:
+                self.winner_calibrator = pickle.load(f)
+        else:
+            self.winner_calibrator = None
+        # Load calibrated round model
+        round_cal_path = path / "round_model_calibrated.pkl"
+        if round_cal_path.exists():
+            with open(round_cal_path, "rb") as f:
                 self.round_model_calibrated = pickle.load(f)
         else:
             self.round_model_calibrated = None
@@ -383,14 +424,42 @@ class UFCPredictor:
         """
         X = df_test[FEATURE_COLUMNS].fillna(0)
         y = df_test["winner"]
-        probs = self.winner_model.predict_proba(X)[:, 1]
+
+        # Get raw probabilities then apply isotonic calibration if available
+        raw_probs = self.winner_model.predict_proba(X)
+        classes = list(self.winner_model.classes_)
+        idx_1 = classes.index(1) if 1 in classes else 1
+        raw_p = raw_probs[:, idx_1]
+
+        if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
+            probs = np.array([float(self.winner_calibrator.predict([p])[0]) for p in raw_p])
+        else:
+            probs = raw_p
         preds = (probs >= 0.5).astype(int)
 
+        # ── Confidence calibration ─────────────────────────────────────────────
+        cal_df = pd.DataFrame({"prob": probs, "actual": y.values, "pred": preds})
+        cal_df["correct"] = (cal_df["pred"] == cal_df["actual"]).astype(int)
+        # Use predicted winner probability (always >= 0.5)
+        cal_df["confidence"] = cal_df["prob"].clip(0.5, 1.0)
+        cal_df.loc[cal_df["pred"] == 0, "confidence"] = 1 - cal_df.loc[cal_df["pred"] == 0, "prob"]
+
+        bins = [0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.90, 1.01]
+        labels = ["50-55%", "55-60%", "60-65%", "65-70%", "70-75%", "75-80%", "80-90%", "90%+"]
+        cal_df["bucket"] = pd.cut(cal_df["confidence"], bins=bins, labels=labels, right=False)
+        calibration = (
+            cal_df.groupby("bucket", observed=True)
+            .agg(fights=("correct", "count"), accuracy=("correct", "mean"))
+            .reset_index()
+            .to_dict("records")
+        )
+
         return {
-            "accuracy": round(accuracy_score(y, preds), 4),
-            "log_loss": round(log_loss(y, probs), 4),
+            "accuracy":    round(accuracy_score(y, preds), 4),
+            "log_loss":    round(log_loss(y, probs), 4),
             "brier_score": round(brier_score_loss(y, probs), 4),
-            "n_fights": len(df_test),
+            "n_fights":    len(df_test),
+            "calibration": calibration,
         }
 
 
