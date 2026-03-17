@@ -407,7 +407,8 @@ def render_fight_card(pred_dict: dict, odds_data: dict = None, weight_class: str
             showlegend=False, xaxis=dict(showticklabels=False, showgrid=False, range=[0, 100]),
             yaxis=dict(showticklabels=False, showgrid=False),
         )
-        st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
+        st.plotly_chart(fig, width="stretch", config={"displayModeBar": False},
+                        key=f"prob_bar_{fa}_{fb}")
 
         # One-line summary
         winner_name = fa if winner == fa else fb
@@ -732,8 +733,7 @@ def page_performance(session):
             height=320,
         )
         fig.update_xaxes(showgrid=False, tickformat=".0%")
-        st.plotly_chart(fig, width="stretch")
-        return
+        st.plotly_chart(fig, width="stretch", key="accuracy_calibration_chart")
 
     # Live stats
     col1, col2, col3, col4 = st.columns(4)
@@ -762,10 +762,7 @@ def page_performance(session):
             font_color='#aaa', yaxis_title="Accuracy %",
             xaxis_title="", margin=dict(l=0, r=0, t=20, b=0), height=300,
         )
-        st.plotly_chart(fig, width="stretch")
-
-
-def page_leaderboard(session):
+        st.plotly_chart(fig, width="stretch", key="monthly_accuracy_chart")
     st.markdown("# 🏆 Elo Leaderboard")
 
     from src.database import Fighter as FighterModel, EloRating
