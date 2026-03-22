@@ -200,13 +200,30 @@ def _load_fight(
         session, fight_data["fighter_b_name"], fight_data.get("fighter_b_url", "")
     )
 
-    # Skip if fight already exists
-    existing = session.query(Fight).filter_by(
-        fighter_a_id=fighter_a.id,
-        fighter_b_id=fighter_b.id,
-        fight_date=event.date,
+    # Skip if fight already exists — check both fighter orderings since
+    # the random swap means A/B assignment varies between runs.
+    # Also update result fields if the existing fight has no winner yet
+    # (upcoming fight row gets results filled in on post-event scrape).
+    existing = session.query(Fight).filter(
+        Fight.fight_date == event.date,
+        Fight.event_id == event.id,
+        (
+            ((Fight.fighter_a_id == fighter_a.id) & (Fight.fighter_b_id == fighter_b.id)) |
+            ((Fight.fighter_a_id == fighter_b.id) & (Fight.fighter_b_id == fighter_a.id))
+        )
     ).first()
+
     if existing:
+        # If existing row has no result yet but we now have one, update it
+        if existing.winner_id is None and winner_id is not None:
+            existing.winner_id   = winner_id
+            existing.method      = fight_data.get("method")
+            existing.finish_round = fight_data.get("finish_round")
+            existing.finish_time  = fight_data.get("finish_time")
+            if not existing.fight_url and fight_data.get("fight_url"):
+                existing.fight_url = fight_data.get("fight_url", "")
+            session.flush()
+            logger.debug(f"Updated result for existing fight: {fighter_a.name} vs {fighter_b.name}")
         return
 
     # Determine winner ID
