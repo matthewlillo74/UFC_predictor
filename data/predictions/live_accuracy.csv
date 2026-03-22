@@ -1,0 +1,28 @@
+event,fight_date,fighter_a,fighter_b,weight_class,predicted_winner,confidence,actual_winner,winner_correct,market_implied_prob,model_edge,odds_favorite,model_agreed_with_market,method_predicted,method_prob,method_actual,method_correct,round_line,prob_under,actual_finish_round,went_early,round_correct,full_prediction_correct,flat_bet_return
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Movsar Evloev,Lerone Murphy,Featherweight,Movsar Evloev,0.693,Movsar Evloev,1,0.500,+0.000,,,Decision,0.538,Decision,1,under_2_5,0.214,5,0,1,1,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Luke Riley,Michael Aswell Jr.,Featherweight,Luke Riley,0.545,Luke Riley,1,0.500,+0.000,,,Decision,0.431,Decision,1,under_2_5,0.504,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Sam Patterson,Michael Page,Welterweight,Michael Page,0.514,Michael Page,1,0.500,+0.000,,,Submission,0.399,Decision,0,under_2_5,0.956,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Austen Lane,Iwo Baraniewski,Light Heavyweight,Iwo Baraniewski,0.720,Iwo Baraniewski,1,0.500,+0.000,,,KO_TKO,0.465,KO_TKO,1,under_2_5,0.762,1,1,1,1,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Roman Dolidze,Christian Leroy Duncan,Middleweight,Christian Leroy Duncan,0.577,Christian Leroy Duncan,1,0.500,+0.000,,,Decision,0.533,Decision,1,under_2_5,0.196,3,0,1,1,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Kurtis Campbell,Danny Silva,Featherweight,Danny Silva,0.555,Danny Silva,1,0.500,+0.000,,,Decision,0.407,KO_TKO,0,under_2_5,0.640,2,1,1,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Mason Jones,Axel Sola,Lightweight,Mason Jones,0.666,Mason Jones,1,0.500,+0.000,,,KO_TKO,0.515,Decision,0,under_2_5,0.790,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Losene Keita,Nathaniel Wood,Featherweight,Nathaniel Wood,0.689,Nathaniel Wood,1,0.500,+0.000,,,Decision,0.423,Decision,1,under_2_5,0.649,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Felipe Franco,Mario Pinto,Heavyweight,Mario Pinto,0.508,Mario Pinto,1,0.500,+0.000,,,Decision,0.400,Decision,1,under_2_5,0.649,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Mantas Kondratavicius,Antonio Trocoli,Middleweight,Mantas Kondratavicius,0.545,Mantas Kondratavicius,1,0.500,+0.000,,,Decision,0.418,Decision,1,under_2_5,0.650,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Brando Pericic,Louie Sutherland,Heavyweight,Brando Pericic,0.942,Brando Pericic,1,0.500,+0.000,,,KO_TKO,0.644,KO_TKO,1,under_2_5,0.958,1,1,1,1,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Shem Rock,Abdul-Kareem Al-Selwady,Lightweight,Shem Rock,0.731,Abdul-Kareem Al-Selwady,0,0.500,+0.000,,,KO_TKO,0.485,Decision,0,under_2_5,0.896,3,0,0,0,0.00
+UFC Fight Night: Evloev vs. Murphy,2026-03-21,Shanelle Dyer,Ravena Oliveira,Women's Strawweight,Shanelle Dyer,0.550,Shanelle Dyer,1,0.500,+0.000,,,Decision,0.399,KO_TKO,0,under_2_5,0.642,2,1,1,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Josh Emmett,Kevin Vallejos,Featherweight,Kevin Vallejos,0.639,Kevin Vallejos,1,0.500,+0.000,,,Decision,0.529,KO_TKO,0,under_2_5,0.742,1,1,1,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Gillian Robertson,Amanda Lemos,Women's Strawweight,Gillian Robertson,0.625,Gillian Robertson,1,0.500,+0.000,,,Decision,0.546,Decision,1,under_2_5,0.824,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Jose Delgado,Andre Fili,Featherweight,Jose Delgado,0.578,Jose Delgado,1,0.500,+0.000,,,Decision,0.452,Decision,1,under_2_5,0.834,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Marwan Rahiki,Harry Hardwick,Featherweight,Marwan Rahiki,0.521,Marwan Rahiki,1,0.500,+0.000,,,Decision,0.397,KO_TKO,0,under_2_5,0.848,2,1,1,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Ion Cutelaba,Oumar Sy,Light Heavyweight,Oumar Sy,0.519,Ion Cutelaba,0,0.500,+0.000,,,Decision,0.535,Submission,0,under_2_5,0.819,1,1,1,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Bruno Silva,Charles Johnson,Flyweight,Charles Johnson,0.522,Charles Johnson,1,0.500,+0.000,,,KO_TKO,0.427,Decision,0,under_2_5,0.821,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Myktybek Orolbai,Chris Curtis,Welterweight,Myktybek Orolbai,0.739,Myktybek Orolbai,1,0.500,+0.000,,,Decision,0.525,Decision,1,under_2_5,0.824,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Steven Asplund,Vitor Petrino,Heavyweight,Vitor Petrino,0.519,Vitor Petrino,1,0.500,+0.000,,,Decision,0.461,Decision,1,under_2_5,0.850,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Elijah Smith,SuYoung You,Bantamweight,Elijah Smith,0.505,Elijah Smith,1,0.500,+0.000,,,Decision,0.514,Submission,0,under_2_5,0.777,2,1,1,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Bolaji Oki,Manoel Sousa,Lightweight,Manoel Sousa,0.529,Manoel Sousa,1,0.500,+0.000,,,Decision,0.417,KO_TKO,0,under_2_5,0.877,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Eryk Anders,Brad Tavares,Middleweight,Brad Tavares,0.623,Eryk Anders,0,0.500,+0.000,,,Decision,0.517,Decision,1,under_2_5,0.812,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Montse Rendon,Bia Mesquita,Women's Bantamweight,Bia Mesquita,0.536,Bia Mesquita,1,0.500,+0.000,,,Decision,0.444,Submission,0,under_2_5,0.872,1,1,1,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Hecher Sosa,Luan Lacerda,Bantamweight,Hecher Sosa,0.568,Hecher Sosa,1,0.500,+0.000,,,Decision,0.396,Decision,1,under_2_5,0.876,3,0,0,0,0.00
+UFC Fight Night: Emmett vs. Vallejos,2026-03-14,Sam Hughes,Piera Rodriguez,Women's Strawweight,Sam Hughes,0.581,Piera Rodriguez,0,0.500,+0.000,,,Decision,0.404,Decision,1,under_2_5,0.872,3,0,0,0,0.00

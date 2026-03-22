@@ -1,0 +1,772 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: EVLOEV VS. MURPHY
+  Generated: 2026-03-17 21:07 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Movsar Evloev vs Lerone Murphy
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Movsar Evloev: 90.0%
+  Lerone Murphy: 10.0%
+  → Predicted winner: Movsar Evloev (90.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    23.3%
+  Submission:  18.4%
+  Decision:    58.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 9.4%
+  Goes the distance:            90.6%
+
+KEY FACTORS FOR Movsar Evloev
+  + Td Success Prob advantage (+0.365)
+  + Style Pressure advantage (+0.230)
+  + Age Vs Peak advantage (+0.173)
+  + Grapple Dom advantage (+0.160)
+  + Elo advantage (+0.105)
+
+KEY FACTORS FOR Lerone Murphy
+  + Reach Strike advantage (+0.084)
+  + Striking Edge advantage (+0.066)
+  + Style Vuln Striker advantage (+0.064)
+
+BETTING VALUE
+  Market implied probability (Movsar Evloev): 50.0%
+  Model probability (Movsar Evloev):          90.0%
+  Edge: +40.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Luke Riley vs Michael Aswell Jr.
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Luke Riley: 85.6%
+  Michael Aswell Jr.: 14.4%
+  → Predicted winner: Luke Riley (85.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.0%
+  Submission:  13.6%
+  Decision:    55.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.9%
+  Goes the distance:            57.1%
+
+KEY FACTORS FOR Luke Riley
+  + Style Pressure advantage (+0.203)
+  + Reach Strike advantage (+0.167)
+  + Elo advantage (+0.127)
+  + Avg Opponent Elo advantage (+0.091)
+
+KEY FACTORS FOR Michael Aswell Jr.
+  + Grapple Dom advantage (+0.084)
+  + Strike Def advantage (+0.078)
+  + Style Striker advantage (+0.063)
+  + Age Vs Peak advantage (+0.048)
+  + Strike Acc advantage (+0.040)
+
+BETTING VALUE
+  Market implied probability (Luke Riley): 50.0%
+  Model probability (Luke Riley):          85.6%
+  Edge: +35.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Michael Page vs Sam Patterson
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Michael Page: 85.6%
+  Sam Patterson: 14.4%
+  → Predicted winner: Michael Page (85.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.1%
+  Submission:  41.5%
+  Decision:    22.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 91.3%
+  Goes the distance:            8.7%
+
+KEY FACTORS FOR Michael Page
+  + Striking Edge advantage (+0.443)
+  + Avg Opponent Elo advantage (+0.311)
+  + Td Acc advantage (+0.135)
+  + Style Striker L3 advantage (+0.111)
+  + Reach Strike advantage (+0.105)
+
+KEY FACTORS FOR Sam Patterson
+  + Age Vs Peak advantage (+0.494)
+  + Slpm advantage (+0.295)
+  + Grapple Dom advantage (+0.184)
+  + Age advantage (+0.140)
+
+BETTING VALUE
+  Market implied probability (Michael Page): 50.0%
+  Model probability (Michael Page):          85.6%
+  Edge: +35.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Iwo Baraniewski vs Austen Lane
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Iwo Baraniewski: 70.4%
+  Austen Lane: 29.6%
+  → Predicted winner: Iwo Baraniewski (70.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    54.5%
+  Submission:  9.7%
+  Decision:    35.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 97.2%
+  Goes the distance:            2.8%
+
+KEY FACTORS FOR Iwo Baraniewski
+  + Td Def advantage (+0.531)
+  + Age Vs Peak advantage (+0.251)
+  + Age advantage (+0.207)
+  + Reach Strike advantage (+0.168)
+  + Strike Acc advantage (+0.156)
+
+KEY FACTORS FOR Austen Lane
+  + Striking Edge advantage (+0.557)
+  + Td Acc advantage (+0.172)
+  + Avg Opponent Elo advantage (+0.150)
+
+BETTING VALUE
+  Market implied probability (Iwo Baraniewski): 50.0%
+  Model probability (Iwo Baraniewski):          70.4%
+  Edge: +20.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Roman Dolidze vs Christian Leroy Duncan
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Roman Dolidze: 10.0%
+  Christian Leroy Duncan: 90.0%
+  → Predicted winner: Christian Leroy Duncan (90.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    23.6%
+  Submission:  18.4%
+  Decision:    57.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 4.8%
+  Goes the distance:            95.2%
+
+KEY FACTORS FOR Roman Dolidze
+  + Strike Acc advantage (+0.307)
+  + Elo advantage (+0.137)
+  + Grapple Dom advantage (+0.129)
+  + Avg Opponent Elo advantage (+0.126)
+
+KEY FACTORS FOR Christian Leroy Duncan
+  + Age Vs Peak advantage (+0.496)
+  + Age advantage (+0.176)
+  + Reach Strike advantage (+0.165)
+  + Slpm advantage (+0.161)
+  + Striking Edge advantage (+0.145)
+
+BETTING VALUE
+  Market implied probability (Roman Dolidze): 50.0%
+  Model probability (Roman Dolidze):          10.0%
+  Edge: -40.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Kurtis Campbell vs Danny Silva
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Kurtis Campbell: 85.6%
+  Danny Silva: 14.4%
+  → Predicted winner: Kurtis Campbell (85.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.0%
+  Submission:  13.4%
+  Decision:    43.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 78.9%
+  Goes the distance:            21.1%
+
+KEY FACTORS FOR Kurtis Campbell
+  + Striking Edge advantage (+0.647)
+  + Durability advantage (+0.149)
+  + Td Success Prob advantage (+0.113)
+  + Age advantage (+0.054)
+
+KEY FACTORS FOR Danny Silva
+  + Grapple Dom advantage (+0.159)
+  + Elo advantage (+0.152)
+  + Elo Uncertainty advantage (+0.092)
+  + Reach Strike advantage (+0.072)
+  + Avg Opponent Elo advantage (+0.058)
+
+BETTING VALUE
+  Market implied probability (Kurtis Campbell): 50.0%
+  Model probability (Kurtis Campbell):          85.6%
+  Edge: +35.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mason Jones vs Axel Sola
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mason Jones: 90.0%
+  Axel Sola: 10.0%
+  → Predicted winner: Mason Jones (90.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.6%
+  Submission:  18.3%
+  Decision:    46.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 86.4%
+  Goes the distance:            13.6%
+
+KEY FACTORS FOR Mason Jones
+  + Td Def advantage (+0.557)
+  + Avg Opponent Elo advantage (+0.332)
+  + Td Success Prob advantage (+0.231)
+  + Style Pressure advantage (+0.161)
+  + Reach Strike advantage (+0.150)
+
+KEY FACTORS FOR Axel Sola
+  + Strike Def advantage (+0.445)
+
+BETTING VALUE
+  Market implied probability (Mason Jones): 50.0%
+  Model probability (Mason Jones):          90.0%
+  Edge: +40.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Nathaniel Wood vs Losene Keita
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Nathaniel Wood: 90.0%
+  Losene Keita: 10.0%
+  → Predicted winner: Nathaniel Wood (90.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.1%
+  Submission:  21.7%
+  Decision:    47.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.7%
+  Goes the distance:            60.3%
+
+KEY FACTORS FOR Nathaniel Wood
+  + Td Success Prob advantage (+0.485)
+  + Reach Strike advantage (+0.222)
+  + Grapple Dom advantage (+0.156)
+  + Elo Uncertainty advantage (+0.104)
+  + Elo advantage (+0.101)
+
+KEY FACTORS FOR Losene Keita
+  + Striking Edge advantage (+0.134)
+  + Durability advantage (+0.052)
+
+BETTING VALUE
+  Market implied probability (Nathaniel Wood): 50.0%
+  Model probability (Nathaniel Wood):          90.0%
+  Edge: +40.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mario Pinto vs Felipe Franco
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mario Pinto: 31.7%
+  Felipe Franco: 68.3%
+  → Predicted winner: Felipe Franco (68.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  12.8%
+  Decision:    55.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 25.7%
+  Goes the distance:            74.3%
+
+KEY FACTORS FOR Mario Pinto
+  + Reach Strike advantage (+0.117)
+  + Elo advantage (+0.053)
+  + Age advantage (+0.035)
+  + Finish Rate advantage (+0.027)
+
+KEY FACTORS FOR Felipe Franco
+  + Grapple Dom advantage (+0.102)
+  + Avg Opponent Elo advantage (+0.089)
+  + Td Success Prob advantage (+0.055)
+  + Strike Def advantage (+0.050)
+  + Striking Edge advantage (+0.039)
+
+BETTING VALUE
+  Market implied probability (Mario Pinto): 50.0%
+  Model probability (Mario Pinto):          31.7%
+  Edge: -18.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mantas Kondratavicius vs Antonio Trocoli
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mantas Kondratavicius: 85.6%
+  Antonio Trocoli: 14.4%
+  → Predicted winner: Mantas Kondratavicius (85.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    50.5%
+  Submission:  10.6%
+  Decision:    38.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 81.8%
+  Goes the distance:            18.2%
+
+KEY FACTORS FOR Mantas Kondratavicius
+  + Striking Edge advantage (+0.749)
+  + Elo advantage (+0.239)
+  + Elo Vs Peak advantage (+0.086)
+  + Durability advantage (+0.080)
+  + Age advantage (+0.056)
+
+KEY FACTORS FOR Antonio Trocoli
+  + Grapple Dom advantage (+0.222)
+  + Elo Uncertainty advantage (+0.125)
+  + Reach Strike advantage (+0.117)
+  + Avg Opponent Elo advantage (+0.102)
+  + Td Success Prob advantage (+0.054)
+
+BETTING VALUE
+  Market implied probability (Mantas Kondratavicius): 50.0%
+  Model probability (Mantas Kondratavicius):          85.6%
+  Edge: +35.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Louie Sutherland vs Brando Pericic
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Louie Sutherland: 10.0%
+  Brando Pericic: 90.0%
+  → Predicted winner: Brando Pericic (90.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    50.2%
+  Submission:  8.6%
+  Decision:    41.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 81.5%
+  Goes the distance:            18.5%
+
+KEY FACTORS FOR Louie Sutherland
+  + Avg Opponent Elo advantage (+0.077)
+
+KEY FACTORS FOR Brando Pericic
+  + Style Pressure advantage (+0.740)
+  + Striking Edge advantage (+0.541)
+  + Td Def advantage (+0.325)
+  + Strike Def advantage (+0.302)
+  + Slpm advantage (+0.222)
+
+BETTING VALUE
+  Market implied probability (Louie Sutherland): 50.0%
+  Model probability (Louie Sutherland):          10.0%
+  Edge: -40.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Shem Rock vs Abdul-Kareem Al-Selwady
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Shem Rock: 85.6%
+  Abdul-Kareem Al-Selwady: 14.4%
+  → Predicted winner: Shem Rock (85.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.7%
+  Submission:  13.0%
+  Decision:    46.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 84.0%
+  Goes the distance:            16.0%
+
+KEY FACTORS FOR Shem Rock
+  + Td Def advantage (+0.509)
+  + Elo advantage (+0.177)
+  + Reach Strike advantage (+0.152)
+  + Avg Opponent Elo advantage (+0.134)
+
+KEY FACTORS FOR Abdul-Kareem Al-Selwady
+  + Slpm advantage (+0.244)
+  + Style Pressure advantage (+0.176)
+  + Grapple Dom advantage (+0.091)
+  + Td Avg advantage (+0.059)
+  + Striking Edge advantage (+0.050)
+
+BETTING VALUE
+  Market implied probability (Shem Rock): 50.0%
+  Model probability (Shem Rock):          85.6%
+  Edge: +35.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Shanelle Dyer vs Ravena Oliveira
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Shanelle Dyer: 59.4%
+  Ravena Oliveira: 40.6%
+  → Predicted winner: Shanelle Dyer (59.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.2%
+  Submission:  11.8%
+  Decision:    51.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 27.8%
+  Goes the distance:            72.2%
+
+KEY FACTORS FOR Shanelle Dyer
+  + Striking Edge advantage (+0.495)
+  + Elo advantage (+0.149)
+  + Age advantage (+0.041)
+
+KEY FACTORS FOR Ravena Oliveira
+  + Reach Strike advantage (+0.221)
+  + Avg Opponent Elo advantage (+0.100)
+  + Td Success Prob advantage (+0.096)
+  + Elo Uncertainty advantage (+0.066)
+  + Grapple Dom advantage (+0.062)
+
+BETTING VALUE
+  Market implied probability (Shanelle Dyer): 50.0%
+  Model probability (Shanelle Dyer):          59.4%
+  Edge: +9.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Evloev vs. Murphy
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Melissa Mullins vs Luana Carolina
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Melissa Mullins: 31.7%
+  Luana Carolina: 68.3%
+  → Predicted winner: Luana Carolina (68.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.5%
+  Submission:  12.4%
+  Decision:    57.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 20.0%
+  Goes the distance:            80.0%
+
+KEY FACTORS FOR Melissa Mullins
+  + Style Wrestling L3 advantage (+0.106)
+  + Reach Strike advantage (+0.106)
+  + Cardio Decay advantage (+0.095)
+  + Kd Absorbed Per Fight advantage (+0.077)
+
+KEY FACTORS FOR Luana Carolina
+  + Elo advantage (+0.159)
+  + Striking Edge advantage (+0.151)
+  + Slpm advantage (+0.147)
+  + Elo Trend advantage (+0.074)
+  + Style Wrestling advantage (+0.071)
+
+BETTING VALUE
+  Market implied probability (Melissa Mullins): 50.0%
+  Model probability (Melissa Mullins):          31.7%
+  Edge: -18.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-17 21:07 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Michael Page  (Model: 85.6%  Edge: +23.4%)
+  2. Luke Riley  (Model: 85.6%  Edge: +17.1%)
