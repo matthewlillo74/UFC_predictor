@@ -125,6 +125,9 @@ def score_event(session, event_name: str):
         # Fallback: find prediction by fighter IDs across any fight row
         # This handles the case where the pipeline scraped the event twice,
         # creating new fight IDs after predictions were already stored
+        # Fallback: find prediction by fighter IDs across any fight row
+        # This handles the case where the pipeline scraped the event twice,
+        # creating new fight IDs after predictions were already stored
         if not pred:
             # Find all fights with these two fighters
             sibling_fights = session.query(Fight).filter(
@@ -135,16 +138,24 @@ def score_event(session, event_name: str):
                 Fight.fighter_a_id == fight.fighter_b_id,
                 Fight.fighter_b_id == fight.fighter_a_id,
             ).all()
+            
             for sibling in sibling_fights:
                 pred = session.query(Prediction).filter_by(fight_id=sibling.id).first()
                 if pred:
                     logger.debug(f"Matched prediction via fighter IDs for {fa.name} vs {fb.name}")
                     break
+            
+        # Catch-all if pred is STILL None after the primary check and the fallback
+        if not pred:
+            logger.debug(f"No prediction found for {fa.name} vs {fb.name} — skipping")
+            continue
 
         actual_winner = session.get(Fighter, fight.winner_id)
-        predicted_winner = session.get(Fighter, pred.predicted_winner_id)
-        if not actual_winner or not predicted_winner:
+        if not pred.predicted_winner_id:
+            logger.debug(f"Prediction for {fa.name} vs {fb.name} has no predicted_winner_id — skipping")
             continue
+
+        predicted_winner = session.get(Fighter, pred.predicted_winner_id)
 
         key = (event.name, fa.name, fb.name)
         if key in existing_keys:

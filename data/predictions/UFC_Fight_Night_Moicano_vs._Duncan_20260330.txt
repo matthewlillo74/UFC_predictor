@@ -1,0 +1,723 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: MOICANO VS. DUNCAN
+  Generated: 2026-03-30 03:12 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Renato Moicano vs Chris Duncan
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Renato Moicano: 47.5%
+  Chris Duncan: 52.5%
+  → Predicted winner: Chris Duncan (52.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.9%
+  Submission:  18.0%
+  Decision:    55.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 51.1%
+  Goes the distance:            48.9%
+
+KEY FACTORS FOR Renato Moicano
+  + Avg Opponent Elo advantage (+0.270)
+  + Reach Strike advantage (+0.140)
+  + Elo advantage (+0.109)
+  + Momentum Score advantage (+0.085)
+  + Strike Def advantage (+0.079)
+
+KEY FACTORS FOR Chris Duncan
+  + Slpm advantage (+0.203)
+  + Grapple Dom advantage (+0.161)
+  + Age Vs Peak advantage (+0.118)
+  + Elo Trend advantage (+0.101)
+  + Style Pressure advantage (+0.094)
+
+BETTING VALUE
+  Market implied probability (Renato Moicano): 50.0%
+  Model probability (Renato Moicano):          47.5%
+  Edge: -2.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Virna Jandiroba vs Tabatha Ricci
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Virna Jandiroba: 41.9%
+  Tabatha Ricci: 58.1%
+  → Predicted winner: Tabatha Ricci (58.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.2%
+  Submission:  25.8%
+  Decision:    48.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 18.2%
+  Goes the distance:            81.8%
+
+KEY FACTORS FOR Virna Jandiroba
+  + Striking Edge advantage (+0.155)
+  + Elo advantage (+0.147)
+  + Avg Opponent Elo advantage (+0.110)
+  + Sub Avg advantage (+0.099)
+  + Reach Strike advantage (+0.090)
+
+KEY FACTORS FOR Tabatha Ricci
+  + Age Vs Peak advantage (+0.371)
+  + Slpm advantage (+0.310)
+  + Ground Strike Share advantage (+0.105)
+  + Age advantage (+0.101)
+  + Style Vuln Wrestling advantage (+0.091)
+
+BETTING VALUE
+  Market implied probability (Virna Jandiroba): 50.0%
+  Model probability (Virna Jandiroba):          41.9%
+  Edge: -8.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Abdul Rakhman Yakhyaev vs Brendson Ribeiro
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Abdul Rakhman Yakhyaev: 90.0%
+  Brendson Ribeiro: 10.0%
+  → Predicted winner: Abdul Rakhman Yakhyaev (90.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    44.2%
+  Submission:  31.4%
+  Decision:    24.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 98.7%
+  Goes the distance:            1.3%
+
+KEY FACTORS FOR Abdul Rakhman Yakhyaev
+  + Striking Edge advantage (+0.560)
+  + Td Def advantage (+0.499)
+  + Td Acc advantage (+0.315)
+  + Td Success Prob advantage (+0.265)
+  + Style Pressure advantage (+0.250)
+
+KEY FACTORS FOR Brendson Ribeiro
+  + Sub Avg advantage (+0.190)
+
+BETTING VALUE
+  Market implied probability (Abdul Rakhman Yakhyaev): 50.0%
+  Model probability (Abdul Rakhman Yakhyaev):          90.0%
+  Edge: +40.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ethyn Ewing vs Rafael Estevam
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ethyn Ewing: 59.3%
+  Rafael Estevam: 40.7%
+  → Predicted winner: Ethyn Ewing (59.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.4%
+  Submission:  12.5%
+  Decision:    59.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 24.2%
+  Goes the distance:            75.8%
+
+KEY FACTORS FOR Ethyn Ewing
+  + Td Success Prob advantage (+0.297)
+  + Avg Opponent Elo advantage (+0.198)
+  + Age Vs Peak advantage (+0.161)
+  + Reach Strike advantage (+0.131)
+  + Slpm advantage (+0.091)
+
+KEY FACTORS FOR Rafael Estevam
+  + Elo advantage (+0.191)
+  + Sapm advantage (+0.111)
+  + Grapple Dom advantage (+0.101)
+  + Striking Edge advantage (+0.075)
+
+BETTING VALUE
+  Market implied probability (Ethyn Ewing): 50.0%
+  Model probability (Ethyn Ewing):          59.3%
+  Edge: +9.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tommy McMillen vs Manolo Zecchini
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tommy McMillen: 68.8%
+  Manolo Zecchini: 31.2%
+  → Predicted winner: Tommy McMillen (68.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    51.8%
+  Submission:  7.2%
+  Decision:    41.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 68.1%
+  Goes the distance:            31.9%
+
+KEY FACTORS FOR Tommy McMillen
+  + Striking Edge advantage (+0.849)
+  + Elo advantage (+0.219)
+  + Durability advantage (+0.141)
+  + Age advantage (+0.055)
+
+KEY FACTORS FOR Manolo Zecchini
+  + Reach Strike advantage (+0.148)
+  + Elo Uncertainty advantage (+0.088)
+  + Avg Opponent Elo advantage (+0.070)
+  + Td Success Prob advantage (+0.047)
+  + Grapple Dom advantage (+0.042)
+
+BETTING VALUE
+  Market implied probability (Tommy McMillen): 50.0%
+  Model probability (Tommy McMillen):          68.8%
+  Edge: +18.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Charles Radtke vs Jose Henrique
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Charles Radtke: 71.5%
+  Jose Henrique: 28.5%
+  → Predicted winner: Charles Radtke (71.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.3%
+  Submission:  24.3%
+  Decision:    43.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 79.6%
+  Goes the distance:            20.4%
+
+KEY FACTORS FOR Charles Radtke
+  + Td Success Prob advantage (+0.435)
+  + Grapple Dom advantage (+0.197)
+  + Reach Strike advantage (+0.168)
+  + Elo Uncertainty advantage (+0.120)
+  + Elo advantage (+0.107)
+
+KEY FACTORS FOR Jose Henrique
+  + Striking Edge advantage (+0.236)
+  + Avg Opponent Elo advantage (+0.087)
+  + Durability advantage (+0.066)
+
+BETTING VALUE
+  Market implied probability (Charles Radtke): 50.0%
+  Model probability (Charles Radtke):          71.5%
+  Edge: +21.5%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Guilherme Pat vs Thomas Petersen
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Guilherme Pat: 54.7%
+  Thomas Petersen: 45.3%
+  → Predicted winner: Guilherme Pat (54.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.8%
+  Submission:  31.8%
+  Decision:    40.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 91.6%
+  Goes the distance:            8.4%
+
+KEY FACTORS FOR Guilherme Pat
+  + Striking Edge advantage (+0.364)
+  + Slpm advantage (+0.191)
+  + Elo advantage (+0.087)
+  + Reach Strike advantage (+0.079)
+  + Strike Def advantage (+0.076)
+
+KEY FACTORS FOR Thomas Petersen
+  + Td Def advantage (+0.188)
+  + Style Pressure advantage (+0.133)
+  + Td Acc advantage (+0.099)
+  + Avg Opponent Elo advantage (+0.094)
+  + Grapple Dom advantage (+0.086)
+
+BETTING VALUE
+  Market implied probability (Guilherme Pat): 50.0%
+  Model probability (Guilherme Pat):          54.7%
+  Edge: +4.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jose Delano vs Robert Ruchala
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jose Delano: 50.5%
+  Robert Ruchala: 49.5%
+  → Predicted winner: Jose Delano (50.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.8%
+  Submission:  12.0%
+  Decision:    49.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.7%
+  Goes the distance:            54.3%
+
+KEY FACTORS FOR Jose Delano
+  + Striking Edge advantage (+0.528)
+  + Elo advantage (+0.153)
+  + Age advantage (+0.042)
+  + Finish Rate advantage (+0.028)
+
+KEY FACTORS FOR Robert Ruchala
+  + Reach Strike advantage (+0.226)
+  + Avg Opponent Elo advantage (+0.159)
+  + Elo Uncertainty advantage (+0.140)
+  + Grapple Dom advantage (+0.055)
+  + Strike Def advantage (+0.040)
+
+BETTING VALUE
+  Market implied probability (Jose Delano): 50.0%
+  Model probability (Jose Delano):          50.5%
+  Edge: +0.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alessandro Costa vs Stewart Nicoll
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alessandro Costa: 87.2%
+  Stewart Nicoll: 12.8%
+  → Predicted winner: Alessandro Costa (87.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    53.8%
+  Submission:  8.8%
+  Decision:    37.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 96.6%
+  Goes the distance:            3.4%
+
+KEY FACTORS FOR Alessandro Costa
+  + Striking Edge advantage (+0.542)
+  + Td Def advantage (+0.280)
+  + Sapm advantage (+0.260)
+  + Style Pressure advantage (+0.260)
+  + Strike Def advantage (+0.167)
+
+KEY FACTORS FOR Stewart Nicoll
+  + Finish Rate advantage (+0.206)
+
+BETTING VALUE
+  Market implied probability (Alessandro Costa): 50.0%
+  Model probability (Alessandro Costa):          87.2%
+  Edge: +37.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Lando Vannata vs Darrius Flowers
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Lando Vannata: 69.3%
+  Darrius Flowers: 30.7%
+  → Predicted winner: Lando Vannata (69.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    23.3%
+  Submission:  14.5%
+  Decision:    62.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 5.9%
+  Goes the distance:            94.1%
+
+KEY FACTORS FOR Lando Vannata
+  + Style Pressure advantage (+0.330)
+  + Striking Edge advantage (+0.172)
+  + Grapple Dom advantage (+0.168)
+  + Slpm advantage (+0.122)
+  + Leg Strike Rate advantage (+0.105)
+
+KEY FACTORS FOR Darrius Flowers
+  + Reach Strike advantage (+0.176)
+  + Age Vs Peak advantage (+0.144)
+  + Style Vuln Striker advantage (+0.059)
+
+BETTING VALUE
+  Market implied probability (Lando Vannata): 50.0%
+  Model probability (Lando Vannata):          69.3%
+  Edge: +19.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alice Pereira vs Hailey Cowan
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alice Pereira: 47.4%
+  Hailey Cowan: 52.6%
+  → Predicted winner: Hailey Cowan (52.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.5%
+  Submission:  12.9%
+  Decision:    54.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 27.8%
+  Goes the distance:            72.2%
+
+KEY FACTORS FOR Alice Pereira
+  + Striking Edge advantage (+0.328)
+  + Elo advantage (+0.140)
+  + Elo Trend advantage (+0.046)
+  + Age advantage (+0.042)
+
+KEY FACTORS FOR Hailey Cowan
+  + Reach Strike advantage (+0.225)
+  + Avg Opponent Elo advantage (+0.099)
+  + Td Success Prob advantage (+0.094)
+  + Elo Uncertainty advantage (+0.067)
+  + Grapple Dom advantage (+0.063)
+
+BETTING VALUE
+  Market implied probability (Alice Pereira): 50.0%
+  Model probability (Alice Pereira):          47.4%
+  Edge: -2.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Azamat Bekoev vs Tresean Gore
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Azamat Bekoev: 59.8%
+  Tresean Gore: 40.2%
+  → Predicted winner: Azamat Bekoev (59.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.1%
+  Submission:  18.6%
+  Decision:    41.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 23.7%
+  Goes the distance:            76.3%
+
+KEY FACTORS FOR Azamat Bekoev
+  + Style Pressure advantage (+0.206)
+  + Age Vs Peak advantage (+0.181)
+  + Elo advantage (+0.101)
+  + Reach Strike advantage (+0.100)
+  + Slpm advantage (+0.092)
+
+KEY FACTORS FOR Tresean Gore
+  + Grapple Dom advantage (+0.162)
+  + Style Vuln Wrestling advantage (+0.133)
+  + Td Acc advantage (+0.100)
+  + Style Pressure L3 advantage (+0.085)
+
+BETTING VALUE
+  Market implied probability (Azamat Bekoev): 50.0%
+  Model probability (Azamat Bekoev):          59.8%
+  Edge: +9.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Moicano vs. Duncan
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dione Barbosa vs Melissa Gatto
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dione Barbosa: 35.9%
+  Melissa Gatto: 64.1%
+  → Predicted winner: Melissa Gatto (64.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.4%
+  Submission:  27.8%
+  Decision:    44.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 13.4%
+  Goes the distance:            86.6%
+
+KEY FACTORS FOR Dione Barbosa
+  + Grapple Dom advantage (+0.155)
+  + Sub Avg advantage (+0.100)
+
+KEY FACTORS FOR Melissa Gatto
+  + Slpm advantage (+0.151)
+  + Age Vs Peak advantage (+0.139)
+  + Finish Rate advantage (+0.132)
+  + Reach Strike advantage (+0.128)
+  + Td Success Prob advantage (+0.083)
+
+BETTING VALUE
+  Market implied probability (Dione Barbosa): 50.0%
+  Model probability (Dione Barbosa):          35.9%
+  Edge: -14.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-03-30 03:12 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Robert Ruchala  (Model: 49.5%  Edge: +25.9%)
+  2. Melissa Gatto  (Model: 64.1%  Edge: +20.8%)
+  3. Tresean Gore  (Model: 40.2%  Edge: +19.7%)
+  4. Alessandro Costa  (Model: 87.2%  Edge: +10.2%)
+  5. Hailey Cowan  (Model: 52.6%  Edge: +7.3%)
