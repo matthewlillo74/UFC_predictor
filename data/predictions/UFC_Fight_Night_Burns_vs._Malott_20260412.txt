@@ -1,0 +1,726 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: BURNS VS. MALOTT
+  Generated: 2026-04-12 16:40 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Gilbert Burns vs Mike Malott
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Gilbert Burns: 42.8%
+  Mike Malott: 57.2%
+  → Predicted winner: Mike Malott (57.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.1%
+  Submission:  12.0%
+  Decision:    48.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.3%
+  Goes the distance:            52.7%
+
+KEY FACTORS FOR Gilbert Burns
+  + Grapple Dom advantage (+0.171)
+  + Reach Strike advantage (+0.134)
+  + Kd Absorbed Per Fight advantage (+0.124)
+  + Avg Opponent Elo advantage (+0.096)
+  + Elo advantage (+0.063)
+
+KEY FACTORS FOR Mike Malott
+  + Elo Trend advantage (+0.337)
+  + Age Vs Peak advantage (+0.208)
+  + Style Vuln Wrestling advantage (+0.090)
+  + Age advantage (+0.085)
+
+BETTING VALUE
+  Market implied probability (Gilbert Burns): 50.0%
+  Model probability (Gilbert Burns):          42.8%
+  Edge: -7.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Kyler Phillips vs Charles Jourdain
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Kyler Phillips: 62.4%
+  Charles Jourdain: 37.6%
+  → Predicted winner: Kyler Phillips (62.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.3%
+  Submission:  16.9%
+  Decision:    48.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 23.2%
+  Goes the distance:            76.8%
+
+KEY FACTORS FOR Kyler Phillips
+  + Td Success Prob advantage (+0.330)
+  + Style Pressure advantage (+0.212)
+  + Elo advantage (+0.140)
+  + Grapple Dom advantage (+0.127)
+  + Style Wrestling L3 advantage (+0.078)
+
+KEY FACTORS FOR Charles Jourdain
+  + Elo Vs Peak advantage (+0.131)
+  + Reach Strike advantage (+0.122)
+  + Kd Ratio advantage (+0.075)
+  + Style Vuln Striker advantage (+0.073)
+
+BETTING VALUE
+  Market implied probability (Kyler Phillips): 50.0%
+  Model probability (Kyler Phillips):          62.4%
+  Edge: +12.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mandel Nallo vs Jai Herbert
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mandel Nallo: 50.1%
+  Jai Herbert: 49.9%
+  → Predicted winner: Mandel Nallo (50.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.7%
+  Submission:  12.2%
+  Decision:    56.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 29.2%
+  Goes the distance:            70.8%
+
+KEY FACTORS FOR Mandel Nallo
+  + Striking Edge advantage (+0.384)
+  + Elo advantage (+0.183)
+  + Finish Threat advantage (+0.091)
+  + Elo Trend advantage (+0.054)
+  + Age advantage (+0.045)
+
+KEY FACTORS FOR Jai Herbert
+  + Reach Strike advantage (+0.336)
+  + Avg Opponent Elo advantage (+0.147)
+  + Elo Uncertainty advantage (+0.087)
+  + Td Success Prob advantage (+0.066)
+  + Grapple Dom advantage (+0.062)
+
+BETTING VALUE
+  Market implied probability (Mandel Nallo): 50.0%
+  Model probability (Mandel Nallo):          50.1%
+  Edge: +0.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jasmine Jasudavicius vs Karine Silva
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jasmine Jasudavicius: 71.7%
+  Karine Silva: 28.3%
+  → Predicted winner: Jasmine Jasudavicius (71.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.3%
+  Submission:  18.1%
+  Decision:    47.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 75.5%
+  Goes the distance:            24.5%
+
+KEY FACTORS FOR Jasmine Jasudavicius
+  + Td Success Prob advantage (+0.433)
+  + Td Def advantage (+0.263)
+  + Style Pressure advantage (+0.186)
+  + Grapple Dom advantage (+0.165)
+  + Reach Strike advantage (+0.140)
+
+KEY FACTORS FOR Karine Silva
+  + Avg Opponent Elo advantage (+0.096)
+  + Recent Finish Rate advantage (+0.087)
+  + Win Streak advantage (+0.086)
+  + Age Vs Peak advantage (+0.076)
+
+BETTING VALUE
+  Market implied probability (Jasmine Jasudavicius): 50.0%
+  Model probability (Jasmine Jasudavicius):          71.7%
+  Edge: +21.7%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Thiago Moises vs Gauge Young
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Thiago Moises: 23.0%
+  Gauge Young: 77.0%
+  → Predicted winner: Gauge Young (77.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.8%
+  Submission:  22.3%
+  Decision:    51.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 28.5%
+  Goes the distance:            71.5%
+
+KEY FACTORS FOR Thiago Moises
+  + Avg Opponent Elo advantage (+0.185)
+  + Grapple Dom advantage (+0.128)
+  + Ground Strike Share advantage (+0.116)
+  + Sub Avg advantage (+0.093)
+
+KEY FACTORS FOR Gauge Young
+  + Age Vs Peak advantage (+0.323)
+  + Reach Strike advantage (+0.277)
+  + Slpm advantage (+0.215)
+  + Td Def advantage (+0.149)
+  + Style Pressure advantage (+0.143)
+
+BETTING VALUE
+  Market implied probability (Thiago Moises): 50.0%
+  Model probability (Thiago Moises):          23.0%
+  Edge: -27.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dennis Buzukja vs Marcio Barbosa
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dennis Buzukja: 30.4%
+  Marcio Barbosa: 69.6%
+  → Predicted winner: Marcio Barbosa (69.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.4%
+  Submission:  15.5%
+  Decision:    49.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 33.3%
+  Goes the distance:            66.7%
+
+KEY FACTORS FOR Dennis Buzukja
+  + Style Finisher advantage (+0.149)
+  + Elo Uncertainty advantage (+0.060)
+
+KEY FACTORS FOR Marcio Barbosa
+  + Slpm advantage (+0.315)
+  + Td Def advantage (+0.184)
+  + Finish Rate advantage (+0.090)
+  + Reach Strike advantage (+0.068)
+  + Durability advantage (+0.066)
+
+BETTING VALUE
+  Market implied probability (Dennis Buzukja): 50.0%
+  Model probability (Dennis Buzukja):          30.4%
+  Edge: -19.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Julien Leblanc vs Robert Valentin
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Julien Leblanc: 55.8%
+  Robert Valentin: 44.2%
+  → Predicted winner: Julien Leblanc (55.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    44.1%
+  Submission:  9.7%
+  Decision:    46.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 58.1%
+  Goes the distance:            41.9%
+
+KEY FACTORS FOR Julien Leblanc
+  + Striking Edge advantage (+0.523)
+  + Elo advantage (+0.179)
+  + Age advantage (+0.041)
+
+KEY FACTORS FOR Robert Valentin
+  + Reach Strike advantage (+0.177)
+  + Avg Opponent Elo advantage (+0.098)
+  + Elo Uncertainty advantage (+0.085)
+  + Grapple Dom advantage (+0.062)
+  + Td Success Prob advantage (+0.054)
+
+BETTING VALUE
+  Market implied probability (Julien Leblanc): 50.0%
+  Model probability (Julien Leblanc):          55.8%
+  Edge: +5.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tanner Boser vs Gokhan Saricam
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tanner Boser: 59.2%
+  Gokhan Saricam: 40.8%
+  → Predicted winner: Tanner Boser (59.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    46.3%
+  Submission:  10.1%
+  Decision:    43.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 61.2%
+  Goes the distance:            38.8%
+
+KEY FACTORS FOR Tanner Boser
+  + Reach Strike advantage (+0.176)
+  + Elo advantage (+0.164)
+  + Elo Uncertainty advantage (+0.144)
+  + Finish Threat advantage (+0.106)
+  + Age advantage (+0.047)
+
+KEY FACTORS FOR Gokhan Saricam
+  + Elo Vs Peak advantage (+0.097)
+  + Grapple Dom advantage (+0.089)
+  + Durability advantage (+0.055)
+  + Strike Def advantage (+0.041)
+
+BETTING VALUE
+  Market implied probability (Tanner Boser): 50.0%
+  Model probability (Tanner Boser):          59.2%
+  Edge: +9.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Melissa Croden vs Daria Zhelezniakova
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Melissa Croden: 46.2%
+  Daria Zhelezniakova: 53.8%
+  → Predicted winner: Daria Zhelezniakova (53.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.6%
+  Submission:  7.3%
+  Decision:    66.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 8.2%
+  Goes the distance:            91.8%
+
+KEY FACTORS FOR Melissa Croden
+  + Style Finisher advantage (+0.190)
+  + Avg Opponent Elo advantage (+0.140)
+  + Head Strike Rate advantage (+0.098)
+  + Reach Strike advantage (+0.086)
+  + Td Def advantage (+0.060)
+
+KEY FACTORS FOR Daria Zhelezniakova
+  + Leg Strike Rate advantage (+0.230)
+  + Strike Def advantage (+0.180)
+  + Finish Rate advantage (+0.105)
+  + Age Vs Peak advantage (+0.077)
+  + Age advantage (+0.060)
+
+BETTING VALUE
+  Market implied probability (Melissa Croden): 50.0%
+  Model probability (Melissa Croden):          46.2%
+  Edge: -3.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mitch Raposo vs Allan Nascimento
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mitch Raposo: 49.2%
+  Allan Nascimento: 50.8%
+  → Predicted winner: Allan Nascimento (50.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    17.5%
+  Submission:  34.1%
+  Decision:    48.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 61.9%
+  Goes the distance:            38.1%
+
+KEY FACTORS FOR Mitch Raposo
+  + Td Success Prob advantage (+0.395)
+  + Strike Acc advantage (+0.175)
+  + Age Vs Peak advantage (+0.173)
+  + Strike Def advantage (+0.147)
+  + Age advantage (+0.141)
+
+KEY FACTORS FOR Allan Nascimento
+  + Elo advantage (+0.333)
+  + Reach Strike advantage (+0.217)
+  + Striking Edge advantage (+0.200)
+  + Slpm advantage (+0.158)
+
+BETTING VALUE
+  Market implied probability (Mitch Raposo): 50.0%
+  Model probability (Mitch Raposo):          49.2%
+  Edge: -0.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: JJ Aldrich vs Jamey-Lyn Horth
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  JJ Aldrich: 38.4%
+  Jamey-Lyn Horth: 61.6%
+  → Predicted winner: Jamey-Lyn Horth (61.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.3%
+  Submission:  14.9%
+  Decision:    57.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 10.0%
+  Goes the distance:            90.0%
+
+KEY FACTORS FOR JJ Aldrich
+  + Age Vs Peak advantage (+0.186)
+  + Elo advantage (+0.120)
+  + Slpm advantage (+0.081)
+  + Td Acc advantage (+0.073)
+
+KEY FACTORS FOR Jamey-Lyn Horth
+  + Striking Edge advantage (+0.319)
+  + Grapple Dom advantage (+0.108)
+  + Reach Strike advantage (+0.080)
+  + Style Pressure advantage (+0.077)
+  + Avg Opponent Elo advantage (+0.072)
+
+BETTING VALUE
+  Market implied probability (JJ Aldrich): 50.0%
+  Model probability (JJ Aldrich):          38.4%
+  Edge: -11.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: John Castaneda vs Mark Vologdin
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  John Castaneda: 69.4%
+  Mark Vologdin: 30.6%
+  → Predicted winner: John Castaneda (69.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.0%
+  Submission:  14.8%
+  Decision:    51.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 53.2%
+  Goes the distance:            46.8%
+
+KEY FACTORS FOR John Castaneda
+  + Td Success Prob advantage (+0.469)
+  + Grapple Dom advantage (+0.228)
+  + Reach Strike advantage (+0.208)
+  + Elo Uncertainty advantage (+0.166)
+  + Elo advantage (+0.113)
+
+KEY FACTORS FOR Mark Vologdin
+  + Striking Edge advantage (+0.450)
+  + Elo Trend advantage (+0.069)
+  + Elo Vs Peak advantage (+0.043)
+
+BETTING VALUE
+  Market implied probability (John Castaneda): 50.0%
+  Model probability (John Castaneda):          69.4%
+  Edge: +19.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Burns vs. Malott
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jamie Siraj vs John Yannis
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jamie Siraj: 50.0%
+  John Yannis: 50.0%
+  → Predicted winner: Jamie Siraj (50.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.3%
+  Submission:  12.8%
+  Decision:    54.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 29.0%
+  Goes the distance:            71.0%
+
+KEY FACTORS FOR Jamie Siraj
+  + Elo advantage (+0.155)
+  + Reach Strike advantage (+0.139)
+  + Avg Opponent Elo advantage (+0.091)
+  + Finish Rate advantage (+0.029)
+  + Age advantage (+0.029)
+
+KEY FACTORS FOR John Yannis
+  + Elo Uncertainty advantage (+0.194)
+  + Grapple Dom advantage (+0.090)
+  + Td Success Prob advantage (+0.043)
+  + Strike Def advantage (+0.042)
+  + Strike Acc advantage (+0.034)
+
+BETTING VALUE
+  Market implied probability (Jamie Siraj): 50.0%
+  Model probability (Jamie Siraj):          50.0%
+  Edge: +0.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-04-12 16:40 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Gilbert Burns  (Model: 42.8%  Edge: +23.5%)
+  2. Dennis Buzukja  (Model: 30.4%  Edge: +7.4%)
