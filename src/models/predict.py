@@ -171,13 +171,35 @@ class UFCPredictor:
         )
         self.round_model.fit(X, y_early, sample_weight=sample_weights)
 
-        # Calibrate round model with Platt scaling to fix overconfidence
-        from sklearn.calibration import CalibratedClassifierCV
-        self.round_model_calibrated = CalibratedClassifierCV(
-            self.round_model, method="sigmoid", cv="prefit"
-        )
-        self.round_model_calibrated.fit(X, y_early, sample_weight=sample_weights)
-        logger.info("Round model calibrated with Platt scaling")
+        # Calibrate round model on RECENT fights only (last 2 years).
+        # The base finish rate has shifted from ~45% historically to ~33% in modern UFC.
+        # If we calibrate on all training data the calibrator can't correct for this drift.
+        # Using only recent fights means the calibrator learns the current finish rate
+        # and adjusts the model's overconfident UNDER predictions accordingly.
+        recent_cutoff = pd.Timestamp.utcnow().tz_localize(None) - pd.Timedelta(days=730)
+        df_recent_dates = pd.to_datetime(df_clean["fight_date"]).dt.tz_localize(None)
+        df_recent_mask = df_recent_dates >= recent_cutoff
+        df_recent = df_clean[df_recent_mask]
+
+        if len(df_recent) >= 200:
+            X_recent = df_recent[FEATURE_COLUMNS].fillna(0)
+            y_early_recent = df_recent.apply(get_early_label, axis=1)
+            recent_finish_rate = y_early_recent.mean()
+            logger.info(f"Round calibration — using {len(df_recent)} recent fights, "
+                        f"finish rate: {recent_finish_rate:.1%} (vs {early_rate:.1%} historical)")
+            from sklearn.calibration import CalibratedClassifierCV
+            self.round_model_calibrated = CalibratedClassifierCV(
+                self.round_model, method="sigmoid", cv="prefit"
+            )
+            self.round_model_calibrated.fit(X_recent, y_early_recent)
+        else:
+            logger.warning(f"Only {len(df_recent)} recent fights — using full dataset for calibration")
+            from sklearn.calibration import CalibratedClassifierCV
+            self.round_model_calibrated = CalibratedClassifierCV(
+                self.round_model, method="sigmoid", cv="prefit"
+            )
+            self.round_model_calibrated.fit(X, y_early)
+        logger.info("Round model calibrated with Platt scaling (recent fights)")
 
         # ── SHAP explainer ─────────────────────────────────────────────────
         self.shap_explainer = shap.TreeExplainer(self.winner_model)

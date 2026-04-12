@@ -403,6 +403,29 @@ class FeatureBuilder:
             "sentiment_diff":        0.0,
             "fighter_a_injury_flag": 0.0,
             "fighter_b_injury_flag": 0.0,
+            # ── Method-specific rates ─────────────────────────────────────────────
+            # finish_rate_diff only captures total finishing ability. These separate
+            # HOW fighters win and lose — critical for method/prop prediction.
+            # A submission specialist vs a KO artist is fundamentally different from
+            # two generic finishers. These features directly feed the method model.
+            "ko_rate_diff":          _diff(
+                _safe(s("wins_ko_tko")) / max(_safe(s("wins")) or 1, 1),
+                _safe(t("wins_ko_tko")) / max(_safe(t("wins")) or 1, 1),
+            ),
+            "sub_rate_diff":         _diff(
+                _safe(s("wins_sub")) / max(_safe(s("wins")) or 1, 1),
+                _safe(t("wins_sub")) / max(_safe(t("wins")) or 1, 1),
+            ),
+            "decision_rate_diff":    _diff(
+                _safe(s("wins_decision")) / max(_safe(s("wins")) or 1, 1),
+                _safe(t("wins_decision")) / max(_safe(t("wins")) or 1, 1),
+            ),
+            # How often does a fighter get KO'd when they lose?
+            # High value = fragile chin = opponent has KO path even if they lose overall
+            "ko_vulnerability_diff": _diff(
+                _safe(s("losses_ko_tko")) / max(_safe(s("losses")) or 1, 1),
+                _safe(t("losses_ko_tko")) / max(_safe(t("losses")) or 1, 1),
+            ),
         }
 
         missing = [col for col in FEATURE_COLUMNS if col not in features]

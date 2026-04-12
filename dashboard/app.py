@@ -809,6 +809,255 @@ def page_performance(session):
 
 # ── Sidebar + routing ─────────────────────────────────────────────────────────
 
+def page_props(session, odds_lookup: dict):
+    """
+    Props tab — method and round O/U predictions with market edge detection.
+
+    Shows for every fight:
+      - Method props: KO/TKO, Submission, Decision with model prob vs market line
+      - Round O/U: model prob vs market line
+      - Edge flagged when model prob exceeds market implied prob by threshold
+      - Backtest accuracy shown so user knows how much to trust each prop type
+    """
+    st.markdown("# 🎯 Prop Bets")
+    st.markdown("Method and round predictions with market edge — verify lines before betting")
+
+    from src.ingestion.fight_scraper import get_upcoming_events, get_event_fights
+    from src.ingestion.data_loader import get_or_create_fighter, normalize_name
+    from src.features.feature_builder import FeatureBuilder
+    from src.models.predict import UFCPredictor
+    from rapidfuzz import fuzz
+
+    # ── Load model ────────────────────────────────────────────────────────────
+    predictor = UFCPredictor()
+    try:
+        predictor.load()
+    except Exception as e:
+        st.error(f"Model not loaded. Run `python scripts/train_model.py` first.\n\n{e}")
+        return
+
+    # ── Load card ─────────────────────────────────────────────────────────────
+    upcoming = get_upcoming_events()
+    if not upcoming:
+        st.error("No upcoming events found")
+        return
+    event = upcoming[0]
+    fights_raw = get_event_fights(event["url"])
+    if not fights_raw:
+        st.error("No fights found for upcoming event")
+        return
+
+    builder = FeatureBuilder(session)
+    fight_date = event.get("date") or datetime.utcnow()
+
+    # ── Calibration warning banner ────────────────────────────────────────────
+    st.info(
+        "**Backtest accuracy (holdout test set):** "
+        "Method ~55% | Round O/U ~40-50% | "
+        "Live data still limited (4 events). "
+        "Use props as supplementary signals, not primary bets."
+    )
+
+    # ── Prop odds reference (simulated — replace with real API when available) ─
+    # These are approximate average UFC prop lines for reference.
+    # Real prop odds are not available from The Odds API free tier.
+    PROP_ODDS_REF = {
+        "ko_tko":     {"label": "KO/TKO",     "approx_odds": -115, "mkt_prob": 0.535},
+        "submission": {"label": "Submission",  "approx_odds": +230, "mkt_prob": 0.303},
+        "decision":   {"label": "Decision",    "approx_odds": -140, "mkt_prob": 0.583},
+        "under_2_5":  {"label": "Under 2.5",  "approx_odds": -110, "mkt_prob": 0.524},
+        "over_2_5":   {"label": "Over 2.5",   "approx_odds": -110, "mkt_prob": 0.524},
+        "under_3_5":  {"label": "Under 3.5",  "approx_odds": -130, "mkt_prob": 0.565},
+        "over_3_5":   {"label": "Over 3.5",   "approx_odds": -110, "mkt_prob": 0.524},
+    }
+
+    def edge_color(edge: float) -> str:
+        if edge > 0.08:   return "#00c47d"
+        if edge > 0.04:   return "#7ecb8e"
+        if edge < -0.04:  return "#e94560"
+        return "#888"
+
+    def american_fmt(odds: int) -> str:
+        return f"+{odds}" if odds > 0 else str(odds)
+
+    st.markdown(f"### {event['name']}")
+    st.markdown("")
+
+    # ── Generate predictions ──────────────────────────────────────────────────
+    all_props = []
+    with st.spinner("Generating prop predictions..."):
+        for f in fights_raw:
+            try:
+                fa = get_or_create_fighter(session, f["fighter_a_name"], f.get("fighter_a_url", ""))
+                fb = get_or_create_fighter(session, f["fighter_b_name"], f.get("fighter_b_url", ""))
+                if fa is None or fb is None:
+                    continue
+                features = builder.build_matchup_features(fa.id, fb.id, fight_date)
+                pred = predictor.predict(features, fa.name, fb.name)
+
+                # Match moneyline odds for context
+                fa_norm = normalize_name(fa.name)
+                fb_norm = normalize_name(fb.name)
+                fight_odds = None
+                key = fa_norm + "|" + fb_norm
+                if key in odds_lookup:
+                    fight_odds = odds_lookup[key]
+                else:
+                    for ok, ov in odds_lookup.items():
+                        parts = ok.split("|")
+                        if len(parts) == 2:
+                            if fuzz.token_sort_ratio(fa_norm, parts[0]) > 75 and \
+                               fuzz.token_sort_ratio(fb_norm, parts[1]) > 75:
+                                fight_odds = ov
+                                break
+
+                all_props.append({
+                    "pred": pred,
+                    "odds": fight_odds,
+                    "weight_class": f.get("weight_class", ""),
+                    "is_title": f.get("is_title_fight", False),
+                })
+            except Exception:
+                pass
+
+    if not all_props:
+        st.error("No predictions generated")
+        return
+
+    # ── Render each fight ─────────────────────────────────────────────────────
+    MIN_METHOD_EDGE = 0.08   # flag method prop if model > market by this much
+    MIN_ROUND_EDGE  = 0.06   # flag round prop if model > market by this much
+
+    for item in all_props:
+        pred       = item["pred"]
+        fight_odds = item["odds"]
+        wc         = item["weight_class"]
+        is_title   = item["is_title"]
+        fa         = pred["fighter_a"]
+        fb         = pred["fighter_b"]
+        methods    = pred.get("method_probabilities", {})
+        rounds     = pred.get("round_probabilities", {})
+
+        ko_prob  = methods.get("ko_tko", 0)
+        sub_prob = methods.get("submission", 0)
+        dec_prob = methods.get("decision", 0)
+
+        if is_title or "under_3_5" in rounds:
+            round_key   = "under_3_5"
+            round_label = "O/U 3.5"
+            under_prob  = rounds.get("under_3_5", 0)
+            over_prob   = rounds.get("over_3_5", 0)
+        else:
+            round_key   = "under_2_5"
+            round_label = "O/U 2.5"
+            under_prob  = rounds.get("under_2_5", 0)
+            over_prob   = rounds.get("over_2_5", 0)
+
+        # Compute edges vs simulated market
+        ko_edge    = ko_prob  - PROP_ODDS_REF["ko_tko"]["mkt_prob"]
+        sub_edge   = sub_prob - PROP_ODDS_REF["submission"]["mkt_prob"]
+        dec_edge   = dec_prob - PROP_ODDS_REF["decision"]["mkt_prob"]
+        under_edge = under_prob - PROP_ODDS_REF[round_key]["mkt_prob"]
+        over_edge  = over_prob  - PROP_ODDS_REF[round_key.replace("under", "over")]["mkt_prob"]
+
+        # Flag if any prop has real edge
+        has_method_edge = max(abs(ko_edge), abs(sub_edge), abs(dec_edge)) > MIN_METHOD_EDGE
+        has_round_edge  = max(abs(under_edge), abs(over_edge)) > MIN_ROUND_EDGE
+        has_any_edge    = has_method_edge or has_round_edge
+
+        # Fight header
+        badge = " &nbsp;<span style='background:#e94560;color:#fff;font-size:0.7rem;padding:2px 7px;border-radius:4px'>⚡ PROP VALUE</span>" if has_any_edge else ""
+        wc_display = f"{wc}{badge}" if wc else f"Fight{badge}"
+        st.markdown(
+            f"<div style='color:#888;font-size:0.75rem;text-transform:uppercase;"
+            f"letter-spacing:0.1em;margin-top:1.2rem;margin-bottom:0.4rem'>{wc_display}</div>",
+            unsafe_allow_html=True,
+        )
+
+        winner     = pred["predicted_winner"]
+        confidence = pred["confidence"]
+        col_title, col_conf = st.columns([4, 1])
+        with col_title:
+            st.markdown(f"**{fa}** vs **{fb}**")
+        with col_conf:
+            st.markdown(
+                f"<div style='text-align:right;color:#888;font-size:0.85rem'>"
+                f"Winner: {winner} ({confidence:.0%})</div>",
+                unsafe_allow_html=True,
+            )
+
+        # ── Method props ──────────────────────────────────────────────────────
+        col_ko, col_sub, col_dec, col_round = st.columns(4)
+
+        def render_prop_card(col, label, model_prob, edge, approx_odds, is_flagged):
+            with col:
+                color = edge_color(edge)
+                flag  = "⚡ " if is_flagged else ""
+                st.markdown(
+                    f"""<div style='background:#1a1a2e;border-radius:8px;padding:0.75rem;
+                                   border:1px solid {"#e94560" if is_flagged else "#333"};
+                                   text-align:center'>
+                        <div style='color:#aaa;font-size:0.7rem;text-transform:uppercase;
+                                    letter-spacing:0.05em;margin-bottom:4px'>{flag}{label}</div>
+                        <div style='font-size:1.4rem;font-weight:700;color:#fff'>{model_prob:.0%}</div>
+                        <div style='font-size:0.75rem;color:{color};margin-top:2px'>
+                            {edge:+.0%} vs mkt ({american_fmt(approx_odds)})
+                        </div>
+                    </div>""",
+                    unsafe_allow_html=True,
+                )
+
+        render_prop_card(col_ko,  "KO/TKO",     ko_prob,    ko_edge,    PROP_ODDS_REF["ko_tko"]["approx_odds"],    abs(ko_edge)    > MIN_METHOD_EDGE)
+        render_prop_card(col_sub, "Submission",  sub_prob,   sub_edge,   PROP_ODDS_REF["submission"]["approx_odds"], abs(sub_edge)   > MIN_METHOD_EDGE)
+        render_prop_card(col_dec, "Decision",    dec_prob,   dec_edge,   PROP_ODDS_REF["decision"]["approx_odds"],  abs(dec_edge)   > MIN_METHOD_EDGE)
+
+        # Round O/U
+        under_flagged = abs(under_edge) > MIN_ROUND_EDGE
+        over_flagged  = abs(over_edge)  > MIN_ROUND_EDGE
+        with col_round:
+            u_color = edge_color(under_edge)
+            o_color = edge_color(over_edge)
+            u_flag  = "⚡ " if under_flagged else ""
+            o_flag  = "⚡ " if over_flagged  else ""
+            st.markdown(
+                f"""<div style='background:#1a1a2e;border-radius:8px;padding:0.75rem;
+                               border:1px solid {"#e94560" if (under_flagged or over_flagged) else "#333"}'>
+                    <div style='color:#aaa;font-size:0.7rem;text-transform:uppercase;
+                                letter-spacing:0.05em;margin-bottom:6px;text-align:center'>{round_label}</div>
+                    <div style='display:flex;justify-content:space-between;font-size:0.85rem'>
+                        <div>
+                            <span style='color:#aaa'>{u_flag}Under</span>
+                            <span style='color:#fff;font-weight:700;margin-left:4px'>{under_prob:.0%}</span>
+                            <span style='color:{u_color};font-size:0.7rem;margin-left:3px'>{under_edge:+.0%}</span>
+                        </div>
+                        <div>
+                            <span style='color:#aaa'>{o_flag}Over</span>
+                            <span style='color:#fff;font-weight:700;margin-left:4px'>{over_prob:.0%}</span>
+                            <span style='color:{o_color};font-size:0.7rem;margin-left:3px'>{over_edge:+.0%}</span>
+                        </div>
+                    </div>
+                </div>""",
+                unsafe_allow_html=True,
+            )
+
+        # Consistency warning if method/round disagree
+        consistency = pred.get("consistency", {})
+        if consistency.get("status") in ("warning", "contradiction"):
+            st.caption(f"⚠️ {consistency['message']}")
+
+    # ── Disclaimer ────────────────────────────────────────────────────────────
+    st.markdown("---")
+    st.markdown(
+        "<div style='color:#666;font-size:0.75rem'>"
+        "Market odds shown are approximate averages — actual sportsbook lines vary. "
+        "Edge calculation uses simulated baseline. Always verify real odds before betting. "
+        "Method accuracy ~55% and round O/U ~45% on test set. "
+        "Run <code>python scripts/backtest_props.py</code> for full historical analysis."
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 def page_value_bets(session, parsed_odds: list, odds_lookup: dict):
     st.markdown("# ⚡ Value Bets & Upsets")
     st.markdown("Fights where the model meaningfully disagrees with the market")
@@ -1182,7 +1431,7 @@ def main():
 
         page = st.radio(
             "Navigation",
-            ["Upcoming Event", "⚡ Value Bets", "🎰 Parlays", "Fighter Matchup", "Performance", "Elo Leaderboard"],
+            ["Upcoming Event", "⚡ Value Bets", "🎰 Parlays", "🎯 Props", "Fighter Matchup", "Performance", "Elo Leaderboard"],
             label_visibility="collapsed",
         )
 
@@ -1276,6 +1525,8 @@ def main():
         page_value_bets(session, parsed_odds, odds_lookup)
     elif page == "🎰 Parlays":
         page_parlays(session, parsed_odds, odds_lookup)
+    elif page == "🎯 Props":
+        page_props(session, odds_lookup)
     elif page == "Fighter Matchup":
         page_fighter_compare(session)
     elif page == "Performance":

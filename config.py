@@ -150,6 +150,17 @@ FEATURE_COLUMNS = [
     "sentiment_diff",
     "fighter_a_injury_flag",
     "fighter_b_injury_flag",
+    # Method-specific rates — critical for method/prop prediction
+    # finish_rate_diff only tells us total finish rate, not HOW they finish.
+    # A KO artist vs a submission specialist is a fundamentally different matchup.
+    # ko_rate:      wins_ko_tko / max(wins, 1)  — how often does A win by KO?
+    # sub_rate:     wins_sub / max(wins, 1)     — how often does A win by submission?
+    # decision_rate: wins_decision / max(wins, 1) — how often does A grind decisions?
+    # ko_vulnerability: losses_ko_tko / max(losses, 1) — how often is A KO'd when they lose?
+    "ko_rate_diff",
+    "sub_rate_diff",
+    "decision_rate_diff",
+    "ko_vulnerability_diff",
 ]
 
 TARGET_WINNER = "winner"          # binary: 1 = fighter_A wins, 0 = fighter_B wins
