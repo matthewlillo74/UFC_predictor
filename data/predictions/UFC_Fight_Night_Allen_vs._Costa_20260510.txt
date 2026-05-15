@@ -1,0 +1,720 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: ALLEN VS. COSTA
+  Generated: 2026-05-10 17:51 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Arnold Allen vs Melquizael Costa
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Arnold Allen: 26.7%
+  Melquizael Costa: 73.3%
+  → Predicted winner: Melquizael Costa (73.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.6%
+  Submission:  27.3%
+  Decision:    40.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 54.8%
+  Goes the distance:            45.2%
+
+KEY FACTORS FOR Arnold Allen
+  + Elo advantage (+0.113)
+  + Style Wrestling L3 advantage (+0.097)
+
+KEY FACTORS FOR Melquizael Costa
+  + Style Pressure advantage (+0.292)
+  + Reach Strike advantage (+0.198)
+  + Elo Vs Peak advantage (+0.189)
+  + Kd Absorbed Per Fight advantage (+0.168)
+  + Slpm advantage (+0.143)
+
+BETTING VALUE
+  Market implied probability (Arnold Allen): 50.0%
+  Model probability (Arnold Allen):          26.7%
+  Edge: -23.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dooho Choi vs Daniel Santos
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dooho Choi: 63.0%
+  Daniel Santos: 37.0%
+  → Predicted winner: Dooho Choi (63.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.3%
+  Submission:  12.7%
+  Decision:    53.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.6%
+  Goes the distance:            59.4%
+
+KEY FACTORS FOR Dooho Choi
+  + Grapple Dom advantage (+0.222)
+  + Striking Edge advantage (+0.220)
+  + Reach Strike advantage (+0.207)
+  + Style Wrestling L3 advantage (+0.099)
+  + Strike Acc advantage (+0.093)
+
+KEY FACTORS FOR Daniel Santos
+  + Td Def advantage (+0.249)
+  + Age Vs Peak advantage (+0.141)
+  + Style Pressure advantage (+0.078)
+  + Age advantage (+0.072)
+
+BETTING VALUE
+  Market implied probability (Dooho Choi): 50.0%
+  Model probability (Dooho Choi):          63.0%
+  Edge: +13.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Malcolm Wellmaker vs Juan Diaz
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Malcolm Wellmaker: 50.4%
+  Juan Diaz: 49.6%
+  → Predicted winner: Malcolm Wellmaker (50.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    53.6%
+  Submission:  10.0%
+  Decision:    36.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 61.6%
+  Goes the distance:            38.4%
+
+KEY FACTORS FOR Malcolm Wellmaker
+  + Reach Strike advantage (+0.220)
+  + Finish Threat advantage (+0.132)
+  + Elo advantage (+0.129)
+  + Elo Uncertainty advantage (+0.084)
+
+KEY FACTORS FOR Juan Diaz
+  + Striking Edge advantage (+0.256)
+  + Avg Opponent Elo advantage (+0.124)
+  + Grapple Dom advantage (+0.056)
+  + Strike Def advantage (+0.044)
+  + Td Success Prob advantage (+0.039)
+
+BETTING VALUE
+  Market implied probability (Malcolm Wellmaker): 50.0%
+  Model probability (Malcolm Wellmaker):          50.4%
+  Edge: +0.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Modestas Bukauskas vs Rodolfo Bellato
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Modestas Bukauskas: 45.8%
+  Rodolfo Bellato: 54.2%
+  → Predicted winner: Rodolfo Bellato (54.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.0%
+  Submission:  14.2%
+  Decision:    51.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.3%
+  Goes the distance:            60.7%
+
+KEY FACTORS FOR Modestas Bukauskas
+  + Strike Acc advantage (+0.291)
+  + Ko Rate advantage (+0.211)
+  + Style Wrestling L3 advantage (+0.141)
+  + Style Wrestling advantage (+0.131)
+  + Td Acc advantage (+0.106)
+
+KEY FACTORS FOR Rodolfo Bellato
+  + Slpm advantage (+0.309)
+  + Reach Strike advantage (+0.164)
+  + Style Finisher advantage (+0.116)
+  + Style Pressure advantage (+0.106)
+  + Momentum Score advantage (+0.087)
+
+BETTING VALUE
+  Market implied probability (Modestas Bukauskas): 50.0%
+  Model probability (Modestas Bukauskas):          45.8%
+  Edge: -4.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Timmy Cuamba vs Benardo Sopaj
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Timmy Cuamba: 39.3%
+  Benardo Sopaj: 60.7%
+  → Predicted winner: Benardo Sopaj (60.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.7%
+  Submission:  7.9%
+  Decision:    53.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.1%
+  Goes the distance:            57.9%
+
+KEY FACTORS FOR Timmy Cuamba
+  + Elo Trend advantage (+0.104)
+  + Strike Def advantage (+0.084)
+  + Elo advantage (+0.079)
+  + Early Output Share advantage (+0.053)
+
+KEY FACTORS FOR Benardo Sopaj
+  + Slpm advantage (+0.252)
+  + Reach Strike advantage (+0.192)
+  + Style Pressure advantage (+0.128)
+  + Age Vs Peak advantage (+0.092)
+  + Td Success Prob advantage (+0.082)
+
+BETTING VALUE
+  Market implied probability (Timmy Cuamba): 50.0%
+  Model probability (Timmy Cuamba):          39.3%
+  Edge: -10.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jeremiah Wells vs Nicolas Dalby
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jeremiah Wells: 59.4%
+  Nicolas Dalby: 40.6%
+  → Predicted winner: Jeremiah Wells (59.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    22.6%
+  Submission:  32.1%
+  Decision:    45.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.3%
+  Goes the distance:            50.7%
+
+KEY FACTORS FOR Jeremiah Wells
+  + Grapple Dom advantage (+0.265)
+  + Striking Edge advantage (+0.213)
+  + Style Pressure advantage (+0.171)
+  + Age Vs Peak advantage (+0.150)
+  + Cardio Decay advantage (+0.087)
+
+KEY FACTORS FOR Nicolas Dalby
+  + Elo advantage (+0.155)
+  + Style Vuln Wrestling advantage (+0.150)
+  + Slpm advantage (+0.149)
+  + Avg Opponent Elo advantage (+0.090)
+
+BETTING VALUE
+  Market implied probability (Jeremiah Wells): 50.0%
+  Model probability (Jeremiah Wells):          59.4%
+  Edge: +9.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tuco Tokkos vs Ivan Erslan
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tuco Tokkos: 60.1%
+  Ivan Erslan: 39.9%
+  → Predicted winner: Tuco Tokkos (60.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    24.6%
+  Submission:  22.1%
+  Decision:    53.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 37.1%
+  Goes the distance:            62.9%
+
+KEY FACTORS FOR Tuco Tokkos
+  + Td Success Prob advantage (+0.299)
+  + Grapple Dom advantage (+0.147)
+  + Style Pressure advantage (+0.141)
+  + Elo advantage (+0.129)
+  + Style Striker advantage (+0.064)
+
+KEY FACTORS FOR Ivan Erslan
+  + Td Def advantage (+0.219)
+  + Avg Opponent Elo advantage (+0.135)
+  + Reach Strike advantage (+0.091)
+  + Grappling Defense advantage (+0.058)
+
+BETTING VALUE
+  Market implied probability (Tuco Tokkos): 50.0%
+  Model probability (Tuco Tokkos):          60.1%
+  Edge: +10.1%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Trey Ogden vs Tommy Gantt
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Trey Ogden: 71.2%
+  Tommy Gantt: 28.8%
+  → Predicted winner: Trey Ogden (71.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    20.5%
+  Submission:  23.8%
+  Decision:    55.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 32.2%
+  Goes the distance:            67.8%
+
+KEY FACTORS FOR Trey Ogden
+  + Td Success Prob advantage (+0.319)
+  + Reach Strike advantage (+0.215)
+  + Grapple Dom advantage (+0.197)
+  + Elo Uncertainty advantage (+0.154)
+  + Elo advantage (+0.120)
+
+KEY FACTORS FOR Tommy Gantt
+  + Striking Edge advantage (+0.193)
+  + Durability advantage (+0.052)
+
+BETTING VALUE
+  Market implied probability (Trey Ogden): 50.0%
+  Model probability (Trey Ogden):          71.2%
+  Edge: +21.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ketlen Vieira vs Jacqueline Cavalcanti
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ketlen Vieira: 28.3%
+  Jacqueline Cavalcanti: 71.7%
+  → Predicted winner: Jacqueline Cavalcanti (71.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    21.6%
+  Submission:  12.3%
+  Decision:    66.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 30.5%
+  Goes the distance:            69.5%
+
+KEY FACTORS FOR Ketlen Vieira
+  + Td Acc advantage (+0.350)
+
+KEY FACTORS FOR Jacqueline Cavalcanti
+  + Strike Def advantage (+0.272)
+  + Age Vs Peak advantage (+0.264)
+  + Slpm advantage (+0.168)
+  + Striking Edge advantage (+0.147)
+  + Style Pressure advantage (+0.143)
+
+BETTING VALUE
+  Market implied probability (Ketlen Vieira): 50.0%
+  Model probability (Ketlen Vieira):          28.3%
+  Edge: -21.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Cody Brundage vs Andre Petroski
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Cody Brundage: 28.1%
+  Andre Petroski: 71.9%
+  → Predicted winner: Andre Petroski (71.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    19.1%
+  Submission:  49.6%
+  Decision:    31.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.5%
+  Goes the distance:            59.5%
+
+KEY FACTORS FOR Cody Brundage
+  + Age Vs Peak advantage (+0.192)
+  + Kd Absorbed Per Fight advantage (+0.136)
+  + Reach Strike advantage (+0.095)
+  + Age advantage (+0.092)
+  + Momentum Score advantage (+0.074)
+
+KEY FACTORS FOR Andre Petroski
+  + Elo advantage (+0.513)
+  + Style Pressure advantage (+0.201)
+  + Elo Vs Peak advantage (+0.158)
+  + Grapple Dom advantage (+0.156)
+  + Slpm advantage (+0.099)
+
+BETTING VALUE
+  Market implied probability (Cody Brundage): 50.0%
+  Model probability (Cody Brundage):          28.1%
+  Edge: -21.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alice Ardelean vs Polyana Viana
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alice Ardelean: 65.8%
+  Polyana Viana: 34.2%
+  → Predicted winner: Alice Ardelean (65.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.3%
+  Submission:  21.1%
+  Decision:    41.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 59.6%
+  Goes the distance:            40.4%
+
+KEY FACTORS FOR Alice Ardelean
+  + Td Def advantage (+0.311)
+  + Strike Def advantage (+0.202)
+  + Slpm advantage (+0.160)
+  + Grappling Defense advantage (+0.154)
+  + Early Output Share advantage (+0.151)
+
+KEY FACTORS FOR Polyana Viana
+  + Sapm advantage (+0.166)
+  + Durability advantage (+0.166)
+  + Striking Edge advantage (+0.136)
+  + Style Finisher advantage (+0.131)
+
+BETTING VALUE
+  Market implied probability (Alice Ardelean): 50.0%
+  Model probability (Alice Ardelean):          65.8%
+  Edge: +15.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Daniel Barez vs Luis Gurule
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Daniel Barez: 53.6%
+  Luis Gurule: 46.4%
+  → Predicted winner: Daniel Barez (53.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.9%
+  Submission:  20.2%
+  Decision:    53.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 21.6%
+  Goes the distance:            78.4%
+
+KEY FACTORS FOR Daniel Barez
+  + Grapple Dom advantage (+0.166)
+  + Elo advantage (+0.151)
+  + Reach Strike advantage (+0.141)
+  + Avg Opponent Elo advantage (+0.111)
+  + Elo Trend advantage (+0.110)
+
+KEY FACTORS FOR Luis Gurule
+  + Striking Edge advantage (+0.194)
+  + Age Vs Peak advantage (+0.118)
+  + Age advantage (+0.093)
+  + Durability advantage (+0.086)
+
+BETTING VALUE
+  Market implied probability (Daniel Barez): 50.0%
+  Model probability (Daniel Barez):          53.6%
+  Edge: +3.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Costa
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Shauna Bannon vs Nicolle Caliari
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Shauna Bannon: 76.2%
+  Nicolle Caliari: 23.8%
+  → Predicted winner: Shauna Bannon (76.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    29.6%
+  Submission:  21.8%
+  Decision:    48.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.4%
+  Goes the distance:            57.6%
+
+KEY FACTORS FOR Shauna Bannon
+  + Striking Edge advantage (+0.636)
+  + Td Def advantage (+0.216)
+  + Avg Opponent Elo advantage (+0.209)
+  + Elo advantage (+0.193)
+  + Reach Strike advantage (+0.174)
+
+KEY FACTORS FOR Nicolle Caliari
+  + Grapple Dom advantage (+0.218)
+  + Leg Strike Rate advantage (+0.212)
+
+BETTING VALUE
+  Market implied probability (Shauna Bannon): 50.0%
+  Model probability (Shauna Bannon):          76.2%
+  Edge: +26.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-05-10 17:52 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Melquizael Costa  (Model: 73.3%  Edge: +37.0%)
+  2. Rodolfo Bellato  (Model: 54.2%  Edge: +8.4%)
