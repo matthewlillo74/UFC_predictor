@@ -82,17 +82,17 @@ class UFCPredictor:
         #
         # Decay: 2-year half-life — a fight from 2 years ago gets weight 0.5,
         # 4 years ago gets 0.25, etc. Fights from 2024-2026 get weight ~1.0.
-        # Recency weighting — fights from the last year matter most.
-        # Tightened from 2-year to 1-year half-life to address 2026 accuracy drop.
-        # Modern UFC (post-2022) has different finish rates and fighter styles than
-        # the historical data. Stronger recency weighting helps the model learn
-        # current patterns without discarding valuable historical data entirely.
+        # Recency weighting — more recent fights get higher weight during training.
+        # 2-year half-life balances learning current UFC patterns while keeping
+        # enough historical data for stable feature learning.
+        # Note: tightening to 1yr half-life was tested and made 2026 accuracy worse —
+        # the problem is structural (missing features) not a weighting issue.
         now = pd.Timestamp.now()
         fight_dates = pd.to_datetime(df_clean["fight_date"])
         if fight_dates.dt.tz is not None:
             fight_dates = fight_dates.dt.tz_localize(None)
         days_ago = (now - fight_dates).dt.days.clip(lower=0)
-        half_life_days = 365 * 1  # 1-year half-life (tightened from 2 years)
+        half_life_days = 365 * 2  # 2-year half-life
         sample_weights = np.power(0.5, days_ago / half_life_days)
         sample_weights = (sample_weights / sample_weights.mean()).values
         sample_weights = sample_weights.astype(np.float32)
