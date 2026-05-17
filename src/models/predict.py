@@ -82,15 +82,20 @@ class UFCPredictor:
         #
         # Decay: 2-year half-life — a fight from 2 years ago gets weight 0.5,
         # 4 years ago gets 0.25, etc. Fights from 2024-2026 get weight ~1.0.
-        # This makes the model more sensitive to current trends without discarding
-        # historical data entirely.
-        now = pd.Timestamp.utcnow().tz_localize(None)
-        fight_dates = pd.to_datetime(df_clean["fight_date"]).dt.tz_localize(None)
+        # Recency weighting — fights from the last year matter most.
+        # Tightened from 2-year to 1-year half-life to address 2026 accuracy drop.
+        # Modern UFC (post-2022) has different finish rates and fighter styles than
+        # the historical data. Stronger recency weighting helps the model learn
+        # current patterns without discarding valuable historical data entirely.
+        now = pd.Timestamp.now()
+        fight_dates = pd.to_datetime(df_clean["fight_date"])
+        if fight_dates.dt.tz is not None:
+            fight_dates = fight_dates.dt.tz_localize(None)
         days_ago = (now - fight_dates).dt.days.clip(lower=0)
-        half_life_days = 365 * 2  # 2-year half-life
+        half_life_days = 365 * 1  # 1-year half-life (tightened from 2 years)
         sample_weights = np.power(0.5, days_ago / half_life_days)
-        sample_weights = (sample_weights / sample_weights.mean()).values  # normalize to mean=1
-        sample_weights = sample_weights.astype(np.float32)  # sklearn calibration requires float32
+        sample_weights = (sample_weights / sample_weights.mean()).values
+        sample_weights = sample_weights.astype(np.float32)
 
         recent_pct = (days_ago < 365).mean()
         logger.info(f"Recency weights: {recent_pct:.1%} of fights within last year, "
@@ -173,12 +178,12 @@ class UFCPredictor:
 
         # Calibrate round model on RECENT fights only (last 2 years).
         # The base finish rate has shifted from ~45% historically to ~33% in modern UFC.
-        # If we calibrate on all training data the calibrator can't correct for this drift.
-        # Using only recent fights means the calibrator learns the current finish rate
-        # and adjusts the model's overconfident UNDER predictions accordingly.
-        recent_cutoff = pd.Timestamp.utcnow().tz_localize(None) - pd.Timedelta(days=730)
-        df_recent_dates = pd.to_datetime(df_clean["fight_date"]).dt.tz_localize(None)
-        df_recent_mask = df_recent_dates >= recent_cutoff
+        recent_cutoff = pd.Timestamp.now() - pd.Timedelta(days=730)
+        raw_dates = pd.to_datetime(df_clean["fight_date"])
+        # Strip timezone if present so comparison always works
+        if raw_dates.dt.tz is not None:
+            raw_dates = raw_dates.dt.tz_localize(None)
+        df_recent_mask = raw_dates >= recent_cutoff
         df_recent = df_clean[df_recent_mask]
 
         if len(df_recent) >= 200:
