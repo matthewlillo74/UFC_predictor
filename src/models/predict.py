@@ -176,13 +176,14 @@ class UFCPredictor:
         )
         self.round_model.fit(X, y_early, sample_weight=sample_weights)
 
-        # Calibrate round model on RECENT fights only (last 2 years).
-        # The base finish rate has shifted from ~45% historically to ~33% in modern UFC.
-        recent_cutoff = pd.Timestamp.now() - pd.Timedelta(days=730)
+        # Calibrate round model on RECENT fights only (last 2 years of training data).
+        # Uses max date in training data as anchor, not today — because today is
+        # after the test cutoff and would find zero fights in the training set.
         raw_dates = pd.to_datetime(df_clean["fight_date"])
-        # Strip timezone if present so comparison always works
         if raw_dates.dt.tz is not None:
             raw_dates = raw_dates.dt.tz_localize(None)
+        max_train_date = raw_dates.max()
+        recent_cutoff = max_train_date - pd.Timedelta(days=730)
         df_recent_mask = raw_dates >= recent_cutoff
         df_recent = df_clean[df_recent_mask]
 
