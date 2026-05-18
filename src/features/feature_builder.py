@@ -158,6 +158,7 @@ class FeatureBuilder:
         fighter_a_id: int,
         fighter_b_id: int,
         as_of_date: datetime,
+        fight_weight_class: str = None,
     ) -> dict:
         """
         Build the full feature vector for a matchup.
@@ -275,6 +276,125 @@ class FeatureBuilder:
         days_b = t("days_since_last_fight")
         short_notice_a = 1.0 if (days_a is not None and 0 < days_a < SHORT_NOTICE_DAYS) else 0.0
         short_notice_b = 1.0 if (days_b is not None and 0 < days_b < SHORT_NOTICE_DAYS) else 0.0
+
+        # ── Weight class debut flag ───────────────────────────────────────────
+        # Critical for catching moves like Sterling to FW, Luque to MW, Costa to FW.
+        # When a fighter makes their debut at a new weight class, the model's features
+        # are built from stats at the old weight class — they're partially invalid.
+        # This flag lets the model learn to discount its own confidence on these fights.
+        #
+        # Logic: find the most recent completed fight for each fighter before this date.
+        # If that fight's weight_class differs from the current fight's weight_class,
+        # this is a weight class debut.
+        def is_weight_class_debut(fighter_id: int, current_wc: str) -> float:
+            if not current_wc:
+                return 0.0
+            # Get previous fight weight class from fight history cache
+            if self._fight_history is not None:
+                prior = [
+                    (fd, opp_id)
+                    for fd, opp_id in self._fight_history.get(fighter_id, [])
+                    if fd < as_of_date
+                ]
+                if not prior:
+                    return 0.0  # debut fighter — handled by elo_uncertainty already
+                prior.sort(reverse=True)
+                last_fight_date = prior[0][0]
+                # Look up that fight's weight class from DB
+                from src.database import Fight
+                last_fight = (
+                    self.session.query(Fight)
+                    .filter(
+                        ((Fight.fighter_a_id == fighter_id) | (Fight.fighter_b_id == fighter_id)),
+                        Fight.fight_date == last_fight_date,
+                        Fight.weight_class.isnot(None),
+                    )
+                    .first()
+                )
+                if not last_fight or not last_fight.weight_class:
+                    return 0.0
+                # Normalize for comparison (strip "Women's" prefix for same-division moves)
+                prev_wc = last_fight.weight_class.strip()
+                curr_wc = current_wc.strip()
+                return 1.0 if prev_wc != curr_wc else 0.0
+            return 0.0
+
+        wc_debut_a = is_weight_class_debut(fighter_a_id, fight_weight_class)
+        wc_debut_b = is_weight_class_debut(fighter_b_id, fight_weight_class)
+
+        # ── Style matchup suppression ─────────────────────────────────────────
+        # The core blind spot: raw output stats don't show how a fighter's offense
+        # changes against different opponent styles.
+        # Arnold Allen's wrestling shuts down striker offense → model missed this.
+        # Zalal's grappling suppresses Sterling's output → model missed this.
+        # Hooper's grappling couldn't engage Gibson who kept it standing → missed.
+        #
+        # We already compute winrate_vs_wrestlers/strikers/pressure for each fighter.
+        # The key insight: if Fighter B is a heavy wrestler, what matters is
+        # Fighter A's winrate_vs_wrestlers (how A does against B's style),
+        # not just B's overall win rate.
+        #
+        # style_suppression_a = A's vulnerability to B's dominant style
+        # style_suppression_b = B's vulnerability to A's dominant style
+        # Positive diff = A is less vulnerable to B's style than B is to A's
+
+        def dominant_style(stats_obj) -> str:
+            """Identify a fighter's primary style from style fingerprints."""
+            if not stats_obj:
+                return "striker"
+            wrestling = _safe(getattr(stats_obj, "style_wrestling", None))
+            pressure  = _safe(getattr(stats_obj, "style_pressure",  None))
+            striker   = _safe(getattr(stats_obj, "style_striker",   None))
+            if wrestling >= max(pressure, striker):
+                return "wrestler"
+            if pressure >= max(wrestling, striker):
+                return "pressure"
+            return "striker"
+
+        def vulnerability_vs_style(stats_obj, opponent_style: str) -> float:
+            """
+            Return how poorly this fighter does against the given opponent style.
+            Lower winrate_vs_X = more vulnerable to that style.
+            Returns (1 - winrate) so higher = more vulnerable.
+            """
+            if not stats_obj:
+                return 0.5  # unknown = neutral
+            if opponent_style == "wrestler":
+                wr = _safe(getattr(stats_obj, "winrate_vs_wrestlers", None))
+            elif opponent_style == "pressure":
+                wr = _safe(getattr(stats_obj, "winrate_vs_pressure", None))
+            else:  # striker
+                wr = _safe(getattr(stats_obj, "winrate_vs_strikers", None))
+            if wr == 0.0:
+                return 0.5  # not computed yet = neutral
+            return round(1.0 - wr, 4)
+
+        style_b = dominant_style(stats_b)
+        style_a = dominant_style(stats_a)
+
+        # How vulnerable is Fighter A to Fighter B's style?
+        suppression_a = vulnerability_vs_style(stats_a, style_b)
+        # How vulnerable is Fighter B to Fighter A's style?
+        suppression_b = vulnerability_vs_style(stats_b, style_a)
+
+        # Also compute the direct style clash — what % of the time does a wrestler
+        # beat a striker in this dataset? This is encoded as a scalar advantage.
+        # Positive = A's style is advantaged over B's style historically
+        STYLE_ADVANTAGE_MATRIX = {
+            # (A_style, B_style): A's historical win rate in this matchup
+            ("wrestler", "striker"):  0.58,   # wrestlers beat strikers
+            ("wrestler", "pressure"): 0.52,
+            ("wrestler", "wrestler"): 0.50,
+            ("striker",  "wrestler"): 0.42,
+            ("striker",  "striker"):  0.50,
+            ("striker",  "pressure"): 0.51,
+            ("pressure", "striker"):  0.54,
+            ("pressure", "wrestler"): 0.48,
+            ("pressure", "pressure"): 0.50,
+        }
+        style_clash_advantage = STYLE_ADVANTAGE_MATRIX.get(
+            (style_a, style_b), 0.50
+        ) - 0.50  # center around 0
 
         features = {
             # Physical
@@ -403,6 +523,25 @@ class FeatureBuilder:
             "sentiment_diff":        0.0,
             "fighter_a_injury_flag": 0.0,
             "fighter_b_injury_flag": 0.0,
+            # ── Weight class debut flags ──────────────────────────────────────────
+            # 1.0 if this is the fighter's first fight at this weight class.
+            # When set, the model should discount confidence — stats from old
+            # division are partially invalid (size, pace, power all change).
+            # These are NOT diffs — kept as separate flags so model learns
+            # "A debuting here" is different from "B debuting here".
+            "fighter_a_wc_debut":  wc_debut_a,
+            "fighter_b_wc_debut":  wc_debut_b,
+            # ── Style matchup suppression ─────────────────────────────────────────
+            # How vulnerable is each fighter to the opponent's dominant style?
+            # suppression_a = 1 - A's winrate_vs_B's_style (higher = more vulnerable)
+            # suppression_b = 1 - B's winrate_vs_A's_style (higher = more vulnerable)
+            # suppression_diff > 0 means A is less vulnerable to B's style than vice versa
+            "style_suppression_a":    suppression_a,
+            "style_suppression_b":    suppression_b,
+            "style_suppression_diff": round(suppression_a - suppression_b, 4),
+            # Historical win rate advantage of A's style vs B's style
+            # e.g. wrestler vs striker = +0.08 (wrestlers win 58% historically)
+            "style_clash_advantage":  style_clash_advantage,
             # ── Method-specific rates ─────────────────────────────────────────────
             # finish_rate_diff only captures total finishing ability. These separate
             # HOW fighters win and lose — critical for method/prop prediction.
@@ -525,6 +664,7 @@ def build_training_dataset(session: Session) -> pd.DataFrame:
                 fighter_a_id=fight.fighter_a_id,
                 fighter_b_id=fight.fighter_b_id,
                 as_of_date=fight.fight_date,
+                fight_weight_class=fight.weight_class,
             )
 
             # Fill in fight-level context features

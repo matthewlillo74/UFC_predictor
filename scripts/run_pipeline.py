@@ -268,7 +268,10 @@ def step_predict_next_event(session, odds_data: list) -> str:
                 session.add(fight_obj)
                 session.flush()
 
-            features = builder.build_matchup_features(fa.id, fb.id, fight_date)
+            features = builder.build_matchup_features(
+                fa.id, fb.id, fight_date,
+                fight_weight_class=f.get("weight_class", ""),
+            )
             pred = predictor.predict(features, fa.name, fb.name)
 
             # Match odds
@@ -344,13 +347,92 @@ def step_score_predictions(session):
     tracker.print_report()
 
 
+def step_auto_score_live_results(session):
+    """
+    Auto-detect and score any completed events that haven't been logged yet.
+    Runs automatically after every pipeline execution — no manual --event flag needed.
+
+    Logic:
+      1. Find all events in DB that have completed fights (winner_id populated)
+      2. Check which event names are already in live_accuracy.csv
+      3. Score any that are missing
+      4. Print the updated report
+    """
+    import csv
+    from pathlib import Path
+    from config import PREDICTIONS_DIR
+
+    LIVE_LOG_PATH = PREDICTIONS_DIR / "live_accuracy.csv"
+
+    # Get already-scored events from CSV
+    scored_events = set()
+    if LIVE_LOG_PATH.exists():
+        with open(LIVE_LOG_PATH, newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                scored_events.add(row.get("event", ""))
+
+    # Find completed events in DB not yet scored
+    from src.database import Event, Fight
+    from datetime import datetime, timezone
+
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
+    completed_events = (
+        session.query(Event)
+        .filter(Event.date <= now)
+        .order_by(Event.date.desc())
+        .limit(20)
+        .all()
+    )
+
+    events_to_score = []
+    for event in completed_events:
+        if event.name in scored_events:
+            continue
+        # Check if this event has any completed fights
+        completed_fights = session.query(Fight).filter(
+            Fight.event_id == event.id,
+            Fight.winner_id.isnot(None)
+        ).count()
+        if completed_fights > 0:
+            events_to_score.append(event)
+
+    if not events_to_score:
+        logger.info("Auto-score: all completed events already logged")
+        return
+
+    logger.info(f"Auto-score: found {len(events_to_score)} unscored events")
+
+    # Import score_event from log_live_results
+    import importlib.util, sys, os
+    script_path = os.path.join(os.path.dirname(__file__), "log_live_results.py")
+    spec = importlib.util.spec_from_file_location("log_live_results", script_path)
+    llr = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(llr)
+
+    for event in events_to_score:
+        logger.info(f"Auto-scoring: {event.name}")
+        try:
+            llr.score_event(session, event.name)
+        except Exception as e:
+            logger.error(f"Failed to score {event.name}: {e}")
+
+    # Print updated report
+    logger.info("Auto-score complete — printing live accuracy report")
+    try:
+        llr.print_report(session)
+    except Exception as e:
+        logger.warning(f"Could not print report: {e}")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(description="UFC Predictor pipeline")
-    parser.add_argument("--post-event", action="store_true", help="Score predictions after event completes")
+    parser.add_argument("--post-event",   action="store_true", help="Score predictions after event completes")
     parser.add_argument("--full-retrain", action="store_true", help="Force full dataset rebuild and retrain")
-    parser.add_argument("--no-odds", action="store_true", help="Skip odds fetch (no API key needed)")
+    parser.add_argument("--no-odds",      action="store_true", help="Skip odds fetch (no API key needed)")
+    parser.add_argument("--no-auto-score", action="store_true", help="Skip auto-scoring of completed events")
     args = parser.parse_args()
 
     print("\n" + "═"*50)
@@ -364,6 +446,8 @@ def main():
     if args.post_event:
         logger.info("Post-event mode: scoring predictions")
         step_score_predictions(session)
+        if not args.no_auto_score:
+            step_auto_score_live_results(session)
     else:
         logger.info("Pre-event mode: scrape → enrich → styles → vulnerability → (retrain) → predict")
         new_events = step_scrape_new_events(session)
@@ -371,6 +455,9 @@ def main():
             step_enrich_new_fighters(session)
             step_compute_styles()
             step_compute_vulnerability()
+            # Auto-score any newly scraped completed events
+            if not args.no_auto_score:
+                step_auto_score_live_results(session)
         step_retrain(force=args.full_retrain, new_events=new_events)
         odds = step_fetch_odds(session, skip=args.no_odds)
         step_predict_next_event(session, odds)

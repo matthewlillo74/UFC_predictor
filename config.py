@@ -161,6 +161,25 @@ FEATURE_COLUMNS = [
     "sub_rate_diff",
     "decision_rate_diff",
     "ko_vulnerability_diff",
+    # ── Weight class debut flags ───────────────────────────────────────────────
+    # 1.0 if this is the fighter's first fight at this weight class.
+    # Separate flags (not diff) so model learns "A debuting" vs "B debuting" differ.
+    # Key misses this fixes: Allen/Costa (Costa debuting at FW), Luque/Gastelum
+    # (Luque debuting at MW), Sterling/Zalal (Sterling debuting at FW).
+    "fighter_a_wc_debut",
+    "fighter_b_wc_debut",
+    # ── Style matchup suppression ──────────────────────────────────────────────
+    # How vulnerable is each fighter to the opponent's dominant style?
+    # Cross-joins dominant_style(B) with winrate_vs_[B's style] for fighter A.
+    # suppression_a: A's vulnerability to B's style (1 - A's winrate vs that style)
+    # suppression_b: B's vulnerability to A's style
+    # suppression_diff: positive = A less vulnerable = A has style advantage
+    # style_clash_advantage: historical win rate of A's style vs B's style (centered at 0)
+    # Key misses this fixes: Allen wrestling > Costa, Gibson standing > Hooper
+    "style_suppression_a",
+    "style_suppression_b",
+    "style_suppression_diff",
+    "style_clash_advantage",
 ]
 
 TARGET_WINNER = "winner"          # binary: 1 = fighter_A wins, 0 = fighter_B wins
