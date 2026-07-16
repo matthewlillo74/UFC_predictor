@@ -7,6 +7,52 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-15 — Accuracy queue item #3: per-division winner probability calibration
+
+**What:** one global probability scale for the winner model despite documented live
+accuracy spread by division (25-80%). The round model already had a working Platt
+(sigmoid) calibration pattern — reused it per weight class instead of globally.
+
+**Design:** in `src/models/predict.py::train()`, after the round model calibration
+block, fit a `CalibratedClassifierCV(self.winner_model, method="sigmoid", cv="prefit")`
+per division with ≥150 fights, using that division's recent fights (last 2 years, same
+`df_recent_mask` the round model already computes) when there are ≥100 of them, falling
+back to the division's full history otherwise — same recent-vs-full fallback logic as
+the round model. Stored in `self.winner_calibrators_by_division: dict[str, ...]`,
+persisted via `save()`/`load()` as `winner_calibrators_by_division.pkl`.
+
+`predict()` gained an optional `weight_class` param: looks up a division-specific
+calibrator first, falls back to the old global `winner_calibrator` (currently always
+None, dead code path), falls back to raw probabilities if neither exists — fully
+backward compatible, nothing breaks for callers that don't pass it. Updated the two
+highest-value call sites (`run_pipeline.py::step_predict_next_event`,
+`predict_fight_by_name`) to pass it. **Not yet updated:** the 5 call sites in
+`dashboard/app.py` — left as a known follow-up since the fallback is safe (dashboard
+predictions just won't get the calibration boost until updated).
+
+Also fixed a latent interface bug while in there: the old `winner_calibrator` slot
+expected a scalar `.predict([raw_prob])` interface, inconsistent with how the round
+model's calibrator is actually used (`.predict_proba(X)` on the full feature matrix) —
+never caught because it was always None. `predict()` now handles both interfaces so
+old saved models with a populated scalar-style calibrator won't break, but new
+calibrators (division or global) use the standard `predict_proba(X)` interface.
+
+**Verified:** all 11 real divisions (excludes Open/Catch/Super Heavyweight and Women's
+Featherweight — too few fights) got a calibrator fit. Confirmed calibration actually
+changes output: same feature vector predicted 0.4451 (no weight_class/raw+cap), 0.2882
+(Lightweight-calibrated), 0.4002 (deliberately wrong division, Heavyweight) — proves the
+per-division lookup is real, not a no-op. **Caveat:** `evaluate()` (used for the
+train-time accuracy/logloss report) calls raw `predict_proba` directly and bypasses
+calibration entirely, so this feature's effect isn't visible in that report (accuracy
+held flat at 60.1% as expected — calibration reshapes probability magnitudes, rarely
+flips the argmax decision). Also: some divisions (e.g. Lightweight, 143 recent fights)
+have a fairly small calibration sample — a 15.7pp swing on one test case could partly
+reflect calibration noise rather than pure signal. Worth validating against live
+results (`log_live_results.py`'s per-division calibration table) before fully trusting,
+rather than a hard guarantee of correctness from this session alone.
+
+---
+
 ## 2026-07-15 — Accuracy queue item #2: opponent-quality-adjusted counting stats
 
 **What:** raw `slpm`/`td_avg`/`td_def`/`sapm` read identically whether earned against

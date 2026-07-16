@@ -298,7 +298,7 @@ def step_predict_next_event(session, odds_data: list) -> str:
                 fa.id, fb.id, fight_date,
                 fight_weight_class=f.get("weight_class", ""),
             )
-            pred = predictor.predict(features, fa.name, fb.name)
+            pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class", ""))
 
             # Match odds
             fight_odds = None

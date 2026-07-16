@@ -207,6 +207,43 @@ class UFCPredictor:
             self.round_model_calibrated.fit(X, y_early)
         logger.info("Round model calibrated with Platt scaling (recent fights)")
 
+        # ── Per-division winner calibration ──────────────────────────────────
+        # One global probability scale doesn't fit divisions with very different
+        # confidence/accuracy profiles (live data shows Featherweight at 80% live
+        # accuracy vs. Women's divisions at 25-47% on the same raw model output).
+        # Same Platt-scaling pattern as the round model above, applied per weight
+        # class instead of globally, using each division's recent fights when
+        # there are enough (mirrors the round model's recent-vs-full fallback).
+        from sklearn.calibration import CalibratedClassifierCV
+
+        self.winner_calibrators_by_division: dict = {}
+        MIN_FIGHTS_FOR_DIVISION_CALIBRATION = 150
+        MIN_RECENT_FIGHTS_FOR_DIVISION_CALIBRATION = 100
+        divisions = df_clean["weight_class"].fillna("Unknown")
+
+        for division in divisions.unique():
+            div_mask = (divisions == division).values
+            if div_mask.sum() < MIN_FIGHTS_FOR_DIVISION_CALIBRATION:
+                continue
+
+            div_recent_mask = div_mask & df_recent_mask.values
+            use_recent = div_recent_mask.sum() >= MIN_RECENT_FIGHTS_FOR_DIVISION_CALIBRATION
+            use_mask = div_recent_mask if use_recent else div_mask
+
+            X_div = X[use_mask]
+            y_div = y_winner[use_mask]
+            try:
+                cal = CalibratedClassifierCV(self.winner_model, method="sigmoid", cv="prefit")
+                cal.fit(X_div, y_div)
+                self.winner_calibrators_by_division[division] = cal
+                logger.debug(f"Division calibration — {division}: {use_mask.sum()} fights "
+                             f"({'recent' if use_recent else 'full'})")
+            except Exception as e:
+                logger.warning(f"Division calibration failed for {division}: {e}")
+
+        logger.info(f"Division calibrators fit for {len(self.winner_calibrators_by_division)} "
+                    f"divisions: {sorted(self.winner_calibrators_by_division.keys())}")
+
         # ── SHAP explainer ─────────────────────────────────────────────────
         self.shap_explainer = shap.TreeExplainer(self.winner_model)
 
@@ -220,9 +257,17 @@ class UFCPredictor:
         features: dict,
         fighter_a_name: str,
         fighter_b_name: str,
+        weight_class: str = None,
     ) -> dict:
         """
         Generate full prediction for a fight.
+
+        Args:
+            weight_class: fight's division, used to look up a per-division
+                probability calibrator if one was fit during training (see
+                winner_calibrators_by_division). Falls back to the global
+                calibrator (currently unused/None), then raw probabilities,
+                if not provided or no calibrator exists for this division.
 
         Returns:
             dict with probabilities, method breakdown, explanations, etc.
@@ -240,16 +285,31 @@ class UFCPredictor:
         raw_a = float(win_probs_raw[idx_a])
         raw_b = float(win_probs_raw[idx_b])
 
-        # Apply probability cap — raw XGBoost becomes overconfident for debut fighters
-        # or fighters with sparse stats (large feature gaps push extreme probabilities).
-        # From calibration report: 80-90% bucket hits 76.6%, 90%+ hits 83.3%.
-        # We cap at 90% since we have no validated data above that range.
-        # This makes 97-99% predictions display as 90% which better reflects true confidence.
-        if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
-            prob_a = float(self.winner_calibrator.predict([raw_a])[0])
+        # Apply probability calibration — raw XGBoost becomes overconfident for debut
+        # fighters or fighters with sparse stats (large feature gaps push extreme
+        # probabilities), and different divisions have measurably different live
+        # calibration profiles (e.g. Featherweight vs. Women's divisions). Prefer a
+        # division-specific calibrator when one was fit and this fight's division is
+        # known; fall back to the global calibrator (unused today), then raw.
+        div_calibrators = getattr(self, "winner_calibrators_by_division", {}) or {}
+        calibrator = div_calibrators.get(weight_class) if weight_class else None
+        if calibrator is None:
+            calibrator = getattr(self, "winner_calibrator", None)
+
+        if calibrator is not None and hasattr(calibrator, "predict_proba"):
+            cal_probs = calibrator.predict_proba(X)[0]
+            prob_a = float(cal_probs[idx_a])
+            prob_b = float(cal_probs[idx_b])
+        elif calibrator is not None:
+            # Legacy scalar-calibrator interface (never populated in practice)
+            prob_a = float(calibrator.predict([raw_a])[0])
             prob_b = 1.0 - prob_a
         else:
             prob_a, prob_b = raw_a, raw_b
+
+        # From calibration report: 80-90% bucket hits 76.6%, 90%+ hits 83.3%.
+        # We cap at 90% since we have no validated data above that range.
+        # This makes 97-99% predictions display as 90% which better reflects true confidence.
 
         # Cap at 90% max — never report more confidence than we can validate
         MAX_PROB = 0.90
@@ -421,6 +481,10 @@ class UFCPredictor:
         if hasattr(self, "winner_calibrator") and self.winner_calibrator is not None:
             with open(path / "winner_calibrator.pkl", "wb") as f:
                 pickle.dump(self.winner_calibrator, f)
+        # Per-division winner calibrators
+        if getattr(self, "winner_calibrators_by_division", None):
+            with open(path / "winner_calibrators_by_division.pkl", "wb") as f:
+                pickle.dump(self.winner_calibrators_by_division, f)
         # Calibrated round model
         if hasattr(self, "round_model_calibrated") and self.round_model_calibrated:
             with open(path / "round_model_calibrated.pkl", "wb") as f:
@@ -444,6 +508,13 @@ class UFCPredictor:
                 self.winner_calibrator = pickle.load(f)
         else:
             self.winner_calibrator = None
+        # Load per-division winner calibrators
+        div_cal_path = path / "winner_calibrators_by_division.pkl"
+        if div_cal_path.exists():
+            with open(div_cal_path, "rb") as f:
+                self.winner_calibrators_by_division = pickle.load(f)
+        else:
+            self.winner_calibrators_by_division = {}
         # Load calibrated round model
         round_cal_path = path / "round_model_calibrated.pkl"
         if round_cal_path.exists():
@@ -550,15 +621,16 @@ def predict_fight_by_name(
     fighter_a = find_fighter(fighter_a_name)
     fighter_b = find_fighter(fighter_b_name)
 
+    resolved_weight_class = weight_class or fighter_a.weight_class
     builder = FeatureBuilder(session)
     features = builder.build_matchup_features(
         fighter_a.id, fighter_b.id, fight_date,
-        fight_weight_class=weight_class or fighter_a.weight_class,
+        fight_weight_class=resolved_weight_class,
     )
 
     predictor = UFCPredictor()
     predictor.load()
-    result = predictor.predict(features, fighter_a.name, fighter_b.name)
+    result = predictor.predict(features, fighter_a.name, fighter_b.name, weight_class=resolved_weight_class)
 
     session.close()
     return result

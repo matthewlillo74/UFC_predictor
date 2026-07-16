@@ -510,9 +510,13 @@ actually missing/dead in the current code, ranked by leverage vs. cost:
    snapshot. Built a real per-fight backfill from `FightStats` (leakage-safe, ~85% coverage)
    to properly restore them, then added the 4 opponent-adjustment diffs on top.
    `sapm_adj_diff`/`slpm_adj_diff` now consistently rank top-10 in feature importance.
-3. **Division-specific calibration layer** (small-medium) — one global model spans Heavyweight
-   and Women's divisions despite documented 25-80% live accuracy spread by division. Reuse the
-   round model's existing Platt-calibration pattern per division.
+3. ~~**Division-specific calibration layer**~~ **DONE 2026-07-15** — see `SESSION_LOG.md`.
+   Per-division Platt calibration fit for all 11 real divisions, verified to genuinely
+   shift output probabilities. Not yet wired into `dashboard/app.py`'s 5 predict() call
+   sites (safe no-op fallback) or `evaluate()` (bypasses calibration entirely, so this
+   isn't visible in the quick train-time accuracy report). Caveat: smaller divisions'
+   calibration samples are thin (e.g. Lightweight, 143 fights) — validate against live
+   results before fully trusting.
 4. **SHAP-based aggregate miss-pattern analysis** (small-medium) — SHAP is computed per-prediction
    for display only; nothing cross-references it against `log_live_results.py`'s
    high-confidence-miss list to find systematic feature-level failure signatures.
