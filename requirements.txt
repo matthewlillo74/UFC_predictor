@@ -1,8 +1,17 @@
 # ── Core data ─────────────────────────────────────────────────────────────────
 pandas>=2.2.0
 numpy>=2.0.0
-scikit-learn>=1.5.0
-xgboost>=2.0.3
+# scikit-learn and xgboost are pinned to the exact versions verified working
+# together in the project's original (WSL) environment — the committed model
+# pickles were trained against these, and unpinned installs pull newer
+# releases that break in two different ways:
+#   - xgboost 3.x changed base_score JSON serialization ("[5.00745E-1]"
+#     instead of a plain float string), breaking shap.TreeExplainer.
+#   - scikit-learn >=1.6 tightened classifier-detection in
+#     CalibratedClassifierCV, which xgboost 2.0.3's XGBClassifier wrapper
+#     doesn't satisfy, raising "Got a regressor" during round-model calibration.
+scikit-learn==1.4.2
+xgboost==2.0.3
 
 # ── Database ──────────────────────────────────────────────────────────────────
 sqlalchemy>=2.0.30
@@ -12,12 +21,13 @@ requests>=2.31.0
 beautifulsoup4>=4.12.3
 lxml>=5.2.1
 fake-useragent>=1.5.1
+tenacity>=8.2.3
 
 # ── NLP ───────────────────────────────────────────────────────────────────────
 vaderSentiment>=3.3.2
 
 # ── Explainability ────────────────────────────────────────────────────────────
-shap>=0.45.1
+shap==0.51.0
 
 # ── Dashboard ─────────────────────────────────────────────────────────────────
 streamlit>=1.35.0

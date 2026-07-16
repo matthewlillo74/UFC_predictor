@@ -200,6 +200,13 @@ def _load_fight(
         session, fight_data["fighter_b_name"], fight_data.get("fighter_b_url", "")
     )
 
+    # Determine winner ID
+    winner_id = None
+    if fight_data["winner"] == "fighter_a":
+        winner_id = fighter_a.id
+    elif fight_data["winner"] == "fighter_b":
+        winner_id = fighter_b.id
+
     # Skip if fight already exists — check both fighter orderings since
     # the random swap means A/B assignment varies between runs.
     # Also update result fields if the existing fight has no winner yet
@@ -225,13 +232,6 @@ def _load_fight(
             session.flush()
             logger.debug(f"Updated result for existing fight: {fighter_a.name} vs {fighter_b.name}")
         return
-
-    # Determine winner ID
-    winner_id = None
-    if fight_data["winner"] == "fighter_a":
-        winner_id = fighter_a.id
-    elif fight_data["winner"] == "fighter_b":
-        winner_id = fighter_b.id
 
     # Create fight record
     fight = Fight(

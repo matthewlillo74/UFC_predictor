@@ -24,8 +24,10 @@ Usage:
 
 import time
 import re
+import hashlib
 from datetime import datetime
 from typing import Optional
+from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -35,13 +37,59 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 BASE_URL = "http://www.ufcstats.com"
 DELAY = 1.5  # seconds between requests — be polite
 
+# ufcstats.com started serving an Anubis-style JS proof-of-work challenge
+# ("Checking your browser…") in front of every page. A plain requests.get()
+# only ever sees that challenge shell, not real content. We solve the PoW in
+# Python (the algorithm is inline in the challenge page's own <script>) once
+# per process and reuse the resulting session cookie for all later requests.
+_session = requests.Session()
+_session.headers.update({"User-Agent": "Mozilla/5.0"})
+
+
+def _is_challenge_page(html: str) -> bool:
+    return "var nonce" in html and "Checking your browser" in html
+
+
+def _solve_pow_challenge(html: str) -> Optional[dict]:
+    """Parse the nonce + difficulty out of the challenge page's JS and brute-force it."""
+    nonce_m = re.search(r'var nonce\s*=\s*"([a-f0-9]+)"', html)
+    diff_m = re.search(r'new Array\((\d+)\s*\+\s*1\)', html)
+    if not nonce_m or not diff_m:
+        return None
+
+    nonce = nonce_m.group(1)
+    target = "0" * int(diff_m.group(1))
+    n = 0
+    while not hashlib.sha256(f"{nonce}:{n}".encode()).hexdigest().startswith(target):
+        n += 1
+    return {"nonce": nonce, "n": n}
+
 
 def _get(url: str) -> Optional[BeautifulSoup]:
     """Fetch a page and return parsed BeautifulSoup, or None on failure."""
     try:
         time.sleep(DELAY)
-        resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
+        resp = _session.get(url, timeout=15)
         resp.raise_for_status()
+
+        if _is_challenge_page(resp.text):
+            solution = _solve_pow_challenge(resp.text)
+            if not solution:
+                logger.error(f"Bot challenge page but couldn't parse PoW params: {url}")
+                return None
+            challenge_resp = _session.post(
+                urljoin(resp.url, "/__c"),
+                data={"nonce": solution["nonce"], "n": solution["n"]},
+                timeout=15,
+            )
+            challenge_resp.raise_for_status()
+            time.sleep(DELAY)
+            resp = _session.get(url, timeout=15)
+            resp.raise_for_status()
+            if _is_challenge_page(resp.text):
+                logger.error(f"Still blocked by bot challenge after solving: {url}")
+                return None
+
         return BeautifulSoup(resp.text, "lxml")
     except requests.RequestException as e:
         logger.error(f"Request failed: {url} — {e}")

@@ -1,8 +1,11 @@
 # UFC Predictor — Claude Code Agent Handoff
- 
-> **Read this entire document before touching any file.**
-> This project has been inactive for a few months. There are known pending issues,
-> unapplied fixes, and a specific catch-up sequence to run before doing anything else.
+
+> **This document is a point-in-time narrative, not a live reference.** It was written
+> after a multi-month inactive period and describes state as of that catch-up. Several of
+> its claims went stale during the 2026-07-15 catch-up session — see `SESSION_LOG.md` for
+> what actually changed and `AGENT.md` for the read-order/trust hierarchy across these docs.
+> The "Known Pending Issues" section below (Fixes 1-3) is now historical — all three were
+> already applied before 2026-07-15, this doc just never got updated to say so.
  
 ---
  
@@ -21,8 +24,8 @@ End-to-end UFC fight prediction system. Goals: accurate predictions + betting va
  
 | Metric | Value |
 |---|---|
-| Features | 79 (XGBoost) |
-| Test set accuracy | 63.4% (baseline 50%) |
+| Features | 73 (XGBoost) — verified against `config.py` on 2026-07-15, this table was wrong (said 79) |
+| Test set accuracy | 63.4% (baseline 50%) — pre-2026-07-15 catch-up; will change after the leakage-revert retrain, see SESSION_LOG.md |
 | Live accuracy (96 fights, 9 events) | 63.5% |
 | Live winner accuracy — Featherweight | 80% (most reliable division) |
 | Live winner accuracy — Women's divisions | 25–47% (avoid betting) |
@@ -104,11 +107,15 @@ git push
  
 ---
  
-## Known Pending Issues (NOT YET APPLIED)
- 
-These were discussed and the fixes were written but **never committed to the repo**. Apply them in this order.
- 
-### PENDING FIX 1 — Auto-scorer bug (CRITICAL)
+## Known Pending Issues — RESOLVED as of 2026-07-15
+
+**Fixes 1-3 below were all already applied before the 2026-07-15 catch-up session** (confirmed
+against `git log` and the actual source). This section is kept for historical context only —
+do not re-apply these. Several *new* bugs were found and fixed instead that day, including two
+this section didn't know about (a duplicate-Fight-row bug this doc previously claimed was
+already fixed, and a title-fight round-prediction storage bug). Full detail in `SESSION_LOG.md`.
+
+### PENDING FIX 1 — Auto-scorer bug (CRITICAL) — ~~pending~~ RESOLVED
 **File:** `scripts/run_pipeline.py`
 **Problem:** The auto-scorer in `step_auto_score_live_results()` reads `live_accuracy.csv` to detect already-scored events, but treats events with 0 fights logged (from failed scoring runs) as "already scored". This means 11+ events were silently skipped.
 **Fix:** Change the scored_events detection from checking if event name exists to checking if at least 3 fights are logged for that event.
@@ -140,7 +147,7 @@ if LIVE_LOG_PATH.exists():
         scored_events = {name for name, count in event_fight_counts.items() if count >= 3}
 ```
  
-### PENDING FIX 2 — Round calibration date bug (IMPORTANT)
+### PENDING FIX 2 — Round calibration date bug (IMPORTANT) — ~~pending~~ RESOLVED
 **File:** `src/models/predict.py`
 **Problem:** Round model calibration used `pd.Timestamp.now()` (today's date) as anchor, but training data only goes to Nov 2023. "Last 2 years from today" finds 0 fights in training set, causing fallback to full dataset and a WARNING in the logs.
 **Fix:** Use `max date in training data` as anchor instead of today.
@@ -171,7 +178,7 @@ After this fix, training output should say:
 instead of:
 `WARNING: Only 0 recent fights — using full dataset for calibration`
  
-### PENDING FIX 3 — Recency weight date bug (IMPORTANT)
+### PENDING FIX 3 — Recency weight date bug (IMPORTANT) — ~~pending~~ RESOLVED
 **File:** `src/models/predict.py`
 **Problem:** The recency weight calculation used `pd.Timestamp.utcnow().tz_localize(None)` which can fail on timezone-naive dates. Same root cause as Fix 2.
 **Fix:** Use `pd.Timestamp.now()` and strip timezone explicitly.
@@ -196,13 +203,14 @@ rm data/processed/training_dataset.csv
 python scripts/train_model.py
 ```
  
-### PENDING FIX 4 — Stale calibrator pickle warnings
+### PENDING FIX 4 — Stale calibrator pickle warnings — ~~pending~~ RESOLVED (files never present)
 **Problem:** Streamlit and training logs show sklearn version warnings about stale calibrator pickle files from old experiments.
 **Fix:** Delete them:
 ```bash
 rm -f models_saved/v1/winner_model_calibrated.pkl
 rm -f models_saved/v1/winner_calibrator.pkl
 ```
+Verified 2026-07-15: neither file exists in `models_saved/v1/` — nothing to do.
  
 ### PENDING FIX 5 — Deprecation warnings (LOW PRIORITY)
 These don't break anything but clutter logs:
@@ -280,7 +288,8 @@ UFC_predictor/
 │   └── evaluation/
 │       └── performance_tracker.py     ← prediction scoring
 ├── dashboard/
-│   └── app.py                         ← Streamlit dashboard (6 pages incl. Props)
+│   └── app.py                         ← Streamlit dashboard (7 pages: Upcoming Event, Value Bets,
+│                                          Parlays, Props, Fighter Matchup, Performance, Elo Leaderboard)
 └── scripts/
     ├── run_pipeline.py                ← master pipeline (pre + post event)
     ├── train_model.py                 ← training + calibration report
@@ -424,7 +433,10 @@ Winner probabilities are capped at 90% max in `predict.py`. The model's raw outp
  
 ### Elo system
 - All fighters start at 1500
-- K-factor decays with experience
+- K-factor is a **flat constant** (`ELO_K_FACTOR = 32`, see `config.py`) — verified 2026-07-15
+  that it does NOT decay with fight count despite this doc previously claiming it does; a
+  debut fighter's single result swings their rating exactly as much as a 25-fight veteran's.
+  This is flagged as an improvement opportunity in `SESSION_LOG.md`.
 - `elo_uncertainty` = inverse of fights fought (high uncertainty = debut fighter)
 - `elo_trend` = Elo change over last 3 fights
 - `avg_opponent_elo` = strength of schedule proxy
@@ -482,7 +494,36 @@ RoundStats: id, fight_id, fighter_id, round_num, sig_strikes_head, ...
 ---
  
 ## Next Features to Build (Prioritized)
- 
+
+### Current working queue (set 2026-07-15, see SESSION_LOG.md for what's landed)
+
+Re-derived from a fresh codebase audit rather than the list below — grounded in what's
+actually missing/dead in the current code, ranked by leverage vs. cost:
+
+1. **Wire up `control_time_secs`/`reversals` into features** (small-medium) — fully scraped
+   into `RoundStats`/`FightStats` by `scrape_fight_stats.py` but never read in
+   `feature_builder.py`. Control time is one of the strongest judge-scoring signals in MMA.
+2. **Opponent-quality adjustment on raw counting stats** (medium) — `slpm`/`sapm`/`td_avg`/`td_def`
+   feed 5 interaction features unadjusted for opponent quality; only Elo and win/loss-based
+   `style_vuln_*` account for strength of schedule today.
+3. **Division-specific calibration layer** (small-medium) — one global model spans Heavyweight
+   and Women's divisions despite documented 25-80% live accuracy spread by division. Reuse the
+   round model's existing Platt-calibration pattern per division.
+4. **SHAP-based aggregate miss-pattern analysis** (small-medium) — SHAP is computed per-prediction
+   for display only; nothing cross-references it against `log_live_results.py`'s
+   high-confidence-miss list to find systematic feature-level failure signatures.
+5. **Elo K-factor decay by fight count** (small change, needs full historical Elo recompute +
+   retrain) — currently a flat `ELO_K_FACTOR=32` regardless of fighter experience, see the
+   "Elo system" section above.
+6. **Non-linear layoff penalty transform** (trivial, ~30 min) — same idea as item 4 in the
+   list below, still not implemented as of 2026-07-15.
+
+Items 1-4 of the older list below (odds movement tracker, injury/camp NLP, CLV tracking,
+joint method+round model) are still valid ideas and not superseded — this new list is about
+model/feature-engineering leverage specifically, the older list is more about new data sources.
+
+### Older list (pre-2026-07-15, not re-verified against current code)
+
 ### 1. Odds movement tracker (HIGH PRIORITY — easiest, most impactful)
 Scrape odds from The Odds API daily in the week before each event. Store in a new `OddsHistory` table with timestamp. Compute `line_movement` = closing line minus opening line for each fighter. Large movement toward a fighter = sharp money knows something (injury in opponent camp, dominant sparring leaked, weight cut issues). This is narrative information for free.
  

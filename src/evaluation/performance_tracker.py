@@ -183,20 +183,28 @@ class PerformanceTracker:
 
         bets = []
         for pred, fight, odds in results:
-            model_prob = pred.prob_fighter_a
-            market_prob = odds.implied_prob_a or 0.5
-            edge = model_prob - market_prob
+            if fight.winner_id is None:
+                continue
 
-            if edge >= min_edge:
-                # Bet on fighter A
-                if pred.was_correct:
-                    # Payout based on American odds
-                    o = odds.odds_fighter_a
-                    payout = stake_per_bet * (100 / abs(o)) if o < 0 else stake_per_bet * (o / 100)
-                    profit = payout
-                else:
-                    profit = -stake_per_bet
-                bets.append({"fighter": "A", "edge": edge, "profit": profit, "won": pred.was_correct})
+            # Edge is checked on both sides — value isn't always on fighter A, and
+            # `pred.was_correct` reflects whether the model's overall favorite won,
+            # not whether the specific side we'd bet on (by edge) won.
+            edge_a = pred.prob_fighter_a - (odds.implied_prob_a or 0.5)
+            edge_b = pred.prob_fighter_b - (odds.implied_prob_b or 0.5)
+
+            if edge_a >= min_edge:
+                side, o, edge, won = "A", odds.odds_fighter_a, edge_a, (fight.winner_id == fight.fighter_a_id)
+            elif edge_b >= min_edge:
+                side, o, edge, won = "B", odds.odds_fighter_b, edge_b, (fight.winner_id == fight.fighter_b_id)
+            else:
+                continue
+
+            if o is not None and won:
+                payout = stake_per_bet * (100 / abs(o)) if o < 0 else stake_per_bet * (o / 100)
+                profit = payout
+            else:
+                profit = -stake_per_bet
+            bets.append({"fighter": side, "edge": edge, "profit": profit, "won": won})
 
         if not bets:
             return {"error": "No value bets found with current settings"}

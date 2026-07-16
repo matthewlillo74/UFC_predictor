@@ -8,6 +8,12 @@ Machine learning system for UFC fight prediction, betting value detection, and E
 
 ## Results
 
+> **These numbers are pending refresh as of 2026-07-15.** A data-leakage bug was found and
+> reverted that day (`scripts/backfill_striking_stats.py` had propagated career-end stats
+> backward onto historical snapshots) and the model is being retrained on the corrected data.
+> The table below reflects the pre-revert model — treat with skepticism until updated.
+> See `SESSION_LOG.md` for details.
+
 | Metric | Value |
 |---|---|
 | Winner prediction accuracy (test set) | 65.0% (baseline: 50.0%) |
@@ -57,9 +63,11 @@ Streamlit Dashboard — live predictions, odds, edge, SHAP factors
 
 ---
 
-## Features (63 total)
+## Features (73 total)
 
 All features are diffs (Fighter A − Fighter B) computed from stats available before the fight date.
+Verified against `config.py::FEATURE_COLUMNS` on 2026-07-15 — this table previously said 63, which
+had drifted out of date.
 
 | Group | Count | Notes |
 |---|---|---|
@@ -67,8 +75,10 @@ All features are diffs (Fighter A − Fighter B) computed from stats available b
 | Striking | 4 | SLpM, accuracy, SAPM, defense |
 | Grappling | 4 | TD avg/acc/def, sub avg |
 | Record & Form | 5 | Win rate, finish rate, recent win rate, days since last fight, win streak |
-| Elo Dynamics | 6 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak, momentum score |
-| Style Fingerprints | 12 | Pressure, wrestling, striker, finisher (career + last-3 + last-5 rolling windows) |
+| Elo Dynamics | 5 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak (K-factor is flat, does not decay with fight count) |
+| Style Fingerprints (career) | 5 | Pressure, wrestling, striker, finisher, grappling defense |
+| Style Fingerprints (rolling) | 6 | Pressure, wrestling, striker — last-3 and last-5 windows (no rolling finisher) |
+| Momentum / Recent Form | 2 | Momentum score, recent finish rate |
 | Durability | 3 | KD absorbed per fight, KD ratio, composite SAPM-based durability score |
 | Strike Location | 3 | Head strike rate, leg strike rate, ground strike share |
 | Cardio Decay | 2 | R3/R1 output ratio, early round output share (72.5% fighter coverage) |
@@ -76,8 +86,15 @@ All features are diffs (Fighter A − Fighter B) computed from stats available b
 | Interaction Features | 5 | TD success probability, striking edge, grapple dominance, finish threat, reach×accuracy |
 | Weight Class Context | 2 | SLpM and TD percentiles within weight class |
 | UFC Experience | 2 | UFC fights diff, UFC wins diff |
-| Fight Context | 4 | Title fight flag, stance matchup (2 asymmetric flags), short-notice flag |
-| Narrative | 3 | Sentiment, injury flags (placeholder — not yet automated) |
+| Fight Context | 5 | Title fight flag, stance matchup (2 asymmetric flags), short-notice flags (2) |
+| Narrative | 3 | Sentiment, injury flags — all hardcoded to 0.0, not yet automated |
+| Method Rates | 4 | KO rate, submission rate, decision rate, KO vulnerability |
+| Weight Class Debut | 2 | Flags for fighter's first fight at this weight class |
+| Style Suppression | 4 | Vulnerability-vs-opponent-style matchup scores |
+
+Known dead weight: `control_time_secs` and `reversals` are scraped per-round
+(`scripts/scrape_fight_stats.py`) but not yet wired into any feature — see the accuracy-improvement
+queue in `AGENT_HANDOFF.md`.
 
 ---
 
@@ -262,7 +279,9 @@ Rules derived from live event data and model calibration:
 ## Known Limitations
 
 - Theoretical ceiling ~65–70% for MMA prediction using historical stats alone. Further gains require real-time information (camps, injuries, motivation) not available in public data.
-- Narrative features are zeros — injury flags and sentiment not yet automated (3 of 63 features unused).
+- Narrative features are zeros — injury flags and sentiment not yet automated (3 of 73 features unused).
+- Two scraped-but-unused round-level stats (`control_time_secs`, `reversals`) aren't wired into any feature yet.
+- Elo K-factor is a flat constant — does not decay with fighter experience/fight count.
 - Method and round models are trained independently — a joint model would be more accurate.
 - Elo cold start — fighters new to UFC begin at 1500 regardless of regional record.
 - Cloud DB is read-only — fighters not in the committed DB are skipped on Streamlit Cloud until next push.

@@ -504,6 +504,7 @@ def predict_fight_by_name(
     fighter_a_name: str,
     fighter_b_name: str,
     fight_date=None,
+    weight_class: str = None,
 ) -> dict:
     """
     High-level convenience function. Looks up fighters by name,
@@ -517,6 +518,9 @@ def predict_fight_by_name(
         fighter_a_name: Name as it appears in the DB
         fighter_b_name: Name as it appears in the DB
         fight_date:     datetime of the fight (defaults to today for upcoming fights)
+        weight_class:   fight's weight class (defaults to fighter_a's current weight
+                         class — without this, weight-class-debut features silently
+                         read as 0.0 for all fighters)
     """
     import sys, os
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -547,7 +551,10 @@ def predict_fight_by_name(
     fighter_b = find_fighter(fighter_b_name)
 
     builder = FeatureBuilder(session)
-    features = builder.build_matchup_features(fighter_a.id, fighter_b.id, fight_date)
+    features = builder.build_matchup_features(
+        fighter_a.id, fighter_b.id, fight_date,
+        fight_weight_class=weight_class or fighter_a.weight_class,
+    )
 
     predictor = UFCPredictor()
     predictor.load()

@@ -42,9 +42,19 @@ def step_scrape_new_events(session) -> int:
     from src.database import Event as EventModel
     from tqdm import tqdm
 
-    latest = session.query(Event).filter(Event.date != None).order_by(Event.date.desc()).first()
+    # Cursor = latest event we've actually loaded results for. Using max(Event.date)
+    # alone breaks once step_predict_next_event pre-creates an Event/Fight row for
+    # the upcoming card — that event's date becomes "latest" before it has happened,
+    # so its own results would never be picked up by a plain date filter afterward.
+    latest = (
+        session.query(Event)
+        .join(Fight, Fight.event_id == Event.id)
+        .filter(Event.date != None, Fight.winner_id.isnot(None))
+        .order_by(Event.date.desc())
+        .first()
+    )
     if latest:
-        logger.info(f"DB latest: {latest.name} ({latest.date.date()})")
+        logger.info(f"DB latest completed: {latest.name} ({latest.date.date()})")
 
     all_events = list(reversed(get_all_events()))  # oldest first
     new_events = [
@@ -61,18 +71,19 @@ def step_scrape_new_events(session) -> int:
     loaded = 0
 
     for event_data in tqdm(new_events, desc="New events"):
-        existing = session.query(EventModel).filter_by(name=event_data["name"]).first()
-        if existing:
-            continue
-
-        event = EventModel(
-            name=event_data["name"],
-            date=event_data["date"],
-            location=event_data.get("location", ""),
-            is_ppv="Fight Night" not in event_data["name"],
-        )
-        session.add(event)
-        session.flush()
+        # Get-or-create — an Event row may already exist as a pre-event placeholder
+        # from step_predict_next_event. Always (re)process its fights: _load_fight
+        # is idempotent and fills in results for existing unscored rows.
+        event = session.query(EventModel).filter_by(name=event_data["name"]).first()
+        if not event:
+            event = EventModel(
+                name=event_data["name"],
+                date=event_data["date"],
+                location=event_data.get("location", ""),
+                is_ppv="Fight Night" not in event_data["name"],
+            )
+            session.add(event)
+            session.flush()
 
         for fight_data in get_event_fights(event_data["url"]):
             try:
@@ -227,6 +238,20 @@ def step_predict_next_event(session, odds_data: list) -> str:
     fight_date = event_data.get("date") or datetime.utcnow()
     logger.info(f"Predicting: {event_name}")
 
+    # Get-or-create the Event row so placeholder Fight rows below can carry a real
+    # event_id — otherwise step_scrape_new_events can't match them back up once the
+    # event completes and creates duplicate Fight rows instead of filling in results.
+    event = session.query(Event).filter_by(name=event_name).first()
+    if not event:
+        event = Event(
+            name=event_name,
+            date=fight_date,
+            location=event_data.get("location", ""),
+            is_ppv="Fight Night" not in event_name,
+        )
+        session.add(event)
+        session.flush()
+
     predictor = UFCPredictor()
     try:
         predictor.load()
@@ -262,6 +287,7 @@ def step_predict_next_event(session, odds_data: list) -> str:
             )
             if not fight_obj:
                 fight_obj = Fight(
+                    event_id=event.id,
                     fighter_a_id=fa.id, fighter_b_id=fb.id,
                     fight_date=fight_date, weight_class=f.get("weight_class", "")
                 )
@@ -297,7 +323,8 @@ def step_predict_next_event(session, odds_data: list) -> str:
                     prob_submission=methods.get("submission"),
                     prob_decision=methods.get("decision"),
                     prob_under_2_5=rounds.get("under_2_5"),
-                    prob_goes_distance=rounds.get("over_2_5"),
+                    prob_under_3_5=rounds.get("under_3_5"),
+                    prob_goes_distance=rounds.get("over_2_5") or rounds.get("over_3_5"),
                     confidence_score=pred["confidence"],
                     prediction_narrative=str(pred.get("explanation", "")),
                 ))
@@ -364,13 +391,18 @@ def step_auto_score_live_results(session):
 
     LIVE_LOG_PATH = PREDICTIONS_DIR / "live_accuracy.csv"
 
-    # Get already-scored events from CSV
+    # Get already-scored events from CSV — only count events with at least 3 scored fights
     scored_events = set()
     if LIVE_LOG_PATH.exists():
         with open(LIVE_LOG_PATH, newline="") as f:
             reader = csv.DictReader(f)
+            from collections import Counter
+            event_fight_counts = Counter()
             for row in reader:
-                scored_events.add(row.get("event", ""))
+                event_name = row.get("event", "").strip()
+                if event_name and row.get("winner_correct", "") != "":
+                    event_fight_counts[event_name] += 1
+            scored_events = {name for name, count in event_fight_counts.items() if count >= 3}
 
     # Find completed events in DB not yet scored
     from src.database import Event, Fight
