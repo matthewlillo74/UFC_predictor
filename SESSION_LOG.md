@@ -7,6 +7,127 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-15 — Accuracy queue item #2: opponent-quality-adjusted counting stats
+
+**What:** raw `slpm`/`td_avg`/`td_def`/`sapm` read identically whether earned against
+weak or elite competition — only Elo and win/loss-based `style_vuln_*` accounted for
+strength of schedule before this.
+
+**Design:** added 4 new diffs (`slpm_adj_diff`, `td_avg_adj_diff`, `td_def_adj_diff`,
+`sapm_adj_diff`) in `src/features/feature_builder.py`, scaling each raw stat by
+`avg_opponent_elo / ELO_BASE_RATING` (already computed for the existing
+`avg_opponent_elo_diff` feature, no new data needed). "Higher is better" stats
+(slpm, td_avg, td_def) scale up with tougher opposition — same output against better
+competition is more impressive. `sapm` (lower is better) scales inversely — keeping
+absorbed strikes low against elite strikers is scaled to look even better. New `_opp_adj()`
+helper returns `None` (not a fabricated 0) when either input is missing, so `_diff()`
+falls back to 0.0 exactly like every other diff feature — no invented signal from
+partial data. Additive, not a replacement — the raw diffs stay in the feature set too.
+
+**Note:** this was built and first tested *before* the root-cause sparsity fix above
+(previous entry) and initially looked neutral-to-negative, because it was scaling raw
+stats that were themselves ~99.7% zero at the time (correlation with the raw diff was
+0.999 — it was just inheriting the same near-total sparsity). After the real backfill
+landed, `sapm_adj_diff`/`slpm_adj_diff` consistently show up in top-10 feature
+importances. Kept `config.py::FEATURE_COLUMNS` at 73 → 77 (4 new) through this entry;
+combined with item #1's 2 new features, total is now 79.
+
+---
+
+## 2026-07-15 — Root-cause fix: real per-fight backfill for slpm/sapm/td_avg/td_def/etc
+
+**Context:** while building the opponent-quality-adjustment feature (queue item #2),
+discovered the leakage revert from earlier today had a much bigger side effect than
+understood at the time: `slpm_diff`/`sapm_diff`/`td_avg_diff`/etc. were **zero in 99.7%**
+of training fights, not just "sparser." Root cause: `enrich_fighters.py` only ever wrote
+those 9 columns to a fighter's single *latest* snapshot, so nulling the leaked
+backward-copies on all non-latest snapshots left almost the entire historical dataset with
+no striking/grappling signal at all. Flagged to the user; they chose to fix it properly
+now rather than continue the original queue on top of broken data.
+
+**The real fix:** `FightStats` has genuine per-fight granular data (~96% coverage,
+16,780 rows / 8,771 fights × 2) that was never aggregated into snapshot-level rate stats.
+Built `backfill_real_striking_grappling_stats()` in `scrape_fight_stats.py` — same
+prior-fights-only leakage-safe pattern as the existing `backfill_kd_features()` /
+`backfill_control_features()`. Offense stats (slpm, sapm, strike_accuracy, td_avg,
+td_accuracy, sub_avg) come directly from the fighter's own `FightStats` rows; defense
+stats (strike_defense, td_defense) need the opponent's attempted counts for the same
+fight (preloaded once into a `fight_id -> {fighter_id: FightStats}` map to avoid N+1
+queries). Also added `backfill_recent_win_rate()` — `recent_win_rate` was in the same
+leaked-then-reverted column set but isn't `FightStats`-derived at all, just win/loss
+history over the last `RECENT_FIGHTS_WINDOW` fights, always available.
+
+**Two rounds of bugs found and fixed while verifying (not shipped silently):**
+1. First backfill pass produced physically impossible values (`strike_defense` min
+   -2.75, `slpm` max 34-56) — very-short fights (e.g. a 15-second KO as a fighter's only
+   prior fight) blow up per-minute rate stats when the denominator is tiny. Added a
+   1-minute duration floor plus hard clips (`slpm`/`sapm` ≤20, `td_avg` ≤15, `sub_avg`
+   ≤10, defense/accuracy percentages clipped to [0,1]).
+2. Second pass still showed values above the new caps. Root cause: the duration-floor
+   and no-prior-fights skip paths did a bare `continue`, which leaves whatever a
+   *previous* (pre-fix) run had already written in place — `continue` doesn't clear
+   fields, it just doesn't update them. Added an explicit `_clear()` helper that nulls
+   all 8 rate columns on every skip path and at the start of the normal compute path, so
+   every run leaves a clean, fully-current state regardless of what a prior run wrote.
+3. One remaining outlier (`td_avg=22.5` for a fighter with zero locally-scraped
+   `FightStats` rows) is not a bug — that fighter is skipped entirely by this backfill
+   (nothing to aggregate), so his snapshot still holds whatever `enrich_fighters.py`
+   originally scraped from his UFC profile page directly. That's a genuine, if
+   small-sample-noisy, officially-reported stat (UFC's own site computes TD-avg the same
+   per-15-min way, which is noisy for fighters with very few octagon minutes) — not
+   something this backfill touches or introduces. Affects 2 of 15,341 non-null rows.
+
+**Verified:** coverage jumped from ~13% to 79-87% across all 9 columns (14,246-15,341 of
+17,687 snapshots, depending on column). Value ranges now physically plausible after the
+clipping fix. Retrained 3 times through this process (before clip fix, after clip fix,
+after stale-value fix) — final state: **60.1% test accuracy**, log loss 0.6627, Brier
+0.2345 (both within the best range seen all session; small fluctuations between the three
+retrains are expected noise from feature-set changes affecting tree splits, not a
+regression). `sapm_adj_diff` and `slpm_adj_diff` (queue item #2's opponent-adjustment,
+built in parallel — see next entry) now consistently appear in top-10 feature
+importances, confirming they were inert before only because the underlying raw stats
+were empty, not because the idea itself was wrong.
+
+**Files:** `scripts/scrape_fight_stats.py` (`backfill_real_striking_grappling_stats`,
+`backfill_recent_win_rate`, `_fight_duration_minutes`, wired into `--backfill-all`).
+
+---
+
+## 2026-07-15 — Accuracy queue item #1: wired up control_time / reversals features
+
+**What:** `control_time_secs` and `reversals` were scraped into `FightStats` (fight-level
+totals) for a long time but never aggregated into a `FighterStats` snapshot feature —
+identified in the earlier accuracy-improvement research pass as the highest-leverage item
+since the hard part (scraping) was already done.
+
+**Changes:**
+- `src/database.py` — added `FighterStats.control_time_avg_secs` and `.reversals_per_fight`.
+- `scripts/migrate_db.py` — added the two new columns.
+- `scripts/scrape_fight_stats.py` — added `backfill_control_features()`, same
+  prior-fights-only pattern as the existing `backfill_kd_features()` (leakage-safe: only
+  aggregates fights strictly before each snapshot's `as_of_date`). Wired into
+  `--backfill-all`. While in there, also removed ~55 lines of dead/duplicated code: a
+  stray, unreachable copy of `backfill_kd_features()`'s body was sitting directly inside
+  `backfill_strike_and_cardio_features()` after its own `session.commit()` (no `def`
+  separating them), silently re-running the same KD computation a second time on every
+  `--backfill-all` call. Harmless (deterministic, same result) but wasteful and confusing.
+- `config.py` — added `control_time_diff` / `reversals_diff` to `FEATURE_COLUMNS` (73 → 75).
+- `src/features/feature_builder.py` — wired the two new diffs in next to the existing
+  `kd_ratio_diff` block.
+
+**Verified:** ran migration (both columns added), ran `--backfill-all`
+(14,923 snapshots updated), retrained. New features have real variance, not degenerate —
+`control_time_diff` nonzero in 56.6% of training fights (std ~115s, range -707 to +650),
+`reversals_diff` nonzero in 31.4% (reversals are naturally rarer events, std ~1.1, range
+-11 to +22). Test accuracy 60.3% → **60.6%**; calibration improved slightly in the
+75-90% confidence buckets (still overconfident, but less so). Neither new feature cracked
+the top-10 importances — a modest, honest gain, not a home run, consistent with control
+time being a secondary signal on top of the existing takedown-based grappling features.
+
+**Docs:** marked item 1 done in `AGENT_HANDOFF.md`'s working queue.
+
+---
+
 ## 2026-07-15 — Pipeline completion, orphan cleanup, retrain, environment version fixes
 
 **Context:** continuation of the catch-up session. The `run_pipeline.py` run (native

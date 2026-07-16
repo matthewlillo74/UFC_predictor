@@ -24,8 +24,8 @@ End-to-end UFC fight prediction system. Goals: accurate predictions + betting va
  
 | Metric | Value |
 |---|---|
-| Features | 73 (XGBoost) — verified against `config.py` on 2026-07-15, this table was wrong (said 79) |
-| Test set accuracy | 63.4% (baseline 50%) — pre-2026-07-15 catch-up; will change after the leakage-revert retrain, see SESSION_LOG.md |
+| Features | 79 (XGBoost) — was 73 as of the initial 2026-07-15 catch-up; +6 from accuracy-queue items 1-2 same day, see SESSION_LOG.md |
+| Test set accuracy | 60.1% (baseline 49.1%) — post leakage-revert + real per-fight stats backfill, 2026-07-15. The pre-catch-up 63.4-65% figure was partly leakage-inflated; this is the honest number, see SESSION_LOG.md |
 | Live accuracy (96 fights, 9 events) | 63.5% |
 | Live winner accuracy — Featherweight | 80% (most reliable division) |
 | Live winner accuracy — Women's divisions | 25–47% (avoid betting) |
@@ -500,12 +500,16 @@ RoundStats: id, fight_id, fighter_id, round_num, sig_strikes_head, ...
 Re-derived from a fresh codebase audit rather than the list below — grounded in what's
 actually missing/dead in the current code, ranked by leverage vs. cost:
 
-1. **Wire up `control_time_secs`/`reversals` into features** (small-medium) — fully scraped
-   into `RoundStats`/`FightStats` by `scrape_fight_stats.py` but never read in
-   `feature_builder.py`. Control time is one of the strongest judge-scoring signals in MMA.
-2. **Opponent-quality adjustment on raw counting stats** (medium) — `slpm`/`sapm`/`td_avg`/`td_def`
-   feed 5 interaction features unadjusted for opponent quality; only Elo and win/loss-based
-   `style_vuln_*` account for strength of schedule today.
+1. ~~**Wire up `control_time_secs`/`reversals` into features**~~ **DONE 2026-07-15** — see
+   `SESSION_LOG.md`. Test accuracy 60.3% → 60.6%, real non-degenerate signal, didn't crack
+   top-10 importances (modest gain, not a home run).
+2. ~~**Opponent-quality adjustment on raw counting stats**~~ **DONE 2026-07-15** — see
+   `SESSION_LOG.md`. Uncovered and fixed a much bigger problem along the way: the earlier
+   leakage revert had left `slpm`/`sapm`/`td_avg`/etc. ~99.7% zero across the training set
+   (not just sparser) since those columns were only ever written to a fighter's *latest*
+   snapshot. Built a real per-fight backfill from `FightStats` (leakage-safe, ~85% coverage)
+   to properly restore them, then added the 4 opponent-adjustment diffs on top.
+   `sapm_adj_diff`/`slpm_adj_diff` now consistently rank top-10 in feature importance.
 3. **Division-specific calibration layer** (small-medium) — one global model spans Heavyweight
    and Women's divisions despite documented 25-80% live accuracy spread by division. Reuse the
    round model's existing Platt-calibration pattern per division.

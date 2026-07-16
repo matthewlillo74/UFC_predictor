@@ -118,6 +118,11 @@ class FighterStats(Base):
     kd_absorbed_per_fight  = Column(Float)   # avg knockdowns absorbed per fight
     kd_ratio               = Column(Float)   # landed / (absorbed + 0.1) — offensive KD dominance
 
+    # Control / scramble grappling — scraped and stored on FightStats for years
+    # but never aggregated into a snapshot feature until now
+    control_time_avg_secs = Column(Float)    # avg ground/clinch control time per fight, seconds
+    reversals_per_fight   = Column(Float)    # avg reversals/sweeps landed per fight
+
     # Opponent style vulnerability — weighted win rate by opponent style
     # e.g. a 70% overall fighter might be only 45% vs heavy wrestlers
     winrate_vs_wrestlers  = Column(Float)

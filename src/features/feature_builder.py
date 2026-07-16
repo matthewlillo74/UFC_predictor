@@ -414,6 +414,17 @@ class FeatureBuilder:
             "td_acc_diff":  _diff(s("td_accuracy"), t("td_accuracy")),
             "td_def_diff":  _diff(s("td_defense"),  t("td_defense")),
             "sub_avg_diff": _diff(s("sub_avg"),     t("sub_avg")),
+            # Opponent-quality-adjusted counting stats — raw slpm/td_avg/td_def/sapm
+            # read identically whether earned against cans or elite competition.
+            # Scale by avg_opponent_elo (already computed above for avg_opponent_elo_diff)
+            # relative to the Elo baseline: offense/defense-rate stats where higher is
+            # better scale UP with tougher opposition (same output against better
+            # competition is more impressive); sapm (lower is better) scales inversely —
+            # keeping absorbed strikes low against elite strikers is scaled to look better.
+            "slpm_adj_diff":   _diff(_opp_adj(s("slpm"), avg_opp_elo_a), _opp_adj(t("slpm"), avg_opp_elo_b)),
+            "td_avg_adj_diff": _diff(_opp_adj(s("td_avg"), avg_opp_elo_a), _opp_adj(t("td_avg"), avg_opp_elo_b)),
+            "td_def_adj_diff": _diff(_opp_adj(s("td_defense"), avg_opp_elo_a), _opp_adj(t("td_defense"), avg_opp_elo_b)),
+            "sapm_adj_diff":   _diff(_opp_adj(s("sapm"), avg_opp_elo_a, inverse=True), _opp_adj(t("sapm"), avg_opp_elo_b, inverse=True)),
             # Record / form
             "win_rate_diff":              _diff(s("win_rate"),          t("win_rate")),
             "finish_rate_diff":           _diff(s("finish_rate"),       t("finish_rate")),
@@ -461,6 +472,9 @@ class FeatureBuilder:
             # kd_ratio: does this fighter knock people down more than they get knocked down?
             "kd_absorbed_per_fight_diff": _diff(s("kd_absorbed_per_fight"), t("kd_absorbed_per_fight")),
             "kd_ratio_diff":              _diff(s("kd_ratio"),              t("kd_ratio")),
+            # Control / scramble grappling — real measured data from fight detail pages
+            "control_time_diff": _diff(s("control_time_avg_secs"), t("control_time_avg_secs")),
+            "reversals_diff":    _diff(s("reversals_per_fight"),   t("reversals_per_fight")),
             # Opponent style vulnerability matchup features
             #   how well does A do vs the kind of fighter B actually is?
             # Negative diff = A is MORE vulnerable to B's style than vice versa
@@ -710,3 +724,18 @@ def _diff(a, b) -> float:
 def _safe(x) -> float:
     """Convert None to 0.0 for use in multiplication. Never raises."""
     return float(x) if x is not None else 0.0
+
+
+def _opp_adj(stat, avg_opponent_elo, inverse: bool = False) -> Optional[float]:
+    """
+    Scale a raw counting/rate stat by strength of schedule (avg_opponent_elo vs
+    ELO_BASE_RATING). Returns None if either input is missing, so _diff falls back
+    to 0.0 exactly like the other diff features (no fabricated signal from partial data).
+
+    inverse=True for "lower is better" stats (sapm): tougher opposition makes a
+    given raw value MORE impressive, so it's scaled down rather than up.
+    """
+    if stat is None or avg_opponent_elo is None:
+        return None
+    ratio = avg_opponent_elo / ELO_BASE_RATING
+    return float(stat) / ratio if inverse else float(stat) * ratio

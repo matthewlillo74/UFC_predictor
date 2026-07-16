@@ -8,22 +8,23 @@ Machine learning system for UFC fight prediction, betting value detection, and E
 
 ## Results
 
-> **These numbers are pending refresh as of 2026-07-15.** A data-leakage bug was found and
-> reverted that day (`scripts/backfill_striking_stats.py` had propagated career-end stats
-> backward onto historical snapshots) and the model is being retrained on the corrected data.
-> The table below reflects the pre-revert model — treat with skepticism until updated.
-> See `SESSION_LOG.md` for details.
+> **Test-set accuracy updated 2026-07-15** after a data-leakage bug was found and reverted
+> (`scripts/backfill_striking_stats.py` had propagated career-end stats backward onto
+> historical snapshots) and the underlying features properly rebuilt from real per-fight
+> data. The 65.0% figure below was partly leakage-inflated; 60.1% is the honest number.
+> Parlay/live-accuracy rows below predate this fix and haven't been reverified against the
+> new model yet — treat with appropriate caution until re-run. See `SESSION_LOG.md`.
 
 | Metric | Value |
 |---|---|
-| Winner prediction accuracy (test set) | 65.0% (baseline: 50.0%) |
-| Test set | 8,585 fights, 1994 → Mar 2026 |
-| Live winner accuracy (3 events, 53 fights) | 75.5% out-of-sample |
-| Live method accuracy | 55.6% |
-| Live round O/U accuracy | 40.7% |
-| 100-event parlay backtest ROI | +703% ($2,970 wagered → $23,840) |
-| Safe parlay hit rate | 34.3% (expected: ~26%) |
-| Value parlay hit rate | 18.2% (expected: ~10%) |
+| Winner prediction accuracy (test set) | 60.1% (baseline: 49.1%) — updated 2026-07-15, was 65.0% pre-leakage-fix |
+| Test set | 1,316 fights, 2023-12 → 2026-07 |
+| Live winner accuracy (3 events, 53 fights) | 75.5% out-of-sample — pre-2026-07-15, not yet reverified |
+| Live method accuracy | 55.6% — pre-2026-07-15, not yet reverified |
+| Live round O/U accuracy | 40.7% — pre-2026-07-15, not yet reverified |
+| 100-event parlay backtest ROI | +703% ($2,970 wagered → $23,840) — pre-2026-07-15, not yet reverified |
+| Safe parlay hit rate | 34.3% (expected: ~26%) — pre-2026-07-15, not yet reverified |
+| Value parlay hit rate | 18.2% (expected: ~10%) — pre-2026-07-15, not yet reverified |
 
 Live accuracy is tracked across every event using `scripts/log_live_results.py` — pure out-of-sample ground truth, not backtest.
 
@@ -63,17 +64,19 @@ Streamlit Dashboard — live predictions, odds, edge, SHAP factors
 
 ---
 
-## Features (73 total)
+## Features (79 total)
 
 All features are diffs (Fighter A − Fighter B) computed from stats available before the fight date.
-Verified against `config.py::FEATURE_COLUMNS` on 2026-07-15 — this table previously said 63, which
-had drifted out of date.
+Verified against `config.py::FEATURE_COLUMNS` on 2026-07-15 (was 73 earlier the same day, +6 from
+two accuracy-improvement passes — see `SESSION_LOG.md`).
 
 | Group | Count | Notes |
 |---|---|---|
 | Physical | 4 | Reach, height, age, age vs peak |
 | Striking | 4 | SLpM, accuracy, SAPM, defense |
 | Grappling | 4 | TD avg/acc/def, sub avg |
+| Opponent-Adjusted Stats | 4 | SLpM/TD avg/TD def/SAPM scaled by strength of schedule (avg opponent Elo) |
+| Control / Scramble Grappling | 2 | Avg control time per fight (seconds), avg reversals per fight |
 | Record & Form | 5 | Win rate, finish rate, recent win rate, days since last fight, win streak |
 | Elo Dynamics | 5 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak (K-factor is flat, does not decay with fight count) |
 | Style Fingerprints (career) | 5 | Pressure, wrestling, striker, finisher, grappling defense |
@@ -92,9 +95,9 @@ had drifted out of date.
 | Weight Class Debut | 2 | Flags for fighter's first fight at this weight class |
 | Style Suppression | 4 | Vulnerability-vs-opponent-style matchup scores |
 
-Known dead weight: `control_time_secs` and `reversals` are scraped per-round
-(`scripts/scrape_fight_stats.py`) but not yet wired into any feature — see the accuracy-improvement
-queue in `AGENT_HANDOFF.md`.
+Striking/grappling stats (slpm, sapm, strike_accuracy, strike_defense, td_avg, td_accuracy,
+td_defense, sub_avg, recent_win_rate) are computed from real per-fight data
+(`scripts/scrape_fight_stats.py`), leakage-safe (prior fights only), ~79-87% snapshot coverage.
 
 ---
 

@@ -78,6 +78,13 @@ FEATURE_COLUMNS = [
     "td_acc_diff",            # takedown accuracy
     "td_def_diff",            # takedown defense
     "sub_avg_diff",           # submission attempts per 15 min
+    # Opponent-quality-adjusted versions of the above — scaled by avg_opponent_elo
+    # so padding raw output against weak competition reads differently than earning
+    # it against elite opposition
+    "slpm_adj_diff",
+    "td_avg_adj_diff",
+    "td_def_adj_diff",
+    "sapm_adj_diff",
     # Record / form
     "win_rate_diff",
     "finish_rate_diff",
@@ -111,6 +118,9 @@ FEATURE_COLUMNS = [
     "durability_diff",             # composite proxy (SAPM + KO loss rate)
     "kd_absorbed_per_fight_diff",  # avg knockdowns absorbed per fight — chin/durability
     "kd_ratio_diff",               # KD landed / absorbed — KO offensive dominance
+    # Control / scramble grappling — from fight-level control time & reversals
+    "control_time_diff",           # avg ground/clinch control seconds per fight
+    "reversals_diff",              # avg reversals/sweeps landed per fight
     # Rolling style windows — last 3 and last 5 fights
     # Captures style evolution; diff between career and recent = style shift
     "style_pressure_l3_diff",

@@ -786,20 +786,22 @@ def backfill_strike_and_cardio_features(session):
 
     session.commit()
     logger.success(f"Strike/cardio features backfilled for {updated} snapshots")
-    """
-    Recompute kd_landed_per_fight, kd_absorbed_per_fight, kd_ratio
-    for all FighterStats snapshots using fight_stats data.
 
-    For each snapshot (fighter, as_of_date), aggregate all fight_stats
-    for that fighter from fights BEFORE as_of_date.
-    """
-    logger.info("Backfilling knockdown durability features into FighterStats...")
 
+def backfill_control_features(session):
+    """
+    Recompute control_time_avg_secs and reversals_per_fight for all
+    FighterStats snapshots using fight_stats data — same pattern as
+    backfill_kd_features (avg-per-fight rate, prior fights only).
+
+    Both control_time_secs and reversals have been scraped into FightStats
+    for a long time but were never aggregated into a snapshot feature.
+    """
+    logger.info("Backfilling control time / reversals into FighterStats...")
     fighters = session.query(Fighter).all()
     updated = 0
 
-    for fighter in tqdm(fighters, desc="KD features"):
-        # Get all fight stats for this fighter, ordered by fight date
+    for fighter in tqdm(fighters, desc="Control features"):
         fight_stats_rows = (
             session.query(FightStats, Fight)
             .join(Fight, FightStats.fight_id == Fight.id)
@@ -808,11 +810,9 @@ def backfill_strike_and_cardio_features(session):
             .order_by(Fight.fight_date)
             .all()
         )
-
         if not fight_stats_rows:
             continue
 
-        # For each snapshot, compute cumulative KD stats up to that date
         snapshots = (
             session.query(FighterStats)
             .filter_by(fighter_id=fighter.id)
@@ -823,27 +823,206 @@ def backfill_strike_and_cardio_features(session):
         for snap in snapshots:
             if not snap.as_of_date:
                 continue
-
-            prior = [
-                fs for fs, fight in fight_stats_rows
-                if fight.fight_date < snap.as_of_date
-            ]
-
+            prior = [fs for fs, fight in fight_stats_rows if fight.fight_date < snap.as_of_date]
             if not prior:
                 continue
-
             n = len(prior)
-            kd_landed = sum(fs.knockdowns or 0 for fs in prior) / n
-            kd_absorbed = sum(fs.knockdowns_absorbed or 0 for fs in prior) / n
-            kd_ratio = kd_landed / (kd_absorbed + 0.1)  # avoid div/0
-
-            snap.kd_landed_per_fight = round(kd_landed, 4)
-            snap.kd_absorbed_per_fight = round(kd_absorbed, 4)
-            snap.kd_ratio = round(kd_ratio, 4)
+            snap.control_time_avg_secs = round(sum(fs.control_time_secs or 0 for fs in prior) / n, 2)
+            snap.reversals_per_fight   = round(sum(fs.reversals or 0 for fs in prior) / n, 4)
             updated += 1
 
     session.commit()
-    logger.success(f"KD features backfilled for {updated} snapshots")
+    logger.success(f"Control/reversal features backfilled for {updated} snapshots")
+
+
+def _fight_duration_minutes(fight) -> float:
+    """
+    Estimate total fight time. Decisions go the full scheduled distance;
+    finishes end partway through finish_round at finish_time (M:SS).
+    Falls back to the full scheduled distance if finish_time is missing/unparseable.
+    """
+    scheduled = (fight.scheduled_rounds or 3) * 5.0
+    if fight.method == "Decision" or not fight.finish_time or not fight.finish_round:
+        return scheduled
+    try:
+        mm, ss = fight.finish_time.split(":")
+        return (fight.finish_round - 1) * 5.0 + int(mm) + int(ss) / 60.0
+    except (ValueError, AttributeError):
+        return scheduled
+
+
+def backfill_real_striking_grappling_stats(session):
+    """
+    Recompute slpm, sapm, strike_accuracy, strike_defense, td_avg, td_accuracy,
+    td_defense, sub_avg for all FighterStats snapshots from real per-fight
+    FightStats data (prior fights only — leakage-safe, same pattern as the
+    other backfill_* functions in this file).
+
+    This replaces a since-reverted approach that copied each fighter's most
+    recent (career-end) stats backward onto historical snapshots — leaking
+    future data. Since enrich_fighters.py only ever wrote these 8 columns to
+    a fighter's single latest snapshot, reverting that leak left ~99.7% of
+    historical snapshots with NULL/zero values for these features. FightStats
+    has ~96% per-fight coverage, enough to compute the real thing instead.
+
+    Offense stats (slpm, sapm, strike_accuracy, td_avg, td_accuracy, sub_avg)
+    are derivable from the fighter's own FightStats rows. Defense stats
+    (strike_defense, td_defense) need the opponent's attempted counts for the
+    same fight, since "defense" = share of what was thrown/attempted AT this
+    fighter that did NOT land — not stored on the fighter's own row.
+    """
+    from collections import defaultdict
+
+    logger.info("Backfilling real striking/grappling rate stats from FightStats...")
+
+    # Preload fight_id -> {fighter_id: FightStats row} once, so opponent lookups
+    # below are O(1) instead of a query per (fighter, snapshot, prior fight).
+    fs_by_fight = defaultdict(dict)
+    for fs in session.query(FightStats).all():
+        fs_by_fight[fs.fight_id][fs.fighter_id] = fs
+
+    fighters = session.query(Fighter).all()
+    updated = 0
+
+    for fighter in tqdm(fighters, desc="Real striking/grappling stats"):
+        fight_stats_rows = (
+            session.query(FightStats, Fight)
+            .join(Fight, FightStats.fight_id == Fight.id)
+            .filter(FightStats.fighter_id == fighter.id)
+            .filter(Fight.fight_date.isnot(None))
+            .order_by(Fight.fight_date)
+            .all()
+        )
+        if not fight_stats_rows:
+            continue
+
+        snapshots = (
+            session.query(FighterStats)
+            .filter_by(fighter_id=fighter.id)
+            .order_by(FighterStats.as_of_date)
+            .all()
+        )
+
+        RATE_COLS = ("slpm", "sapm", "strike_accuracy", "strike_defense",
+                     "td_avg", "td_accuracy", "td_defense", "sub_avg")
+
+        def _clear(snap):
+            # Explicitly null out rather than leaving whatever a PREVIOUS run wrote —
+            # otherwise a skip here can silently leave stale (possibly unclipped,
+            # pre-fix) values in place forever, since `continue` alone doesn't touch
+            # fields that were already set on an earlier pass.
+            for col in RATE_COLS:
+                setattr(snap, col, None)
+
+        for snap in snapshots:
+            if not snap.as_of_date:
+                continue
+            prior = [(fs, fight) for fs, fight in fight_stats_rows if fight.fight_date < snap.as_of_date]
+            if not prior:
+                _clear(snap)
+                continue
+
+            total_min = sum(_fight_duration_minutes(fight) for _, fight in prior)
+            # Floor the denominator — a single very-short fight (e.g. a 15-second KO
+            # as someone's only prior fight) otherwise blows rate stats up to
+            # physically implausible values (30+ SLPM). 1 minute is generous enough
+            # to not distort anyone with a real multi-fight sample.
+            if total_min < 1.0:
+                _clear(snap)
+                continue
+
+            _clear(snap)  # clean slate — only the fields set below survive this pass
+
+            sig_landed   = sum(fs.sig_strikes_landed or 0    for fs, _ in prior)
+            sig_absorbed = sum(fs.sig_strikes_absorbed or 0  for fs, _ in prior)
+            sig_attempted = sum(fs.sig_strikes_attempted or 0 for fs, _ in prior)
+            td_landed    = sum(fs.takedowns_landed or 0      for fs, _ in prior)
+            td_attempted = sum(fs.takedowns_attempted or 0   for fs, _ in prior)
+            sub_att      = sum(fs.submission_attempts or 0   for fs, _ in prior)
+
+            # Clip to physically plausible ranges — defense-in-depth against any
+            # remaining scrape noise (e.g. landed > attempted from a parsing quirk
+            # on the source page), on top of the duration floor above.
+            snap.slpm = round(min(sig_landed / total_min, 20.0), 4)
+            snap.sapm = round(min(sig_absorbed / total_min, 20.0), 4)
+            if sig_attempted > 0:
+                snap.strike_accuracy = round(min(max(sig_landed / sig_attempted, 0.0), 1.0), 4)
+            snap.td_avg = round(min(td_landed / total_min * 15.0, 15.0), 4)
+            if td_attempted > 0:
+                snap.td_accuracy = round(min(max(td_landed / td_attempted, 0.0), 1.0), 4)
+            snap.sub_avg = round(min(sub_att / total_min * 15.0, 10.0), 4)
+
+            # Defense — opponent's attempted counts for the same fights
+            strike_attempted_against = 0
+            td_landed_against = 0
+            td_attempted_against = 0
+            for fs, fight in prior:
+                opp_id = fight.fighter_b_id if fight.fighter_a_id == fighter.id else fight.fighter_a_id
+                opp_fs = fs_by_fight.get(fight.id, {}).get(opp_id)
+                if opp_fs:
+                    strike_attempted_against += opp_fs.sig_strikes_attempted or 0
+                    td_landed_against        += opp_fs.takedowns_landed or 0
+                    td_attempted_against     += opp_fs.takedowns_attempted or 0
+
+            if strike_attempted_against > 0:
+                snap.strike_defense = round(min(max(1 - (sig_absorbed / strike_attempted_against), 0.0), 1.0), 4)
+            if td_attempted_against > 0:
+                snap.td_defense = round(min(max(1 - (td_landed_against / td_attempted_against), 0.0), 1.0), 4)
+
+            updated += 1
+
+    session.commit()
+    logger.success(f"Real striking/grappling stats backfilled for {updated} snapshots")
+
+
+def backfill_recent_win_rate(session):
+    """
+    Recompute recent_win_rate (win rate over the last RECENT_FIGHTS_WINDOW fights)
+    directly from Fight results — leakage-safe (prior fights only), doesn't need
+    FightStats at all. Was in the same leaked-then-reverted column set as the
+    stats above, but win/loss history was always available and never needed a
+    FightStats-based fix.
+    """
+    from config import RECENT_FIGHTS_WINDOW
+
+    logger.info("Backfilling recent_win_rate into FighterStats...")
+    fighters = session.query(Fighter).all()
+    updated = 0
+
+    for fighter in tqdm(fighters, desc="Recent win rate"):
+        fights = (
+            session.query(Fight)
+            .filter(
+                (Fight.fighter_a_id == fighter.id) | (Fight.fighter_b_id == fighter.id),
+                Fight.winner_id.isnot(None),
+                Fight.fight_date.isnot(None),
+            )
+            .order_by(Fight.fight_date)
+            .all()
+        )
+        if not fights:
+            continue
+
+        snapshots = (
+            session.query(FighterStats)
+            .filter_by(fighter_id=fighter.id)
+            .order_by(FighterStats.as_of_date)
+            .all()
+        )
+
+        for snap in snapshots:
+            if not snap.as_of_date:
+                continue
+            prior = [f for f in fights if f.fight_date < snap.as_of_date]
+            if not prior:
+                continue
+            recent = prior[-RECENT_FIGHTS_WINDOW:]
+            wins = sum(1 for f in recent if f.winner_id == fighter.id)
+            snap.recent_win_rate = round(wins / len(recent), 4)
+            updated += 1
+
+    session.commit()
+    logger.success(f"Recent win rate backfilled for {updated} snapshots")
 
 
 def main():
@@ -897,6 +1076,9 @@ def main():
 
     if args.backfill_all:
         backfill_strike_and_cardio_features(session)
+        backfill_control_features(session)
+        backfill_real_striking_grappling_stats(session)
+        backfill_recent_win_rate(session)
         logger.success("Next: rm data/processed/training_dataset.csv && python scripts/train_model.py")
 
     session.close()

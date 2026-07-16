@@ -40,6 +40,10 @@ migrations = [
     ("fighter_stats", "kd_landed_per_fight",   "REAL DEFAULT NULL"),
     ("fighter_stats", "kd_absorbed_per_fight", "REAL DEFAULT NULL"),
     ("fighter_stats", "kd_ratio",              "REAL DEFAULT NULL"),
+    # Control time / reversals — aggregated from FightStats, which has scraped
+    # this data for a long time but it was never wired into any feature
+    ("fighter_stats", "control_time_avg_secs", "REAL DEFAULT NULL"),
+    ("fighter_stats", "reversals_per_fight",   "REAL DEFAULT NULL"),
     # Fight URL for scraping detail pages
     ("fights", "fight_url", "TEXT DEFAULT ''"),
     # Event URL for re-scraping event pages
