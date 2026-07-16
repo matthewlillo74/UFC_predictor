@@ -24,14 +24,14 @@ End-to-end UFC fight prediction system. Goals: accurate predictions + betting va
  
 | Metric | Value |
 |---|---|
-| Features | 79 (XGBoost) — was 73 as of the initial 2026-07-15 catch-up; +6 from accuracy-queue items 1-2 same day, see SESSION_LOG.md |
-| Test set accuracy | 60.1% (baseline 49.1%) — post leakage-revert + real per-fight stats backfill, 2026-07-15. The pre-catch-up 63.4-65% figure was partly leakage-inflated; this is the honest number, see SESSION_LOG.md |
-| Live accuracy (96 fights, 9 events) | 63.5% |
-| Live winner accuracy — Featherweight | 80% (most reliable division) |
-| Live winner accuracy — Women's divisions | 25–47% (avoid betting) |
-| OVER 2.5 rounds backtest | 62.7% on 332 fights, +$5,470 P&L |
-| Method prediction | 46.2% — do NOT bet method props |
-| Training data | 8,700 fights, 1994–May 2026 |
+| Features | 80 (XGBoost) — was 73 at the start of the 2026-07-15 catch-up; +7 from the full 6-item accuracy queue (2026-07-15 to 2026-07-16), see SESSION_LOG.md |
+| Test set accuracy | **62.2%** (baseline 49.1%) — final number after the full accuracy queue, 2026-07-16. Was 60.3% right after the leakage revert alone, 65.0% pre-catch-up (partly leakage-inflated, not the honest number). Not yet validated against new live events — see caveats below. |
+| Live accuracy (107 fights, 11 events, scored 2026-07-15) | 61.7% winner / 47.7% method / 50.5% round — this reflects the **old pre-queue model's** real-world predictions being scored, not the new model. No live results exist yet for the model as of this queue's completion. |
+| Live winner accuracy — Featherweight | 80% (most reliable division) — pre-catch-up figure, not yet reverified |
+| Live winner accuracy — Women's divisions | 25–47% (avoid betting) — pre-catch-up figure, not yet reverified |
+| OVER 2.5 rounds backtest | 62.7% on 332 fights, +$5,470 P&L — pre-catch-up figure, not yet reverified |
+| Method prediction | 46.2% — do NOT bet method props — pre-catch-up figure, not yet reverified |
+| Training data | 8,771 fights, 1994–Jul 2026 |
 | DB fighters | 2,677 |
  
 ---

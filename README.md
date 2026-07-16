@@ -8,16 +8,18 @@ Machine learning system for UFC fight prediction, betting value detection, and E
 
 ## Results
 
-> **Test-set accuracy updated 2026-07-15** after a data-leakage bug was found and reverted
-> (`scripts/backfill_striking_stats.py` had propagated career-end stats backward onto
-> historical snapshots) and the underlying features properly rebuilt from real per-fight
-> data. The 65.0% figure below was partly leakage-inflated; 60.1% is the honest number.
-> Parlay/live-accuracy rows below predate this fix and haven't been reverified against the
-> new model yet — treat with appropriate caution until re-run. See `SESSION_LOG.md`.
+> **Test-set accuracy updated 2026-07-16** after a data-leakage bug was found and
+> reverted, the underlying features rebuilt from real per-fight data, and a 6-item
+> accuracy-improvement queue completed (opponent-quality adjustment, per-division
+> calibration, Elo K-factor decay, non-linear layoff penalty, and more — see
+> `SESSION_LOG.md` for the full trail). The 65.0% figure this replaced was partly
+> leakage-inflated. Parlay/live-accuracy rows below predate all of this work and
+> haven't been reverified against the new model yet (no live events have been
+> predicted with it as of 2026-07-16) — treat with appropriate caution until re-run.
 
 | Metric | Value |
 |---|---|
-| Winner prediction accuracy (test set) | 60.1% (baseline: 49.1%) — updated 2026-07-15, was 65.0% pre-leakage-fix |
+| Winner prediction accuracy (test set) | 62.2% (baseline: 49.1%) — updated 2026-07-16, was 65.0% pre-leakage-fix |
 | Test set | 1,316 fights, 2023-12 → 2026-07 |
 | Live winner accuracy (3 events, 53 fights) | 75.5% out-of-sample — pre-2026-07-15, not yet reverified |
 | Live method accuracy | 55.6% — pre-2026-07-15, not yet reverified |
@@ -64,11 +66,11 @@ Streamlit Dashboard — live predictions, odds, edge, SHAP factors
 
 ---
 
-## Features (79 total)
+## Features (80 total)
 
 All features are diffs (Fighter A − Fighter B) computed from stats available before the fight date.
-Verified against `config.py::FEATURE_COLUMNS` on 2026-07-15 (was 73 earlier the same day, +6 from
-two accuracy-improvement passes — see `SESSION_LOG.md`).
+Verified against `config.py::FEATURE_COLUMNS` on 2026-07-16 (was 73 at the start of the 2026-07-15
+catch-up, +7 from a 6-item accuracy-improvement queue — see `SESSION_LOG.md`).
 
 | Group | Count | Notes |
 |---|---|---|
@@ -77,8 +79,8 @@ two accuracy-improvement passes — see `SESSION_LOG.md`).
 | Grappling | 4 | TD avg/acc/def, sub avg |
 | Opponent-Adjusted Stats | 4 | SLpM/TD avg/TD def/SAPM scaled by strength of schedule (avg opponent Elo) |
 | Control / Scramble Grappling | 2 | Avg control time per fight (seconds), avg reversals per fight |
-| Record & Form | 5 | Win rate, finish rate, recent win rate, days since last fight, win streak |
-| Elo Dynamics | 5 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak (K-factor is flat, does not decay with fight count) |
+| Record & Form | 6 | Win rate, finish rate, recent win rate, days since last fight, non-linear layoff penalty, win streak |
+| Elo Dynamics | 5 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak — K-factor now decays with fight count (debut fighters swing more, veterans less) |
 | Style Fingerprints (career) | 5 | Pressure, wrestling, striker, finisher, grappling defense |
 | Style Fingerprints (rolling) | 6 | Pressure, wrestling, striker — last-3 and last-5 windows (no rolling finisher) |
 | Momentum / Recent Form | 2 | Momentum score, recent finish rate |
@@ -282,9 +284,8 @@ Rules derived from live event data and model calibration:
 ## Known Limitations
 
 - Theoretical ceiling ~65–70% for MMA prediction using historical stats alone. Further gains require real-time information (camps, injuries, motivation) not available in public data.
-- Narrative features are zeros — injury flags and sentiment not yet automated (3 of 73 features unused).
-- Two scraped-but-unused round-level stats (`control_time_secs`, `reversals`) aren't wired into any feature yet.
-- Elo K-factor is a flat constant — does not decay with fighter experience/fight count.
+- Narrative features are zeros — injury flags and sentiment not yet automated (3 of 80 features unused).
+- Per-division winner calibration (2026-07-16) isn't wired into `dashboard/app.py`'s 5 predict() call sites yet, or into `train_model.py`'s quick evaluation report (which bypasses calibration entirely) — safe no-op fallback in both cases, just not getting the calibration benefit there yet.
 - Method and round models are trained independently — a joint model would be more accurate.
 - Elo cold start — fighters new to UFC begin at 1500 regardless of regional record.
 - Cloud DB is read-only — fighters not in the committed DB are skipped on Streamlit Cloud until next push.
