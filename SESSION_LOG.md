@@ -7,6 +7,52 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-16 — Accuracy queue item #5: Elo K-factor decay by fight count
+
+**What:** `ELO_K_FACTOR` was a flat 32 for every fighter regardless of experience — a
+debut fighter's single result swung their rating exactly as much as a 25-fight
+veteran's. Item 4's SHAP miss analysis directly motivated this: Elo-family features
+were 4 of the top 5 by total wrong-push across live misses.
+
+**Design:** added `decayed_k_factor(n_prior_fights)` to `elo_calculator.py` —
+`k(n) = ELO_K_MIN + (ELO_K_MAX - ELO_K_MIN) / (1 + n / ELO_K_DECAY_FIGHTS)`, new config
+constants `ELO_K_MAX=48`, `ELO_K_MIN=20`, `ELO_K_DECAY_FIGHTS=10` (debut fighters get up
+to 1.5x the old flat K, asymptotes to 0.625x for veterans, roughly halfway there by ~10
+fights). `update_ratings()` now takes optional `fights_a`/`fights_b` and computes a
+per-side decayed K when given, falling back to the old flat behavior if not (backward
+compatible). `data_loader.py::_load_fight` now looks up each fighter's prior fight count
+via a DB count query (cheap — only a handful of fights per event during normal
+incremental pipeline runs) and passes it through.
+
+**Full historical recompute:** Elo is inherently chronological (each rating builds on
+the fighter's prior one), so the decay can't be applied retroactively to existing rows —
+the whole history has to be replayed from `ELO_BASE_RATING` in fight-date order. Built
+`scripts/recompute_elo.py`: deletes all `EloRating` rows, replays all 8,771 fights
+chronologically maintaining in-memory rating + fight-count dicts (O(n), not the O(n²) an
+naive DB-count-per-fight approach would be over the full history). Confirmed
+`elo_diff`/`avg_opponent_elo_diff`/etc. read directly from `EloRating` via
+`EloCalculator` at feature-build time (not a `FighterStats` column), so no snapshot
+rebuild is needed — just retrain.
+
+**Verified:** 17,542 old rows deleted, 17,542 new ones written (2 per fight × 8,771,
+matches). Sanity-checked a real fighter's career arc (Islam Makhachev, 18 UFC fights):
+first-fight rating swing was ~26 points (debut, high K), late-career swings (fights
+16→17→18) were only ~11 points each (veteran, low K) — decay working as designed.
+**Test accuracy 60.1% → 61.2%** — the single largest gain of any queue item this
+session. Log loss (0.6609) and Brier score (0.2334) both improved to new session-best
+levels.
+
+Re-ran `analyze_shap_misses.py` afterward as a secondary check — `elo_diff` still shows
+up as the top culprit across the *same* 15 historical live misses. Worth being precise
+about what this does and doesn't show: those 15 fights were already scored wrong by the
+*old* model in `live_accuracy.csv`, a frozen historical record — re-explaining them with
+the new model's SHAP values doesn't retroactively test whether the new model would call
+them correctly now (that can only be measured going forward, via new live events). The
+60.1% → 61.2% test-set accuracy jump is the real evidence this fix worked; the SHAP
+re-check is a consistency check, not independent validation.
+
+---
+
 ## 2026-07-16 — Accuracy queue item #4: SHAP-based aggregate miss-pattern analysis
 
 **What:** SHAP was computed per-prediction for display only; nothing cross-referenced it

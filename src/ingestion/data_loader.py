@@ -250,9 +250,20 @@ def _load_fight(
     session.add(fight)
     session.flush()
 
-    # Update Elo ratings
+    # Update Elo ratings — K-factor decays with experience, so debut fighters'
+    # ratings swing more per result than veterans'. Prior fight counts come
+    # from a DB count (cheap here — only a handful of fights per event, not
+    # worth threading a second dict through every _load_fight caller the way
+    # elo_ratings already is).
     rating_a = elo_ratings.get(fighter_a.id, ELO_BASE_RATING)
     rating_b = elo_ratings.get(fighter_b.id, ELO_BASE_RATING)
+
+    def _prior_fight_count(fighter_id: int) -> int:
+        return session.query(Fight).filter(
+            ((Fight.fighter_a_id == fighter_id) | (Fight.fighter_b_id == fighter_id)),
+            Fight.fight_date < fight.fight_date,
+            Fight.winner_id.isnot(None),
+        ).count()
 
     winner_key = fight_data["winner"]  # "fighter_a" | "fighter_b" | "draw"
     method = fight_data.get("method", "Decision")
@@ -261,6 +272,8 @@ def _load_fight(
         rating_a, rating_b,
         winner="a" if winner_key == "fighter_a" else ("b" if winner_key == "fighter_b" else "draw"),
         method=method.lower().replace("/", "_").replace(" ", "_"),
+        fights_a=_prior_fight_count(fighter_a.id),
+        fights_b=_prior_fight_count(fighter_b.id),
     )
 
     elo_ratings[fighter_a.id] = new_a

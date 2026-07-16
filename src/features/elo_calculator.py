@@ -12,11 +12,25 @@ Two modes:
 import math
 from datetime import datetime
 from collections import defaultdict
-from config import ELO_BASE_RATING, ELO_K_FACTOR, ELO_FINISH_BONUS
+from config import (
+    ELO_BASE_RATING, ELO_K_FACTOR, ELO_FINISH_BONUS,
+    ELO_K_MAX, ELO_K_MIN, ELO_K_DECAY_FIGHTS,
+)
 
 
 def expected_score(rating_a: float, rating_b: float) -> float:
     return 1.0 / (1.0 + math.pow(10, (rating_b - rating_a) / 400.0))
+
+
+def decayed_k_factor(n_prior_fights: int) -> float:
+    """
+    K-factor as a function of experience — debut fighters' ratings should swing
+    more per result (we know little about their true skill yet), established
+    fighters' should be more stable. Smooth decay from ELO_K_MAX toward
+    ELO_K_MIN, roughly halfway there by ELO_K_DECAY_FIGHTS prior fights.
+    """
+    n = max(n_prior_fights, 0)
+    return ELO_K_MIN + (ELO_K_MAX - ELO_K_MIN) / (1.0 + n / ELO_K_DECAY_FIGHTS)
 
 
 def update_ratings(
@@ -24,8 +38,27 @@ def update_ratings(
     rating_b: float,
     winner: str,
     method: str = "decision",
-    k_factor: float = ELO_K_FACTOR,
+    k_factor: float = None,
+    fights_a: int = None,
+    fights_b: int = None,
 ) -> tuple:
+    """
+    Args:
+        k_factor:  flat K for both fighters. Used as-is if given (backward
+                   compatible for any caller not tracking fight counts).
+        fights_a/b: prior fight count for each fighter — if given (and
+                   k_factor is not), each side gets its own experience-decayed
+                   K via decayed_k_factor(). Falls back to ELO_K_FACTOR flat
+                   if neither k_factor nor fight counts are provided.
+    """
+    if k_factor is not None:
+        k_a = k_b = k_factor
+    elif fights_a is not None or fights_b is not None:
+        k_a = decayed_k_factor(fights_a or 0)
+        k_b = decayed_k_factor(fights_b or 0)
+    else:
+        k_a = k_b = ELO_K_FACTOR
+
     exp_a = expected_score(rating_a, rating_b)
     exp_b = 1.0 - exp_a
 
@@ -40,8 +73,8 @@ def update_ratings(
     if method in ("ko_tko", "submission") and winner in ("a", "b"):
         finish_multiplier = 1.0 + ELO_FINISH_BONUS
 
-    new_a = rating_a + k_factor * finish_multiplier * (score_a - exp_a)
-    new_b = rating_b + k_factor * finish_multiplier * (score_b - exp_b)
+    new_a = rating_a + k_a * finish_multiplier * (score_a - exp_a)
+    new_b = rating_b + k_b * finish_multiplier * (score_b - exp_b)
     return round(new_a, 2), round(new_b, 2)
 
 
@@ -230,8 +263,3 @@ class EloCalculator:
             {"rank": i + 1, "name": f.name, "weight_class": f.weight_class, "elo": round(e.rating, 1)}
             for i, (f, e) in enumerate(results)
         ]
-
-
-
-def expected_score(rating_a: float, rating_b: float) -> float:
-    return 1.0 / (1.0 + math.pow(10, (rating_b - rating_a) / 400.0))

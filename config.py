@@ -51,8 +51,17 @@ RECENT_FIGHTS_WINDOW: int = 5
 
 # Starting Elo for every fighter
 ELO_BASE_RATING: float = 1500.0
-ELO_K_FACTOR: float = 32.0          # how fast ratings update
+ELO_K_FACTOR: float = 32.0          # flat fallback when fight count is unknown
 ELO_FINISH_BONUS: float = 0.1       # bonus multiplier for finishes vs decisions
+
+# K-factor decay by experience — a debut fighter's single result shouldn't swing
+# their rating as much as it should be trusted for a 25-fight veteran (was flat
+# 32 for everyone; SHAP miss analysis on 2026-07-16 found Elo-family features
+# dominating high-confidence misses, motivating this fix).
+# k(n) = ELO_K_MIN + (ELO_K_MAX - ELO_K_MIN) / (1 + n / ELO_K_DECAY_FIGHTS)
+ELO_K_MAX: float = 48.0             # debut fighter (0 prior fights)
+ELO_K_MIN: float = 20.0             # asymptotic floor for veterans
+ELO_K_DECAY_FIGHTS: float = 10.0    # roughly halfway to the floor by ~10 fights
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")

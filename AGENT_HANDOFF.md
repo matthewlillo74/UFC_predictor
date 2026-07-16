@@ -433,10 +433,14 @@ Winner probabilities are capped at 90% max in `predict.py`. The model's raw outp
  
 ### Elo system
 - All fighters start at 1500
-- K-factor is a **flat constant** (`ELO_K_FACTOR = 32`, see `config.py`) — verified 2026-07-15
-  that it does NOT decay with fight count despite this doc previously claiming it does; a
-  debut fighter's single result swings their rating exactly as much as a 25-fight veteran's.
-  This is flagged as an improvement opportunity in `SESSION_LOG.md`.
+- K-factor **decays with fight count** (fixed 2026-07-16 — see `SESSION_LOG.md`):
+  `decayed_k_factor(n)` in `elo_calculator.py`, ranges `ELO_K_MAX=48` (debut) down toward
+  `ELO_K_MIN=20` (veteran), roughly halfway there by `ELO_K_DECAY_FIGHTS=10` prior fights.
+  Full history recomputed via `scripts/recompute_elo.py` (Elo is chronological, decay
+  can't be applied retroactively without replaying the whole thing). This was the single
+  largest accuracy gain of the 2026-07-16 session (60.1% → 61.2% test accuracy) — was
+  previously flat (`ELO_K_FACTOR=32` for everyone), which this doc incorrectly claimed
+  already decayed as of the 2026-07-15 catch-up, before it was actually verified/fixed.
 - `elo_uncertainty` = inverse of fights fought (high uncertainty = debut fighter)
 - `elo_trend` = Elo change over last 3 fights
 - `avg_opponent_elo` = strength of schedule proxy
@@ -523,10 +527,9 @@ actually missing/dead in the current code, ranked by leverage vs. cost:
    are 4 of the top 5 by total wrong-push across 15 high-confidence live misses —
    `elo_diff` alone pushed toward the wrong pick in 13/15. Direct empirical support for
    item 5 below, not just the theoretical case.
-5. **Elo K-factor decay by fight count** (small change, needs full historical Elo recompute +
-   retrain) — currently a flat `ELO_K_FACTOR=32` regardless of fighter experience, see the
-   "Elo system" section above. Item 4's miss analysis found Elo-family features are the
-   single biggest driver of high-confidence misses — this is the highest-confidence next fix.
+5. ~~**Elo K-factor decay by fight count**~~ **DONE 2026-07-16** — see `SESSION_LOG.md` and
+   "Elo system" section above. **Test accuracy 60.1% → 61.2%, the largest gain of any
+   queue item this session** — directly validated item 4's SHAP-driven prioritization.
 6. **Non-linear layoff penalty transform** (trivial, ~30 min) — same idea as item 4 in the
    list below, still not implemented as of 2026-07-15.
 
