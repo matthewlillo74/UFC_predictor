@@ -430,6 +430,12 @@ class FeatureBuilder:
             "finish_rate_diff":           _diff(s("finish_rate"),       t("finish_rate")),
             "recent_win_rate_diff":       _diff(s("recent_win_rate"),   t("recent_win_rate")),
             "days_since_last_fight_diff": _diff(s("days_since_last_fight"), t("days_since_last_fight")),
+            # Non-linear layoff penalty — days_since_last_fight_diff is linear, but MMA
+            # performance degrades disproportionately after 12+ months out (ring rust,
+            # harder to fully assess after a long layoff). Linear ramp to 1.0 at a year,
+            # continues growing (at half the rate) beyond that rather than plateauing.
+            "layoff_penalty_diff": _diff(_layoff_penalty(s("days_since_last_fight")),
+                                          _layoff_penalty(t("days_since_last_fight"))),
             "win_streak_diff":            _diff(s("win_streak"),        t("win_streak")),
             # Elo
             "elo_diff":              _diff(elo_a,           elo_b),
@@ -739,3 +745,18 @@ def _opp_adj(stat, avg_opponent_elo, inverse: bool = False) -> Optional[float]:
         return None
     ratio = avg_opponent_elo / ELO_BASE_RATING
     return float(stat) / ratio if inverse else float(stat) * ratio
+
+
+def _layoff_penalty(days) -> Optional[float]:
+    """
+    Non-linear inactivity penalty: linear ramp to 1.0 at a year out, continues
+    growing (at half the rate) beyond that rather than plateauing — performance
+    degrades disproportionately after 12+ months, not proportionally like the
+    raw days_since_last_fight_diff assumes.
+    """
+    if days is None:
+        return None
+    days = float(days)
+    if days <= 365:
+        return days / 365
+    return 1.0 + (days - 365) / 365 * 0.5

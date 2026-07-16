@@ -7,6 +7,27 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-16 — Accuracy queue item #6: non-linear layoff penalty transform
+
+**What:** `days_since_last_fight_diff` was linear, but MMA performance degrades
+disproportionately after 12+ months out (ring rust, harder to assess after a long
+layoff) — already fully spec'd in `AGENT_HANDOFF.md`'s older feature-idea list, just
+never implemented. Scoped as "trivial, ~30 min."
+
+**Design:** implemented the formula exactly as already specified —
+`_layoff_penalty(days)` in `feature_builder.py`: linear ramp to 1.0 at 365 days, then
+continues growing at half the rate beyond that rather than plateauing. Added
+`layoff_penalty_diff` to `FEATURE_COLUMNS` (79 → 80), additive alongside the existing
+linear `days_since_last_fight_diff` rather than replacing it.
+
+**Verified:** retrained — **test accuracy 61.2% → 62.2%**, the second-largest gain of
+any queue item this session (right behind item 5's Elo fix). Log loss (0.6588) and
+Brier score (0.2322) both improved to new session-best levels. `layoff_penalty_diff`
+itself cracked the top-10 feature importances (rank 10) — genuinely useful signal, not
+just added noise. Notably better ROI than its "trivial" sizing suggested going in.
+
+---
+
 ## 2026-07-16 — Accuracy queue item #5: Elo K-factor decay by fight count
 
 **What:** `ELO_K_FACTOR` was a flat 32 for every fighter regardless of experience — a

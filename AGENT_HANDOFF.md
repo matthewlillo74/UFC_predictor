@@ -530,8 +530,15 @@ actually missing/dead in the current code, ranked by leverage vs. cost:
 5. ~~**Elo K-factor decay by fight count**~~ **DONE 2026-07-16** — see `SESSION_LOG.md` and
    "Elo system" section above. **Test accuracy 60.1% → 61.2%, the largest gain of any
    queue item this session** — directly validated item 4's SHAP-driven prioritization.
-6. **Non-linear layoff penalty transform** (trivial, ~30 min) — same idea as item 4 in the
-   list below, still not implemented as of 2026-07-15.
+6. ~~**Non-linear layoff penalty transform**~~ **DONE 2026-07-16** — see `SESSION_LOG.md`.
+   **Test accuracy 61.2% → 62.2%, second-largest gain of the session** — much better ROI
+   than its "trivial, 30 min" sizing suggested; `layoff_penalty_diff` cracked top-10
+   feature importances.
+
+**All 6 items in this queue are now done as of 2026-07-16.** Cumulative: 73 → 80
+features, test accuracy 60.3% (right after the leakage revert alone) → 62.2%. See
+`SESSION_LOG.md` for the full trail; a fresh accuracy-improvement pass should start from
+scratch rather than extend this list further.
 
 Items 1-4 of the older list below (odds movement tracker, injury/camp NLP, CLV tracking,
 joint method+round model) are still valid ideas and not superseded — this new list is about

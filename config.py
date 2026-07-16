@@ -99,6 +99,7 @@ FEATURE_COLUMNS = [
     "finish_rate_diff",
     "recent_win_rate_diff",   # last N fights window
     "days_since_last_fight_diff",
+    "layoff_penalty_diff",   # non-linear — degrades disproportionately after 12+ months out
     "win_streak_diff",
     # Elo
     "elo_diff",
