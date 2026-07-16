@@ -7,6 +7,29 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-15 — Session paused after accuracy queue item #3
+
+**Status:** user asked to pause here deliberately, not a stopping point forced by a
+blocker. Working tree clean, 4 commits ahead of `origin/main` (not pushed — no auto-deploy
+triggered). Plan: resume with queue items 4-6 (SHAP miss-pattern analysis, Elo K-factor
+decay, layoff transform), then **step back and evaluate** the whole batch of changes
+before deciding what's next — that evaluation hasn't happened yet, treat items 1-3 +
+the priority sparsity fix as shipped-but-not-yet-fully-reviewed-in-aggregate.
+
+Not done, flagged in earlier entries, still open:
+- Division calibration (item 3) not wired into `dashboard/app.py`'s 5 predict() call
+  sites, or into `evaluate()` (train-time accuracy report bypasses calibration).
+- Live accuracy / parlay backtest numbers in README predate this session's fixes,
+  marked "not yet reverified" rather than updated with new numbers.
+- Two remaining minor bugs from the original codebase audit were never addressed:
+  `get_early_label()` in `predict.py` uses `is_title_fight` instead of the more accurate
+  `Fight.scheduled_rounds` column to pick the round-model threshold; `Fight.scheduled_rounds`
+  itself is barely used elsewhere despite existing in the schema.
+- `--full-retrain` flag and the model's committed pickles are current as of this session's
+  last retrain (item #3's, log timestamp 2026-07-15 22:09) — no further retraining pending.
+
+---
+
 ## 2026-07-15 — Accuracy queue item #3: per-division winner probability calibration
 
 **What:** one global probability scale for the winner model despite documented live
