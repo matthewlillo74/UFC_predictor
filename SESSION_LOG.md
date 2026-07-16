@@ -7,6 +7,42 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-16 — Accuracy queue item #4: SHAP-based aggregate miss-pattern analysis
+
+**What:** SHAP was computed per-prediction for display only; nothing cross-referenced it
+against `log_live_results.py`'s high-confidence-miss list to check whether misses share a
+feature-level signature.
+
+**Built:** `scripts/analyze_shap_misses.py` — pulls high-confidence misses (default
+confidence >= 65%), recomputes SHAP values for each via `FeatureBuilder` + the trained
+model's `shap_explainer`, and tallies which features consistently pushed the model
+*toward* its wrong pick (sign-flipped so "push" always means "toward the mistake"
+regardless of which fighter was favored). Reports features ranked by total push across
+misses, with per-feature miss counts.
+
+**Had to pivot the data source mid-build:** initially queried the `Prediction` DB table
+(`was_correct == False AND confidence_score >= threshold`), but that table only has **2
+rows total** — historical predictions got orphaned by the duplicate-Fight-row bug fixed
+earlier this session, and apparently were never being reliably written to/read from the
+DB table in the first place. `log_live_results.py`'s own reporting has relied on
+`data/predictions/live_accuracy.csv` all along (107 fights) — rewrote the script to
+source misses from there instead, resolving fighter names back to DB `Fighter` rows via
+`normalize_name` + rapidfuzz (same pattern as `predict_fight_by_name`).
+
+**Result — genuinely useful, not just a completed checkbox:** ran against all 107 live
+fights, 15 misses at >=65% confidence. Elo-family features dominate: `elo_diff` pushed
+toward the wrong pick in **13 of 15** misses (highest total push of any feature),
+`elo_uncertainty_diff` in 7/15, `avg_opponent_elo_diff` in 10/15, `elo_trend_diff` in
+11/15 — 4 of the top 5 features by total wrong-push are Elo-derived. This is direct
+empirical evidence (not just the theoretical case already made) that queue item #5 (Elo
+K-factor decay) is the right next fix — proceeding to it next with this in hand.
+
+**Follow-up worth doing but not done here:** this is a one-off analysis script, not
+wired into the regular pipeline or `log_live_results.py`'s report. Re-run manually after
+future retrains to see whether the miss signature shifts.
+
+---
+
 ## 2026-07-15 — Session paused after accuracy queue item #3
 
 **Status:** user asked to pause here deliberately, not a stopping point forced by a

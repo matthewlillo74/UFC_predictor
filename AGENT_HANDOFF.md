@@ -517,12 +517,16 @@ actually missing/dead in the current code, ranked by leverage vs. cost:
    isn't visible in the quick train-time accuracy report). Caveat: smaller divisions'
    calibration samples are thin (e.g. Lightweight, 143 fights) — validate against live
    results before fully trusting.
-4. **SHAP-based aggregate miss-pattern analysis** (small-medium) — SHAP is computed per-prediction
-   for display only; nothing cross-references it against `log_live_results.py`'s
-   high-confidence-miss list to find systematic feature-level failure signatures.
+4. ~~**SHAP-based aggregate miss-pattern analysis**~~ **DONE 2026-07-16** — see
+   `SESSION_LOG.md` and `scripts/analyze_shap_misses.py`. Found real signal: Elo-family
+   features (`elo_diff`, `elo_uncertainty_diff`, `avg_opponent_elo_diff`, `elo_trend_diff`)
+   are 4 of the top 5 by total wrong-push across 15 high-confidence live misses —
+   `elo_diff` alone pushed toward the wrong pick in 13/15. Direct empirical support for
+   item 5 below, not just the theoretical case.
 5. **Elo K-factor decay by fight count** (small change, needs full historical Elo recompute +
    retrain) — currently a flat `ELO_K_FACTOR=32` regardless of fighter experience, see the
-   "Elo system" section above.
+   "Elo system" section above. Item 4's miss analysis found Elo-family features are the
+   single biggest driver of high-confidence misses — this is the highest-confidence next fix.
 6. **Non-linear layoff penalty transform** (trivial, ~30 min) — same idea as item 4 in the
    list below, still not implemented as of 2026-07-15.
 
