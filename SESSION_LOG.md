@@ -74,6 +74,84 @@ re-check is a consistency check, not independent validation.
 
 ---
 
+## 2026-07-16 — Calibration root-cause + revert to pre-queue baseline for weekend live test
+
+**Context:** continuation of the same review. The friend's response to the significance
+results flagged the item-3 calibration regression (0.66→0.90 log loss when tested) as more
+urgent than the significance findings themselves — this weekend's whole point is comparing
+model probabilities against the closing line, so a corrupted probability output would taint
+the first day of real validation data. Asked directly: is this a methodology bug in the
+testing script (like the 3 already found) or a real problem with calibration itself, and
+would predictions be more honest this weekend with calibration on or off.
+
+### Root cause, verified empirically (not just diagnosed by inspection)
+
+Found it directly in `train()`: `X_div = X[use_mask]`, where `X` is the exact same data
+`self.winner_model.fit(X, y_winner, ...)` was just trained on. `CalibratedClassifierCV(...,
+cv="prefit")` only means "don't refit the base estimator" — it does **not** mean the
+calibration set is held out. Fitting a calibrator on in-sample data is invalid methodology:
+the base model's probabilities there are artificially confident relative to true
+generalization, so the sigmoid mapping learned against them doesn't transfer.
+
+Verified with a direct test (raw model vs. in-sample calibration vs. a properly held-out
+calibration set the base model never saw):
+
+| Approach | log loss | Brier |
+|---|---|---|
+| Raw (no calibration) | 0.6497 | 0.2291 |
+| **In-sample calibration (current shipped code)** | **0.7229** | **0.2492** |
+| Held-out calibration (proper fix) | 0.6526 | 0.2303 |
+
+Confirms the diagnosis: in-sample calibration is clearly harmful, held-out calibration is
+much closer to neutral (not clearly better than raw either, but nowhere near as damaging).
+**This is a real bug in item 3's implementation, not a repeat of the three testing-script
+bugs from the earlier entry** — it's in shipped production code. Answer given: calibration
+should be off this weekend. A proper held-out-calibration-set fix is a legitimate follow-up
+but wasn't rushed into production hours before the live test it would affect most.
+
+### Decision: revert `main` to the pre-queue baseline for the weekend
+
+Given (a) none of the 6 queue items reached significance, (b) calibration is confirmed
+actively harmful, and (c) the weekend's closing-line comparison needs the most trustworthy
+state available, not the most feature-rich one — asked the user directly what should
+actually run. Chose the pre-queue baseline (matches the friend's recommendation).
+
+**Preserved, not deleted:** created branch `parked/accuracy-queue-2026-07-16` at the tip of
+all the queue + Part A/B testing work (commit `d5b010c0`) before touching anything on
+`main`. Full queue is fully recoverable from there.
+
+**On `main`:**
+- `config.py::FEATURE_COLUMNS` reverted to the exact 73-column pre-queue set — verified by
+  set-equality against the actual commit `b5c24214` config.py, not reconstructed from
+  memory. (The opponent-adjustment, control_time/reversals, and layoff_penalty feature
+  *code* stays in `feature_builder.py` — harmless, unused dead code now, not ripped out.)
+- `scripts/recompute_elo.py` re-run in flat-K mode (now the documented main default; the
+  script's CLI flipped from `--flat` to `--decayed` to match, and its warning language now
+  correctly frames flat as the deliberate `main` state rather than an ablation-only mode).
+- Calibration explicitly disabled at the two live-prediction call sites that had it
+  (`run_pipeline.py`, `predict_fight_by_name`) by no longer passing `weight_class` to
+  `predict()` — `train()` still fits calibrators harmlessly in the background (unused), a
+  proper fix (gating the fit itself) is lower priority than making sure nothing applies them.
+
+**Verified:** retrained — **60.6% test accuracy**, exactly matching the ablation script's
+independently-verified `state0` reconstruction from the prior entry (strong consistency
+check that this revert is faithful, not just "close enough"). End-to-end sanity check
+(`predict_fight_by_name`) confirms 73 features, no calibration shift applied, consistency
+check passes.
+
+**Not yet done:** dashboard/app.py's 5 predict() call sites never passed `weight_class` in
+the first place (from the original item-3 rollout), so they were already unaffected —
+confirmed, not changed. Still holding the push per the friend's explicit guidance — push
+once this is reviewed, not automatically after committing.
+
+**Parked hypothesis, not a dead one:** the queue's individual effect sizes (Elo decay
++1.1pp, layoff penalty +1.1pp) are directionally consistent with the theoretical case for
+each — p=0.083 on the combined effect is "close but not there," not evidence the ideas are
+wrong. Revisit with more live data once the closing-line capture (this entry's sibling) has
+accumulated enough for a real read, not before.
+
+---
+
 ## 2026-07-16 — Closing-line capture (Part A) + statistical significance testing (Part B)
 
 **Context:** external review (framed against a prior "insider-trading project" rigor

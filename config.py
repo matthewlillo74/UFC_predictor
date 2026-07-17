@@ -87,19 +87,21 @@ FEATURE_COLUMNS = [
     "td_acc_diff",            # takedown accuracy
     "td_def_diff",            # takedown defense
     "sub_avg_diff",           # submission attempts per 15 min
-    # Opponent-quality-adjusted versions of the above — scaled by avg_opponent_elo
-    # so padding raw output against weak competition reads differently than earning
-    # it against elite opposition
-    "slpm_adj_diff",
-    "td_avg_adj_diff",
-    "td_def_adj_diff",
-    "sapm_adj_diff",
+    # NOTE 2026-07-16: the opponent-quality-adjusted features (slpm_adj_diff,
+    # td_avg_adj_diff, td_def_adj_diff, sapm_adj_diff) that lived here, and
+    # layoff_penalty_diff, control_time_diff/reversals_diff below, are
+    # deliberately PARKED, not deleted — see AGENT_HANDOFF.md / SESSION_LOG.md.
+    # None of the 6-item accuracy queue reached statistical significance
+    # (McNemar's test) and per-division calibration was found to actively
+    # harm probability quality, so this weekend runs the pre-queue baseline
+    # (73 features, flat Elo, no calibration) as the most defensible known
+    # state. Full queue + testing infra preserved on branch
+    # parked/accuracy-queue-2026-07-16 to revisit once there's more data.
     # Record / form
     "win_rate_diff",
     "finish_rate_diff",
     "recent_win_rate_diff",   # last N fights window
     "days_since_last_fight_diff",
-    "layoff_penalty_diff",   # non-linear — degrades disproportionately after 12+ months out
     "win_streak_diff",
     # Elo
     "elo_diff",
@@ -128,9 +130,6 @@ FEATURE_COLUMNS = [
     "durability_diff",             # composite proxy (SAPM + KO loss rate)
     "kd_absorbed_per_fight_diff",  # avg knockdowns absorbed per fight — chin/durability
     "kd_ratio_diff",               # KD landed / absorbed — KO offensive dominance
-    # Control / scramble grappling — from fight-level control time & reversals
-    "control_time_diff",           # avg ground/clinch control seconds per fight
-    "reversals_diff",              # avg reversals/sweeps landed per fight
     # Rolling style windows — last 3 and last 5 fights
     # Captures style evolution; diff between career and recent = style shift
     "style_pressure_l3_diff",

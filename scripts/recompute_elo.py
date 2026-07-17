@@ -1,21 +1,32 @@
 """
 scripts/recompute_elo.py
 ──────────────────────────
-Rebuilds the entire EloRating history from scratch using experience-decayed
-K-factors (see elo_calculator.decayed_k_factor) instead of the flat K=32 every
-existing EloRating row was computed with.
+Rebuilds the entire EloRating history from scratch, either with the flat
+K=32 every EloRating row historically used, or with experience-decayed
+K-factors (see elo_calculator.decayed_k_factor).
+
+STATUS AS OF 2026-07-16: `main` runs FLAT K-factor deliberately — the 6-item
+accuracy queue (including the Elo decay change) didn't reach statistical
+significance (McNemar's test) and per-division calibration was found to
+actively harm probability quality, so `main` was reverted to the
+pre-queue baseline (73 features, flat Elo, no calibration) as the most
+defensible known state for live use. The decayed-K logic and the rest of
+the queue are preserved on branch `parked/accuracy-queue-2026-07-16` to
+revisit once there's more live data. See AGENT_HANDOFF.md / SESSION_LOG.md.
 
 Elo is inherently chronological — each rating builds on the fighter's prior
-rating — so decaying K-factor can't be applied retroactively to existing rows;
-the whole history has to be replayed in fight-date order from ELO_BASE_RATING.
-This does NOT touch Fight/Fighter/FighterStats rows, only EloRating — all the
-Elo-derived features (elo_diff, avg_opponent_elo_diff, elo_trend_diff,
-elo_uncertainty_diff, elo_vs_peak_diff) read directly from EloRating via
-EloCalculator at feature-build time, not from a FighterStats column, so no
-snapshot rebuild is needed. Just retrain afterward to pick up the new values.
+rating — so switching between flat/decayed can't be applied retroactively to
+existing rows; the whole history has to be replayed in fight-date order from
+ELO_BASE_RATING. This does NOT touch Fight/Fighter/FighterStats rows, only
+EloRating — all the Elo-derived features (elo_diff, avg_opponent_elo_diff,
+elo_trend_diff, elo_uncertainty_diff, elo_vs_peak_diff) read directly from
+EloRating via EloCalculator at feature-build time, not from a FighterStats
+column, so no snapshot rebuild is needed. Just retrain afterward to pick up
+the new values.
 
 Usage:
-    python scripts/recompute_elo.py
+    python scripts/recompute_elo.py            # flat K (current main default)
+    python scripts/recompute_elo.py --decayed   # experience-decayed K (parked branch)
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -28,16 +39,14 @@ from src.features.elo_calculator import update_ratings
 from config import ELO_BASE_RATING, ELO_K_FACTOR
 
 
-def recompute_elo(session, flat: bool = False):
+def recompute_elo(session, flat: bool = True):
     """
     Args:
-        flat: if True, use the old flat ELO_K_FACTOR for every fighter instead
-              of experience-decayed K. Only exists for
-              scripts/ablation_significance_test.py to reconstruct the
-              pre-item-5 historical state — never use this for production data,
-              it recreates the exact bug that was fixed.
+        flat: if True (default, matches current main), use the flat
+              ELO_K_FACTOR for every fighter. If False, use experience-decayed
+              K (elo_calculator.decayed_k_factor) — the parked-branch behavior.
     """
-    mode = "FLAT K (ablation testing only)" if flat else "decayed K (production)"
+    mode = "FLAT K (current main default)" if flat else "decayed K (parked branch behavior)"
     logger.info(f"Deleting existing EloRating history... [mode: {mode}]")
     deleted = session.query(EloRating).delete()
     session.commit()
@@ -95,18 +104,21 @@ def recompute_elo(session, flat: bool = False):
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Recompute EloRating history")
-    parser.add_argument("--flat", action="store_true",
-                         help="Use flat K-factor (pre-2026-07-16 behavior) — ablation testing only, "
-                              "never use for production")
+    parser.add_argument("--decayed", action="store_true",
+                         help="Use experience-decayed K-factor instead of the current main "
+                              "default (flat) — this is the parked-branch behavior, only "
+                              "meaningful if FEATURE_COLUMNS also matches that branch's feature set")
     args = parser.parse_args()
 
     init_db()
     session = get_session()
-    recompute_elo(session, flat=args.flat)
+    recompute_elo(session, flat=not args.decayed)
     session.close()
-    if args.flat:
-        logger.warning("Elo history is now FLAT-K — this is NOT the production state. "
-                        "Run without --flat to restore decayed-K before doing anything else.")
+    if args.decayed:
+        logger.warning("Elo history is now DECAYED-K — this does NOT match main's current "
+                        "FEATURE_COLUMNS/model config. Run without --decayed to restore the "
+                        "flat-K state main actually uses, unless you're deliberately working "
+                        "on the parked/accuracy-queue-2026-07-16 branch.")
     else:
         logger.info("Next: rm data/processed/training_dataset.csv && python scripts/train_model.py "
                     "to pick up the new Elo history in training features.")

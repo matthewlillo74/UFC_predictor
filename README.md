@@ -8,28 +8,23 @@ Machine learning system for UFC fight prediction, betting value detection, and E
 
 ## Results
 
-> **Test-set accuracy updated 2026-07-16** after a data-leakage bug was found and
-> reverted, the underlying features rebuilt from real per-fight data, and a 6-item
-> accuracy-improvement queue completed (opponent-quality adjustment, per-division
-> calibration, Elo K-factor decay, non-linear layoff penalty, and more — see
-> `SESSION_LOG.md` for the full trail). The 65.0% figure this replaced was partly
-> leakage-inflated. Parlay/live-accuracy rows below predate all of this work and
-> haven't been reverified against the new model yet (no live events have been
-> predicted with it as of 2026-07-16) — treat with appropriate caution until re-run.
->
-> **The 60.3%→62.2% queue improvement has NOT been shown to be statistically
-> significant.** A McNemar's test across the full incremental chain (2026-07-16, see
-> `SESSION_LOG.md`) found none of the 6 individual items reach p<0.05, and the full
-> cumulative effect gets only to p=0.083 — suggestive, not conclusive, on 1,316 test
-> fights. Also: per-division calibration measurably *worsened* log loss/Brier score
-> when tested this way. Treat 62.2% as directionally promising, not proven. Betting-edge
-> validation against closing-line odds (not yet possible — see
-> `scripts/capture_closing_odds.py`, no historical closing data exists) is a bigger open
-> question than this accuracy number either way.
+> **`main` runs the pre-queue baseline as of 2026-07-16, deliberately** — not the latest
+> feature work. A 6-item accuracy-improvement queue (opponent-quality adjustment,
+> per-division calibration, Elo K-factor decay, non-linear layoff penalty, and more) was
+> built and tested this same day, but a McNemar's significance test found none of the 6
+> items individually reach p<0.05, and the full cumulative effect only gets to p=0.083 —
+> suggestive, not conclusive, on 1,316 test fights. Worse, per-division calibration was
+> found to measurably *corrupt* probability quality (log loss 0.65→0.72, root cause:
+> calibration was being fit on the same data the model was trained on — a real bug, fixed
+> by turning calibration off, not yet by a proper held-out-set fix). Given this weekend is
+> the first real closing-line data collection (see Workflow below), the most trustworthy
+> state was chosen over the most feature-rich one. **The full queue is preserved, not
+> deleted, on branch `parked/accuracy-queue-2026-07-16`** — revisit once there's more live
+> data. Full trail in `SESSION_LOG.md`.
 
 | Metric | Value |
 |---|---|
-| Winner prediction accuracy (test set) | 62.2% (baseline: 49.1%) — updated 2026-07-16, was 65.0% pre-leakage-fix; **improvement not statistically confirmed, see note above** |
+| Winner prediction accuracy (test set) | 60.6% (baseline: 49.1%) — pre-queue baseline, verified 2026-07-16 to exactly match an independent reconstruction. The parked branch's 62.2% was not statistically confirmed better and included since-disabled calibration — see note above before treating it as the stronger number. |
 | Test set | 1,316 fights, 2023-12 → 2026-07 |
 | Live winner accuracy (3 events, 53 fights) | 75.5% out-of-sample — pre-2026-07-15, not yet reverified |
 | Live method accuracy | 55.6% — pre-2026-07-15, not yet reverified |
@@ -76,21 +71,22 @@ Streamlit Dashboard — live predictions, odds, edge, SHAP factors
 
 ---
 
-## Features (80 total)
+## Features (73 total)
 
 All features are diffs (Fighter A − Fighter B) computed from stats available before the fight date.
-Verified against `config.py::FEATURE_COLUMNS` on 2026-07-16 (was 73 at the start of the 2026-07-15
-catch-up, +7 from a 6-item accuracy-improvement queue — see `SESSION_LOG.md`).
+Verified against `config.py::FEATURE_COLUMNS` on 2026-07-16 — this is the pre-queue baseline
+`main` deliberately runs (see Results section above). A 7-feature accuracy-improvement queue
+(opponent-adjusted stats, control/scramble grappling, non-linear layoff penalty) exists and is
+preserved on branch `parked/accuracy-queue-2026-07-16`, not deleted, but isn't active on `main`
+pending statistical re-validation — see `SESSION_LOG.md`.
 
 | Group | Count | Notes |
 |---|---|---|
 | Physical | 4 | Reach, height, age, age vs peak |
 | Striking | 4 | SLpM, accuracy, SAPM, defense |
 | Grappling | 4 | TD avg/acc/def, sub avg |
-| Opponent-Adjusted Stats | 4 | SLpM/TD avg/TD def/SAPM scaled by strength of schedule (avg opponent Elo) |
-| Control / Scramble Grappling | 2 | Avg control time per fight (seconds), avg reversals per fight |
-| Record & Form | 6 | Win rate, finish rate, recent win rate, days since last fight, non-linear layoff penalty, win streak |
-| Elo Dynamics | 5 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak — K-factor now decays with fight count (debut fighters swing more, veterans less) |
+| Record & Form | 5 | Win rate, finish rate, recent win rate, days since last fight, win streak |
+| Elo Dynamics | 5 | Elo diff, avg opponent Elo, Elo trend, Elo uncertainty, Elo vs peak — flat K-factor (decayed-K variant parked, see branch above) |
 | Style Fingerprints (career) | 5 | Pressure, wrestling, striker, finisher, grappling defense |
 | Style Fingerprints (rolling) | 6 | Pressure, wrestling, striker — last-3 and last-5 windows (no rolling finisher) |
 | Momentum / Recent Form | 2 | Momentum score, recent finish rate |
@@ -303,8 +299,8 @@ Rules derived from live event data and model calibration:
 ## Known Limitations
 
 - Theoretical ceiling ~65–70% for MMA prediction using historical stats alone. Further gains require real-time information (camps, injuries, motivation) not available in public data.
-- Narrative features are zeros — injury flags and sentiment not yet automated (3 of 80 features unused).
-- Per-division winner calibration (2026-07-16) isn't wired into `dashboard/app.py`'s 5 predict() call sites yet, or into `train_model.py`'s quick evaluation report (which bypasses calibration entirely) — safe no-op fallback in both cases, just not getting the calibration benefit there yet.
+- Narrative features are zeros — injury flags and sentiment not yet automated (3 of 73 features unused).
+- Per-division winner calibration exists in the code but is deliberately disabled (2026-07-16) — found to worsen probability quality (in-sample calibration bug, root-caused, see `SESSION_LOG.md`). Live on branch `parked/accuracy-queue-2026-07-16` only, not on `main`.
 - Method and round models are trained independently — a joint model would be more accurate.
 - Elo cold start — fighters new to UFC begin at 1500 regardless of regional record.
 - Cloud DB is read-only — fighters not in the committed DB are skipped on Streamlit Cloud until next push.

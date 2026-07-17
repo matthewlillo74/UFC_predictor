@@ -630,7 +630,9 @@ def predict_fight_by_name(
 
     predictor = UFCPredictor()
     predictor.load()
-    result = predictor.predict(features, fighter_a.name, fighter_b.name, weight_class=resolved_weight_class)
+    # weight_class intentionally not passed to predict() — per-division calibration is
+    # parked as of 2026-07-16 (worsened log loss/Brier when tested). See AGENT_HANDOFF.md.
+    result = predictor.predict(features, fighter_a.name, fighter_b.name)
 
     session.close()
     return result

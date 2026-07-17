@@ -298,7 +298,11 @@ def step_predict_next_event(session, odds_data: list) -> str:
                 fa.id, fb.id, fight_date,
                 fight_weight_class=f.get("weight_class", ""),
             )
-            pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class", ""))
+            # weight_class intentionally omitted here (not passed to predict()) — per-division
+            # calibration is parked as of 2026-07-16, found to worsen probability quality
+            # (log loss/Brier) when tested. See AGENT_HANDOFF.md / SESSION_LOG.md. This only
+            # skips calibration application; the weight-class-debut FEATURE above is unaffected.
+            pred = predictor.predict(features, fa.name, fb.name)
 
             # Match odds
             fight_odds = None

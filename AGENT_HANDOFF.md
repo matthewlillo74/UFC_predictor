@@ -21,12 +21,21 @@ End-to-end UFC fight prediction system. Goals: accurate predictions + betting va
 ---
  
 ## Current Model State
- 
+
+> **`main` runs the pre-queue baseline as of 2026-07-16, deliberately.** The full 6-item
+> accuracy queue (73→80 features, per-division calibration, Elo K-factor decay) is real
+> work and not deleted — it's preserved on branch `parked/accuracy-queue-2026-07-16` — but
+> it didn't reach statistical significance (McNemar's test) and its calibration layer was
+> found to actively harm probability quality (log loss 0.66→0.90 when applied). Given this
+> weekend's closing-line data collection needs the most trustworthy state, not the most
+> feature-rich one, `main` was reverted to 73 features / flat Elo / no calibration. See
+> `SESSION_LOG.md` for the full decision trail and root-cause analysis of the calibration bug.
+
 | Metric | Value |
 |---|---|
-| Features | 80 (XGBoost) — was 73 at the start of the 2026-07-15 catch-up; +7 from the full 6-item accuracy queue (2026-07-15 to 2026-07-16), see SESSION_LOG.md |
-| Test set accuracy | **62.2%** (baseline 49.1%) — final number after the full accuracy queue, 2026-07-16. Was 60.3% right after the leakage revert alone, 65.0% pre-catch-up (partly leakage-inflated, not the honest number). **The 60.3%→62.2% queue improvement is NOT statistically significant** (McNemar's test, 2026-07-16 — see SESSION_LOG.md; closest p-value 0.083, doesn't clear 0.05 on 1,316 test fights). Not yet validated against new live events either. |
-| Live accuracy (107 fights, 11 events, scored 2026-07-15) | 61.7% winner / 47.7% method / 50.5% round — this reflects the **old pre-queue model's** real-world predictions being scored, not the new model. No live results exist yet for the model as of this queue's completion. |
+| Features | **73** (XGBoost) — reverted to the pre-queue baseline 2026-07-16. Was 80 mid-session (full accuracy queue); that state is preserved on `parked/accuracy-queue-2026-07-16`, not deleted. |
+| Test set accuracy | **60.6%** (baseline 49.1%) — pre-queue baseline, verified 2026-07-16 to exactly match the independently-reconstructed "state0" from the significance-testing script (see SESSION_LOG.md). The parked branch's 62.2% was NOT statistically confirmed better (closest p-value 0.083) and included a calibration layer since confirmed harmful — don't treat 62.2% as the better number without re-validating both findings first. |
+| Live accuracy (107 fights, 11 events, scored 2026-07-15) | 61.7% winner / 47.7% method / 50.5% round — this reflects a **different, older model's** real-world predictions being scored (predates this session's leakage fix). No live results exist yet for the current (baseline) model. |
 | Live winner accuracy — Featherweight | 80% (most reliable division) — pre-catch-up figure, not yet reverified |
 | Live winner accuracy — Women's divisions | 25–47% (avoid betting) — pre-catch-up figure, not yet reverified |
 | OVER 2.5 rounds backtest | 62.7% on 332 fights, +$5,470 P&L — pre-catch-up figure, not yet reverified |
@@ -433,14 +442,15 @@ Winner probabilities are capped at 90% max in `predict.py`. The model's raw outp
  
 ### Elo system
 - All fighters start at 1500
-- K-factor **decays with fight count** (fixed 2026-07-16 — see `SESSION_LOG.md`):
-  `decayed_k_factor(n)` in `elo_calculator.py`, ranges `ELO_K_MAX=48` (debut) down toward
-  `ELO_K_MIN=20` (veteran), roughly halfway there by `ELO_K_DECAY_FIGHTS=10` prior fights.
-  Full history recomputed via `scripts/recompute_elo.py` (Elo is chronological, decay
-  can't be applied retroactively without replaying the whole thing). This was the single
-  largest accuracy gain of the 2026-07-16 session (60.1% → 61.2% test accuracy) — was
-  previously flat (`ELO_K_FACTOR=32` for everyone), which this doc incorrectly claimed
-  already decayed as of the 2026-07-15 catch-up, before it was actually verified/fixed.
+- K-factor is **flat** (`ELO_K_FACTOR=32` for everyone) on `main` as of 2026-07-16 — this
+  is a deliberate revert to the pre-queue baseline, not a re-introduced bug. Experience-
+  decayed K-factor (`decayed_k_factor(n)` in `elo_calculator.py`, ranges `ELO_K_MAX=48`
+  debut down toward `ELO_K_MIN=20` veteran) exists and works — it showed the single
+  largest accuracy gain of the accuracy queue (+1.1pp) — but that gain didn't reach
+  statistical significance (McNemar's test, p=0.24), so it's parked on branch
+  `parked/accuracy-queue-2026-07-16` along with the rest of the queue, not deleted.
+  `scripts/recompute_elo.py` defaults to flat (matching `main`); pass `--decayed` only if
+  deliberately working on the parked branch's feature set.
 - `elo_uncertainty` = inverse of fights fought (high uncertainty = debut fighter)
 - `elo_trend` = Elo change over last 3 fights
 - `avg_opponent_elo` = strength of schedule proxy
@@ -551,6 +561,17 @@ scratch rather than extend this list further.
 > this way, the opposite of its intended effect. Don't extend this queue further without
 > addressing that finding and the closing-line validation (`scripts/capture_closing_odds.py`)
 > first — accuracy alone doesn't establish a betting edge exists.
+
+> **UPDATE 2026-07-16 (later same day):** given the above, `main` was reverted to the
+> pre-queue baseline (73 features, flat Elo, no calibration) for the weekend's live
+> closing-line test — the most trustworthy known state, not the most feature-rich one. The
+> full 6-item queue described above is preserved, unchanged, on branch
+> `parked/accuracy-queue-2026-07-16` (commit `d5b010c0`) — nothing was deleted. The
+> calibration regression was root-caused (in-sample calibration fitting — a real bug in
+> item 3's implementation, not a repeat of the significance-testing script's bugs) and
+> confirmed harmful via direct test (0.65→0.72 log loss with calibration on). Revisit the
+> parked branch once there's more live data to properly evaluate against; see
+> `SESSION_LOG.md`'s "Calibration root-cause + revert to pre-queue baseline" entry.
 
 Items 1-4 of the older list below (odds movement tracker, injury/camp NLP, CLV tracking,
 joint method+round model) are still valid ideas and not superseded — this new list is about
