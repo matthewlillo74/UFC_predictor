@@ -294,6 +294,8 @@ Rules derived from live event data and model calibration:
 
 **Note:** The DB and model files must be committed to the repo for cloud deployment. `.env` should never be committed — use Streamlit secrets instead.
 
+**Python version is pinned via `runtime.txt` (`python-3.12`) — don't remove it.** `requirements.txt` pins `scikit-learn==1.4.2`/`xgboost==2.0.3`/`shap==0.51.0` to exact versions verified to work together (newer combos break in incompatible ways — see the comment block in `requirements.txt`). None of those old versions have prebuilt wheels for whatever new Python Streamlit Cloud defaults to over time (hit this 2026-07-16/17: Cloud had drifted to Python 3.14, `llvmlite` — a `shap` dependency — only supports `<3.10`, deploy failed outright). If deployment fails on a dependency build error again, check whether Streamlit Cloud's default Python has moved and whether `runtime.txt` is still being honored (Cloud's Advanced Settings UI may also need the Python version set directly, in addition to or instead of the file, depending on current platform behavior).
+
 ---
 
 ## Known Limitations

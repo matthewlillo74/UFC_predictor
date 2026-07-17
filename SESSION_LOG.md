@@ -74,6 +74,40 @@ re-check is a consistency check, not independent validation.
 
 ---
 
+## 2026-07-17 — Streamlit Cloud deploy failure: Python version drift
+
+**What happened:** after pushing the baseline-revert, the user's Streamlit Cloud deploy
+failed outright — dependency install error, `llvmlite==0.36.0` (a transitive `shap`
+dependency) failing to build. Streamlit Cloud's deploy log showed it provisioning
+**Python 3.14.6** — `llvmlite==0.36.0` only supports Python `<3.10`, and the cascading
+resolver failure (falling back to ancient `numpy==2.0.0rc1` candidates) confirms the whole
+dependency tree was trying to solve for a Python version far newer than anything the
+pinned versions (`scikit-learn==1.4.2`, `xgboost==2.0.3`, `shap==0.51.0` — deliberately
+pinned to the exact combo verified working together locally, see the 2026-07-15/16 entries
+on xgboost/sklearn/shap incompatibilities) were ever built against.
+
+**Root cause:** no Python version was pinned for the deploy environment at all — the repo
+had no `runtime.txt` or `.python-version` file, so Streamlit Cloud used whatever its
+current platform default is, which has apparently drifted to 3.14 over time. This is the
+same *class* of problem as the local xgboost/sklearn/shap version-compatibility saga
+earlier in the week, just surfacing on a different platform (Streamlit Cloud's infra)
+with a different, even newer default Python.
+
+**Fix:** added `runtime.txt` (`python-3.12`) — matches the WSL venv where the pinned
+`scikit-learn==1.4.2`/`xgboost==2.0.3`/`shap==0.51.0` combination is confirmed to install
+cleanly and work together (verified repeatedly throughout this session's local retrains).
+Documented in `README.md`'s Deployment section so this doesn't get silently reintroduced —
+flagged explicitly that if this fails again, check whether Streamlit Cloud's default
+Python has drifted further and whether `runtime.txt` is still the authoritative mechanism
+(Cloud's Advanced Settings UI may also need the Python version set directly).
+
+**Not yet verified:** whether Streamlit Cloud actually honors `runtime.txt` in its current
+form — this is a reasonable, standard fix but hasn't been confirmed against a successful
+redeploy yet. If it doesn't take effect, the fallback is checking the app's Advanced
+Settings in the Streamlit Cloud dashboard for an explicit Python version selector.
+
+---
+
 ## 2026-07-16 — Calibration root-cause + revert to pre-queue baseline for weekend live test
 
 **Context:** continuation of the same review. The friend's response to the significance
