@@ -25,7 +25,7 @@ End-to-end UFC fight prediction system. Goals: accurate predictions + betting va
 | Metric | Value |
 |---|---|
 | Features | 80 (XGBoost) — was 73 at the start of the 2026-07-15 catch-up; +7 from the full 6-item accuracy queue (2026-07-15 to 2026-07-16), see SESSION_LOG.md |
-| Test set accuracy | **62.2%** (baseline 49.1%) — final number after the full accuracy queue, 2026-07-16. Was 60.3% right after the leakage revert alone, 65.0% pre-catch-up (partly leakage-inflated, not the honest number). Not yet validated against new live events — see caveats below. |
+| Test set accuracy | **62.2%** (baseline 49.1%) — final number after the full accuracy queue, 2026-07-16. Was 60.3% right after the leakage revert alone, 65.0% pre-catch-up (partly leakage-inflated, not the honest number). **The 60.3%→62.2% queue improvement is NOT statistically significant** (McNemar's test, 2026-07-16 — see SESSION_LOG.md; closest p-value 0.083, doesn't clear 0.05 on 1,316 test fights). Not yet validated against new live events either. |
 | Live accuracy (107 fights, 11 events, scored 2026-07-15) | 61.7% winner / 47.7% method / 50.5% round — this reflects the **old pre-queue model's** real-world predictions being scored, not the new model. No live results exist yet for the model as of this queue's completion. |
 | Live winner accuracy — Featherweight | 80% (most reliable division) — pre-catch-up figure, not yet reverified |
 | Live winner accuracy — Women's divisions | 25–47% (avoid betting) — pre-catch-up figure, not yet reverified |
@@ -539,6 +539,18 @@ actually missing/dead in the current code, ranked by leverage vs. cost:
 features, test accuracy 60.3% (right after the leakage revert alone) → 62.2%. See
 `SESSION_LOG.md` for the full trail; a fresh accuracy-improvement pass should start from
 scratch rather than extend this list further.
+
+> **IMPORTANT — the per-item accuracy deltas above ("60.3% → 60.6%", "the largest gain of
+> any queue item," etc.) are NOT statistically confirmed.** A proper McNemar's
+> significance test (2026-07-16, see `SESSION_LOG.md` "Closing-line capture + statistical
+> significance testing") found **none of the 6 items individually reach p<0.05**, and
+> neither does the full cumulative 60.6%→62.2% effect (closest: p=0.083, still short of
+> conventional significance). On a 1,316-fight test set, ~1pp swings are consistent with
+> noise. Treat every accuracy number above as directionally suggestive, not proven — and
+> note per-division calibration (item 3) measurably *worsened* log loss/Brier when tested
+> this way, the opposite of its intended effect. Don't extend this queue further without
+> addressing that finding and the closing-line validation (`scripts/capture_closing_odds.py`)
+> first — accuracy alone doesn't establish a betting edge exists.
 
 Items 1-4 of the older list below (odds movement tracker, injury/camp NLP, CLV tracking,
 joint method+round model) are still valid ideas and not superseded — this new list is about

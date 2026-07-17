@@ -16,10 +16,20 @@ Machine learning system for UFC fight prediction, betting value detection, and E
 > leakage-inflated. Parlay/live-accuracy rows below predate all of this work and
 > haven't been reverified against the new model yet (no live events have been
 > predicted with it as of 2026-07-16) — treat with appropriate caution until re-run.
+>
+> **The 60.3%→62.2% queue improvement has NOT been shown to be statistically
+> significant.** A McNemar's test across the full incremental chain (2026-07-16, see
+> `SESSION_LOG.md`) found none of the 6 individual items reach p<0.05, and the full
+> cumulative effect gets only to p=0.083 — suggestive, not conclusive, on 1,316 test
+> fights. Also: per-division calibration measurably *worsened* log loss/Brier score
+> when tested this way. Treat 62.2% as directionally promising, not proven. Betting-edge
+> validation against closing-line odds (not yet possible — see
+> `scripts/capture_closing_odds.py`, no historical closing data exists) is a bigger open
+> question than this accuracy number either way.
 
 | Metric | Value |
 |---|---|
-| Winner prediction accuracy (test set) | 62.2% (baseline: 49.1%) — updated 2026-07-16, was 65.0% pre-leakage-fix |
+| Winner prediction accuracy (test set) | 62.2% (baseline: 49.1%) — updated 2026-07-16, was 65.0% pre-leakage-fix; **improvement not statistically confirmed, see note above** |
 | Test set | 1,316 fights, 2023-12 → 2026-07 |
 | Live winner accuracy (3 events, 53 fights) | 75.5% out-of-sample — pre-2026-07-15, not yet reverified |
 | Live method accuracy | 55.6% — pre-2026-07-15, not yet reverified |
@@ -190,6 +200,15 @@ Get a free Odds API key at [the-odds-api.com](https://the-odds-api.com) (500 req
 python scripts/run_pipeline.py
 ```
 Scrapes upcoming card → enriches fighters → computes styles → fetches odds → generates predictions.
+
+### Closing-line capture (new, 2026-07-16 — run manually, once per card)
+```bash
+python scripts/capture_closing_odds.py
+```
+Run this **exactly T-60 minutes before the first fight of the card** — not automated, not
+part of the regular pipeline. This is the start of real closing-line data collection; no
+historical closing-line data existed before this (see `SESSION_LOG.md`), so betting-edge
+validation (CLV) can't happen until enough of these accumulate.
 
 ### After every event
 ```bash

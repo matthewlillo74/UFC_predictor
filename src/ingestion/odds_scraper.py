@@ -195,7 +195,7 @@ def match_odds_to_db_fighters(
     return matched
 
 
-def store_odds(odds_fights: list[dict], db_session, is_opening: bool = False) -> int:
+def store_odds(odds_fights: list[dict], db_session, is_opening: bool = False, is_closing: bool = False) -> int:
     """
     Store parsed odds into the BettingOdds table.
 
@@ -203,6 +203,10 @@ def store_odds(odds_fights: list[dict], db_session, is_opening: bool = False) ->
         odds_fights:  Output from match_odds_to_db_fighters()
         db_session:   DB session
         is_opening:   True if these are opening lines
+        is_closing:   True if this is a closing-line snapshot — see
+                      scripts/capture_closing_odds.py for the operational
+                      definition (T-60 min before the first fight of the card).
+                      Mutually exclusive with is_opening in practice, not enforced.
 
     Returns number of rows stored.
     """
@@ -250,7 +254,7 @@ def store_odds(odds_fights: list[dict], db_session, is_opening: bool = False) ->
             sportsbook=fight_odds.get("bookmaker", "unknown"),
             recorded_at=datetime.utcnow(),
             is_opening=is_opening,
-            is_closing=False,
+            is_closing=is_closing,
             odds_fighter_a=fight_odds["odds_a"],
             odds_fighter_b=fight_odds["odds_b"],
             implied_prob_a=fight_odds["fair_prob_a"],
@@ -266,7 +270,7 @@ def store_odds(odds_fights: list[dict], db_session, is_opening: bool = False) ->
 
 # ── Convenience: Full Fetch + Store Pipeline ──────────────────────────────────
 
-def fetch_and_store_odds(db_session, is_opening: bool = False) -> list[dict]:
+def fetch_and_store_odds(db_session, is_opening: bool = False, is_closing: bool = False) -> list[dict]:
     """
     One-call function: fetch odds from API, parse, match to DB, store.
     Returns the matched odds list for immediate use in predictions.
@@ -277,7 +281,7 @@ def fetch_and_store_odds(db_session, is_opening: bool = False) -> list[dict]:
 
     parsed = parse_odds_response(raw)
     matched = match_odds_to_db_fighters(parsed, db_session)
-    store_odds(matched, db_session, is_opening=is_opening)
+    store_odds(matched, db_session, is_opening=is_opening, is_closing=is_closing)
     return [f for f in matched if f["matched"]]
 
 

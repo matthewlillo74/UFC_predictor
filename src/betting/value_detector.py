@@ -58,6 +58,18 @@ def remove_vig(prob_a: float, prob_b: float) -> tuple[float, float]:
     Raw implied probs sum to >1.0 because of the house edge.
     This normalizes them to sum to exactly 1.0.
 
+    KNOWN SIMPLIFICATION (logged 2026-07-16, flag before treating CLV/edge
+    numbers as precise): this is the proportional method — it assumes the vig
+    is spread evenly across both sides. The more rigorous approach (Shin's
+    method) accounts for books shading the vig unevenly, typically favoring
+    favorites more than underdogs, since favorite-heavy public money makes
+    balancing the book easier there. The difference is usually small (low
+    single-digit basis points) but not zero, and it's directionally biased
+    (favorites' true probability is slightly overstated by the proportional
+    method vs. Shin's). Fine as a first pass; revisit if CLV analysis
+    (scripts/capture_closing_odds.py) starts showing a systematic skew by
+    favorite/underdog that might actually be a de-vig artifact, not real edge.
+
     Example:
         Raw:        A=0.556, B=0.476  (sum=1.032, 3.2% vig)
         No-vig:     A=0.539, B=0.461

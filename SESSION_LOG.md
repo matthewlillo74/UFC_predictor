@@ -74,6 +74,118 @@ re-check is a consistency check, not independent validation.
 
 ---
 
+## 2026-07-16 — Closing-line capture (Part A) + statistical significance testing (Part B)
+
+**Context:** external review (framed against a prior "insider-trading project" rigor
+standard) flagged two gaps before trusting the accuracy-queue numbers: (1) no closing-line
+data exists to check whether the model beats the market, so "accuracy" alone doesn't prove
+a betting edge; (2) the queue's reported gains (e.g. "60.3% → 60.6%") were never tested for
+statistical significance on ~1,300 test fights. Reviewed both parts, confirmed the premises
+against the actual codebase, and built what was asked with the friend's explicit direction:
+incremental (not isolated) ablation for Part B, excluding item 4 and the leakage fix from
+testing scope.
+
+### Part A — closing-line capture mechanism
+
+Confirmed the premise directly: `is_closing` is **never set `True` anywhere** in the
+codebase (`odds_scraper.py::store_odds()` hardcoded `is_closing=False` on every insert),
+and only 57 unlabeled odds rows exist across 8,771 fights. No historical closing-line data
+exists and none can be reconstructed after the fact — it can only be captured going
+forward. Fixed the hardcoded `False` (now threads through properly) and built
+`scripts/capture_closing_odds.py`, with an explicit operational definition: **T-60 minutes
+before the first fight of the card**, documented in the script so future snapshots are
+comparable to each other. Also confirmed `implied_prob_a/b` are already de-vigged at
+storage time (`remove_vig()`, proportional method) — documented that as a known
+simplification (not Shin's method) directly in `value_detector.py` per the review.
+
+Not run yet — this weekend's card is the first real opportunity to capture a genuine
+closing snapshot. `simulate_roi()`'s existing `is_closing == True` filter will start
+actually matching rows once this runs, instead of always falling through to its "any
+odds" fallback as it silently has been.
+
+### Part B — incremental significance testing (McNemar's exact binomial test)
+
+Built `scripts/ablation_significance_test.py` to reconstruct the accuracy-queue's
+incremental states (pre-queue baseline → after item 1 → after item 2 → after item 5 →
+after item 6, i.e. current production) and test each transition against the one before it
+on the same 1,316 fixed test fights. Item 3 (calibration) tested separately via log
+loss/Brier since it's a post-hoc probability rescaling that can never change the argmax
+call. Items 4 and the leakage/sparsity fix excluded from scope per the friend's
+sign-off (no predictions changed / comparing against a known-invalid baseline respectively).
+
+**Three real bugs found and fixed while building this — the debugging process is worth
+recording since it's a demonstration of exactly the kind of check the friend's review
+was asking for (verify before trusting):**
+
+1. **Calibration confound.** First version applied per-division calibration to the
+   "after item 3/5/6" states and compared against historically-reported accuracy numbers
+   that were *never* calibrated — `UFCPredictor.evaluate()` calls raw
+   `winner_model.predict_proba()` directly and always has. Comparing calibrated ablation
+   predictions against raw historical numbers is comparing two different things measured
+   two different ways. First symptom: reconstructed "current production" scored 61.1%
+   instead of the actually-committed 62.2%. Fixed by using raw, uncalibrated predictions
+   throughout every McNemar comparison, matching `evaluate()`'s actual methodology exactly.
+
+2. **Cross-run "contamination" (partially misdiagnosed, see #3).** After fixing #1, the
+   mismatch persisted (61.2% vs 62.2%). Diagnostic: trained the identical "state 6"
+   configuration alone in a fresh process — reproduced 62.2% exactly. Concluded (too
+   quickly) that training 6 models sequentially in one process was the cause, and
+   restructured the script to run each state in its own subprocess. This did **not**
+   fully fix it (still 61.2%) — the isolated diagnostic that "confirmed" this hypothesis
+   had accidentally changed two things at once (fresh process *and* no CSV round-trip),
+   so process-isolation alone wasn't actually the fix. Kept the subprocess-per-state
+   structure anyway since it's harmless and correctly rules out one variable, but the
+   real cause was #3.
+
+3. **Column-order mismatch (the actual root cause).** XGBoost's `colsample_bytree=0.8`
+   samples columns **by index position**, not by name. The script built each state's
+   feature list by concatenating hand-typed lists (`STATE0_COLS + new_item_cols`),
+   appending each item's new columns at the end — but production's real
+   `config.py::FEATURE_COLUMNS` has new columns *interspersed* near their logical
+   predecessor (e.g. `layoff_penalty_diff` sits right after `days_since_last_fight_diff`,
+   not at the very end). Identical column **set**, different **order** → the same
+   `random_state=42` samples a completely different subset of columns per tree → a
+   genuinely different, non-equivalent trained model despite "the same 80 features."
+   Fixed by building every state's column list as a filter over production's actual
+   `FEATURE_COLUMNS` order (`[c for c in FEATURE_COLUMNS if c not in excluded]`) rather
+   than concatenation, and asserting `STATE6_COLS == FEATURE_COLUMNS` exactly. Verified:
+   reconstructed state 6 now reproduces the committed **62.2%, log loss 0.6588, Brier
+   0.2322** bit-for-bit.
+
+**Final, verified results — reported plainly, including the parts that don't support the
+queue's headline framing:**
+
+| Transition | Accuracy | McNemar p-value | Significant? |
+|---|---|---|---|
+| 0→1 (control_time/reversals) | 60.6% → 60.4% (−0.2pp) | 0.867 | No |
+| 1→2 (opponent-quality adj.) | 60.4% → 60.1% (−0.3pp) | 0.793 | No |
+| 2→3 (calibration) | N/A (argmax can't change) | — | log loss/Brier both **worse** with calibration applied (0.662→0.901, 0.234→0.279) |
+| 2→5 (Elo K-factor decay) | 60.1% → 61.2% (+1.1pp) | 0.239 | No |
+| 5→6 (layoff penalty) | 61.2% → 62.2% (+1.1pp) | 0.231 | No |
+| **0→6 (net, all 6 items)** | **60.6% → 62.2% (+1.6pp)** | **0.083** | **No** (closest to significant, doesn't clear p<0.05) |
+
+**None of the six items individually reach conventional significance, and neither does
+the full cumulative effect of the queue** — the overall 0→6 comparison gets closest
+(p=0.083) but doesn't clear p<0.05. This matches the friend's own framing of what a
+non-significant result means: not a failure, an honest answer given the sample size
+(~1,300 test fights is a real constraint — detecting ~1pp accuracy differences with
+adequate power typically needs a considerably larger paired sample than that).
+
+The item 3 finding is the one that deserves the most attention going forward: per-division
+calibration measurably **worsens** log loss and Brier score on this test, which is the
+opposite of calibration's intended effect. This was measured on the state at which
+calibration was actually introduced (flat-Elo era, matching the real historical build
+order — item 3 shipped before item 5), so it's not a reconstruction artifact. Worth
+investigating before continuing to trust the calibration layer's output, independent of
+whatever Part A's closing-line data eventually shows.
+
+**Not yet done:** re-testing calibration's effect on the *current* (decayed-Elo,
+layoff-penalty-included) production model specifically — this measured it against the
+state-2 configuration where it was first introduced, not the final state 6. Docs below
+updated to stop presenting the queue's accuracy gains as confirmed improvements.
+
+---
+
 ## 2026-07-16 — Accuracy queue item #4: SHAP-based aggregate miss-pattern analysis
 
 **What:** SHAP was computed per-prediction for display only; nothing cross-referenced it
