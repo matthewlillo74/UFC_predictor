@@ -1,12 +1,24 @@
 """
 scripts/live_results_poll.py
 ───────────────────────────────
-Designed to run frequently (e.g. every 5 min via GitHub Actions cron)
-during a live UFC card. Checks the current event's fight-by-fight results
-as they land on ufcstats.com and updates the DB as each fight concludes.
-Once every fight on the card has concluded, emails ONE summary — every
-pick vs. actual outcome for the whole card — rather than a message per
-fight.
+Designed to run frequently (e.g. every 15 min via GitHub Actions cron)
+during the live-event window. Checks the current event's fight-by-fight
+results as they land on ufcstats.com and updates the DB as each fight
+concludes. Once every fight on the card has concluded, emails ONE summary
+— every pick vs. actual outcome for the whole card — rather than a
+message per fight.
+
+Doesn't scrape ufcstats.com on every run — the workflow's cron window
+(see live_results_poll.yml) is wide enough to cover any UFC start time,
+which means most runs would otherwise fire hours before the card actually
+starts. Gated by _should_start_scraping(): waits for closing odds to have
+been captured for this event (a signal that's already free — it's set by
+the separate closing_odds_poll.yml workflow at T-60 min before the first
+fight, no extra API call needed here) before doing any real scraping. If
+that signal never arrives (Odds API down/quota exhausted that week), falls
+back to scraping anyway once it's late enough in the UTC window that the
+card has certainly started — better a few unnecessary scrapes than
+silently never tracking the event.
 
 SAFETY — READ BEFORE MODIFYING: fight_scraper.get_event_fights() was built
 for fully-completed events, and has no explicit "not yet fought" state for
@@ -46,16 +58,23 @@ import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import smtplib
+from datetime import datetime, timezone
 from email.mime.text import MIMEText
 
 from loguru import logger
 
-from src.database import init_db, get_session, Event, Fight, Fighter, Prediction
+from src.database import init_db, get_session, Event, Fight, Fighter, Prediction, BettingOdds
 from src.ingestion.fight_scraper import get_event_fights
 from src.ingestion.data_loader import get_or_create_fighter
 from config import PREDICTIONS_DIR
 
 EMAILED_EVENTS_PATH = PREDICTIONS_DIR / ".emailed_event_ids.txt"
+
+# Fallback if closing-odds capture never fired for this event (Odds API down
+# or quota exhausted that week): by this hour UTC, every plausible UFC start
+# time (earliest international prelims through latest US PPV main card) has
+# already begun, so it's safe to just start scraping regardless of signal.
+FALLBACK_SCRAPE_HOUR_UTC = 20
 
 
 def _load_emailed_event_ids() -> set:
@@ -73,6 +92,21 @@ def _mark_event_emailed(event_id: int):
 def _is_genuinely_concluded(fight_data: dict) -> bool:
     """The one check this whole script depends on — see module docstring."""
     return fight_data.get("finish_round") is not None and bool((fight_data.get("finish_time") or "").strip())
+
+
+def _should_start_scraping(session, event: Event) -> bool:
+    has_closing_odds = (
+        session.query(BettingOdds)
+        .join(Fight, Fight.id == BettingOdds.fight_id)
+        .filter(Fight.event_id == event.id, BettingOdds.is_closing.is_(True))
+        .first()
+        is not None
+    )
+    if has_closing_odds:
+        return True
+
+    now = datetime.now(timezone.utc)
+    return now.hour >= FALLBACK_SCRAPE_HOUR_UTC or now.weekday() == 6  # Sunday
 
 
 def _event_fully_resolved(session, event: Event) -> bool:
@@ -212,6 +246,12 @@ def main():
 
     if not event.url:
         logger.warning(f"Event '{event.name}' has no URL on file — can't scrape live results")
+        session.close()
+        return
+
+    if not _should_start_scraping(session, event):
+        logger.info(f"'{event.name}' hasn't started yet (no closing-odds signal, not past "
+                    f"the {FALLBACK_SCRAPE_HOUR_UTC}:00 UTC fallback) — skipping scrape this run")
         session.close()
         return
 

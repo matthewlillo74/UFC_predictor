@@ -7,6 +7,33 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-18 — Gated live-results scraping on closing-odds signal, dropped poll interval to 15 min
+
+**What:** asked myself (proactively, not user-reported) whether the frequent-polling
+design was actually well-tuned — it was scraping ufcstats.com every 5 min starting at
+12:00 UTC Saturday regardless of when the card actually started, hours of pointless hits
+(each one solving the site's bot-challenge) before anything was happening. User agreed to
+tighten it.
+
+**Design:** `_should_start_scraping()` in `live_results_poll.py` gates the real scrape
+behind whether closing odds have already been captured for this event — `BettingOdds`
+rows with `is_closing=True` for any of the event's fights. That signal is already free:
+`closing_odds_poll.yml` sets it at T-60 min before the first fight, so reusing it here
+costs zero extra Odds API calls (as opposed to re-deriving first-fight time via the Odds
+API a second time, which would have roughly doubled quota usage against the existing
+500/month cap). Added a time-based fallback (`FALLBACK_SCRAPE_HOUR_UTC = 20`, or any time
+Sunday) for the case where closing-odds capture never fires for an event (API
+down/quota exhausted that week) — better to scrape unnecessarily a few times than to
+silently never track a card because one upstream signal failed. Also dropped the cron
+interval from every 5 min to every 15 min, since the only time-sensitive thing left is
+the one end-of-card summary email, not per-fight promptness.
+
+**Verified:** ran locally against the real in-progress event (0 `BettingOdds.is_closing`
+rows for it yet, confirmed via direct query) — correctly skipped the scrape this run
+instead of hitting ufcstats.com, logging the reason clearly.
+
+---
+
 ## 2026-07-18 — Live results email switched from per-fight to end-of-card summary
 
 **What:** user tried the per-fight version live and didn't want an email after every

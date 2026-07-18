@@ -248,7 +248,7 @@ it (doesn't fail the pipeline run).
 ```bash
 python scripts/live_results_poll.py
 ```
-`.github/workflows/live_results_poll.yml` runs this every 5 minutes during the
+`.github/workflows/live_results_poll.yml` runs this every 15 minutes during the
 Sat 12:00 UTC – Sun 06:00 UTC live-event window. It updates the DB fight-by-fight as
 results land on ufcstats.com, but only sends **one email, once the whole card is over**
 — every pick vs. actual outcome for the event, not a message per fight. Idempotent via
@@ -257,6 +257,12 @@ last fight but crashes/loses network before sending (falls back to checking the 
 recent event on the next run). Reuses the same `GMAIL_ADDRESS` / `GMAIL_APP_PASSWORD` /
 `REPORT_EMAIL_TO` secrets — no extra setup needed if you already did the email setup
 above.
+
+Doesn't scrape ufcstats.com on every run in the window — most cards don't start until
+hours after 12:00 UTC. Gated on whether closing odds have already been captured for the
+event (free — that's already set by `closing_odds_poll.yml` at T-60 min before the first
+fight, no extra Odds API call needed here), with a time-based fallback (20:00 UTC / any
+time Sunday) in case that signal never fires for some reason.
 
 Has a hard safety gate before trusting any scraped fight as "concluded"
 (`_is_genuinely_concluded()` in the script) — `fight_scraper.get_event_fights()` was

@@ -1,6 +1,6 @@
 name: Poll live results during UFC card, email card summary when it ends
 
-# Runs every 5 minutes during the same Saturday-into-Sunday UTC window as
+# Runs every 15 minutes during the same Saturday-into-Sunday UTC window as
 # closing_odds_poll.yml (see that file for why this specific window: covers
 # international Saturday-afternoon cards through late US Saturday-night PPV
 # main cards, which cross into Sunday UTC). Checks the current event's fight
@@ -11,6 +11,18 @@ name: Poll live results during UFC card, email card summary when it ends
 # which sends a broader once-a-day summary covering whatever was most
 # recently scored, not scoped to "this card, right when it ends.")
 #
+# 15 min (not tighter) because the only thing that's time-sensitive is the
+# one summary email at the very end — a few extra minutes' delay on that
+# doesn't matter the way per-fight promptness would have.
+#
+# The window is wide enough to cover any UFC start time, but most cards
+# don't start until hours after the window opens at 12:00 UTC. Rather than
+# scrape ufcstats.com on every run regardless, scripts/live_results_poll.py
+# gates its own scraping on whether closing odds have already been captured
+# for this event (a free signal — closing_odds_poll.yml already sets it at
+# T-60 min before the first fight, no extra API call needed here), with a
+# time-based fallback in case that signal never arrives.
+#
 # scripts/live_results_poll.py has a hard safety requirement: only trusts a
 # scraped fight as "concluded" if finish_round/finish_time are genuinely
 # populated, since ufcstats.com's scraper otherwise defaults an unfought
@@ -20,8 +32,8 @@ name: Poll live results during UFC card, email card summary when it ends
 
 on:
   schedule:
-    - cron: "*/5 12-23 * * 6"   # Saturday 12:00-23:59 UTC
-    - cron: "*/5 0-6 * * 0"     # Sunday 00:00-06:59 UTC
+    - cron: "*/15 12-23 * * 6"   # Saturday 12:00-23:59 UTC
+    - cron: "*/15 0-6 * * 0"     # Sunday 00:00-06:59 UTC
   workflow_dispatch: {}
 
 permissions:
