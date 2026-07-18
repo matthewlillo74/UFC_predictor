@@ -7,12 +7,25 @@ name: Poll for closing-odds capture window
 # precisely-scheduled job (cron can't express "60 min before a moving time").
 #
 # Costs 0 extra Odds API quota on runs that don't capture — the check and
-# the capture share the same API call.
+# the capture share the same API call. But polling itself still costs 1 API
+# call per run regardless, so the schedule below is deliberately narrow, not
+# "every 15 min all week" — that would burn ~2,880 calls/month against a
+# 500/month free-tier cap.
+#
+# UFC events are Saturdays, but GitHub Actions cron runs in UTC, and a
+# typical US Saturday-night card (prelims ~6-8pm ET) lands at 22:00-04:00+
+# UTC — i.e. it crosses into SUNDAY UTC. A naive "Saturday only" cron would
+# miss exactly the primetime cards that matter most. Window below: Saturday
+# 12:00 UTC through Sunday 06:00 UTC — covers international Saturday
+# afternoon cards through late US Saturday-night PPV prelims, without
+# polling all week. ~72 runs/event-week * ~4.3 weeks/month ≈ 310 calls/month,
+# leaving headroom for the daily pipeline's odds fetch and manual use.
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
-  workflow_dispatch: {}   # allows manual trigger from the Actions tab for testing
+    - cron: "*/15 12-23 * * 6"   # Saturday 12:00-23:59 UTC
+    - cron: "*/15 0-6 * * 0"     # Sunday 00:00-06:59 UTC
+  workflow_dispatch: {}   # allows manual trigger from the Actions tab for testing (any day)
 
 permissions:
   contents: write
