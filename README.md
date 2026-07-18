@@ -244,16 +244,19 @@ the daily pipeline running on non-event days doesn't re-send the same report.
 Without those secrets set, the script degrades to printing the report instead of emailing
 it (doesn't fail the pipeline run).
 
-### Live per-fight results email (automated since 2026-07-18)
+### Live card summary email (automated since 2026-07-18)
 ```bash
 python scripts/live_results_poll.py
 ```
-Unlike `email_report.py` above (one summary email, once per event, after everything is
-over), `.github/workflows/live_results_poll.yml` runs this every 5 minutes during the
-Sat 12:00 UTC – Sun 06:00 UTC live-event window and emails a prediction-vs-actual
-comparison **per fight**, as each one concludes. Reuses the same `GMAIL_ADDRESS` /
-`GMAIL_APP_PASSWORD` / `REPORT_EMAIL_TO` secrets — no extra setup needed if you already
-did the email setup above.
+`.github/workflows/live_results_poll.yml` runs this every 5 minutes during the
+Sat 12:00 UTC – Sun 06:00 UTC live-event window. It updates the DB fight-by-fight as
+results land on ufcstats.com, but only sends **one email, once the whole card is over**
+— every pick vs. actual outcome for the event, not a message per fight. Idempotent via
+`data/predictions/.emailed_event_ids.txt`; also covers the case where a run resolves the
+last fight but crashes/loses network before sending (falls back to checking the most
+recent event on the next run). Reuses the same `GMAIL_ADDRESS` / `GMAIL_APP_PASSWORD` /
+`REPORT_EMAIL_TO` secrets — no extra setup needed if you already did the email setup
+above.
 
 Has a hard safety gate before trusting any scraped fight as "concluded"
 (`_is_genuinely_concluded()` in the script) — `fight_scraper.get_event_fights()` was

@@ -1,11 +1,12 @@
 """
 scripts/live_results_poll.py
 ───────────────────────────────
-Designed to run frequently (e.g. every 10 min via GitHub Actions cron)
+Designed to run frequently (e.g. every 5 min via GitHub Actions cron)
 during a live UFC card. Checks the current event's fight-by-fight results
-as they land on ufcstats.com, and for each fight that just concluded (since
-the last check), updates the DB and emails a prediction-vs-actual
-comparison for THAT fight — not a once-per-event summary.
+as they land on ufcstats.com and updates the DB as each fight concludes.
+Once every fight on the card has concluded, emails ONE summary — every
+pick vs. actual outcome for the whole card — rather than a message per
+fight.
 
 SAFETY — READ BEFORE MODIFYING: fight_scraper.get_event_fights() was built
 for fully-completed events, and has no explicit "not yet fought" state for
@@ -25,11 +26,18 @@ result if BOTH finish_round is not None AND finish_time is non-empty.
 Do not weaken this check without re-verifying against a real in-progress
 event page.
 
-Emails one message per newly-concluded fight (not per poll — idempotent,
-tracked in data/predictions/.emailed_fight_ids.txt). If a fight has no
-stored Prediction (shouldn't normally happen, but a fresh/edge-case
-matchup could lack one), still emails a "result in, no prediction on
-file" notice rather than silently skipping it.
+"Fully resolved" for a card is judged off finish_round (set for every
+concluded fight, including draws/NCs), not winner_id (which stays NULL
+for a draw/NC even after the fight is over — using winner_id here would
+make the script think a card with a draw on it never finishes).
+
+Summary email is idempotent via data/predictions/.emailed_event_ids.txt
+(event ID appended after a successful send). If this run resolves the
+card's last fight but crashes/loses network before the email goes out,
+the next run's primary query (which only looks for events with an
+unresolved fight) would find nothing — so main() falls back to checking
+whether the single most recent event is fully resolved and not yet
+emailed, and sends the summary then instead of losing it silently.
 
 Usage:
     python scripts/live_results_poll.py
@@ -39,7 +47,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import smtplib
 from email.mime.text import MIMEText
-from pathlib import Path
 
 from loguru import logger
 
@@ -48,19 +55,19 @@ from src.ingestion.fight_scraper import get_event_fights
 from src.ingestion.data_loader import get_or_create_fighter
 from config import PREDICTIONS_DIR
 
-EMAILED_FIGHTS_PATH = PREDICTIONS_DIR / ".emailed_fight_ids.txt"
+EMAILED_EVENTS_PATH = PREDICTIONS_DIR / ".emailed_event_ids.txt"
 
 
-def _load_emailed_ids() -> set:
-    if not EMAILED_FIGHTS_PATH.exists():
+def _load_emailed_event_ids() -> set:
+    if not EMAILED_EVENTS_PATH.exists():
         return set()
-    return {line.strip() for line in EMAILED_FIGHTS_PATH.read_text().splitlines() if line.strip()}
+    return {line.strip() for line in EMAILED_EVENTS_PATH.read_text().splitlines() if line.strip()}
 
 
-def _mark_emailed(fight_id: int):
-    EMAILED_FIGHTS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(EMAILED_FIGHTS_PATH, "a") as f:
-        f.write(f"{fight_id}\n")
+def _mark_event_emailed(event_id: int):
+    EMAILED_EVENTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(EMAILED_EVENTS_PATH, "a") as f:
+        f.write(f"{event_id}\n")
 
 
 def _is_genuinely_concluded(fight_data: dict) -> bool:
@@ -68,12 +75,18 @@ def _is_genuinely_concluded(fight_data: dict) -> bool:
     return fight_data.get("finish_round") is not None and bool((fight_data.get("finish_time") or "").strip())
 
 
+def _event_fully_resolved(session, event: Event) -> bool:
+    total = session.query(Fight).filter(Fight.event_id == event.id).count()
+    unresolved = session.query(Fight).filter(Fight.event_id == event.id, Fight.finish_round.is_(None)).count()
+    return total > 0 and unresolved == 0
+
+
 def _find_matching_fight(session, event: Event, fighter_a: Fighter, fighter_b: Fighter):
     return (
         session.query(Fight)
         .filter(
             Fight.event_id == event.id,
-            Fight.winner_id.is_(None),
+            Fight.finish_round.is_(None),
             ((Fight.fighter_a_id == fighter_a.id) & (Fight.fighter_b_id == fighter_b.id))
             | ((Fight.fighter_a_id == fighter_b.id) & (Fight.fighter_b_id == fighter_a.id)),
         )
@@ -101,59 +114,7 @@ def _send_email(subject: str, body: str):
         server.login(gmail_address, gmail_app_password)
         server.send_message(msg)
 
-    logger.success(f"Per-fight result emailed: {subject}")
-
-
-def _format_fight_email(fight: Fight, fa: Fighter, fb: Fighter, pred: Prediction | None) -> tuple[str, str]:
-    winner = fa if fight.winner_id == fa.id else fb if fight.winner_id == fb.id else None
-    winner_name = winner.name if winner else "Draw/No Contest"
-    loser_name = (fb.name if winner is fa else fa.name) if winner else None
-
-    result_line = (
-        f"{winner_name} def. {loser_name} by {fight.method}, "
-        f"R{fight.finish_round} {fight.finish_time}"
-        if winner else f"{fa.name} vs {fb.name} — {fight.method}"
-    )
-
-    if pred is None:
-        subject = f"UFC Result: {fa.name} vs {fb.name} (no prediction on file)"
-        body = (
-            f"{result_line}\n\n"
-            f"No stored prediction was found for this fight — can't compare. "
-            f"This shouldn't normally happen; worth checking why if it keeps occurring."
-        )
-        return subject, body
-
-    predicted_winner = _fighter_name_by_id(pred.predicted_winner_id, fa, fb)
-    winner_correct = (winner is not None) and (pred.predicted_winner_id == fight.winner_id)
-    confidence = max(pred.prob_fighter_a, pred.prob_fighter_b)
-
-    prob_ko = pred.prob_ko_tko or 0.0
-    prob_sub = pred.prob_submission or 0.0
-    prob_dec = pred.prob_decision or 0.0
-    method_probs = {"KO/TKO": prob_ko, "Submission": prob_sub, "Decision": prob_dec}
-    predicted_method = max(method_probs, key=lambda k: method_probs[k])
-    # fight.method is already normalized to KO_TKO/Submission/Decision/NC/Draw
-    # (fight_scraper._normalize_method) — map our own label the same way rather
-    # than fuzzy-matching strings, which was fragile.
-    method_label_to_normalized = {"KO/TKO": "KO_TKO", "Submission": "Submission", "Decision": "Decision"}
-    method_correct = fight.method == method_label_to_normalized.get(predicted_method)
-
-    status = "CORRECT" if winner_correct else "WRONG"
-    subject = f"UFC Result: {fa.name} vs {fb.name} — model was {status}"
-
-    body_lines = [
-        result_line,
-        "",
-        f"Our prediction: {predicted_winner} {confidence:.1%}"
-        + (" (favored)" if confidence > 0.5 else ""),
-        f"Actual winner: {winner_name}  {'✅ CORRECT' if winner_correct else '❌ WRONG' if winner else '(no winner — draw/NC)'}",
-        "",
-        f"Method predicted: KO/TKO {prob_ko:.0%} | Submission {prob_sub:.0%} | "
-        f"Decision {prob_dec:.0%}  (favored: {predicted_method})",
-        f"Actual method: {fight.method}  {'✅ CORRECT' if method_correct else '❌ WRONG'}",
-    ]
-    return subject, "\n".join(body_lines)
+    logger.success(f"Card summary emailed: {subject}")
 
 
 def _fighter_name_by_id(fighter_id, fa: Fighter, fb: Fighter) -> str:
@@ -164,34 +125,104 @@ def _fighter_name_by_id(fighter_id, fa: Fighter, fb: Fighter) -> str:
     return "Unknown"
 
 
+# fight.method is already normalized to KO_TKO/Submission/Decision/NC/Draw
+# (fight_scraper._normalize_method) — map our own label the same way rather
+# than fuzzy-matching strings, which was fragile.
+_METHOD_LABEL_TO_NORMALIZED = {"KO/TKO": "KO_TKO", "Submission": "Submission", "Decision": "Decision"}
+
+
+def _format_fight_line(session, fight: Fight) -> tuple[str, bool | None]:
+    """Returns (one-line summary, winner_correct or None if no prediction/no winner)."""
+    fa = session.query(Fighter).get(fight.fighter_a_id)
+    fb = session.query(Fighter).get(fight.fighter_b_id)
+    winner = fa if fight.winner_id == fa.id else fb if fight.winner_id == fb.id else None
+    winner_name = winner.name if winner else "Draw/No Contest"
+
+    pred = session.query(Prediction).filter_by(fight_id=fight.id).first()
+    if pred is None:
+        return f"{fa.name} vs {fb.name}: {winner_name} by {fight.method} — no prediction on file", None
+
+    predicted_winner = _fighter_name_by_id(pred.predicted_winner_id, fa, fb)
+    confidence = max(pred.prob_fighter_a, pred.prob_fighter_b)
+    winner_correct = (winner is not None) and (pred.predicted_winner_id == fight.winner_id)
+
+    prob_ko = pred.prob_ko_tko or 0.0
+    prob_sub = pred.prob_submission or 0.0
+    prob_dec = pred.prob_decision or 0.0
+    method_probs = {"KO/TKO": prob_ko, "Submission": prob_sub, "Decision": prob_dec}
+    predicted_method = max(method_probs, key=lambda k: method_probs[k])
+    method_correct = fight.method == _METHOD_LABEL_TO_NORMALIZED.get(predicted_method)
+
+    status = "CORRECT" if winner_correct else "WRONG" if winner else "N/A"
+    tag = "[MAIN EVENT] " if fight.is_main_event else ""
+    line = (
+        f"{tag}{fa.name} vs {fb.name}\n"
+        f"  Picked: {predicted_winner} ({confidence:.0%}, {predicted_method}) — {status}\n"
+        f"  Actual: {winner_name} by {fight.method}, R{fight.finish_round} {fight.finish_time}"
+        f"  (method {'correct' if method_correct else 'wrong'})"
+    )
+    return line, winner_correct
+
+
+def _format_event_summary_email(session, event: Event) -> tuple[str, str]:
+    fights = session.query(Fight).filter(Fight.event_id == event.id).order_by(Fight.id.asc()).all()
+
+    lines, correct, graded = [], 0, 0
+    for fight in fights:
+        line, winner_correct = _format_fight_line(session, fight)
+        lines.append(line)
+        if winner_correct is not None:
+            graded += 1
+            correct += int(winner_correct)
+
+    record = f"{correct}/{graded} correct" if graded else "no graded predictions"
+    subject = f"UFC Results: {event.name} — {record}"
+    body = f"{event.name}\n{record}\n\n" + "\n\n".join(lines)
+    return subject, body
+
+
 def main():
     init_db()
     session = get_session()
+    emailed_events = _load_emailed_event_ids()
 
     event = (
         session.query(Event)
         .join(Fight, Fight.event_id == Event.id)
-        .filter(Fight.winner_id.is_(None))
+        .filter(Fight.finish_round.is_(None))
         .order_by(Event.date.desc())
         .first()
     )
-    if not event:
-        logger.info("No event with unresolved fights — nothing to poll")
+
+    if event is None:
+        # Nothing currently in progress. Cover the case where the previous run
+        # resolved the card's last fight but crashed/lost network before the
+        # summary email went out — check the most recent event overall.
+        event = session.query(Event).order_by(Event.date.desc()).first()
+        if event is None or str(event.id) in emailed_events or not _event_fully_resolved(session, event):
+            logger.info("No in-progress card and nothing pending to email — nothing to do")
+            session.close()
+            return
+        logger.info(f"'{event.name}' was already fully resolved from a prior run — sending summary now")
+        subject, body = _format_event_summary_email(session, event)
+        _send_email(subject, body)
+        _mark_event_emailed(event.id)
+        session.close()
         return
 
     if not event.url:
         logger.warning(f"Event '{event.name}' has no URL on file — can't scrape live results")
+        session.close()
         return
 
     logger.info(f"Polling live results for: {event.name}")
     scraped_fights = get_event_fights(event.url)
     if not scraped_fights:
         logger.info("No fights returned from scrape — nothing to do")
+        session.close()
         return
 
-    emailed_ids = _load_emailed_ids()
     newly_resolved = 0
-
     for fd in scraped_fights:
         if not _is_genuinely_concluded(fd):
             continue
@@ -217,17 +248,16 @@ def main():
         session.flush()
         newly_resolved += 1
 
-        if str(fight.id) in emailed_ids:
-            continue  # already emailed this fight (shouldn't hit given the check above, defense in depth)
-
-        pred = session.query(Prediction).filter_by(fight_id=fight.id).first()
-        subject, body = _format_fight_email(fight, fa, fb, pred)
-        _send_email(subject, body)
-        _mark_emailed(fight.id)
-
     session.commit()
+    logger.info(f"{newly_resolved} newly-resolved fight(s) this run.")
+
+    if str(event.id) not in emailed_events and _event_fully_resolved(session, event):
+        logger.info(f"'{event.name}' is fully resolved — sending card summary")
+        subject, body = _format_event_summary_email(session, event)
+        _send_email(subject, body)
+        _mark_event_emailed(event.id)
+
     session.close()
-    logger.info(f"Done. {newly_resolved} newly-resolved fight(s) this run.")
 
 
 if __name__ == "__main__":

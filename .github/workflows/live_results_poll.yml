@@ -1,13 +1,15 @@
-name: Poll live results during UFC card, email per-fight
+name: Poll live results during UFC card, email card summary when it ends
 
 # Runs every 5 minutes during the same Saturday-into-Sunday UTC window as
 # closing_odds_poll.yml (see that file for why this specific window: covers
 # international Saturday-afternoon cards through late US Saturday-night PPV
 # main cards, which cross into Sunday UTC). Checks the current event's fight
-# results as they land on ufcstats.com and emails a prediction-vs-actual
-# comparison for each fight as it concludes — not a single end-of-event
-# summary (that's still handled separately, once daily, by
-# daily_pipeline.yml -> scripts/email_report.py).
+# results as they land on ufcstats.com and updates the DB fight-by-fight as
+# results come in, but only sends ONE email — once every fight on the card
+# has concluded — with every pick vs. actual outcome for the whole event.
+# (This is separate from daily_pipeline.yml -> scripts/email_report.py,
+# which sends a broader once-a-day summary covering whatever was most
+# recently scored, not scoped to "this card, right when it ends.")
 #
 # scripts/live_results_poll.py has a hard safety requirement: only trusts a
 # scraped fight as "concluded" if finish_round/finish_time are genuinely
@@ -39,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Poll for newly-concluded fights and email results
+      - name: Poll for newly-concluded fights, email card summary once it's over
         id: poll
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}

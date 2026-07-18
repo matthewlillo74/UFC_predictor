@@ -7,6 +7,38 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-18 — Live results email switched from per-fight to end-of-card summary
+
+**What:** user tried the per-fight version live and didn't want an email after every
+individual fight — wants one email once the whole card is over, listing every pick vs.
+actual outcome.
+
+**Design:** `scripts/live_results_poll.py` still polls every 5 min and updates the DB
+fight-by-fight the same way (same `_is_genuinely_concluded()` safety gate, unchanged),
+but no longer emails inside that loop. Added `_event_fully_resolved()` — checks
+`finish_round IS NULL` across all of the event's fights, not `winner_id IS NULL` (a draw/
+NC never gets a `winner_id`, so keying off that would make the script think a card with a
+draw on it never finishes). Once a run's DB update leaves the card fully resolved, sends
+one summary (`_format_event_summary_email()`: every fight's pick vs. actual, plus an
+overall N/M-correct tally) and marks the event emailed in the new
+`data/predictions/.emailed_event_ids.txt` (replaces the old per-fight
+`.emailed_fight_ids.txt`, no longer used).
+
+Handled the crash-before-email edge case: if a run resolves the card's last fight but
+dies before the email send (network blip, workflow timeout), the next run's primary query
+(events with an unresolved fight) would find nothing, since the DB already shows it fully
+resolved — silently losing the summary forever. `main()` falls back to checking the
+single most recent `Event` overall when the primary query comes up empty; if it's fully
+resolved and not yet in `.emailed_event_ids.txt`, sends the summary then instead.
+
+**Verified:** script runs clean against the real in-progress event (still mid-card at
+edit time) — no fights fully resolved yet, so no email sent this run, matching expected
+behavior. The "send exactly one summary when the last fight resolves" and "recover a
+missed send on the next run" paths are both new logic, not yet exercised against a real
+card conclusion — first real test is whenever tonight's card actually finishes.
+
+---
+
 ## 2026-07-18 — Per-fight live results email + free cloud automation completed
 
 **What:** user asked for the results email to fire after each individual fight during
