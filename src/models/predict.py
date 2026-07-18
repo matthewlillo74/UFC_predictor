@@ -340,11 +340,23 @@ class UFCPredictor:
             rp = self.round_model.predict_proba(X)[0]
             round_probs = {"under_2_5": float(rp[1]), "over_2_5": float(rp[0])}
 
-        # SHAP explanation
-        shap_values = self.shap_explainer.shap_values(X)
-        explanation = self._build_explanation(
-            shap_values[0], FEATURE_COLUMNS, fighter_a_name, fighter_b_name
-        )
+        # SHAP explanation — best-effort. This is a display/explainability extra, not
+        # part of the core prediction (winner/method/round probs are already computed
+        # above and don't depend on it). A SHAP failure here (seen in practice: cloud
+        # deploys with slightly different numpy/pandas builds than the pinned
+        # sklearn/xgboost/shap trio) used to take down the entire prediction for that
+        # fight — now it degrades to an empty explanation instead.
+        try:
+            shap_values = self.shap_explainer.shap_values(X)
+            explanation = self._build_explanation(
+                shap_values[0], FEATURE_COLUMNS, fighter_a_name, fighter_b_name
+            )
+            shap_values_dict = dict(zip(FEATURE_COLUMNS, shap_values[0].tolist()))
+        except Exception as e:
+            logger.warning(f"SHAP explanation failed for {fighter_a_name} vs {fighter_b_name} "
+                            f"(prediction itself still succeeded): {e}")
+            explanation = {}
+            shap_values_dict = {}
 
         result = {
             "fighter_a": fighter_a_name,
@@ -359,7 +371,7 @@ class UFCPredictor:
                 "decision": round(method_dict.get("Decision", 0), 4),
             },
             "round_probabilities": round_probs,
-            "shap_values": dict(zip(FEATURE_COLUMNS, shap_values[0].tolist())),
+            "shap_values": shap_values_dict,
             "explanation": explanation,
             "model_version": self.model_version,
             "predicted_at": datetime.utcnow().isoformat(),

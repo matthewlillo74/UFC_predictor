@@ -1,6 +1,12 @@
 # ── Core data ─────────────────────────────────────────────────────────────────
-pandas>=2.2.0
-numpy>=2.0.0
+# pandas/numpy pinned 2026-07-18 after a cloud-only "tuple index out of range"
+# failure in SHAP explanation generation that couldn't be reproduced locally —
+# these were the last unpinned pieces of the numpy/pandas/sklearn/xgboost/shap
+# stack, and were the most likely remaining source of cloud-vs-local version
+# drift given this project's history with exactly this class of bug (see
+# SESSION_LOG.md). Exact versions match the verified-working local environment.
+pandas==2.3.3
+numpy==2.4.2
 # scikit-learn and xgboost are pinned to the exact versions verified working
 # together in the project's original (WSL) environment — the committed model
 # pickles were trained against these, and unpinned installs pull newer
