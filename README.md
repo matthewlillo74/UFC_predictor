@@ -214,14 +214,35 @@ accumulate — this is what's accumulating them going forward without manual tim
 ### Automated pipeline (GitHub Actions, free)
 `.github/workflows/daily_pipeline.yml` runs `run_pipeline.py` once a day — scores newly
 completed events, retrains if 10+ new events have accumulated (existing project
-convention), and predicts the next card. Both workflows commit DB/model changes back to
-the repo, which triggers Streamlit Cloud's auto-redeploy. **Setup required:** add
-`ODDS_API_KEY` as a GitHub Actions secret (repo → Settings → Secrets and variables →
-Actions → New repository secret) — this can't be done from code, only via the GitHub UI.
-Test either workflow manually first via the Actions tab → workflow → "Run workflow" before
-trusting the schedule, especially since ufcstats.com's bot-challenge solver
-(`fight_scraper.py`, see `SESSION_LOG.md`) has only been verified from a residential IP,
-not GitHub's datacenter IP ranges — unconfirmed whether it'll pass from CI.
+convention), predicts the next card, and emails a results summary (see below). Both
+workflows commit DB/model changes back to the repo, which triggers Streamlit Cloud's
+auto-redeploy. **Setup required:** add `ODDS_API_KEY` as a GitHub Actions secret (repo →
+Settings → Secrets and variables → Actions → New repository secret) — this can't be done
+from code, only via the GitHub UI. Test either workflow manually first via the Actions tab
+→ workflow → "Run workflow" before trusting the schedule, especially since ufcstats.com's
+bot-challenge solver (`fight_scraper.py`, see `SESSION_LOG.md`) has only been verified
+from a residential IP, not GitHub's datacenter IP ranges — unconfirmed whether it'll pass
+from CI.
+
+### Email results after each event
+`scripts/email_report.py` sends a results summary (reuses `log_live_results.py`'s
+reporting, scoped to just the most recently scored event) via Gmail SMTP. Only sends once
+per event — tracks the last-emailed event in `data/predictions/.last_emailed_event.txt` so
+the daily pipeline running on non-event days doesn't re-send the same report.
+
+**Setup (one-time, can't be done from code):**
+1. Enable 2-Step Verification on the Gmail account that'll send these —
+   [myaccount.google.com/security](https://myaccount.google.com/security).
+2. [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) →
+   generate one for "Mail". This is a 16-character password used only for this SMTP
+   connection, separate from the real Google password — safe to put in a secret. (This is
+   deliberately SMTP + an App Password, not the full Gmail API — OAuth + token refresh +
+   a Google Cloud project is overkill for one-way "send me a report.")
+3. Add 3 GitHub Actions secrets: `GMAIL_ADDRESS` (sending account), `GMAIL_APP_PASSWORD`
+   (from step 2), `REPORT_EMAIL_TO` (where it goes — can be the same address).
+
+Without those secrets set, the script degrades to printing the report instead of emailing
+it (doesn't fail the pipeline run).
 
 ### After every event
 ```bash

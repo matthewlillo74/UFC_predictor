@@ -49,6 +49,14 @@ jobs:
         run: python scripts/compute_style_vulnerability.py
         continue-on-error: true
 
+      - name: Email results report (only sends if a new event was scored)
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+        run: python scripts/email_report.py
+        continue-on-error: true   # don't let an email hiccup block the DB commit below
+
       - name: Commit and push if anything changed
         run: |
           git config user.name "github-actions[bot]"

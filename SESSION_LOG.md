@@ -74,6 +74,42 @@ re-check is a consistency check, not independent validation.
 
 ---
 
+## 2026-07-18 — Email results report after each event (Gmail SMTP)
+
+**What:** user wanted an email after each event summarizing results, mentioned Gmail API
+specifically. Recommended Gmail SMTP + an App Password instead — the full Gmail API
+(OAuth, token refresh, a Google Cloud project) is built for reading/managing mail, which
+is overkill for a one-way "send me a report" use case; SMTP with an App Password does the
+same job with far less setup.
+
+**Built `scripts/email_report.py`** — deliberately thin, reuses `log_live_results.py`'s
+`print_report(session, last_n_events=1)` for all the actual analysis (winner/method/round
+accuracy, P&L, misses) rather than duplicating it, via the same dynamic-import pattern
+`run_pipeline.py`'s auto-scorer already uses for the same module. Captures that function's
+stdout output (it prints rather than returns a string) and emails it as plain text.
+
+**Only sends once per event**, not once per (daily) pipeline run — tracks the last-emailed
+event name in `data/predictions/.last_emailed_event.txt`, committed back to the repo like
+the rest of the pipeline's output so state persists across GitHub Actions runs (each run
+starts from a fresh checkout). Degrades gracefully to printing instead of emailing if the
+Gmail secrets aren't set, rather than failing the pipeline.
+
+Wired into `daily_pipeline.yml` as a step after scoring/prediction, before the commit —
+`continue-on-error: true` so an email hiccup doesn't block the DB commit.
+
+**Verified:** ran locally without Gmail credentials set — correctly identified the latest
+scored event ("UFC Fight Night: Song vs. Figueiredo") from `live_accuracy.csv`, produced a
+properly-scoped report (10 fights, matches expected count), and fell back to printing
+cleanly. Deleted the resulting local state-file artifact before committing, since it could
+otherwise incorrectly suppress the first real automated email in production if it happened
+to match the actual latest event by coincidence.
+
+**Requires user action, can't be done from code:** enable 2-Step Verification on the
+sending Gmail account, generate an App Password, add `GMAIL_ADDRESS`/`GMAIL_APP_PASSWORD`/
+`REPORT_EMAIL_TO` as GitHub Actions secrets. Full instructions in README.md.
+
+---
+
 ## 2026-07-18 — Free cloud automation: GitHub Actions for closing-capture + daily pipeline
 
 **What:** user wanted the closing-line capture and the regular pipeline to run
