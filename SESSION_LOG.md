@@ -99,7 +99,13 @@ existing `store_odds(..., is_closing=True)` if conditions are met. Costs 0 extra
 on runs that don't capture — the check and the capture share the same fetch.
 
 **Two GitHub Actions workflows:**
-- `.github/workflows/closing_odds_poll.yml` — runs the above every 15 min.
+- `.github/workflows/closing_odds_poll.yml` — runs the above every 15 min, restricted to
+  Saturday 12:00 UTC through Sunday 06:00 UTC, not all week. (Updated same day, after the
+  user correctly pointed out UFC is Saturdays only: a naive Saturday-only cron would have
+  missed most US primetime cards, since GitHub Actions cron runs in UTC and prelims
+  ~6-8pm ET land at 22:00-04:00+ UTC — crossing into Sunday. Also caught a quota problem:
+  polling every 15 min for a full day, even once a week, would still burn ~2,880
+  calls/month against the 500/month free cap without the day/hour restriction.)
 - `.github/workflows/daily_pipeline.yml` — runs `run_pipeline.py --post-event` then
   `run_pipeline.py` (default mode, which has the auto-scorer built in) once daily,
   plus `compute_style_vulnerability.py`, matching the README's documented "after every
