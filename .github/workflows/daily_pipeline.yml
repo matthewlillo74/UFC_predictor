@@ -1,0 +1,63 @@
+name: Daily pipeline (score completed events, predict upcoming)
+
+# Runs once a day: scores any newly-completed events (via the pipeline's
+# built-in auto-scorer), enriches new fighters, retrains if 10+ new events
+# have accumulated (existing project convention, not overridden here), and
+# generates predictions for the next upcoming card. This is the automated
+# equivalent of manually running scripts/run_pipeline.py — see README.md's
+# "Workflow" section for what each step does.
+#
+# Does NOT handle closing-line capture — that's time-sensitive (T-60 before
+# first fight) and lives in the separate closing_odds_poll.yml workflow,
+# which runs every 15 minutes instead of once a day.
+
+on:
+  schedule:
+    - cron: "0 14 * * *"   # 14:00 UTC daily — adjust if this collides with anything
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120   # fighter enrichment can take a while on a big backlog
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline (post-event scoring)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/run_pipeline.py --post-event
+        continue-on-error: true   # don't let a scoring hiccup block prediction generation below
+
+      - name: Run pipeline (scrape / enrich / retrain-if-due / predict)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/run_pipeline.py
+
+      - name: Compute style vulnerability
+        run: python scripts/compute_style_vulnerability.py
+        continue-on-error: true
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/ models_saved/; then
+            echo "No changes to commit"
+          else
+            git add -f data/ufc_predictor.db data/processed/ data/predictions/ models_saved/
+            git commit -m "chore: daily pipeline run [automated]"
+            git pull --rebase origin main
+            git push origin main
+          fi

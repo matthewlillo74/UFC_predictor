@@ -197,14 +197,31 @@ python scripts/run_pipeline.py
 ```
 Scrapes upcoming card → enriches fighters → computes styles → fetches odds → generates predictions.
 
-### Closing-line capture (new, 2026-07-16 — run manually, once per card)
+### Closing-line capture (2026-07-16, automated since 2026-07-18)
 ```bash
-python scripts/capture_closing_odds.py
+python scripts/capture_closing_odds.py          # manual, one-shot
+python scripts/maybe_capture_closing.py         # automated — see below
 ```
-Run this **exactly T-60 minutes before the first fight of the card** — not automated, not
-part of the regular pipeline. This is the start of real closing-line data collection; no
-historical closing-line data existed before this (see `SESSION_LOG.md`), so betting-edge
-validation (CLV) can't happen until enough of these accumulate.
+Needs to happen **exactly T-60 minutes before the first fight of the card** to count as a
+real closing line. `.github/workflows/closing_odds_poll.yml` runs `maybe_capture_closing.py`
+every 15 minutes via GitHub Actions (free — no minute limit on public repos) — it checks
+whether "now" is in the capture window for the next upcoming card (first-fight time comes
+from The Odds API's `commence_time`, not our own DB's date-only `Event.date`) and does
+nothing on almost every run. No historical closing-line data existed before 2026-07-16 (see
+`SESSION_LOG.md`), so betting-edge validation (CLV) can't happen until enough of these
+accumulate — this is what's accumulating them going forward without manual timing.
+
+### Automated pipeline (GitHub Actions, free)
+`.github/workflows/daily_pipeline.yml` runs `run_pipeline.py` once a day — scores newly
+completed events, retrains if 10+ new events have accumulated (existing project
+convention), and predicts the next card. Both workflows commit DB/model changes back to
+the repo, which triggers Streamlit Cloud's auto-redeploy. **Setup required:** add
+`ODDS_API_KEY` as a GitHub Actions secret (repo → Settings → Secrets and variables →
+Actions → New repository secret) — this can't be done from code, only via the GitHub UI.
+Test either workflow manually first via the Actions tab → workflow → "Run workflow" before
+trusting the schedule, especially since ufcstats.com's bot-challenge solver
+(`fight_scraper.py`, see `SESSION_LOG.md`) has only been verified from a residential IP,
+not GitHub's datacenter IP ranges — unconfirmed whether it'll pass from CI.
 
 ### After every event
 ```bash

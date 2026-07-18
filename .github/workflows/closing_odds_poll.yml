@@ -1,0 +1,50 @@
+name: Poll for closing-odds capture window
+
+# Runs every 15 minutes and does nothing on almost every run — it's checking
+# whether "now" falls in the T-60-minutes-before-first-fight window for the
+# next upcoming UFC card, and only captures odds if so. See
+# scripts/maybe_capture_closing.py for why polling instead of a single
+# precisely-scheduled job (cron can't express "60 min before a moving time").
+#
+# Costs 0 extra Odds API quota on runs that don't capture — the check and
+# the capture share the same API call.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}   # allows manual trigger from the Actions tab for testing
+
+permissions:
+  contents: write
+
+jobs:
+  maybe-capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check window and maybe capture closing odds
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/maybe_capture_closing.py
+
+      - name: Commit and push if the DB changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/ufc_predictor.db; then
+            echo "No changes to commit"
+          else
+            git add -f data/ufc_predictor.db
+            git commit -m "chore: closing-odds snapshot [automated]"
+            git pull --rebase origin main
+            git push origin main
+          fi

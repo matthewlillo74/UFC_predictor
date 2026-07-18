@@ -74,6 +74,58 @@ re-check is a consistency check, not independent validation.
 
 ---
 
+## 2026-07-18 — Free cloud automation: GitHub Actions for closing-capture + daily pipeline
+
+**What:** user wanted the closing-line capture and the regular pipeline to run
+automatically, for free, without manually timing anything. GitHub Actions on a public
+repo has no minute limit — no cost, no new signups.
+
+**The core design problem:** cron can only express fixed schedules, but "T-60 minutes
+before the next UFC card's first fight" moves every event. Solved with polling instead of
+precise scheduling: a workflow runs every 15 minutes and checks a condition, only acting
+when it's actually met — turns a dynamic-time requirement into something a fixed
+scheduler can handle.
+
+**Built `scripts/maybe_capture_closing.py`:** fetches odds, cross-references matched
+fighters against real upcoming (unresolved) `Fight` rows in the DB — filtering out noise
+from other MMA promotions that might appear in the same Odds API response — and takes the
+earliest `commence_time` among confirmed matches as the actual first-fight time. (Our own
+`Event.date` only stores a calendar date, no time-of-day, so it can't be used for this —
+`commence_time` from The Odds API, already being parsed in `odds_scraper.py`, is the real
+timestamp source.) Computes a 24-minute-wide window centered on T-60 (wider than the
+15-min polling interval so a poll can't skip over it), checks idempotency (won't
+double-capture if it fires more than once inside the window), and captures via the
+existing `store_odds(..., is_closing=True)` if conditions are met. Costs 0 extra API quota
+on runs that don't capture — the check and the capture share the same fetch.
+
+**Two GitHub Actions workflows:**
+- `.github/workflows/closing_odds_poll.yml` — runs the above every 15 min.
+- `.github/workflows/daily_pipeline.yml` — runs `run_pipeline.py --post-event` then
+  `run_pipeline.py` (default mode, which has the auto-scorer built in) once daily,
+  plus `compute_style_vulnerability.py`, matching the README's documented "after every
+  event" sequence minus the one step that needs a manual event name.
+
+Both commit DB/model changes back to the repo with `git pull --rebase` before push (low
+risk of conflict between the two schedules, self-heals on the next run either way if it
+does happen) — this is what triggers Streamlit Cloud's auto-redeploy downstream.
+
+**Verified:** `maybe_capture_closing.py` tested against the live Odds API and current DB —
+correctly fetched real odds, matched 42/56 fights by name, found zero corresponding to a
+confirmed upcoming `Fight` row (none currently in the DB), and exited cleanly with no
+capture and no error. Both workflow YAML files validated as syntactically correct.
+
+**Not verified, flagged clearly in README:** whether ufcstats.com's Anubis bot-challenge
+solver (built 2026-07-15) works from GitHub Actions' datacenter IP ranges — it's only ever
+been run from a residential IP locally. Anti-bot systems sometimes treat known
+cloud/datacenter ranges more aggressively regardless of whether the challenge itself is
+solved correctly. Recommended testing both workflows manually via `workflow_dispatch`
+before relying on the schedule.
+
+**Requires user action, can't be done from code:** add `ODDS_API_KEY` as a GitHub Actions
+secret (repo Settings → Secrets and variables → Actions).
+
+---
+
 ## 2026-07-17 — Streamlit Cloud deploy failure: Python version drift
 
 **What happened:** after pushing the baseline-revert, the user's Streamlit Cloud deploy
