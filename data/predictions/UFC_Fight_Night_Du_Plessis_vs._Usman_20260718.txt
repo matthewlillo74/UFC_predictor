@@ -1,0 +1,669 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: DU PLESSIS VS. USMAN
+  Generated: 2026-07-18 17:35 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dricus Du Plessis vs Kamaru Usman
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dricus Du Plessis: 51.8%
+  Kamaru Usman: 48.2%
+  → Predicted winner: Dricus Du Plessis (51.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.6%
+  Submission:  13.9%
+  Decision:    57.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 8.8%
+  Goes the distance:            91.2%
+
+KEY FACTORS FOR Dricus Du Plessis
+  + Td Acc advantage (+0.121)
+  + Recent Win Rate advantage (+0.115)
+  + Win Streak advantage (+0.109)
+  + Kd Absorbed Per Fight advantage (+0.074)
+  + Elo Trend advantage (+0.067)
+
+KEY FACTORS FOR Kamaru Usman
+  + Elo advantage (+0.170)
+  + Style Vuln Pressure advantage (+0.112)
+  + Style Suppression A advantage (+0.085)
+  + Sub Rate advantage (+0.076)
+
+BETTING VALUE
+  Market implied probability (Dricus Du Plessis): 50.0%
+  Model probability (Dricus Du Plessis):          51.8%
+  Edge: +1.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jared Cannonier vs Christian Leroy Duncan
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jared Cannonier: 12.4%
+  Christian Leroy Duncan: 87.6%
+  → Predicted winner: Christian Leroy Duncan (87.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    44.2%
+  Submission:  11.3%
+  Decision:    44.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 69.8%
+  Goes the distance:            30.2%
+
+KEY FACTORS FOR Jared Cannonier
+  + Avg Opponent Elo advantage (+0.190)
+  + Slpm advantage (+0.109)
+
+KEY FACTORS FOR Christian Leroy Duncan
+  + Age advantage (+0.711)
+  + Age Vs Peak advantage (+0.670)
+  + Elo Trend advantage (+0.173)
+  + Elo advantage (+0.120)
+  + Style Pressure L3 advantage (+0.111)
+
+BETTING VALUE
+  Market implied probability (Jared Cannonier): 50.0%
+  Model probability (Jared Cannonier):          12.4%
+  Edge: -37.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Chase Hooper vs Mitch Ramirez
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Chase Hooper: 55.7%
+  Mitch Ramirez: 44.3%
+  → Predicted winner: Chase Hooper (55.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.3%
+  Submission:  18.4%
+  Decision:    44.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 94.5%
+  Goes the distance:            5.5%
+
+KEY FACTORS FOR Chase Hooper
+  + Elo advantage (+0.229)
+  + Age Vs Peak advantage (+0.181)
+  + Reach Strike advantage (+0.122)
+  + Reach advantage (+0.096)
+  + Sub Avg advantage (+0.092)
+
+KEY FACTORS FOR Mitch Ramirez
+  + Sapm advantage (+0.255)
+  + Durability advantage (+0.135)
+  + Avg Opponent Elo advantage (+0.134)
+  + Elo Trend advantage (+0.096)
+
+BETTING VALUE
+  Market implied probability (Chase Hooper): 50.0%
+  Model probability (Chase Hooper):          55.7%
+  Edge: +5.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tabatha Ricci vs Fatima Kline
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tabatha Ricci: 36.5%
+  Fatima Kline: 63.5%
+  → Predicted winner: Fatima Kline (63.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.2%
+  Submission:  19.6%
+  Decision:    55.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 15.2%
+  Goes the distance:            84.8%
+
+KEY FACTORS FOR Tabatha Ricci
+  + Slpm advantage (+0.130)
+  + Elo advantage (+0.112)
+
+KEY FACTORS FOR Fatima Kline
+  + Age Vs Peak advantage (+0.195)
+  + Style Pressure L3 advantage (+0.172)
+  + Height advantage (+0.162)
+  + Elo Trend advantage (+0.086)
+  + Reach advantage (+0.080)
+
+BETTING VALUE
+  Market implied probability (Tabatha Ricci): 50.0%
+  Model probability (Tabatha Ricci):          36.5%
+  Edge: -13.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tommy McMillen vs Alberto Montes
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tommy McMillen: 56.2%
+  Alberto Montes: 43.8%
+  → Predicted winner: Tommy McMillen (56.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.4%
+  Submission:  18.1%
+  Decision:    46.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.0%
+  Goes the distance:            62.0%
+
+KEY FACTORS FOR Tommy McMillen
+  + Age Vs Peak advantage (+0.191)
+  + Reach advantage (+0.087)
+  + Age advantage (+0.081)
+  + Elo advantage (+0.059)
+  + Reach Strike advantage (+0.048)
+
+KEY FACTORS FOR Alberto Montes
+  + Durability advantage (+0.055)
+  + Avg Opponent Elo advantage (+0.049)
+  + Elo Trend advantage (+0.040)
+  + Style Pressure L3 advantage (+0.024)
+
+BETTING VALUE
+  Market implied probability (Tommy McMillen): 50.0%
+  Model probability (Tommy McMillen):          56.2%
+  Edge: +6.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Austin Bashi vs Jose Delgado
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Austin Bashi: 43.8%
+  Jose Delgado: 56.2%
+  → Predicted winner: Jose Delgado (56.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    29.0%
+  Submission:  23.2%
+  Decision:    47.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 99.4%
+  Goes the distance:            0.6%
+
+KEY FACTORS FOR Austin Bashi
+  + Age Vs Peak advantage (+0.263)
+  + Td Acc advantage (+0.206)
+  + Ko Rate advantage (+0.120)
+  + Win Rate advantage (+0.087)
+  + Age advantage (+0.073)
+
+KEY FACTORS FOR Jose Delgado
+  + Elo advantage (+0.288)
+  + Slpm advantage (+0.184)
+  + Height advantage (+0.121)
+  + Recent Win Rate advantage (+0.108)
+  + Kd Absorbed Per Fight advantage (+0.067)
+
+BETTING VALUE
+  Market implied probability (Austin Bashi): 50.0%
+  Model probability (Austin Bashi):          43.8%
+  Edge: -6.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jean-Paul Lebosnoyani vs Seokhyeon Ko
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jean-Paul Lebosnoyani: 47.4%
+  Seokhyeon Ko: 52.6%
+  → Predicted winner: Seokhyeon Ko (52.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.8%
+  Submission:  21.8%
+  Decision:    46.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 37.4%
+  Goes the distance:            62.6%
+
+KEY FACTORS FOR Jean-Paul Lebosnoyani
+  + Age Vs Peak advantage (+0.203)
+  + Win Rate advantage (+0.125)
+  + Momentum Score advantage (+0.102)
+  + Age advantage (+0.092)
+
+KEY FACTORS FOR Seokhyeon Ko
+  + Elo advantage (+0.367)
+  + Avg Opponent Elo advantage (+0.068)
+  + Style Pressure L3 advantage (+0.058)
+  + Elo Trend advantage (+0.054)
+  + Finish Rate advantage (+0.033)
+
+BETTING VALUE
+  Market implied probability (Jean-Paul Lebosnoyani): 50.0%
+  Model probability (Jean-Paul Lebosnoyani):          47.4%
+  Edge: -2.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Levi Rodrigues Jr. vs Felipe Franco
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Levi Rodrigues Jr.: 53.4%
+  Felipe Franco: 46.6%
+  → Predicted winner: Levi Rodrigues Jr. (53.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    56.4%
+  Submission:  14.6%
+  Decision:    29.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 98.9%
+  Goes the distance:            1.1%
+
+KEY FACTORS FOR Levi Rodrigues Jr.
+  + Reach Strike advantage (+0.406)
+  + Elo advantage (+0.145)
+  + Durability advantage (+0.114)
+  + Height advantage (+0.038)
+  + Sapm advantage (+0.028)
+
+KEY FACTORS FOR Felipe Franco
+  + Td Success Prob advantage (+0.181)
+  + Elo Uncertainty advantage (+0.166)
+  + Age Vs Peak advantage (+0.054)
+  + Reach advantage (+0.049)
+  + Striking Edge advantage (+0.045)
+
+BETTING VALUE
+  Market implied probability (Levi Rodrigues Jr.): 50.0%
+  Model probability (Levi Rodrigues Jr.):          53.4%
+  Edge: +3.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ezra Elliott vs Damien Anderson
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ezra Elliott: 45.9%
+  Damien Anderson: 54.1%
+  → Predicted winner: Damien Anderson (54.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  16.7%
+  Decision:    51.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 32.1%
+  Goes the distance:            67.9%
+
+KEY FACTORS FOR Ezra Elliott
+  + Elo advantage (+0.049)
+  + Age advantage (+0.039)
+  + Height advantage (+0.022)
+
+KEY FACTORS FOR Damien Anderson
+  + Avg Opponent Elo advantage (+0.067)
+  + Reach Strike advantage (+0.037)
+  + Td Acc advantage (+0.026)
+  + Sub Rate advantage (+0.025)
+  + Style Pressure L3 advantage (+0.025)
+
+BETTING VALUE
+  Market implied probability (Ezra Elliott): 50.0%
+  Model probability (Ezra Elliott):          45.9%
+  Edge: -4.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alden Coria vs Stewart Nicoll
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alden Coria: 69.3%
+  Stewart Nicoll: 30.7%
+  → Predicted winner: Alden Coria (69.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.3%
+  Submission:  14.5%
+  Decision:    47.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 78.6%
+  Goes the distance:            21.4%
+
+KEY FACTORS FOR Alden Coria
+  + Elo advantage (+0.276)
+  + Age Vs Peak advantage (+0.185)
+  + Slpm advantage (+0.103)
+  + Elo Trend advantage (+0.083)
+  + Early Output Share advantage (+0.073)
+
+KEY FACTORS FOR Stewart Nicoll
+  + Td Avg advantage (+0.107)
+  + Avg Opponent Elo advantage (+0.055)
+
+BETTING VALUE
+  Market implied probability (Alden Coria): 50.0%
+  Model probability (Alden Coria):          69.3%
+  Edge: +19.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: RJ Harris vs Alvin Hines
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  RJ Harris: 44.1%
+  Alvin Hines: 55.9%
+  → Predicted winner: Alvin Hines (55.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  16.7%
+  Decision:    51.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 31.4%
+  Goes the distance:            68.6%
+
+KEY FACTORS FOR RJ Harris
+  + Elo advantage (+0.176)
+  + Age advantage (+0.037)
+  + Height advantage (+0.022)
+  + Sapm advantage (+0.022)
+
+KEY FACTORS FOR Alvin Hines
+  + Elo Uncertainty advantage (+0.197)
+  + Avg Opponent Elo advantage (+0.074)
+  + Reach Strike advantage (+0.044)
+  + Td Acc advantage (+0.025)
+  + Age Vs Peak advantage (+0.022)
+
+BETTING VALUE
+  Market implied probability (RJ Harris): 50.0%
+  Model probability (RJ Harris):          44.1%
+  Edge: -5.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Du Plessis vs. Usman
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Anna Melisano vs Dione Barbosa
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Anna Melisano: 33.5%
+  Dione Barbosa: 66.5%
+  → Predicted winner: Dione Barbosa (66.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.7%
+  Submission:  29.4%
+  Decision:    41.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 98.0%
+  Goes the distance:            2.0%
+
+KEY FACTORS FOR Anna Melisano
+  + Reach Strike advantage (+0.065)
+  + Decision Rate advantage (+0.056)
+  + Grapple Dom advantage (+0.042)
+  + Age advantage (+0.034)
+
+KEY FACTORS FOR Dione Barbosa
+  + Elo advantage (+0.313)
+  + Elo Uncertainty advantage (+0.209)
+  + Durability advantage (+0.076)
+  + Style Pressure L3 advantage (+0.063)
+  + Avg Opponent Elo advantage (+0.055)
+
+BETTING VALUE
+  Market implied probability (Anna Melisano): 50.0%
+  Model probability (Anna Melisano):          33.5%
+  Edge: -16.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-18 17:35 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Mitch Ramirez  (Model: 44.3%  Edge: +20.0%)
+  2. Stewart Nicoll  (Model: 30.7%  Edge: +19.1%)
+  3. Kamaru Usman  (Model: 48.2%  Edge: +11.9%)
+  4. Jose Delgado  (Model: 56.2%  Edge: +10.9%)
