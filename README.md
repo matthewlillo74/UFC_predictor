@@ -244,6 +244,25 @@ the daily pipeline running on non-event days doesn't re-send the same report.
 Without those secrets set, the script degrades to printing the report instead of emailing
 it (doesn't fail the pipeline run).
 
+### Live per-fight results email (automated since 2026-07-18)
+```bash
+python scripts/live_results_poll.py
+```
+Unlike `email_report.py` above (one summary email, once per event, after everything is
+over), `.github/workflows/live_results_poll.yml` runs this every 5 minutes during the
+Sat 12:00 UTC – Sun 06:00 UTC live-event window and emails a prediction-vs-actual
+comparison **per fight**, as each one concludes. Reuses the same `GMAIL_ADDRESS` /
+`GMAIL_APP_PASSWORD` / `REPORT_EMAIL_TO` secrets — no extra setup needed if you already
+did the email setup above.
+
+Has a hard safety gate before trusting any scraped fight as "concluded"
+(`_is_genuinely_concluded()` in the script) — `fight_scraper.get_event_fights()` was
+originally built only for fully-completed event pages, and an unfought bout's empty
+method field silently defaults to `"Decision"` with winner defaulting to `"fighter_a"`.
+Only `finish_round`/`finish_time` being genuinely populated is trusted as a real result.
+Don't loosen this check without re-verifying against a real in-progress event page — see
+`SESSION_LOG.md` (2026-07-18 entry) for how this was verified.
+
 ### After every event
 ```bash
 python scripts/run_pipeline.py --post-event

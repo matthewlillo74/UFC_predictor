@@ -7,6 +7,48 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-18 — Per-fight live results email + free cloud automation completed
+
+**What:** user asked for the results email to fire after each individual fight during
+a live card (comparing model prediction to actual outcome), not just once at the end of
+the whole event like the existing `email_report.py`/`daily_pipeline.yml` does.
+
+**Design:** new `scripts/live_results_poll.py`, meant to run frequently (every 5 min)
+via a new `.github/workflows/live_results_poll.yml` during the Sat 12:00 UTC – Sun 06:00
+UTC live-event window (same reasoning as `closing_odds_poll.yml`'s schedule). Scrapes the
+current event's page via the existing `fight_scraper.get_event_fights()`, and for each
+fight not yet resolved in the DB, checks a hard safety gate before trusting the scraped
+result at all: `_is_genuinely_concluded()` requires both `finish_round is not None` and a
+non-empty `finish_time`. This exists because `get_event_fights()` was originally built
+only for fully-completed event pages — an unfought bout's empty method cell gets silently
+defaulted to `"Decision"` by `_normalize_method()`, and winner defaults to `"fighter_a"`
+with no explicit "hasn't happened" signal. Without this gate, polling mid-card would
+write fabricated results into the DB for fights that haven't happened yet. Verified the
+gate against the real, in-progress "UFC Fight Night: Du Plessis vs. Usman" event page
+(12 fights, card not yet started): correctly identified 0 as concluded, 0 false writes.
+
+Per-fight email is idempotent via `data/predictions/.emailed_fight_ids.txt` (fight ID
+appended after a successful send, checked before re-sending on the next poll). Method
+comparison uses an explicit `{"KO/TKO": "KO_TKO", ...}` label map against
+`fight.method`'s already-normalized value, rather than fuzzy string matching. Handles the
+edge case of a concluded fight with no stored `Prediction` row (fresh/edge-case matchup)
+by emailing a "result in, no prediction on file" notice instead of crashing or skipping
+silently.
+
+**Also fixed along the way:** `run_pipeline.py::step_predict_next_event`'s get-or-create
+Event logic (added earlier this session) never set the new `Event`'s `url` field — found
+because `live_results_poll.py`'s first live test failed with "no URL on file" for the
+actual in-flight event (id=781). Manually backfilled that row's URL via
+`get_upcoming_events()` and fixed the creation code so future auto-created events aren't
+missing it.
+
+**Verified:** ran live against the real in-progress event page (see above) — safety gate
+correct, 0 false positives. Per-fight email formatting/sending path is built and code-
+reviewed but not yet exercised against a real concluded fight (card hadn't started at
+build time) — first real test happens when tonight's prelims start concluding.
+
+---
+
 ## 2026-07-16 — Accuracy queue item #6: non-linear layoff penalty transform
 
 **What:** `days_since_last_fight_diff` was linear, but MMA performance degrades

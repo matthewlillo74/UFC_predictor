@@ -1,0 +1,61 @@
+name: Poll live results during UFC card, email per-fight
+
+# Runs every 5 minutes during the same Saturday-into-Sunday UTC window as
+# closing_odds_poll.yml (see that file for why this specific window: covers
+# international Saturday-afternoon cards through late US Saturday-night PPV
+# main cards, which cross into Sunday UTC). Checks the current event's fight
+# results as they land on ufcstats.com and emails a prediction-vs-actual
+# comparison for each fight as it concludes — not a single end-of-event
+# summary (that's still handled separately, once daily, by
+# daily_pipeline.yml -> scripts/email_report.py).
+#
+# scripts/live_results_poll.py has a hard safety requirement: only trusts a
+# scraped fight as "concluded" if finish_round/finish_time are genuinely
+# populated, since ufcstats.com's scraper otherwise defaults an unfought
+# fight's method to "Decision" and winner to "fighter_a" with no explicit
+# "hasn't happened yet" signal. Do not loosen that check without
+# re-verifying against a real in-progress event page.
+
+on:
+  schedule:
+    - cron: "*/5 12-23 * * 6"   # Saturday 12:00-23:59 UTC
+    - cron: "*/5 0-6 * * 0"     # Sunday 00:00-06:59 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  poll-live-results:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Poll for newly-concluded fights and email results
+        id: poll
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+        run: python scripts/live_results_poll.py
+
+      - name: Commit and push if the DB changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/ufc_predictor.db data/predictions/; then
+            echo "No changes to commit"
+          else
+            git add -f data/ufc_predictor.db data/predictions/
+            git commit -m "chore: live results update [automated]"
+            git pull --rebase origin main
+            git push origin main
+          fi

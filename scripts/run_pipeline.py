@@ -246,6 +246,7 @@ def step_predict_next_event(session, odds_data: list) -> str:
         event = Event(
             name=event_name,
             date=fight_date,
+            url=event_data.get("url", ""),
             location=event_data.get("location", ""),
             is_ppv="Fight Night" not in event_name,
         )
