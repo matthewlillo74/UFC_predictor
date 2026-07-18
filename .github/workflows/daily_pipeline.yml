@@ -34,28 +34,43 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Steps below use continue-on-error so one hiccup (e.g. a scoring edge
+      # case, a transient email failure) doesn't block the rest of the run —
+      # in particular, the DB commit at the end should still happen even if
+      # an earlier step had a problem. BUT continue-on-error also makes
+      # GitHub treat the whole workflow as "successful," which silently
+      # disables the free failure-notification email GitHub sends by default
+      # on failed scheduled runs. The "Fail the job if anything errored"
+      # step at the end restores that: every step still runs to completion,
+      # but the job still reports failure overall if anything did, so a
+      # real problem doesn't go unnoticed for months.
+
       - name: Run pipeline (post-event scoring)
+        id: post_event
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/run_pipeline.py --post-event
-        continue-on-error: true   # don't let a scoring hiccup block prediction generation below
+        continue-on-error: true
 
       - name: Run pipeline (scrape / enrich / retrain-if-due / predict)
+        id: main_run
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/run_pipeline.py
 
       - name: Compute style vulnerability
+        id: style_vuln
         run: python scripts/compute_style_vulnerability.py
         continue-on-error: true
 
       - name: Email results report (only sends if a new event was scored)
+        id: email_report
         env:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
         run: python scripts/email_report.py
-        continue-on-error: true   # don't let an email hiccup block the DB commit below
+        continue-on-error: true
 
       - name: Commit and push if anything changed
         run: |
@@ -69,3 +84,12 @@ jobs:
             git pull --rebase origin main
             git push origin main
           fi
+
+      - name: Fail the job if anything errored (restores GitHub's default failure email)
+        if: |
+          steps.post_event.outcome == 'failure' ||
+          steps.style_vuln.outcome == 'failure' ||
+          steps.email_report.outcome == 'failure'
+        run: |
+          echo "One or more non-blocking steps failed this run — see logs above. Failing the job so it shows up as a failed run / triggers GitHub's failure notification."
+          exit 1

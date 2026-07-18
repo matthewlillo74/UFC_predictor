@@ -74,6 +74,25 @@ re-check is a consistency check, not independent validation.
 
 ---
 
+## 2026-07-18 — Fixed silent-failure risk in daily_pipeline.yml
+
+**What:** user asked directly whether the automation was truly "set and forget." Honest
+answer surfaced a real gap: several steps in `daily_pipeline.yml` use
+`continue-on-error: true` so one hiccup doesn't block downstream steps (in particular, the
+DB commit should still happen even if scoring or the email step had a problem) — but that
+setting also makes GitHub report the *whole workflow* as successful even when a step
+failed, which silently disables GitHub's free default failure-notification email for
+scheduled runs. For a system explicitly meant to run unattended for months, that's exactly
+backwards.
+
+**Fix:** every step that uses `continue-on-error` now has an `id`; a final step checks all
+their `outcome`s and explicitly `exit 1`s if any failed. Every step still runs to
+completion (original goal preserved), but the job now correctly reports failure overall if
+anything did — restoring the failure-email safety net. `closing_odds_poll.yml` didn't have
+this problem (no `continue-on-error` on its capture step), so no fix needed there.
+
+---
+
 ## 2026-07-18 — Email results report after each event (Gmail SMTP)
 
 **What:** user wanted an email after each event summarizing results, mentioned Gmail API
