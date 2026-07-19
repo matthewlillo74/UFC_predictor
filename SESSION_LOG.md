@@ -7,6 +7,26 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-18 — Live automation verified end-to-end against a real card
+
+**What:** "UFC Fight Night: Du Plessis vs. Usman" ran tonight — first real test of
+everything built earlier today (per-fight DB updates, end-of-card summary email, the
+closing-odds scraping gate, all of it) against an actual live event rather than a
+not-yet-started one.
+
+**Result:** worked as designed, no manual intervention needed. `live_results_poll.py`'s
+summary email arrived ~1:30am with the correct 8/12 record and accurate per-fight
+picks-vs-actual detail; `daily_pipeline.yml`'s broader analytics report arrived
+separately the next morning on its normal 14:00 UTC schedule, no duplication or overlap
+between the two. No false/premature results were written mid-card — confirms the
+`_is_genuinely_concluded()` and `_should_start_scraping()` gates both held up under real
+conditions, not just the pre-event dry runs. Model went 8/12 (66.7%) winner accuracy, in
+line with historical performance; all 4 misses were low-confidence (50-56%) calls, none
+high-confidence blunders. This closes out the "not yet exercised against a real card
+conclusion" caveat noted in the last few entries.
+
+---
+
 ## 2026-07-18 — Gated live-results scraping on closing-odds signal, dropped poll interval to 15 min
 
 **What:** asked myself (proactively, not user-reported) whether the frequent-polling
