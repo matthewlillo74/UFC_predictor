@@ -3,18 +3,40 @@ scripts/maybe_capture_closing.py
 ───────────────────────────────────
 Designed to run on a frequent schedule (e.g. every 15 min via GitHub Actions
 cron) and do nothing on almost every run. Checks whether "now" falls in the
-closing-line capture window for the next upcoming UFC card — T-60 minutes
-before its first fight, per the operational definition in
-scripts/capture_closing_odds.py — and if so, captures it. Otherwise exits
-quietly. Safe to run as often as you like; costs 0 extra Odds API quota on
-runs where it doesn't capture (the odds fetch used to check timing IS the
-same fetch used for the capture itself if the window is hit).
+closing-line capture window for the next upcoming UFC card and, if so,
+captures it. Otherwise exits quietly. Safe to run as often as you like;
+costs 0 extra Odds API quota on runs where it doesn't capture (the odds
+fetch used to check timing IS the same fetch used for the capture itself if
+the window is hit).
 
-Why polling instead of one precisely-scheduled job: cron can't compute "60
-minutes before a time that changes every event" in a single static
-schedule. Running a cheap check periodically and acting only when the
-condition is met is the standard way to turn a dynamic-time requirement
-into something a fixed scheduler can express.
+WINDOW — WIDENED 2026-07-19 after the first live run of this automation
+missed its capture entirely: the original design used a precise T-60±12min
+(24-minute) target window on the theory that a 15-min cron would reliably
+land inside it. In production, GitHub Actions' `schedule` trigger turned
+out to be far less reliable than that — real gaps between runs that
+weekend were 1-3 hours, not 15 minutes (documented GitHub behavior: the
+schedule trigger is best-effort and can be delayed under load, worse at
+round-number times and worse with multiple frequent-cron workflows
+competing in the same repo). No amount of cron-offset tuning fixes a
+scheduler that's inherently best-effort — the fix is redundancy, not
+precision:
+
+  - WINDOW_START_MINUTES_BEFORE = 90, WINDOW_DEADLINE_MINUTES_BEFORE = 30:
+    a full 60-minute window (not 24) to capture in under normal conditions.
+  - Past the deadline (T-30) with still no capture, this treats it as a
+    fallback: capture immediately regardless, right up until first fight
+    time, rather than silently missing the card because the "clean" window
+    was never hit. Logged distinctly (see `late` below) so it's obvious
+    from the logs which case fired — a late-fallback capture is a slightly
+    worse approximation of "closing" than an in-window one, worth knowing
+    if you're ever debugging an odd CLV number.
+  - This script is also invoked a second time, independently, from
+    daily_pipeline.yml's closing-odds-fallback job at fixed times later on
+    event day — a structurally separate trigger (different workflow file,
+    different cron registration) so a scheduling failure in
+    closing_odds_poll.yml specifically doesn't silently take out capture
+    for the whole event. Both call sites run this exact same function, so
+    "already captured" idempotency (below) means calling it twice is free.
 
 First-fight time comes from The Odds API's commence_time field (already
 parsed by odds_scraper.py) — not from Event.date in our own DB, which only
@@ -37,10 +59,10 @@ from loguru import logger
 from src.database import init_db, get_session, Fight, BettingOdds
 from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response, match_odds_to_db_fighters, store_odds
 
-# Target: capture at T-60 minutes before first fight. Window is wider than
-# the polling interval so a 15-min cron cadence can't skip over it entirely.
-TARGET_MINUTES_BEFORE = 60
-WINDOW_HALF_WIDTH_MINUTES = 12  # window = [T-72, T-48]
+# See module docstring for why this is a wide window with a deadline
+# fallback rather than a precise T-60 target.
+WINDOW_START_MINUTES_BEFORE = 90     # any earlier isn't really a "closing" line
+WINDOW_DEADLINE_MINUTES_BEFORE = 30  # past here with no capture yet, fall back to capturing immediately
 
 
 def _confirmed_upcoming_fight_ids(session, matched_odds: list[dict]) -> dict:
@@ -93,16 +115,21 @@ def main():
         first_fight_time = first_fight_time.replace(tzinfo=timezone.utc)
 
     now = datetime.now(timezone.utc)
-    target = first_fight_time - timedelta(minutes=TARGET_MINUTES_BEFORE)
-    window_start = target - timedelta(minutes=WINDOW_HALF_WIDTH_MINUTES)
-    window_end = target + timedelta(minutes=WINDOW_HALF_WIDTH_MINUTES)
+    window_start = first_fight_time - timedelta(minutes=WINDOW_START_MINUTES_BEFORE)
+    deadline = first_fight_time - timedelta(minutes=WINDOW_DEADLINE_MINUTES_BEFORE)
 
-    logger.info(f"First fight: {first_fight_time.isoformat()}  |  target capture window: "
-                f"{window_start.isoformat()} .. {window_end.isoformat()}  |  now: {now.isoformat()}")
+    logger.info(f"First fight: {first_fight_time.isoformat()}  |  capture window: "
+                f"{window_start.isoformat()} .. {first_fight_time.isoformat()}  |  "
+                f"deadline for a clean in-window capture: {deadline.isoformat()}  |  now: {now.isoformat()}")
 
-    if not (window_start <= now <= window_end):
-        logger.info("Not in the capture window yet (or window has passed) — nothing to do")
+    if now < window_start:
+        logger.info("Too early for the capture window yet — nothing to do")
         return
+    if now > first_fight_time:
+        logger.info("First fight has already started — capture window has fully passed, nothing to do")
+        return
+
+    late = now > deadline
 
     fight_ids = [f.id for f in confirmed.values()]
     already_captured = (
@@ -114,9 +141,15 @@ def main():
         logger.info(f"Already captured closing odds for this event ({already_captured} rows exist) — nothing to do")
         return
 
-    logger.info("In capture window and not yet captured — capturing closing odds now")
+    if late:
+        logger.warning("Past the T-30 deadline with no capture yet — capturing now as a late fallback "
+                        "(a slightly worse approximation of 'closing' than an in-window capture, but far "
+                        "better than missing the card entirely)")
+    else:
+        logger.info("In capture window and not yet captured — capturing closing odds now")
+
     stored = store_odds(matched, session, is_closing=True)
-    logger.success(f"Closing snapshot captured: {stored} rows stored")
+    logger.success(f"Closing snapshot captured: {stored} rows stored" + (" (late fallback)" if late else ""))
 
     session.close()
 

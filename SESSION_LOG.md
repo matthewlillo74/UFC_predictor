@@ -7,6 +7,103 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-19 — Root-caused and fixed the closing-odds capture failure; wired up real CLV
+
+**What:** a friend asked pointed questions about the "8/12 correct" email from the
+2026-07-18 card: did closing-odds capture actually run, is there real data for those 12
+fights, and why is the CLV section still placeholder text. Investigated properly instead
+of assuming — pulled actual GitHub Actions run history via the public REST API (no `gh`
+CLI available) rather than trusting workflow "success" status, which turned out to be
+necessary: every run reported success, but success only meant `maybe_capture_closing.py`
+exited cleanly on its normal "not in window" no-op path, not that anything was captured.
+
+**Root cause, confirmed with evidence, not guessed:**
+- `closing_odds_poll.yml`'s 11 runs that weekend landed at 1-3 hour gaps (17:56, 19:10,
+  20:08, 21:07, 22:08, 23:11, 00:11, 02:44, 05:39, 07:50 UTC) against a configured 15-min
+  cron — GitHub's `schedule` trigger drifting badly under load, a documented
+  characteristic of free-tier Actions, made worse by 2-3 frequent-cron workflows
+  competing in the same repo.
+- The whole automation pipeline (`closing_odds_poll.yml`, `daily_pipeline.yml`, the email
+  report) was only merged to `main` at 16:49-17:18 UTC on 2026-07-18 — confirmed via
+  `git log` commit timestamps matching GitHub's own workflow `created_at`/`updated_at`
+  metadata to the second. That left almost no runway before the card's actual capture
+  window.
+- Directly queried the DB: 0 `BettingOdds` rows for the event, any type, and the most
+  recent row in the entire table predates 2026-05-01 — confirming zero captures, not
+  just a formatting issue in the report.
+- `--clv` was never wired to anything: grepped `log_live_results.py`'s argparse block —
+  only `--event`/`--report`/`--events` exist. The CLV section was hardcoded placeholder
+  text printed unconditionally, not a stub reading from `BettingOdds` that silently
+  failed.
+- Found in passing: `run_pipeline.py`'s own odds-fetch step called
+  `fetch_and_store_odds(session)` with no `is_opening` kwarg, so even on a successful
+  daily fetch, rows went in tagged neither opening nor closing.
+
+**Fixes, sequenced as agreed (robustness before precision, cheap fix while fresh, build
+now / prove later):**
+
+1. **Widened the capture window + added redundancy**, not just retuned the cron offset —
+   no cron-minute tuning fixes a scheduler that's inherently best-effort.
+   `maybe_capture_closing.py`: window changed from a precise T-60±12min (24-minute) target
+   to T-90-to-T-30 (60-minute) with a late-fallback past the T-30 deadline (capture
+   immediately rather than risk missing the card, logged distinctly as `late fallback` so
+   it's identifiable later). `daily_pipeline.yml` gained a new `closing-odds-fallback` job
+   on its own separate schedule (22:30 UTC Sat / 02:30 UTC Sun, past T-30 for essentially
+   any realistic UFC start time) — a structurally independent trigger (different workflow
+   file, different cron registration) so a `closing_odds_poll.yml`-specific failure
+   doesn't silently take out capture for the whole event. The `run-pipeline` job is gated
+   (`if: github.event.schedule == '0 14 * * *' || ...`) so the two new fallback-only cron
+   times don't also re-trigger the full daily scrape/retrain/predict cycle. Caught while
+   implementing (not part of the original ask): both jobs write `data/ufc_predictor.db`,
+   and with no ordering between them they'd run in parallel on the main 14:00 UTC trigger
+   — risking the exact git-push race ("fetch first, rejected") this session already hit
+   manually twice tonight, just automated and easy to miss. Added `needs: run-pipeline` +
+   `if: always()` on `closing-odds-fallback` to force sequential execution without
+   reintroducing the "skipped needed-job skips this job too" default GitHub behavior
+   (which would've silently killed the fallback on exactly the two cron times it exists
+   for).
+2. **Fixed the `is_opening` bug.** `run_pipeline.py::step_fetch_odds` now checks, per
+   matched fight, whether it already has any prior `BettingOdds` row before deciding
+   `is_opening=True` vs leaving it untagged — `store_odds()` has no dedup, so a naive
+   `is_opening=True` on every daily call would've mistagged every subsequent day's
+   snapshot as "opening" too, for however many days lead up to the event. Verified
+   locally: first fetch of a real upcoming card correctly tagged 10/10 new fights
+   `is_opening=True`; re-running immediately after correctly reclassified all 10 as
+   `routine` (no duplicate opening rows); a fight-level DB check confirmed exactly one
+   `is_opening=True` row and one untagged row per fight, not two opening rows.
+3. **Wired up real `--clv`.** New `_compute_clv()` in `log_live_results.py`: for each
+   logged fight, re-identifies the DB `Fight` row (the CSV log has no `fight_id`, only
+   event/fighter names — same re-identification approach `score_event()` already uses),
+   requires both an `is_opening=True` and `is_closing=True` `BettingOdds` row for it
+   (most fights won't have both yet), and computes `(closing_prob − opening_prob) /
+   opening_prob` for the picked fighter. Positive = market moved toward the model's pick
+   after the opening line, independent of whether the pick actually won. `--clv` flag
+   added to argparse; placeholder print block replaced with real output (or an honest
+   "no fights yet have both snapshots" message when `--clv` is passed but nothing
+   qualifies — not a silent empty section). Verified against synthetic opening/closing
+   rows injected into (and cleaned back out of) a real fight — both the
+   picked-fighter-A and picked-fighter-B code paths matched hand-computed expected CLV%
+   exactly; confirmed zero rows leaked into the DB after cleanup. Real proof still
+   requires an actual card that captures cleanly — nothing to compute yet
+   (`--clv` correctly reports that honestly rather than fabricating a number).
+
+**Explicit tracking note (per discussion):** the 2026-07-18 card's "8/12 correct" result
+is a valid, honest raw-accuracy data point (winner/method/round — unrelated to CLV). It
+does **not** count as card #1 of the CLV series — it structurally couldn't produce a CLV
+number (zero closing data captured that night). The CLV series starts from whichever
+event is the first to capture opening + closing cleanly after this fix, likely next
+weekend (2026-07-25). Don't let 2026-07-18 quietly get counted as CLV card #1 later.
+
+**Verified:** all three fixes tested locally against real DB state (not just "code
+compiles") — `step_fetch_odds` against the real 2026-07-25 card's odds (10 real fights
+correctly separated from ~19 noise/hypothetical-matchup entries the Odds API also
+returns), `--clv`'s math against synthetic rows with hand-verified expected values, the
+new workflow YAML structure reviewed for correct job/schedule gating. Not yet verified:
+an actual live GitHub Actions run of the widened window + fallback job against a real
+card — that only happens for real on 2026-07-25, the next event.
+
+---
+
 ## 2026-07-18 — Live automation verified end-to-end against a real card
 
 **What:** "UFC Fight Night: Du Plessis vs. Usman" ran tonight — first real test of

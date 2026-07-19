@@ -209,10 +209,41 @@ def step_fetch_odds(session, skip: bool = False) -> list:
     if skip:
         return []
     try:
-        from src.ingestion.odds_scraper import fetch_and_store_odds
-        odds = fetch_and_store_odds(session)
-        logger.info(f"Fetched odds for {len(odds)} fights")
-        return odds
+        from src.database import BettingOdds
+        from src.ingestion.odds_scraper import fetch_mma_odds, parse_odds_response, match_odds_to_db_fighters, store_odds
+
+        raw = fetch_mma_odds()
+        if not raw:
+            return []
+        parsed = parse_odds_response(raw)
+        matched = match_odds_to_db_fighters(parsed, session)
+
+        # Only tag a fight's odds as "opening" the first time we ever see a
+        # line for it. store_odds() has no dedup — this runs once a day, so
+        # blindly passing is_opening=True every time would tag every
+        # subsequent daily snapshot "opening" too, for however many days
+        # lead up to the event, defeating the point of the flag.
+        first_time, routine = [], []
+        for fo in matched:
+            if not fo.get("matched"):
+                continue
+            fight = (
+                session.query(Fight)
+                .filter(
+                    ((Fight.fighter_a_id == fo["fighter_a_id"]) & (Fight.fighter_b_id == fo["fighter_b_id"]))
+                    | ((Fight.fighter_a_id == fo["fighter_b_id"]) & (Fight.fighter_b_id == fo["fighter_a_id"])),
+                    Fight.winner_id.is_(None),
+                )
+                .first()
+            )
+            if fight is None:
+                continue  # not a real upcoming fight in our DB (noise/hypothetical matchup) — store_odds() would drop it too
+            has_prior_odds = session.query(BettingOdds).filter_by(fight_id=fight.id).first() is not None
+            (routine if has_prior_odds else first_time).append(fo)
+
+        stored = store_odds(first_time, session, is_opening=True) + store_odds(routine, session)
+        logger.info(f"Fetched odds for {stored} fights ({len(first_time)} opening, {len(routine)} routine)")
+        return [fo for fo in matched if fo.get("matched")]
     except Exception as e:
         logger.warning(f"Odds fetch failed: {e}")
         return []

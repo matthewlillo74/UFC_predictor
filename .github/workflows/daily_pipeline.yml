@@ -7,13 +7,16 @@ name: Daily pipeline (score completed events, predict upcoming)
 # equivalent of manually running scripts/run_pipeline.py — see README.md's
 # "Workflow" section for what each step does.
 #
-# Does NOT handle closing-line capture — that's time-sensitive (T-60 before
-# first fight) and lives in the separate closing_odds_poll.yml workflow,
-# which runs every 15 minutes instead of once a day.
+# Closing-line capture is normally handled by the separate
+# closing_odds_poll.yml workflow (every 15 min during the live-event
+# window). This file also carries a closing-odds-fallback job (below) —
+# see that job for why.
 
 on:
   schedule:
-    - cron: "0 14 * * *"   # 14:00 UTC daily — adjust if this collides with anything
+    - cron: "0 14 * * *"    # 14:00 UTC daily — the main pipeline run
+    - cron: "30 22 * * 6"   # Saturday 22:30 UTC — closing-odds fallback checkpoint #1
+    - cron: "30 2 * * 0"    # Sunday 02:30 UTC — closing-odds fallback checkpoint #2
   workflow_dispatch: {}
 
 permissions:
@@ -21,6 +24,11 @@ permissions:
 
 jobs:
   run-pipeline:
+    # Only the main daily cron (or a manual trigger) runs the full pipeline —
+    # the two fallback-checkpoint crons below exist purely to give
+    # closing-odds-fallback a reason to fire at those times, not to re-run
+    # scraping/retraining/predicting three times a day.
+    if: github.event_name != 'schedule' || github.event.schedule == '0 14 * * *'
     runs-on: ubuntu-latest
     timeout-minutes: 120   # fighter enrichment can take a while on a big backlog
     steps:
@@ -93,3 +101,68 @@ jobs:
         run: |
           echo "One or more non-blocking steps failed this run — see logs above. Failing the job so it shows up as a failed run / triggers GitHub's failure notification."
           exit 1
+
+  closing-odds-fallback:
+    # needs + if: always() — NOT for ordering semantics (this job should run
+    # whether run-pipeline succeeds, fails, or is skipped on the fallback-only
+    # crons) but to force GitHub to run these two jobs sequentially rather
+    # than in parallel. Both jobs commit to data/ufc_predictor.db; running
+    # them concurrently on the main 14:00 UTC trigger (where both jobs are
+    # active) would risk a git push race — the exact "fetch first, rejected"
+    # conflict this project has already hit manually more than once this
+    # week, just automated and harder to notice.
+    needs: run-pipeline
+    if: always()
+    #
+    # Redundant, independently-scheduled attempt at closing-odds capture.
+    #
+    # WHY THIS EXISTS: closing_odds_poll.yml's first live run (2026-07-18)
+    # never captured anything — not because the capture logic was wrong, but
+    # because GitHub's schedule trigger for that workflow drifted badly under
+    # load (real gaps of 1-3 hours against a configured 15 min), and the old
+    # 24-minute target window was too narrow to survive that. Widening the
+    # window in maybe_capture_closing.py (see its docstring) helps, but
+    # doesn't fully solve a scheduler that's inherently best-effort — if
+    # closing_odds_poll.yml itself fails to fire at all some week (its own
+    # bug, its own scheduling bad luck), a wider window in the same
+    # workflow doesn't help. This job is the redundancy: a completely
+    # separate workflow file with its own cron registration, firing at
+    # 22:30 UTC Saturday and 02:30 UTC Sunday (see the schedule block
+    # above) — late enough to be past the T-30 deadline for essentially any
+    # realistic UFC start time, so if the primary poller already captured,
+    # this just confirms and no-ops (maybe_capture_closing.py is
+    # idempotent); if it didn't, this is the safety net.
+    #
+    # Runs on every trigger of this workflow (the main 14:00 UTC daily run
+    # included) rather than being gated to just the two fallback crons —
+    # it's cheap and self-gating, so there's no reason to exclude it
+    # elsewhere, and an extra early check doesn't hurt.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Attempt closing-odds capture (no-ops if already captured or not yet time)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/maybe_capture_closing.py
+
+      - name: Commit and push if the DB changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/ufc_predictor.db; then
+            echo "No changes to commit"
+          else
+            git add -f data/ufc_predictor.db
+            git commit -m "chore: closing-odds fallback capture [automated]"
+            git pull --rebase origin main
+            git push origin main
+          fi

@@ -197,19 +197,32 @@ python scripts/run_pipeline.py
 ```
 Scrapes upcoming card → enriches fighters → computes styles → fetches odds → generates predictions.
 
-### Closing-line capture (2026-07-16, automated since 2026-07-18)
+### Closing-line capture (2026-07-16, automated since 2026-07-18, hardened 2026-07-19)
 ```bash
-python scripts/capture_closing_odds.py          # manual, one-shot
+python scripts/capture_closing_odds.py          # manual, one-shot — capture at exactly T-60
 python scripts/maybe_capture_closing.py         # automated — see below
 ```
-Needs to happen **exactly T-60 minutes before the first fight of the card** to count as a
-real closing line. `.github/workflows/closing_odds_poll.yml` runs `maybe_capture_closing.py`
-every 15 minutes via GitHub Actions (free — no minute limit on public repos) — it checks
-whether "now" is in the capture window for the next upcoming card (first-fight time comes
-from The Odds API's `commence_time`, not our own DB's date-only `Event.date`) and does
-nothing on almost every run. No historical closing-line data existed before 2026-07-16 (see
-`SESSION_LOG.md`), so betting-edge validation (CLV) can't happen until enough of these
-accumulate — this is what's accumulating them going forward without manual timing.
+`.github/workflows/closing_odds_poll.yml` runs `maybe_capture_closing.py` every 15 minutes
+during the live-event window (free — no minute limit on public repos), checking whether
+"now" is in the capture window for the next upcoming card (first-fight time comes from The
+Odds API's `commence_time`, not our own DB's date-only `Event.date`) and doing nothing on
+almost every run.
+
+The automated path uses a **T-90 to T-30 window with a late-fallback**, not a precise T-60
+target — its first live run (2026-07-18) captured nothing at all, because GitHub's
+`schedule` trigger drifted by 1-3 hours against a configured 15-min cadence (a documented,
+inherent characteristic of free-tier Actions cron, not something cron-offset tuning fixes).
+A wider window survives that drift; a narrow one doesn't. As additional redundancy,
+`daily_pipeline.yml` carries its own `closing-odds-fallback` job on a separate schedule
+(22:30 UTC Saturday / 02:30 UTC Sunday) that makes an independent attempt — a structurally
+separate trigger, so a scheduling failure in one workflow doesn't silently take out capture
+for the whole event. (The manual script above still targets exact T-60 — that precision is
+realistic for a human-timed run, just not for a best-effort scheduler.)
+
+No historical closing-line data existed before 2026-07-16, and the automation's first real
+capture didn't land until this hardening — so **CLV data effectively starts from whichever
+event first captures cleanly after 2026-07-19**, not from the 2026-07-18 card (which
+structurally couldn't produce one). See `SESSION_LOG.md`.
 
 ### Automated pipeline (GitHub Actions, free)
 `.github/workflows/daily_pipeline.yml` runs `run_pipeline.py` once a day — scores newly

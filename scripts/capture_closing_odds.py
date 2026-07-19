@@ -24,6 +24,13 @@ drifts from T-60 for a given event (e.g. you ran it late), note the actual
 time in your own records — don't silently treat it as directly comparable to
 a precisely-timed one.
 
+(This precision is realistic for a manual run, where a human picks the
+moment. The automated path — scripts/maybe_capture_closing.py — can't get
+that precise in practice, since GitHub Actions' schedule trigger is best-
+effort and can drift by hours under load; it uses a deliberately wider
+T-90-to-T-30 window plus a late-fallback instead of chasing an exact minute
+it structurally can't hit reliably. See that script's docstring.)
+
 Usage (run manually — this is not automated/scheduled):
     python scripts/capture_closing_odds.py
 """

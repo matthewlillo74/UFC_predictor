@@ -271,7 +271,67 @@ def score_event(session, event_name: str):
     logger.success(f"Scored {scored} fights for {event.name}")
 
 
-def print_report(session, last_n_events: int = None):
+def _compute_clv(session, df: pd.DataFrame) -> list[dict]:
+    """
+    Real Closing Line Value: for each logged fight, look up the actual
+    is_opening=True and is_closing=True BettingOdds rows (both required —
+    most fights won't have both until closing capture has been landing
+    cleanly for a while, see maybe_capture_closing.py) and compare the
+    picked fighter's implied probability between the two. Positive CLV
+    means the market moved toward the model's pick after the opening line
+    — the standard signal that a pick found real value, independent of
+    whether it actually won.
+
+    The CSV log (LIVE_LOG_PATH) doesn't store fight_id, so fights are
+    re-identified here by event name + fighter names, same approach
+    score_event() already uses elsewhere in this file.
+    """
+    rows = []
+    for r in df.to_dict("records"):
+        if r["predicted_winner"] not in (r["fighter_a"], r["fighter_b"]):
+            continue
+
+        event = session.query(Event).filter(Event.name == r["event"]).first()
+        fa = session.query(Fighter).filter(Fighter.name == r["fighter_a"]).first()
+        fb = session.query(Fighter).filter(Fighter.name == r["fighter_b"]).first()
+        if not event or not fa or not fb:
+            continue
+
+        fight = (
+            session.query(Fight)
+            .filter(
+                Fight.event_id == event.id,
+                ((Fight.fighter_a_id == fa.id) & (Fight.fighter_b_id == fb.id))
+                | ((Fight.fighter_a_id == fb.id) & (Fight.fighter_b_id == fa.id)),
+            )
+            .first()
+        )
+        if not fight:
+            continue
+
+        opening = session.query(BettingOdds).filter_by(fight_id=fight.id, is_opening=True).first()
+        closing = session.query(BettingOdds).filter_by(fight_id=fight.id, is_closing=True).first()
+        if not opening or not closing:
+            continue
+
+        # fight.fighter_a_id/fighter_b_id ordering is what score_event() used
+        # to write fighter_a/fighter_b into the CSV in the first place, so
+        # r["fighter_a"] corresponds directly to opening/closing.*_a here.
+        picked_a = r["predicted_winner"] == r["fighter_a"]
+        open_prob = opening.implied_prob_a if picked_a else opening.implied_prob_b
+        close_prob = closing.implied_prob_a if picked_a else closing.implied_prob_b
+        if not open_prob:
+            continue
+
+        rows.append({
+            "event": r["event"],
+            "fighter": r["predicted_winner"],
+            "clv_pct": (close_prob - open_prob) / open_prob,
+        })
+    return rows
+
+
+def print_report(session, last_n_events: int = None, show_clv: bool = False):
     log = get_or_create_log()
     if not log:
         logger.warning("No live results yet. Run: python scripts/log_live_results.py --event 'Event Name'")
@@ -478,14 +538,27 @@ def print_report(session, last_n_events: int = None):
     print()
 
     # ── Line movement (closing line value) ────────────────────────────────
-    # This requires manually logged line movement data - show placeholder
-    # until we have enough events to compute it
     print("  CLOSING LINE VALUE (CLV)")
     print("  " + "─" * 40)
-    print("  Track this manually: note the line when you bet vs closing line.")
-    print("  Consistent movement toward your bets = model finding real edge.")
-    print("  Example logged: Shem Rock +110 → closed -120 (moved toward pick)")
-    print("  After 20+ bets, add --clv flag to log these and compute average CLV.")
+    if not show_clv:
+        print("  Pass --clv to compute this from real captured opening/closing odds.")
+    else:
+        clv_rows = _compute_clv(session, df)
+        if not clv_rows:
+            print("  No fights yet have both an opening and closing BettingOdds snapshot —")
+            print("  needs maybe_capture_closing.py to have landed cleanly for at least one")
+            print("  card. Not available for any event before 2026-07-19.")
+        else:
+            clv_df = pd.DataFrame(clv_rows)
+            avg_clv = clv_df["clv_pct"].mean()
+            positive_rate = (clv_df["clv_pct"] > 0).mean()
+            print(f"  {len(clv_df)} fight(s) with real opening→closing data")
+            print(f"  Average CLV: {avg_clv:+.1%}   Positive CLV: {positive_rate:.1%} of picks")
+            print("  (Positive = market moved toward the model's pick after the opening line —")
+            print("   consistent positive CLV, win or lose, is the strongest signal of real edge.)")
+            print()
+            for row in clv_df.sort_values("clv_pct", ascending=False).to_dict("records"):
+                print(f"    {row['clv_pct']:+7.1%}  {row['fighter']:22s}  {row['event']}")
     print()
 
     # ── Per-event ─────────────────────────────────────────────────────────
@@ -555,6 +628,8 @@ def main():
     parser.add_argument("--event",  type=str, help="Event name to score")
     parser.add_argument("--report", action="store_true")
     parser.add_argument("--events", type=int, default=None)
+    parser.add_argument("--clv", action="store_true",
+                         help="Compute real Closing Line Value from captured opening/closing BettingOdds rows")
     args = parser.parse_args()
 
     init_db()
@@ -563,7 +638,7 @@ def main():
     if args.event:
         score_event(session, args.event)
     if args.report or not args.event:
-        print_report(session, last_n_events=args.events)
+        print_report(session, last_n_events=args.events, show_clv=args.clv)
 
     session.close()
 
