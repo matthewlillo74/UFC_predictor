@@ -600,6 +600,15 @@ Feature: `line_movement_a` = closing_implied_prob_a - opening_implied_prob_a
 Scrape MMA Fighting and ESPN MMA for headlines about each fighter on the upcoming card. Run through Claude API to extract structured signals: `injury_mentioned` (bool), `weight_cut_concern` (bool), `positive_camp_report` (bool). Updates `fighter_a_injury_flag` and `fighter_b_injury_flag` which currently sit at 0.0. This is the most direct path to making the narrative features do real work.
  
 ### 3. CLV (Closing Line Value) tracking (MEDIUM PRIORITY)
+> **Built 2026-07-19 — this item is done, not a pending idea anymore.** `--clv` now
+> exists on `log_live_results.py`, computing real CLV from `BettingOdds.is_opening`/
+> `is_closing` rows rather than the manually-logged columns this section originally
+> proposed (opening/closing capture is itself now automated too — see `SESSION_LOG.md`'s
+> 2026-07-19 entry for both). No real CLV data exists yet — closing-odds capture's first
+> live run (2026-07-18) captured nothing due to a since-fixed scheduling bug — so the
+> first real numbers won't appear until whichever card captures cleanly, likely 2026-07-25.
+> The description below is kept for the original design rationale, not as a to-do.
+
 Add `--clv` flag to `log_live_results.py`. When logging a bet, record both the line at bet time and the closing line. After 30+ bets, compute average CLV to determine if the model consistently finds value before market corrects. Positive average CLV = the system is finding real edge, not just getting lucky.
  
 New columns in `live_accuracy.csv`:
