@@ -1,0 +1,726 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: ANKALAEV VS. GUSKOV
+  Generated: 2026-07-21 15:39 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Magomed Ankalaev vs Bogdan Guskov
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Magomed Ankalaev: 54.8%
+  Bogdan Guskov: 45.2%
+  → Predicted winner: Magomed Ankalaev (54.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.3%
+  Submission:  18.5%
+  Decision:    44.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 91.2%
+  Goes the distance:            8.8%
+
+KEY FACTORS FOR Magomed Ankalaev
+  + Durability advantage (+0.262)
+  + Elo advantage (+0.223)
+  + Reach Strike advantage (+0.150)
+  + Style Pressure L3 advantage (+0.118)
+  + Sub Rate advantage (+0.097)
+
+KEY FACTORS FOR Bogdan Guskov
+  + Age Vs Peak advantage (+0.142)
+  + Decision Rate advantage (+0.122)
+  + Recent Finish Rate advantage (+0.115)
+  + Kd Absorbed Per Fight advantage (+0.094)
+
+BETTING VALUE
+  Market implied probability (Magomed Ankalaev): 50.0%
+  Model probability (Magomed Ankalaev):          54.8%
+  Edge: +4.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Steve Erceg vs Ramazan Temirov
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Steve Erceg: 61.9%
+  Ramazan Temirov: 38.1%
+  → Predicted winner: Steve Erceg (61.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.2%
+  Submission:  18.1%
+  Decision:    45.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 95.4%
+  Goes the distance:            4.6%
+
+KEY FACTORS FOR Steve Erceg
+  + Reach Strike advantage (+0.222)
+  + Ko Rate advantage (+0.116)
+  + Elo advantage (+0.102)
+  + Striking Edge advantage (+0.096)
+  + Style Vuln Pressure advantage (+0.071)
+
+KEY FACTORS FOR Ramazan Temirov
+  + Recent Finish Rate advantage (+0.124)
+  + Grapple Dom advantage (+0.085)
+  + Age Vs Peak advantage (+0.072)
+  + Style Finisher advantage (+0.062)
+
+BETTING VALUE
+  Market implied probability (Steve Erceg): 50.0%
+  Model probability (Steve Erceg):          61.9%
+  Edge: +11.9%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Islam Dulatov vs Wellington Turman
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Islam Dulatov: 66.6%
+  Wellington Turman: 33.4%
+  → Predicted winner: Islam Dulatov (66.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.8%
+  Submission:  18.4%
+  Decision:    55.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 14.1%
+  Goes the distance:            85.9%
+
+KEY FACTORS FOR Islam Dulatov
+  + Elo advantage (+0.422)
+  + Reach Strike advantage (+0.185)
+  + Age Vs Peak advantage (+0.177)
+  + Style Vuln Pressure advantage (+0.103)
+  + Age advantage (+0.092)
+
+KEY FACTORS FOR Wellington Turman
+  + Elo Uncertainty advantage (+0.201)
+  + Avg Opponent Elo advantage (+0.084)
+
+BETTING VALUE
+  Market implied probability (Islam Dulatov): 50.0%
+  Model probability (Islam Dulatov):          66.6%
+  Edge: +16.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Magomed Zaynukov vs Damian Rzepecki
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Magomed Zaynukov: 45.9%
+  Damian Rzepecki: 54.1%
+  → Predicted winner: Damian Rzepecki (54.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  16.7%
+  Decision:    51.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 32.1%
+  Goes the distance:            67.9%
+
+KEY FACTORS FOR Magomed Zaynukov
+  + Elo advantage (+0.049)
+  + Age advantage (+0.039)
+  + Height advantage (+0.022)
+
+KEY FACTORS FOR Damian Rzepecki
+  + Avg Opponent Elo advantage (+0.067)
+  + Reach Strike advantage (+0.037)
+  + Td Acc advantage (+0.026)
+  + Sub Rate advantage (+0.025)
+  + Style Pressure L3 advantage (+0.025)
+
+BETTING VALUE
+  Market implied probability (Magomed Zaynukov): 50.0%
+  Model probability (Magomed Zaynukov):          45.9%
+  Edge: -4.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Rizvan Kuniev vs Tyrell Fortune
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Rizvan Kuniev: 63.8%
+  Tyrell Fortune: 36.2%
+  → Predicted winner: Rizvan Kuniev (63.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.9%
+  Submission:  17.8%
+  Decision:    47.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 71.4%
+  Goes the distance:            28.6%
+
+KEY FACTORS FOR Rizvan Kuniev
+  + Age Vs Peak advantage (+0.270)
+  + Sapm advantage (+0.219)
+  + Slpm advantage (+0.137)
+  + Age advantage (+0.105)
+  + Momentum Score advantage (+0.100)
+
+KEY FACTORS FOR Tyrell Fortune
+  + Td Avg advantage (+0.149)
+  + Strike Def advantage (+0.115)
+  + Strike Acc advantage (+0.060)
+
+BETTING VALUE
+  Market implied probability (Rizvan Kuniev): 50.0%
+  Model probability (Rizvan Kuniev):          63.8%
+  Edge: +13.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Abubakar Vagaev vs Saygid Izagakhmaev
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Abubakar Vagaev: 45.4%
+  Saygid Izagakhmaev: 54.6%
+  → Predicted winner: Saygid Izagakhmaev (54.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  17.2%
+  Decision:    50.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 88.6%
+  Goes the distance:            11.4%
+
+KEY FACTORS FOR Abubakar Vagaev
+  + Elo advantage (+0.166)
+  + Avg Opponent Elo advantage (+0.045)
+  + Age advantage (+0.038)
+  + Height advantage (+0.029)
+  + Sapm advantage (+0.022)
+
+KEY FACTORS FOR Saygid Izagakhmaev
+  + Elo Uncertainty advantage (+0.289)
+  + Reach Strike advantage (+0.052)
+  + Style Pressure L3 advantage (+0.024)
+  + Td Acc advantage (+0.022)
+  + Striking Edge advantage (+0.021)
+
+BETTING VALUE
+  Market implied probability (Abubakar Vagaev): 50.0%
+  Model probability (Abubakar Vagaev):          45.4%
+  Edge: -4.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Valter Walker vs Thomas Petersen
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Valter Walker: 53.6%
+  Thomas Petersen: 46.4%
+  → Predicted winner: Valter Walker (53.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.7%
+  Submission:  15.1%
+  Decision:    59.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 6.9%
+  Goes the distance:            93.1%
+
+KEY FACTORS FOR Valter Walker
+  + Age Vs Peak advantage (+0.157)
+  + Recent Win Rate advantage (+0.111)
+  + Reach advantage (+0.105)
+  + Elo advantage (+0.088)
+  + Age advantage (+0.072)
+
+KEY FACTORS FOR Thomas Petersen
+  + Leg Strike Rate advantage (+0.149)
+  + Height advantage (+0.147)
+  + Early Output Share advantage (+0.114)
+  + Avg Opponent Elo advantage (+0.107)
+  + Slpm advantage (+0.102)
+
+BETTING VALUE
+  Market implied probability (Valter Walker): 50.0%
+  Model probability (Valter Walker):          53.6%
+  Edge: +3.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dustin Jacoby vs Muhammad Said
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dustin Jacoby: 71.0%
+  Muhammad Said: 29.0%
+  → Predicted winner: Dustin Jacoby (71.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.6%
+  Submission:  12.4%
+  Decision:    49.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 55.4%
+  Goes the distance:            44.6%
+
+KEY FACTORS FOR Dustin Jacoby
+  + Elo Uncertainty advantage (+0.464)
+  + Elo advantage (+0.327)
+  + Elo Trend advantage (+0.101)
+  + Avg Opponent Elo advantage (+0.062)
+  + Age advantage (+0.035)
+
+KEY FACTORS FOR Muhammad Said
+  + Reach Strike advantage (+0.048)
+  + Age Vs Peak advantage (+0.047)
+  + Td Success Prob advantage (+0.042)
+  + Striking Edge advantage (+0.041)
+  + Durability advantage (+0.039)
+
+BETTING VALUE
+  Market implied probability (Dustin Jacoby): 50.0%
+  Model probability (Dustin Jacoby):          71.0%
+  Edge: +21.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Santiago Ponzinibbio vs Sam Patterson
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Santiago Ponzinibbio: 18.8%
+  Sam Patterson: 81.2%
+  → Predicted winner: Sam Patterson (81.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    21.4%
+  Submission:  46.5%
+  Decision:    32.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 66.8%
+  Goes the distance:            33.2%
+
+KEY FACTORS FOR Santiago Ponzinibbio
+  + Sub Avg advantage (+0.134)
+  + Avg Opponent Elo advantage (+0.099)
+
+KEY FACTORS FOR Sam Patterson
+  + Age Vs Peak advantage (+0.502)
+  + Age advantage (+0.372)
+  + Elo Trend advantage (+0.215)
+  + Td Avg advantage (+0.158)
+  + Style Pressure L3 advantage (+0.135)
+
+BETTING VALUE
+  Market implied probability (Santiago Ponzinibbio): 50.0%
+  Model probability (Santiago Ponzinibbio):          18.8%
+  Edge: -31.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ismael Bonfim vs Axel Sola
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ismael Bonfim: 29.1%
+  Axel Sola: 70.9%
+  → Predicted winner: Axel Sola (70.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.7%
+  Submission:  17.0%
+  Decision:    57.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 58.6%
+  Goes the distance:            41.4%
+
+KEY FACTORS FOR Ismael Bonfim
+  + Kd Absorbed Per Fight advantage (+0.153)
+  + Avg Opponent Elo advantage (+0.113)
+  + Elo Trend advantage (+0.112)
+  + Slpm advantage (+0.083)
+
+KEY FACTORS FOR Axel Sola
+  + Leg Strike Rate advantage (+0.173)
+  + Age Vs Peak advantage (+0.171)
+  + Early Output Share advantage (+0.153)
+  + Recent Finish Rate advantage (+0.112)
+  + Height advantage (+0.104)
+
+BETTING VALUE
+  Market implied probability (Ismael Bonfim): 50.0%
+  Model probability (Ismael Bonfim):          29.1%
+  Edge: -20.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Magomed Tuchalov vs Brendson Ribeiro
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Magomed Tuchalov: 58.0%
+  Brendson Ribeiro: 42.0%
+  → Predicted winner: Magomed Tuchalov (58.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.7%
+  Submission:  16.6%
+  Decision:    45.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 82.5%
+  Goes the distance:            17.5%
+
+KEY FACTORS FOR Magomed Tuchalov
+  + Elo advantage (+0.233)
+  + Reach Strike advantage (+0.170)
+  + Durability advantage (+0.084)
+  + Elo Trend advantage (+0.074)
+  + Decision Rate advantage (+0.039)
+
+KEY FACTORS FOR Brendson Ribeiro
+  + Elo Uncertainty advantage (+0.153)
+  + Age Vs Peak advantage (+0.055)
+  + Avg Opponent Elo advantage (+0.039)
+  + Elo Vs Peak advantage (+0.029)
+
+BETTING VALUE
+  Market implied probability (Magomed Tuchalov): 50.0%
+  Model probability (Magomed Tuchalov):          58.0%
+  Edge: +8.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Nurullo Aliev vs Mike Davis
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Nurullo Aliev: 51.8%
+  Mike Davis: 48.2%
+  → Predicted winner: Nurullo Aliev (51.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.0%
+  Submission:  29.4%
+  Decision:    43.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.9%
+  Goes the distance:            60.1%
+
+KEY FACTORS FOR Nurullo Aliev
+  + Td Acc advantage (+0.152)
+  + Sapm advantage (+0.140)
+  + Style Vuln Pressure advantage (+0.116)
+  + Elo Trend advantage (+0.090)
+  + Recent Win Rate advantage (+0.079)
+
+KEY FACTORS FOR Mike Davis
+  + Cardio Decay advantage (+0.206)
+  + Slpm advantage (+0.088)
+  + Decision Rate advantage (+0.087)
+  + Age Vs Peak advantage (+0.085)
+
+BETTING VALUE
+  Market implied probability (Nurullo Aliev): 50.0%
+  Model probability (Nurullo Aliev):          51.8%
+  Edge: +1.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Ankalaev vs. Guskov
+TBD
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Cody Gibson vs Abdul Hussein
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Cody Gibson: 49.2%
+  Abdul Hussein: 50.8%
+  → Predicted winner: Abdul Hussein (50.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.8%
+  Submission:  22.9%
+  Decision:    41.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 80.9%
+  Goes the distance:            19.1%
+
+KEY FACTORS FOR Cody Gibson
+  + Elo Uncertainty advantage (+0.492)
+  + Sub Rate advantage (+0.073)
+  + Age advantage (+0.041)
+  + Elo Vs Peak advantage (+0.029)
+
+KEY FACTORS FOR Abdul Hussein
+  + Elo advantage (+0.409)
+  + Avg Opponent Elo advantage (+0.082)
+  + Striking Edge advantage (+0.065)
+  + Age Vs Peak advantage (+0.056)
+  + Elo Trend advantage (+0.038)
+
+BETTING VALUE
+  Market implied probability (Cody Gibson): 50.0%
+  Model probability (Cody Gibson):          49.2%
+  Edge: -0.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-07-21 15:39 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Saygid Izagakhmaev  (Model: 54.6%  Edge: +23.1%)
+  2. Wellington Turman  (Model: 33.4%  Edge: +17.7%)
+  3. Dustin Jacoby  (Model: 71.0%  Edge: +9.9%)
+  4. Tyrell Fortune  (Model: 36.2%  Edge: +7.6%)
