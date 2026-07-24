@@ -224,6 +224,15 @@ capture didn't land until this hardening — so **CLV data effectively starts fr
 event first captures cleanly after 2026-07-19**, not from the 2026-07-18 card (which
 structurally couldn't produce one). See `SESSION_LOG.md`.
 
+### Off-week gate (2026-07-23)
+UFC doesn't run every Saturday. `scripts/is_ufc_weekend.py` is a cheap, network-free DB
+check (exit code 0/1) that all three weekend-polling workflows (`closing_odds_poll.yml`,
+`live_results_poll.yml`, `daily_pipeline.yml`'s `closing-odds-fallback` job) run first —
+on an off week they skip everything else (the Odds API call, the ufcstats.com scrape, the
+commit) rather than burning quota checking for a card that doesn't exist that weekend.
+Relies on `Event.date` being the real fight date, which required fixing a real bug in
+`fight_scraper.get_upcoming_events()` first — see `SESSION_LOG.md`'s 2026-07-23 entry.
+
 ### Automated pipeline (GitHub Actions, free)
 `.github/workflows/daily_pipeline.yml` runs `run_pipeline.py` once a day — scores newly
 completed events, retrains if 10+ new events have accumulated (existing project

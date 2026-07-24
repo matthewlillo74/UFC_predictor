@@ -20,6 +20,12 @@ name: Poll for closing-odds capture window
 # afternoon cards through late US Saturday-night PPV prelims, without
 # polling all week. ~72 runs/event-week * ~4.3 weeks/month ≈ 310 calls/month,
 # leaving headroom for the daily pipeline's odds fetch and manual use.
+#
+# UFC doesn't run every Saturday (off weeks exist — the DB already has one,
+# 2026-07-04). The cron above still fires on those weeks since cron can't
+# know the calendar in advance, so scripts/is_ufc_weekend.py runs first as a
+# cheap DB-only check and skips the real work (the Odds API call, the
+# scrape, the commit) entirely when there's nothing to do that weekend.
 
 on:
   schedule:
@@ -44,12 +50,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Check whether there's a UFC event this weekend (skip everything else if not)
+        id: check_event
+        run: |
+          if python scripts/is_ufc_weekend.py; then
+            echo "has_event=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_event=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Check window and maybe capture closing odds
+        if: steps.check_event.outputs.has_event == 'true'
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/maybe_capture_closing.py
 
       - name: Commit and push if the DB changed
+        if: steps.check_event.outputs.has_event == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

@@ -7,6 +7,69 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-23 — Off-week gate for weekend polling; found & fixed a real date-parsing bug
+
+**What:** asked to add a way to skip the weekend polling workflows entirely on weeks
+without a UFC card (they were firing on their normal cron regardless, checking for
+nothing). Building that gate required trusting `Event.date` to reflect the *real* fight
+date — while verifying that, found it didn't: every auto-created upcoming `Event` row's
+`date` was actually the timestamp of whichever pipeline run created it, not the real
+card date. Root cause and full fix below.
+
+**Root cause:** `fight_scraper.get_upcoming_events()` was reading `cells[1]` as the date
+string — that's actually the **location** column. The real date lives in a
+`<span class="b-statistics__date">` inside `cells[0]`, alongside the name link. Confirmed
+by pulling the raw HTML directly: `cells[0]` contained
+`"UFC Fight Night: Ankalaev vs. GuskovJuly 25, 2026"` (name + date concatenated, no
+separator, since `link.get_text()` only pulls the `<a>` tag's text) — parsing `cells[1]`
+("Abu Dhabi, Abu Dhabi, United Arab Emirates") as a date via
+`strptime(..., "%B %d, %Y")` failed silently on **every single event**, caught by a bare
+`except ValueError: date = None`, which `run_pipeline.py::step_predict_next_event` then
+silently replaced with `datetime.utcnow()`. Also discovered in the same pass: this
+function never included a `"location"` key in its returned dicts at all, despite
+`step_predict_next_event` reading `event_data.get("location", "")` — so `Event.location`
+has always been empty for auto-created events too.
+
+**Fix:** `get_upcoming_events()` now reads the date from
+`cells[0].find("span", class_="b-statistics__date")` and location from `cells[1]`
+correctly. Verified live against ufcstats.com: correctly parsed real dates and locations
+for all 8 currently-listed upcoming events (Ankalaev vs. Guskov → 2026-07-25, Abu Dhabi;
+Medic vs. Rodriguez → 2026-08-01, Belgrade; etc.), none silently `None` anymore.
+
+**Backfilled the two affected existing rows** (the bug only affects `Event` rows
+auto-created via `step_predict_next_event`'s get-or-create path, which only fires for
+each week's "next" event — checked all Event rows for the fallback's telltale non-
+midnight timestamp signature, found exactly these two, nothing else affected):
+event 781 ("Du Plessis vs. Usman", already-completed, cosmetic only) → 2026-07-18;
+event 782 ("Ankalaev vs. Guskov", this Saturday, the one that actually matters for the
+new gate below) → 2026-07-25, location "Abu Dhabi, Abu Dhabi, United Arab Emirates".
+
+**Off-week gate:** new `scripts/is_ufc_weekend.py` — pure DB read (no network), checks
+whether any `Event` (with `Fight` rows) falls within "this weekend" (Saturday through
+Sunday UTC, computed correctly regardless of which day it's actually run — handles the
+Sunday-UTC-poll-still-belongs-to-Saturday's-card case explicitly rather than always
+walking forward to the *next* Saturday). Exit code 0/1 signals yes/no. Wired into all
+three weekend-polling workflows (`closing_odds_poll.yml`, `live_results_poll.yml`,
+`daily_pipeline.yml`'s `closing-odds-fallback` job) as their first real step — each
+converts the exit code into a `has_event` step output via `if/then/else` (a raw nonzero
+exit would otherwise fail the whole job and trigger GitHub's failure-notification email
+on every off week, which is exactly the false alarm this needs to avoid) and gates every
+subsequent step on it. `run-pipeline` (the main daily job) is deliberately NOT gated —
+it does other daily work (scoring, retraining, predicting) unrelated to whether there's
+a game this specific weekend, and is already a harmless no-op on quiet days.
+
+**Verified:** caught and fixed a real bug in my own first draft of
+`is_ufc_weekend.py` — the initial "days since Saturday" formula walked *backward* to the
+most recent past Saturday, not forward to the upcoming one, so testing it on today
+(Thursday 2026-07-23) incorrectly matched last week's already-completed card instead of
+this Saturday's. Fixed and re-verified: correctly finds "Ankalaev vs. Guskov" for this
+weekend now. Also verified the off-week path against a real gap already in the data (the
+week of 2026-07-04 has no card) via a mocked `datetime.utcnow()` — correctly returned
+`False` with the right message. YAML syntax of all three modified workflow files
+confirmed via `yaml.safe_load()`, not just eyeballed.
+
+---
+
 ## 2026-07-19 — Root-caused and fixed the closing-odds capture failure; wired up real CLV
 
 **What:** a friend asked pointed questions about the "8/12 correct" email from the

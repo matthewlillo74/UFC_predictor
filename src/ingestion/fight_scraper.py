@@ -344,7 +344,19 @@ def search_fighter(name: str) -> Optional[str]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def get_upcoming_events() -> list[dict]:
-    """Scrape upcoming UFC events from ufcstats.com."""
+    """
+    Scrape upcoming UFC events from ufcstats.com.
+
+    The date lives in a <span class="b-statistics__date"> INSIDE the first
+    <td> (alongside the name link), not in cells[1] -- that's the location.
+    Grabbing cells[1] as the date (the original bug here) meant date parsing
+    silently failed for every single event (location strings never match
+    "%B %d, %Y"), and "location" was never actually included in the
+    returned dict despite callers reading event_data.get("location"). Any
+    Event row created while this bug was live has date=<the timestamp of
+    whatever run created it>, not the real fight date -- see SESSION_LOG.md
+    2026-07-23 for the affected-row backfill.
+    """
     url = f"{BASE_URL}/statistics/events/upcoming?page=all"
     soup = _get(url)
     if not soup:
@@ -361,13 +373,18 @@ def get_upcoming_events() -> list[dict]:
             continue
         name = link.get_text(strip=True)
         event_url = link.get("href", "").strip()
-        date_str = cells[1].get_text(strip=True)
+
+        date_span = cells[0].find("span", class_="b-statistics__date")
+        date_str = date_span.get_text(strip=True) if date_span else ""
         try:
             date = datetime.strptime(date_str, "%B %d, %Y")
         except ValueError:
             date = None
+
+        location = cells[1].get_text(strip=True)
+
         if name and event_url:
-            events.append({"name": name, "date": date, "url": event_url})
+            events.append({"name": name, "date": date, "url": event_url, "location": location})
 
     logger.info(f"Found {len(events)} upcoming events")
     return events
