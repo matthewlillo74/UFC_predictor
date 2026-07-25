@@ -54,7 +54,7 @@ Live accuracy is tracked across every event using `scripts/log_live_results.py` 
 ufcstats.com (8,600+ fights)
         │
         ▼
-Feature Builder — 63 pre-fight features, versioned snapshots, zero data leakage
+Feature Builder — 73 pre-fight features, versioned snapshots, zero data leakage
         │
         ▼
 XGBoost Models — winner, method, round (recency-weighted)
@@ -117,7 +117,7 @@ ufc-predictor/
 ├── requirements.txt
 │
 ├── data/
-│   ├── ufc_predictor.db              # SQLite DB (8,600+ fights, 2,649 fighters)
+│   ├── ufc_predictor.db              # SQLite DB (8,800+ fights, 2,700+ fighters)
 │   ├── processed/training_dataset.csv
 │   └── predictions/                  # Stored predictions + live accuracy log
 │       └── live_accuracy.csv         # Per-fight live results tracker
@@ -129,7 +129,7 @@ ufc-predictor/
 │   │   ├── data_loader.py            # Fighter enrichment + deduplication
 │   │   └── odds_scraper.py           # The Odds API integration
 │   ├── features/
-│   │   ├── feature_builder.py        # 63-feature matchup engineering
+│   │   ├── feature_builder.py        # 73-feature matchup engineering
 │   │   └── elo_calculator.py         # Chronological Elo ratings
 │   ├── models/
 │   │   └── predict.py                # XGBoost winner/method/round models (90% prob cap)
@@ -155,8 +155,18 @@ ufc-predictor/
 │   ├── compute_style_vulnerability.py # Opponent style vulnerability features
 │   ├── scrape_fight_stats.py         # Round-level stats scraper (cardio decay)
 │   ├── backtest_parlays.py           # Historical parlay backtesting
-│   ├── log_live_results.py           # Live accuracy tracker (winner/method/round/P&L)
-│   └── migrate_db.py                 # DB schema migrations
+│   ├── log_live_results.py           # Live accuracy tracker (winner/method/round/P&L, --clv)
+│   ├── migrate_db.py                 # DB schema migrations
+│   ├── is_ufc_weekend.py             # Off-week gate for the weekend polling workflows
+│   ├── maybe_capture_closing.py      # Automated closing-odds capture (T-90..T-30 + fallback)
+│   ├── capture_closing_odds.py       # Manual, one-shot closing-odds capture (exact T-60)
+│   ├── live_results_poll.py          # Live per-fight DB updates + end-of-card summary email
+│   └── email_report.py               # Once-per-event results summary via Gmail SMTP
+│
+├── .github/workflows/                # Free GitHub Actions automation — see Workflow section
+│   ├── daily_pipeline.yml            # Daily scrape/score/retrain/predict + closing-odds fallback
+│   ├── closing_odds_poll.yml         # Closing-line capture, every 15 min during live window
+│   └── live_results_poll.yml         # Live results tracking, every 15 min during live window
 │
 └── .streamlit/
     ├── config.toml                   # Theme config
