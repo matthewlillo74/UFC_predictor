@@ -7,6 +7,59 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-07-25 — First real closing-odds capture; fixed a cross-workflow git-push race
+
+**What:** live card day (UFC Fight Night: Ankalaev vs. Guskov, Abu Dhabi — an early
+international-timeslot card, prelims ~10:00, main card ~12:00 per user report). User
+reported `daily_pipeline.yml`'s `closing-odds-fallback` job failed with exit code 1.
+
+**Good news first:** closing odds captured successfully for the first time ever under
+this automation — 5 rows with `is_closing=True` for this event, confirmed via direct DB
+query. The T-90/T-30 window + fallback design from 2026-07-19 is working.
+
+**Root-caused the failure** (not guessed — pulled real job/step data via the Actions
+REST API, `/repos/.../actions/runs/<id>/jobs`): the failure was specifically in the
+"Commit and push if the DB changed" step, not the capture logic itself (which completed
+successfully). Cross-referenced timing: `closing_odds_poll.yml` ran at 14:49:10Z the same
+day; `closing-odds-fallback` (part of `daily_pipeline.yml`) ran at 14:57:52Z — 8 minutes
+apart, easily overlapping given each run takes a few minutes. This is a real gap in the
+2026-07-19 fix: `needs: run-pipeline` + `if: always()` on `closing-odds-fallback` only
+sequences that job against `run-pipeline` *within the same workflow file* — it does
+nothing to prevent a collision against `closing_odds_poll.yml` or `live_results_poll.yml`,
+which are separate workflow files with independent triggers and no ordering relationship
+to `daily_pipeline.yml` at all. All three commit to the same `data/ufc_predictor.db`, and
+during the live-event window (when several of them are actually likely to have real
+changes to push) a same-minute collision is entirely plausible — which is exactly what
+happened.
+
+**Fix:** replaced every single-shot `git pull --rebase && git push` (four of them, across
+all three workflow files) with a 5-attempt retry loop (`git pull --rebase origin main &&
+git push origin main && break`, with a small random 5-14s backoff between attempts to
+reduce the chance of two racing retries colliding again). This is the correct fix for the
+actual failure mode — sequencing one workflow's own jobs was necessary but not
+sufficient; only a retry can recover from a collision against a workflow it has no
+relationship to.
+
+**Also cleaned up while investigating:** found and deleted a stale duplicate `Fight` row
+(id 8908, "Uran Satybaldiev vs Dustin Jacoby") — Jacoby's real opponent changed to
+Muhammad Saidov between the 2026-07-19 and 2026-07-21 scrapes (a real fight-card change,
+not a scraper bug), but the old matchup's `Fight`/`Prediction` rows were never removed
+since the get-or-create logic matches on fighter-ID pairs, which changed. Verified against
+the live event page (`get_event_fights()`) before deleting — confirmed 13 real fights on
+the card, Jacoby's current opponent listed as "Muhammad Saidov" (our DB has him as
+"Muhammad Said" — a truncation worth watching; could cause a duplicate Fighter row when
+results come in if `get_or_create_fighter`'s matching doesn't reconcile the two spellings,
+not yet investigated further).
+
+**Verified:** confirmed via the GitHub Actions REST API that the retry-loop change
+doesn't alter any other step's behavior (YAML re-validated with `yaml.safe_load` across
+all three files); manually exercised the loop's bash logic locally to confirm the
+retry/break control flow is correct. Real-world proof of the retry logic itself will only
+come from the next actual collision — by definition an intermittent race, not something
+reproducible on demand.
+
+---
+
 ## 2026-07-23 — Off-week gate for weekend polling; found & fixed a real date-parsing bug
 
 **What:** asked to add a way to skip the weekend polling workflows entirely on weeks

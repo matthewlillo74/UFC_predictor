@@ -75,6 +75,15 @@ jobs:
           else
             git add -f data/ufc_predictor.db
             git commit -m "chore: closing-odds snapshot [automated]"
-            git pull --rebase origin main
-            git push origin main
+            # Retry on push rejection -- three workflow files independently
+            # commit to this same DB file, and during the live-event window
+            # they can genuinely overlap (confirmed 2026-07-25: this workflow
+            # and daily_pipeline.yml's closing-odds-fallback job pushed 8
+            # minutes apart and collided). A single pull+push attempt has no
+            # way to recover from that; retrying with a fresh rebase does.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin main && break
+              echo "Push attempt $i failed (likely a race with another workflow) -- retrying"
+              sleep $((RANDOM % 10 + 5))
+            done
           fi

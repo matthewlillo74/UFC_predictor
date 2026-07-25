@@ -89,8 +89,16 @@ jobs:
           else
             git add -f data/ufc_predictor.db data/processed/ data/predictions/ models_saved/
             git commit -m "chore: daily pipeline run [automated]"
-            git pull --rebase origin main
-            git push origin main
+            # Retry on push rejection -- three workflow files independently
+            # commit to data/ufc_predictor.db and can genuinely overlap
+            # during the live-event window. A single pull+push attempt has
+            # no way to recover from a collision; retrying with a fresh
+            # rebase does.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin main && break
+              echo "Push attempt $i failed (likely a race with another workflow) -- retrying"
+              sleep $((RANDOM % 10 + 5))
+            done
           fi
 
       - name: Fail the job if anything errored (restores GitHub's default failure email)
@@ -179,6 +187,17 @@ jobs:
           else
             git add -f data/ufc_predictor.db
             git commit -m "chore: closing-odds fallback capture [automated]"
-            git pull --rebase origin main
-            git push origin main
+            # Retry on push rejection -- confirmed 2026-07-25: this job's
+            # push collided with closing_odds_poll.yml's, which fired 8
+            # minutes earlier the same day. needs+if:always() above only
+            # sequences this job against run-pipeline WITHIN this workflow
+            # file; it does nothing against the other two workflow files
+            # also writing to this same DB, which is the collision that
+            # actually happened. A single pull+push attempt can't recover
+            # from that; retrying with a fresh rebase does.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin main && break
+              echo "Push attempt $i failed (likely a race with another workflow) -- retrying"
+              sleep $((RANDOM % 10 + 5))
+            done
           fi

@@ -85,6 +85,13 @@ jobs:
           else
             git add -f data/ufc_predictor.db data/predictions/
             git commit -m "chore: live results update [automated]"
-            git pull --rebase origin main
-            git push origin main
+            # Retry on push rejection -- three workflow files independently
+            # commit to this same DB file and can genuinely overlap during
+            # the live-event window (confirmed 2026-07-25 for the other two).
+            # A single pull+push attempt has no way to recover from that.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin main && break
+              echo "Push attempt $i failed (likely a race with another workflow) -- retrying"
+              sleep $((RANDOM % 10 + 5))
+            done
           fi
