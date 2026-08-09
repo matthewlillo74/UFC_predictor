@@ -72,8 +72,33 @@ class UFCPredictor:
         df_clean = df[df["method"].isin(["KO_TKO", "Submission", "Decision"])].copy()
         logger.info(f"Clean fights for training: {len(df_clean)} (removed {len(df) - len(df_clean)} NC/Draw/other)")
 
-        X = df_clean[FEATURE_COLUMNS].fillna(0)
-        y_winner = df_clean["winner"]
+        # ── Genuine calibration holdout ──────────────────────────────────────
+        # Every calibrator below (round model + per-division winner) must be fit
+        # on data the base model never saw during .fit(). The original bug here
+        # (found 2026-07-16, re-confirmed 2026-08-09) fit calibrators on SUBSETS
+        # of the exact same data the base model trained on — the calibrator then
+        # learns to trust the base model's already-overfit, too-confident
+        # predictions as if they reflected true generalization. Measured to make
+        # probabilities WORSE, not better, both times it was tested (log loss
+        # 0.65→0.72 originally, 0.68→0.93 in the 2026-08-09 re-test on the
+        # parked branch). Fix: carve off the most recent 15% of this (already
+        # pre-test-split, see train_model.py) training block as a genuine
+        # holdout, used ONLY for calibration, never for any base model's .fit().
+        # This also naturally satisfies the original "calibrate on recent
+        # fights" intent (see the old df_recent logic this replaces) since the
+        # holdout, by construction, is the most recent slice of training data.
+        # 15% (not smaller) so per-division calibration below has enough
+        # fights per division to be worth fitting at all — this already
+        # trades off some base-model training data for calibration
+        # reliability; a smaller holdout would starve most divisions.
+        calib_split_idx = int(len(df_clean) * 0.85)
+        df_base = df_clean.iloc[:calib_split_idx]
+        df_calib = df_clean.iloc[calib_split_idx:]
+        logger.info(f"Base model training: {len(df_base)} fights | calibration holdout: "
+                    f"{len(df_calib)} fights (genuinely unseen by the base model)")
+
+        X = df_base[FEATURE_COLUMNS].fillna(0)
+        y_winner = df_base["winner"]
 
         # ── Recency weighting ──────────────────────────────────────────────────
         # Modern MMA (2020+) is very different from early UFC. Fights from 1994
@@ -88,7 +113,7 @@ class UFCPredictor:
         # Note: tightening to 1yr half-life was tested and made 2026 accuracy worse —
         # the problem is structural (missing features) not a weighting issue.
         now = pd.Timestamp.now()
-        fight_dates = pd.to_datetime(df_clean["fight_date"])
+        fight_dates = pd.to_datetime(df_base["fight_date"])
         if fight_dates.dt.tz is not None:
             fight_dates = fight_dates.dt.tz_localize(None)
         days_ago = (now - fight_dates).dt.days.clip(lower=0)
@@ -103,12 +128,12 @@ class UFCPredictor:
 
         # XGBoost multi-class needs integer labels — encode method strings
         method_map = {"Decision": 0, "KO_TKO": 1, "Submission": 2}
-        y_method = df_clean["method"].map(method_map)
+        y_method = df_base["method"].map(method_map)
         self.method_classes_ = {v: k for k, v in method_map.items()}  # reverse for prediction
 
-        y_finish = (df_clean["finish_round"].fillna(3) <= 2.5).astype(int)
+        y_finish = (df_base["finish_round"].fillna(3) <= 2.5).astype(int)
 
-        logger.info(f"Training on {len(df)} fights")
+        logger.info(f"Training on {len(df_base)} fights (+ {len(df_calib)} held out for calibration)")
         logger.info(f"Date range: {df.fight_date.min()} → {df.fight_date.max()}")
         logger.info(f"Class balance (winner): {y_winner.mean():.2%} fighter_A wins")
 
@@ -162,7 +187,7 @@ class UFCPredictor:
                 return 0  # unknown → conservative, call it late
             return 1 if float(finish_r) <= threshold else 0
 
-        y_early = df_clean.apply(get_early_label, axis=1)
+        y_early = df_base.apply(get_early_label, axis=1)
         early_rate = y_early.mean()
         logger.info(f"Round model — early finish rate in training: {early_rate:.1%}")
 
@@ -176,68 +201,61 @@ class UFCPredictor:
         )
         self.round_model.fit(X, y_early, sample_weight=sample_weights)
 
-        # Calibrate round model on RECENT fights only (last 2 years of training data).
-        # Uses max date in training data as anchor, not today — because today is
-        # after the test cutoff and would find zero fights in the training set.
-        raw_dates = pd.to_datetime(df_clean["fight_date"])
-        if raw_dates.dt.tz is not None:
-            raw_dates = raw_dates.dt.tz_localize(None)
-        max_train_date = raw_dates.max()
-        recent_cutoff = max_train_date - pd.Timedelta(days=730)
-        df_recent_mask = raw_dates >= recent_cutoff
-        df_recent = df_clean[df_recent_mask]
+        # Calibrate round model on the genuine holdout (df_calib) — never on data
+        # the round model itself trained on. df_calib is, by construction, the
+        # most recent slice of the training block, so this also satisfies the
+        # original "calibrate on recent fights" intent without needing a
+        # separate recent-vs-full distinction.
+        X_calib = df_calib[FEATURE_COLUMNS].fillna(0)
+        y_early_calib = df_calib.apply(get_early_label, axis=1)
 
-        if len(df_recent) >= 200:
-            X_recent = df_recent[FEATURE_COLUMNS].fillna(0)
-            y_early_recent = df_recent.apply(get_early_label, axis=1)
-            recent_finish_rate = y_early_recent.mean()
-            logger.info(f"Round calibration — using {len(df_recent)} recent fights, "
-                        f"finish rate: {recent_finish_rate:.1%} (vs {early_rate:.1%} historical)")
-            from sklearn.calibration import CalibratedClassifierCV
+        from sklearn.calibration import CalibratedClassifierCV
+
+        if len(df_calib) >= 200:
+            calib_finish_rate = y_early_calib.mean()
+            logger.info(f"Round calibration — using {len(df_calib)} held-out fights, "
+                        f"finish rate: {calib_finish_rate:.1%} (vs {early_rate:.1%} in training)")
             self.round_model_calibrated = CalibratedClassifierCV(
                 self.round_model, method="sigmoid", cv="prefit"
             )
-            self.round_model_calibrated.fit(X_recent, y_early_recent)
+            self.round_model_calibrated.fit(X_calib, y_early_calib)
+            logger.info("Round model calibrated with Platt scaling (genuine holdout)")
         else:
-            logger.warning(f"Only {len(df_recent)} recent fights — using full dataset for calibration")
-            from sklearn.calibration import CalibratedClassifierCV
-            self.round_model_calibrated = CalibratedClassifierCV(
-                self.round_model, method="sigmoid", cv="prefit"
-            )
-            self.round_model_calibrated.fit(X, y_early)
-        logger.info("Round model calibrated with Platt scaling (recent fights)")
+            logger.warning(f"Only {len(df_calib)} held-out fights — skipping round calibration "
+                            f"(too few for a reliable fit; falls back to raw round_model probabilities)")
+            self.round_model_calibrated = None
 
         # ── Per-division winner calibration ──────────────────────────────────
         # One global probability scale doesn't fit divisions with very different
         # confidence/accuracy profiles (live data shows Featherweight at 80% live
         # accuracy vs. Women's divisions at 25-47% on the same raw model output).
         # Same Platt-scaling pattern as the round model above, applied per weight
-        # class instead of globally, using each division's recent fights when
-        # there are enough (mirrors the round model's recent-vs-full fallback).
-        from sklearn.calibration import CalibratedClassifierCV
-
+        # class, fit on the SAME genuine holdout — never a subset of the base
+        # model's own training data (that was the original bug here).
         self.winner_calibrators_by_division: dict = {}
-        MIN_FIGHTS_FOR_DIVISION_CALIBRATION = 150
-        MIN_RECENT_FIGHTS_FOR_DIVISION_CALIBRATION = 100
-        divisions = df_clean["weight_class"].fillna("Unknown")
+        # Lower than the pre-fix threshold (150) because the calibration pool
+        # is now the 15% holdout (~1200 fights total across ~11 divisions),
+        # not a "recent fights" slice of the full 85% training block (~7000+
+        # fights) — that pool is structurally smaller now, on purpose, since
+        # it's genuinely held out. Platt scaling only fits 2 parameters
+        # (a sigmoid's slope + intercept), so it doesn't need huge samples to
+        # be reasonably stable, unlike the base XGBoost model.
+        MIN_FIGHTS_FOR_DIVISION_CALIBRATION = 80
+        divisions_calib = df_calib["weight_class"].fillna("Unknown")
+        y_winner_calib = df_calib["winner"]
 
-        for division in divisions.unique():
-            div_mask = (divisions == division).values
+        for division in divisions_calib.unique():
+            div_mask = (divisions_calib == division).values
             if div_mask.sum() < MIN_FIGHTS_FOR_DIVISION_CALIBRATION:
                 continue
 
-            div_recent_mask = div_mask & df_recent_mask.values
-            use_recent = div_recent_mask.sum() >= MIN_RECENT_FIGHTS_FOR_DIVISION_CALIBRATION
-            use_mask = div_recent_mask if use_recent else div_mask
-
-            X_div = X[use_mask]
-            y_div = y_winner[use_mask]
+            X_div = X_calib[div_mask]
+            y_div = y_winner_calib[div_mask]
             try:
                 cal = CalibratedClassifierCV(self.winner_model, method="sigmoid", cv="prefit")
                 cal.fit(X_div, y_div)
                 self.winner_calibrators_by_division[division] = cal
-                logger.debug(f"Division calibration — {division}: {use_mask.sum()} fights "
-                             f"({'recent' if use_recent else 'full'})")
+                logger.debug(f"Division calibration — {division}: {div_mask.sum()} held-out fights")
             except Exception as e:
                 logger.warning(f"Division calibration failed for {division}: {e}")
 
@@ -642,9 +660,10 @@ def predict_fight_by_name(
 
     predictor = UFCPredictor()
     predictor.load()
-    # weight_class intentionally not passed to predict() — per-division calibration is
-    # parked as of 2026-07-16 (worsened log loss/Brier when tested). See AGENT_HANDOFF.md.
-    result = predictor.predict(features, fighter_a.name, fighter_b.name)
+    # weight_class re-enabled 2026-08-09 — the in-sample calibration bug that made
+    # this worse (parked 2026-07-16) is fixed; genuine held-out calibration now
+    # measurably improves log loss/Brier. See SESSION_LOG.md.
+    result = predictor.predict(features, fighter_a.name, fighter_b.name, weight_class=resolved_weight_class)
 
     session.close()
     return result

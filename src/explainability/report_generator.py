@@ -199,6 +199,6 @@ class ReportGenerator:
         """Save report to the predictions directory."""
         from config import PREDICTIONS_DIR
         path = PREDICTIONS_DIR / filename
-        path.write_text(report)
+        path.write_text(report, encoding="utf-8")
         logger.success(f"Report saved to {path}")
         return path

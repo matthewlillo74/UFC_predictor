@@ -73,7 +73,7 @@ def build_predictions_for_event(session, event, fights, predictor, builder):
             features = builder.build_matchup_features(
                 fight.fighter_a_id, fight.fighter_b_id, fight_date
             )
-            pred = predictor.predict(features, fa.name, fb.name)
+            pred = predictor.predict(features, fa.name, fb.name, weight_class=fight.weight_class)
             pred["weight_class"] = fight.weight_class or ""
             pred["actual_winner_id"] = fight.winner_id
             pred["actual_winner"] = fa.name if fight.winner_id == fight.fighter_a_id else fb.name

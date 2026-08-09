@@ -117,7 +117,7 @@ def main():
     _send_email(subject=f"UFC Predictor results: {latest_event}", body=body)
 
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    STATE_PATH.write_text(latest_event)
+    STATE_PATH.write_text(latest_event, encoding="utf-8")
 
     session.close()
 

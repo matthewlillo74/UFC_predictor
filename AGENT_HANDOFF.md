@@ -25,11 +25,16 @@ End-to-end UFC fight prediction system. Goals: accurate predictions + betting va
 > **`main` runs the pre-queue baseline as of 2026-07-16, deliberately.** The full 6-item
 > accuracy queue (73→80 features, per-division calibration, Elo K-factor decay) is real
 > work and not deleted — it's preserved on branch `parked/accuracy-queue-2026-07-16` — but
-> it didn't reach statistical significance (McNemar's test) and its calibration layer was
-> found to actively harm probability quality (log loss 0.66→0.90 when applied). Given this
-> weekend's closing-line data collection needs the most trustworthy state, not the most
-> feature-rich one, `main` was reverted to 73 features / flat Elo / no calibration. See
-> `SESSION_LOG.md` for the full decision trail and root-cause analysis of the calibration bug.
+> it didn't reach statistical significance (McNemar's test), re-tested 2026-08-09 with
+> ~50 more real fights, same result, still parked. Given this weekend's closing-line data
+> collection needed the most trustworthy state, not the most feature-rich one, `main` was
+> reverted to 73 features / flat Elo. See `SESSION_LOG.md` for the full decision trail.
+>
+> **Calibration specifically is a separate story — it's back on `main` as of 2026-08-09,**
+> fixed at the root (genuine held-out fit, not the in-sample bug that made the log
+> loss/Brier numbers below look bad) and verified to actually help on the true outer test
+> set. The `log loss 0.66→0.90` figure below reflects the *pre-fix* bug — don't read it as
+> current. See `SESSION_LOG.md`'s 2026-08-09 "Fixed calibration properly" entry.
 
 | Metric | Value |
 |---|---|
@@ -572,6 +577,16 @@ scratch rather than extend this list further.
 > confirmed harmful via direct test (0.65→0.72 log loss with calibration on). Revisit the
 > parked branch once there's more live data to properly evaluate against; see
 > `SESSION_LOG.md`'s "Calibration root-cause + revert to pre-queue baseline" entry.
+
+> **UPDATE 2026-08-09: calibration is fixed and back on, independent of the queue
+> decision above.** The in-sample fitting bug (root-caused above) is genuinely fixed — not
+> just disabled — by fitting on a held-out split the base model never trains on. Verified
+> to *improve* log loss/Brier on the true outer test set this time, re-enabled at every
+> `predictor.predict()` call site. This applies to the current 73-feature baseline on
+> `main`; the rest of the queue (opponent-quality adjustment, Elo decay, layoff penalty)
+> remains parked per the re-test also done 2026-08-09 (same conclusion as July, now with
+> ~50 more real fights behind it). See `SESSION_LOG.md`'s 2026-08-09 "Fixed calibration
+> properly" entry — don't read the 0.65→0.72 log loss figure above as still true.
 
 Items 1-4 of the older list below (odds movement tracker, injury/camp NLP, CLV tracking,
 joint method+round model) are still valid ideas and not superseded — this new list is about

@@ -170,7 +170,7 @@ def run_predictions(event_name=None, manual_card=None, use_odds=True):
                 fight_obj.fight_date or datetime.utcnow()
             )
 
-            prediction = predictor.predict(features, fa.name, fb.name)
+            prediction = predictor.predict(features, fa.name, fb.name, weight_class=fight_obj.weight_class)
             all_predictions.append(prediction)
 
             # Find odds for this fight

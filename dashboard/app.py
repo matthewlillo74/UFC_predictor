@@ -310,7 +310,7 @@ def run_live_prediction(fighter_a_name: str, fighter_b_name: str, session):
 
     predictor = UFCPredictor()
     predictor.load()
-    return predictor.predict(features, fa.name, fb.name)
+    return predictor.predict(features, fa.name, fb.name, weight_class=fa.weight_class)
 
 
 # ── Components ────────────────────────────────────────────────────────────────
@@ -575,7 +575,7 @@ def page_upcoming_event(session, odds_lookup: dict):
                     logger.warning(f"Skipping unknown fighter(s): {f.get('fighter_a_name')} vs {f.get('fighter_b_name')}")
                     continue
                 features = builder.build_matchup_features(fa.id, fb.id, fight_date)
-                pred = predictor.predict(features, fa.name, fb.name)
+                pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class"))
 
                 # Match odds — try fuzzy key matching
                 fight_odds = None
@@ -893,7 +893,7 @@ def page_props(session, odds_lookup: dict):
                 if fa is None or fb is None:
                     continue
                 features = builder.build_matchup_features(fa.id, fb.id, fight_date)
-                pred = predictor.predict(features, fa.name, fb.name)
+                pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class"))
 
                 # Match moneyline odds for context
                 fa_norm = normalize_name(fa.name)
@@ -1105,7 +1105,7 @@ def page_value_bets(session, parsed_odds: list, odds_lookup: dict):
             if fa is None or fb is None:
                 continue
             features = builder.build_matchup_features(fa.id, fb.id, fight_date)
-            pred = predictor.predict(features, fa.name, fb.name)
+            pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class"))
             pred["weight_class"] = f.get("weight_class", "")
 
             # Match odds
@@ -1257,7 +1257,7 @@ def page_parlays(session, parsed_odds: list, odds_lookup: dict):
                 if fa is None or fb is None:
                     continue
                 features = builder.build_matchup_features(fa.id, fb.id, fight_date)
-                pred = predictor.predict(features, fa.name, fb.name)
+                pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class"))
                 pred["weight_class"] = f.get("weight_class", "")
 
                 # Match odds

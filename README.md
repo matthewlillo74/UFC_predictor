@@ -13,18 +13,25 @@ Machine learning system for UFC fight prediction, betting value detection, and E
 > per-division calibration, Elo K-factor decay, non-linear layoff penalty, and more) was
 > built and tested this same day, but a McNemar's significance test found none of the 6
 > items individually reach p<0.05, and the full cumulative effect only gets to p=0.083 —
-> suggestive, not conclusive, on 1,316 test fights. Worse, per-division calibration was
-> found to measurably *corrupt* probability quality (log loss 0.65→0.72, root cause:
-> calibration was being fit on the same data the model was trained on — a real bug, fixed
-> by turning calibration off, not yet by a proper held-out-set fix). Given this weekend is
-> the first real closing-line data collection (see Workflow below), the most trustworthy
-> state was chosen over the most feature-rich one. **The full queue is preserved, not
-> deleted, on branch `parked/accuracy-queue-2026-07-16`** — revisit once there's more live
-> data. Full trail in `SESSION_LOG.md`.
+> suggestive, not conclusive, on 1,316 test fights. Given this weekend was the first real
+> closing-line data collection (see Workflow below), the most trustworthy state was chosen
+> over the most feature-rich one. **The full queue is preserved, not deleted, on branch
+> `parked/accuracy-queue-2026-07-16`.** Re-tested 2026-08-09 with ~50 more real fights —
+> same result: no item significant (best p=0.204), net effect still not significant
+> (p=0.714), still not merged. Full trail in `SESSION_LOG.md`.
+>
+> **Per-division calibration was found to measurably *corrupt* probability quality
+> (log loss 0.65→0.72), root cause: fit on the same data the base model trained on — a real
+> bug, fixed 2026-07-16 by turning calibration off entirely.** This is now properly fixed
+> (2026-08-09), not just disabled: calibration is fit on a genuine held-out split the base
+> model never sees during training, verified to measurably *improve* log loss/Brier on the
+> true outer test set (winner: 0.6710→0.6684; round: 0.6735→0.6716), and re-enabled at
+> every prediction call site. This fix is independent of the queue decision above — it
+> applies to the current 73-feature baseline, not the parked branch.
 
 | Metric | Value |
 |---|---|
-| Winner prediction accuracy (test set) | 60.6% (baseline: 49.1%) — pre-queue baseline, verified 2026-07-16 to exactly match an independent reconstruction. The parked branch's 62.2% was not statistically confirmed better and included since-disabled calibration — see note above before treating it as the stronger number. |
+| Winner prediction accuracy (test set) | 59.7% (baseline: 49.1%) — pre-queue baseline (73 features), retrained 2026-08-09 with the calibration fix. Figure moves slightly run to run as more live data joins the training set; see `SESSION_LOG.md` for exact methodology. |
 | Test set | 1,316 fights, 2023-12 → 2026-07 |
 | Live winner accuracy (3 events, 53 fights) | 75.5% out-of-sample — pre-2026-07-15, not yet reverified |
 | Live method accuracy | 55.6% — pre-2026-07-15, not yet reverified |
@@ -417,7 +424,7 @@ Rules derived from live event data and model calibration:
 
 - Theoretical ceiling ~65–70% for MMA prediction using historical stats alone. Further gains require real-time information (camps, injuries, motivation) not available in public data.
 - Narrative features are zeros — injury flags and sentiment not yet automated (3 of 73 features unused).
-- Per-division winner calibration exists in the code but is deliberately disabled (2026-07-16) — found to worsen probability quality (in-sample calibration bug, root-caused, see `SESSION_LOG.md`). Live on branch `parked/accuracy-queue-2026-07-16` only, not on `main`.
+- Per-division winner calibration was disabled 2026-07-16 (in-sample fitting bug — worsened probability quality) and properly fixed + re-enabled 2026-08-09 (genuine held-out calibration split, verified to measurably improve log loss/Brier). Only 5 divisions currently have enough held-out fights to clear the fit threshold (Bantamweight, Featherweight, Lightweight, Middleweight, Welterweight) — others fall back to raw, uncalibrated probabilities. See `SESSION_LOG.md`.
 - Method and round models are trained independently — a joint model would be more accurate.
 - Elo cold start — fighters new to UFC begin at 1500 regardless of regional record.
 - Cloud DB is read-only — fighters not in the committed DB are skipped on Streamlit Cloud until next push.

@@ -359,11 +359,10 @@ def step_predict_next_event(session, odds_data: list) -> str:
                 fa.id, fb.id, fight_date,
                 fight_weight_class=f.get("weight_class", ""),
             )
-            # weight_class intentionally omitted here (not passed to predict()) — per-division
-            # calibration is parked as of 2026-07-16, found to worsen probability quality
-            # (log loss/Brier) when tested. See AGENT_HANDOFF.md / SESSION_LOG.md. This only
-            # skips calibration application; the weight-class-debut FEATURE above is unaffected.
-            pred = predictor.predict(features, fa.name, fb.name)
+            # weight_class re-enabled 2026-08-09 — the in-sample calibration bug that made
+            # this worse (parked 2026-07-16) is fixed; genuine held-out calibration now
+            # measurably improves log loss/Brier. See SESSION_LOG.md.
+            pred = predictor.predict(features, fa.name, fb.name, weight_class=f.get("weight_class", ""))
 
             # Match odds
             fight_odds = None
@@ -425,7 +424,12 @@ def step_predict_next_event(session, odds_data: list) -> str:
 
     fname = f"{event_name.replace(' ','_').replace(':','').replace('/','_')}_{datetime.utcnow().strftime('%Y%m%d')}.txt"
     path = PREDICTIONS_DIR / fname
-    path.write_text(report)
+    # Explicit UTF-8 -- Path.write_text() defaults to locale.getpreferredencoding(),
+    # which is cp1252 on native Windows and can't encode the report's unicode
+    # characters (═, →, etc.). Ubuntu (where the real automation runs) defaults to
+    # UTF-8 so this likely never bit production, but it crashed every local Windows
+    # run right after the DB writes succeeded -- real bug, not just a display glitch.
+    path.write_text(report, encoding="utf-8")
     logger.success(f"Report saved: {path}")
     return str(path)
 

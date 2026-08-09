@@ -7,6 +7,67 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-08-09 — Fixed calibration properly (not just disabled it) and re-enabled it
+
+**What:** follow-up to the "what if we had a ton of free time" conversation — user picked
+calibration as the highest-leverage item. Fixed the actual root cause (2026-07-16's bug was
+diagnosed but only ever worked around by turning calibration off), retrained, and re-deployed.
+
+**The bug, precisely:** in `src/models/predict.py::train()`, both calibrators —
+per-division winner (`winner_calibrators_by_division`) AND round model
+(`round_model_calibrated`) — were fit via `CalibratedClassifierCV(..., cv="prefit")` on
+subsets of the *exact same data* their base models had just been trained on
+(`X_div = X[use_mask]` where `X` was the full training set). `cv="prefit"` requires a
+calibration set the base estimator never saw; feeding it training data lets the calibrator
+trust the base model's already-overfit, too-confident predictions as if they generalized.
+Note: the round model's version of this bug was **live in production** the whole time —
+only the winner calibrator had been disabled at call sites in July; round-model
+miscalibration was never caught until this pass.
+
+**Fix:** carved a genuine calibration holdout — the most recent 15% of the (already
+pre-test-split) training block, chronologically — that the base `winner_model` and
+`round_model` never see during `.fit()`. Both calibrators now fit exclusively on that
+holdout. 15% (not smaller) specifically so per-division calibration has enough fights per
+division to be worth fitting; lowered `MIN_FIGHTS_FOR_DIVISION_CALIBRATION` from 150 to 80
+to match the smaller-but-genuine pool (Platt scaling only fits 2 parameters, doesn't need
+huge samples). Re-enabled `weight_class=...` at every real `predictor.predict()` call site
+(9 total: dashboard ×5, `run_pipeline.py`, `backtest_parlays.py`, `predict_event.py`,
+`predict_fight_by_name()`) — all had it deliberately omitted since July.
+
+**Verified, not assumed:** wrote a standalone validation script, trained fresh in an
+isolated process, evaluated against the TRUE outer 15% test set (never touched by `train()`
+at all, so this is genuine out-of-sample — not the calibration holdout, a third, separate
+slice). Both calibrators now measurably *improve* probability quality — the opposite of the
+original bug's result, both times it was tested:
+- Winner: log loss 0.6710→0.6684, Brier 0.2381→0.2378 (both better)
+- Round: log loss 0.6735→0.6716, Brier 0.2401→0.2393 (both better)
+- Accuracy essentially unchanged (59.8%→59.4%) — expected; calibration rescales
+  probabilities, it doesn't add information, so it shouldn't move the argmax call much.
+
+Deleted and regenerated all 12 pending predictions for UFC 330 (2026-08-15, the actual next
+card) so they reflect the fixed model rather than the pre-fix one — confirmed via direct DB
+check that all 12 got exactly one fresh prediction each (no duplicates from re-running).
+Live-verified end-to-end against that card's real main event (Makhachev vs. Machado Garry):
+calibrated 62.9% vs. raw 72.0% for the same fight — calibration is materially changing a
+real, current prediction, not a no-op.
+
+**Also fixed in passing:** `Path.write_text()` calls in `run_pipeline.py`,
+`report_generator.py`, and `email_report.py` had no explicit encoding — defaults to
+`locale.getpreferredencoding()`, which is cp1252 on native Windows and can't encode the
+report text's unicode characters (═, →). Crashed every local Windows pipeline run right
+after the DB writes succeeded (real bug, not just a console display glitch this time —
+Windows *file* I/O, not stdout). Likely never bit the actual Ubuntu-based GitHub Actions
+automation (UTF-8 default there), but fixed properly with explicit `encoding="utf-8"`
+rather than relying on platform defaults either way.
+
+**Only 5 divisions currently get a fitted calibrator** (Bantamweight, Featherweight,
+Lightweight, Middleweight, Welterweight) — the rest don't have 80+ fights in the 15%
+holdout and fall back to raw probabilities, same as before this fix for everyone. Honest
+tradeoff of the smaller-but-genuine calibration pool; not treated as a problem to
+immediately solve further.
+
+---
+
 ## 2026-08-09 — Worked the "what's next" list: revisited parked queue, method-accuracy
 ## diagnosis, CLV status check, narrative-feature scoping, one data fix
 
