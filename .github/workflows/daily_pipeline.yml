@@ -11,6 +11,12 @@ name: Daily pipeline (score completed events, predict upcoming)
 # closing_odds_poll.yml workflow (every 15 min during the live-event
 # window). This file also carries a closing-odds-fallback job (below) —
 # see that job for why.
+#
+# Also runs scripts/check_data_integrity.py every day (see that step
+# below) — a periodic sweep for duplicate fight rows / events stuck
+# unresolved, so a future silent data-corruption bug surfaces as a failed
+# run + failure email instead of going unnoticed for weeks like the one
+# documented in SESSION_LOG.md 2026-08-09.
 
 on:
   schedule:
@@ -71,6 +77,11 @@ jobs:
         run: python scripts/compute_style_vulnerability.py
         continue-on-error: true
 
+      - name: Data integrity check (duplicate fights, events stuck unresolved)
+        id: integrity_check
+        run: python scripts/check_data_integrity.py
+        continue-on-error: true
+
       - name: Email results report (only sends if a new event was scored)
         id: email_report
         env:
@@ -105,6 +116,7 @@ jobs:
         if: |
           steps.post_event.outcome == 'failure' ||
           steps.style_vuln.outcome == 'failure' ||
+          steps.integrity_check.outcome == 'failure' ||
           steps.email_report.outcome == 'failure'
         run: |
           echo "One or more non-blocking steps failed this run — see logs above. Failing the job so it shows up as a failed run / triggers GitHub's failure notification."

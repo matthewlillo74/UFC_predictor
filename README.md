@@ -161,7 +161,8 @@ ufc-predictor/
 │   ├── maybe_capture_closing.py      # Automated closing-odds capture (T-90..T-30 + fallback)
 │   ├── capture_closing_odds.py       # Manual, one-shot closing-odds capture (exact T-60)
 │   ├── live_results_poll.py          # Live per-fight DB updates + end-of-card summary email
-│   └── email_report.py               # Once-per-event results summary via Gmail SMTP
+│   ├── email_report.py               # Once-per-event results summary via Gmail SMTP
+│   └── check_data_integrity.py       # Daily sweep: duplicate fights, events stuck unresolved
 │
 ├── .github/workflows/                # Free GitHub Actions automation — see Workflow section
 │   ├── daily_pipeline.yml            # Daily scrape/score/retrain/predict + closing-odds fallback
@@ -242,6 +243,22 @@ on an off week they skip everything else (the Odds API call, the ufcstats.com sc
 commit) rather than burning quota checking for a card that doesn't exist that weekend.
 Relies on `Event.date` being the real fight date, which required fixing a real bug in
 `fight_scraper.get_upcoming_events()` first — see `SESSION_LOG.md`'s 2026-07-23 entry.
+
+### Data integrity check (2026-08-09)
+```bash
+python scripts/check_data_integrity.py
+```
+Runs once a day as part of `daily_pipeline.yml`. Sweeps every event for two specific
+failure modes that already happened silently in production — every workflow run showed
+a green checkmark while the data underneath was wrong — before this check existed:
+duplicate `Fight` rows for the same matchup (25 rows for a 12-fight card, once), and past
+events stuck with unresolved fights days after they happened (one sat at 2/16 resolved
+for over a week). Detection only, doesn't fix anything — repairing a duplicate/stuck fight
+needs verification against the live ufcstats.com page first (see `SESSION_LOG.md`'s
+2026-08-09 entry for why blind auto-fixing is risky), so this just fails the job loudly
+(triggering GitHub's default failure-notification email) so a human notices and can fix
+it deliberately, the way `SESSION_LOG.md` walks through doing for the three events that
+were affected.
 
 ### Automated pipeline (GitHub Actions, free)
 `.github/workflows/daily_pipeline.yml` runs `run_pipeline.py` once a day — scores newly

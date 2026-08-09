@@ -7,6 +7,37 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-08-09 — Added a daily data integrity check (follow-up to the bug-fix entry below)
+
+**What:** the three result-tracking bugs in the entry below all shared one property — every
+`daily_pipeline.yml` run showed a green checkmark the entire time the data underneath was
+wrong. User's stated design goal for this project is "collect and save everything so I can
+forget about it and come back whenever" — a check that only catches corruption when someone
+happens to go looking defeats that. Built the automated version of the manual sweep used to
+find the three bugs.
+
+**Design:** `scripts/check_data_integrity.py` — pure DB read, two checks: (1) duplicate
+`Fight` rows for the same `event_id` + fighter pair (should be structurally impossible given
+`_load_fight`'s matching, but that's exactly the invariant that broke silently once), (2) any
+event more than 5 days old with a still-unresolved fight. Deliberately detection-only, no
+auto-fix — repairing a duplicate/stuck fight needs verification against the live ufcstats.com
+page first (that's how all three bugs below got fixed correctly; blindly deleting/merging
+without checking risks discarding the wrong row). Exits 1 on any finding so it fails the
+GitHub Actions job loudly and triggers the default failure-notification email.
+
+Wired into `daily_pipeline.yml`'s `run-pipeline` job as a new `continue-on-error: true` step
+(consistent with the existing pattern — later steps like the DB commit still run even if this
+fails), added to the final "fail the job if anything errored" check alongside the other
+non-blocking steps.
+
+**Verified:** ran against the now-clean DB (exit 0, no findings). Injected a synthetic
+duplicate `Fight` row to confirm the check actually catches the exact failure mode from the
+entry below (correctly flagged it, exit 1, with a clear message identifying the event and
+fight IDs) — then deleted the synthetic row and re-ran to confirm it goes back to clean.
+YAML re-validated after wiring in the new step.
+
+---
+
 ## 2026-08-09 — Found & fixed three related result-tracking bugs across three events
 
 **What:** user asked for a status/results check after several events had run unattended.
