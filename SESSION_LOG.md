@@ -7,6 +7,69 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-08-09 — Worked the "what's next" list: revisited parked queue, method-accuracy
+## diagnosis, CLV status check, narrative-feature scoping, one data fix
+
+**What:** after the data-integrity fixes earlier today, worked through five follow-up
+items in order.
+
+**1. Revisited `parked/accuracy-queue-2026-07-16` with fresh data — decision unchanged,
+now with real evidence instead of a one-time snapshot.** Re-ran
+`scripts/ablation_significance_test.py` (existing infra, untouched) against the current
+DB — ~50 more real fights than the original July 16 run. Had to temporarily swap
+`config.py` to the parked branch's 80-feature list (the script filters *down* from the
+full set to reconstruct earlier states, so it needs that as the starting point) — verified
+`models_saved/v1/*.pkl` untouched throughout (unchanged mtimes, no git diff), restored
+`config.py` and Elo to production (flat-K) state immediately after, verified both restored
+correctly and a live prediction still works. Results: **still no individual item reaches
+significance** (item 1 p=0.876, item 2 p=0.436, item 5 Elo-decay p=0.204, item 6 p=0.870),
+**overall net effect still not significant** (p=0.714, +0.5pp), and **calibration is still
+clearly harmful — worse than before** (log loss 0.679→0.934, Brier 0.242→0.292, both worse
+than the original 2026-07-16 finding). State6's accuracy on the current test split (59.7%)
+doesn't reproduce the originally-reported 62.2% either, since the 85/15 split boundary has
+shifted with more data — consistent with 62.2% having been at least partly a favorable-split
+artifact rather than a robust improvement. **Decision: keep the current baseline (73
+features, flat Elo, no calibration) deployed. Don't merge.** This was always meant to be
+revisited with more data, not a permanent verdict — it now has been, twice, with the same
+answer both times.
+
+**2. Diagnosed (not fixed) the method-prediction weakness.** On the held-out test set, the
+model's *average* predicted probability per class roughly matches true base rates
+(49%/33%/18% predicted vs. 51%/31%/17% actual for Decision/KO/Sub) — but the argmax picks
+Decision 87% of the time (1144/1316), because P(Decision) has a tight median/IQR of
+0.498 [0.443, 0.540] that beats KO's 0.322 [0.284, 0.372] on nearly every fight regardless
+of matchup specifics. Root cause candidate, from feature importances: `ko_rate_diff` and
+`sub_rate_diff` — the features most directly relevant to *why* a fight would end in a
+finish — rank only 45th/42nd of 73 by importance, while `ko_vulnerability_diff` contributes
+essentially nothing (0.0000, rank 71/73). The model has diffuse, weak signal spread across
+many features rather than a few strong differentiators, so it defaults toward the
+population base rate almost everywhere. A real fix (rebalancing feature weight, possibly
+class-weighted training) needs the same significance-testing rigor as item 1 — didn't
+attempt it here to avoid roughly doubling this session's scope with an unvalidated change.
+
+**3. CLV data status — healthy, not enough volume yet.** 29 opening / 24 closing odds rows
+now (up from 15 total two events ago) — the capture pipeline continues working correctly.
+Nothing to act on; just confirming it's still accumulating.
+
+**4. Scoped (didn't build) narrative-feature automation** (injury/camp-report flags,
+`AGENT_HANDOFF.md`'s older item 2). Confirmed feasibility — mmafighting.com and espn.com/mma
+both return clean 200s, no bot-wall like ufcstats had. But a real build needs a new scraper,
+fighter-name matching against free-text article headlines, LLM-based signal extraction,
+careful leakage-safety (only using news dated before the fight), and a retrain — a genuine
+multi-session feature. Deliberately did not rush a partial version into production; this
+session has been largely about the cost of exactly that kind of shortcut.
+
+**5. Fixed one cosmetic data issue.** Fighter id 2713 was stored as "Henrique Da Silva
+Lopes"; ufcstats now displays the same profile (same fighter URL, confirmed) under "Jose
+Montanha" — surfaced while reviewing HIGH-CONFIDENCE MISSES in an earlier report. Renamed.
+Never affected matching or scoring (both keyed on fighter ID / URL, not display name).
+
+**Verified:** every restoration step checked explicitly (model files, config.py,
+Elo state, a live prediction, `check_data_integrity.py`) rather than assumed; all commits
+pushed cleanly.
+
+---
+
 ## 2026-08-09 — Added a daily data integrity check (follow-up to the bug-fix entry below)
 
 **What:** the three result-tracking bugs in the entry below all shared one property — every

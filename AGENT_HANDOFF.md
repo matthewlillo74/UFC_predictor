@@ -598,6 +598,14 @@ Feature: `line_movement_a` = closing_implied_prob_a - opening_implied_prob_a
  
 ### 2. News scraper for injury/camp flags (MEDIUM PRIORITY)
 Scrape MMA Fighting and ESPN MMA for headlines about each fighter on the upcoming card. Run through Claude API to extract structured signals: `injury_mentioned` (bool), `weight_cut_concern` (bool), `positive_camp_report` (bool). Updates `fighter_a_injury_flag` and `fighter_b_injury_flag` which currently sit at 0.0. This is the most direct path to making the narrative features do real work.
+
+> **Feasibility-checked 2026-08-09, not built.** `mmafighting.com` and `espn.com/mma` both
+> return clean 200s with no bot-wall like ufcstats' Anubis challenge — scraping itself is
+> viable. Not attempted beyond that: a real build needs fighter-name matching against
+> free-text headlines, an LLM extraction step, and — the part that actually matters —
+> careful leakage-safety (only using news dated strictly before the fight, mirroring the
+> `as_of_date` discipline everywhere else in this codebase). Worth its own session with
+> proper verification, not a bolt-on. See `SESSION_LOG.md` 2026-08-09.
  
 ### 3. CLV (Closing Line Value) tracking (MEDIUM PRIORITY)
 > **Built 2026-07-19 — this item is done, not a pending idea anymore.** `--clv` now
