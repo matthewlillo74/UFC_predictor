@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import argparse
 import subprocess
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from loguru import logger
 
 from src.database import init_db, get_session, Event, Fighter, Fight, Prediction, FighterStats
@@ -42,24 +42,53 @@ def step_scrape_new_events(session) -> int:
     from src.database import Event as EventModel
     from tqdm import tqdm
 
-    # Cursor = latest event we've actually loaded results for. Using max(Event.date)
-    # alone breaks once step_predict_next_event pre-creates an Event/Fight row for
-    # the upcoming card — that event's date becomes "latest" before it has happened,
-    # so its own results would never be picked up by a plain date filter afterward.
-    latest = (
+    # Cursor = latest event where EVERY fight is resolved, not just "some
+    # fight resolved" (the old check). That weaker version breaks in a
+    # real, fairly common scenario: opponent-replacement fights create a
+    # brand-new Fight row that resolves immediately on creation, while the
+    # stale pre-replacement row sits unresolved — so an event can show
+    # "some resolved" long before it's actually done. A later event
+    # getting even one fight resolved would then push the cursor past an
+    # earlier, still-incomplete event, abandoning its remaining unresolved
+    # fights permanently (confirmed happened for real: 2026-08-01's event
+    # was abandoned once 2026-08-08's event got a result in, leaving 14 of
+    # its 16 fights unresolved for over a week — see SESSION_LOG.md
+    # 2026-08-09). Also using max(Event.date) alone breaks once
+    # step_predict_next_event pre-creates an Event/Fight row for the
+    # upcoming card — that event's date becomes "latest" before it has
+    # happened, so its own results would never be picked up by a plain
+    # date filter afterward.
+    cutoff = datetime.utcnow() - timedelta(days=45)
+    recent_events = (
         session.query(Event)
-        .join(Fight, Fight.event_id == Event.id)
-        .filter(Event.date != None, Fight.winner_id.isnot(None))
+        .filter(Event.date.isnot(None), Event.date <= datetime.utcnow())
         .order_by(Event.date.desc())
-        .first()
+        .all()
     )
-    if latest:
-        logger.info(f"DB latest completed: {latest.name} ({latest.date.date()})")
+
+    latest_fully_resolved_date = None
+    incomplete_recent_names = set()
+    for ev in recent_events:
+        fights = session.query(Fight).filter_by(event_id=ev.id).all()
+        is_complete = bool(fights) and all(f.winner_id is not None or f.finish_round is not None for f in fights)
+        if is_complete and latest_fully_resolved_date is None:
+            latest_fully_resolved_date = ev.date
+        elif not is_complete and ev.date >= cutoff:
+            incomplete_recent_names.add(ev.name)
+
+    if latest_fully_resolved_date:
+        logger.info(f"Latest FULLY resolved event: {latest_fully_resolved_date.date()}")
+    if incomplete_recent_names:
+        logger.info(f"Re-checking {len(incomplete_recent_names)} recent incomplete event(s) "
+                    f"regardless of cursor: {sorted(incomplete_recent_names)}")
 
     all_events = list(reversed(get_all_events()))  # oldest first
     new_events = [
         e for e in all_events
-        if e["date"] and (not latest or e["date"] > latest.date)
+        if e["date"] and (
+            (not latest_fully_resolved_date or e["date"] > latest_fully_resolved_date)
+            or e["name"] in incomplete_recent_names
+        )
     ]
 
     if not new_events:

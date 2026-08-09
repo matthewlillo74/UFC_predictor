@@ -7,6 +7,68 @@ Format per entry: date, one-line summary, files touched, why, verification statu
 
 ---
 
+## 2026-08-09 — Found & fixed three related result-tracking bugs across three events
+
+**What:** user asked for a status/results check after several events had run unattended.
+Investigating that surfaced real, active data corruption — not cosmetic.
+
+**Three distinct bugs, all variants of "how do we find the existing Fight row for a
+matchup," each breaking a different way:**
+
+1. **`_load_fight`'s existing-match required `Fight.fight_date == event.date` exactly.**
+   My own 2026-07-23 backfill (fixing that day's `get_upcoming_events()` date-parsing bug)
+   updated `Event.date` for event 782 but never touched the 13 already-created
+   `Fight.fight_date` values for that event — permanently breaking the match. Every
+   pipeline run since created a fresh duplicate row per fight instead of updating the
+   original: 25 rows for a 12-fight card, predictions stuck on the original rows,
+   results stuck on new orphaned duplicates, `log_live_results.py` unable to score any
+   of them directly (only worked via an existing sibling-fallback in `score_event()`).
+   **Fix:** dropped the date-equality condition — matches on `event_id` + fighter pair
+   only, which is what should have been used from the start.
+
+2. **Opponent replacements (injury pullouts etc.) never cleaned up the stale pre-
+   replacement `Fight`/`Prediction` rows.** Real, recurring occurrence — found it on
+   three separate events (Jacoby's opponent changed 2026-07-18 session; two more fighters
+   on the 2026-08-01 card; one on the 2026-08-08 card). The old row just sits there
+   unresolved forever since the new opponent pairing doesn't match it. **Fix:** `_load_fight`
+   now detects this — if neither fighter matches an existing row for the event, but either
+   one has an unresolved row against a *different* opponent for the same event, that stale
+   row (and its prediction) gets deleted before the real one is created.
+
+3. **`step_scrape_new_events`'s cursor treated "an event has ≥1 resolved fight" as "this
+   event is done, don't revisit it."** Combined with bug #2 (opponent-replacement fights
+   resolve immediately on creation, while the stale original sits unresolved), an event
+   could show "some resolved" long before it actually was — and once a *later* event got
+   any result in, the cursor advanced past the earlier one and abandoned it. Confirmed
+   this happened for real: the 2026-08-01 card sat at 2/16 resolved for over a week,
+   stuck the moment the 2026-08-08 card got its first result. **Fix:** cursor now requires
+   *every* fight in an event to be resolved before treating it as "done"; additionally,
+   any event within the last 45 days that still has an unresolved fight gets re-checked
+   on every run regardless of the cursor position.
+
+**Data repair** (all three affected events, verified against the live ufcstats.com page
+before every change, not assumed):
+- Event 782 (Ankalaev vs. Guskov): merged 12 duplicate pairs (copied the result from the
+  orphaned duplicate onto the original prediction-carrying row, deleted the duplicate).
+  Also discovered the Dulatov vs. Turman fight was fully cancelled — no longer appears on
+  the event page at all, not even as pending — deleted that row and its prediction rather
+  than leaving a phantom unresolved fight. Final: 12/12 fights, all resolved, all with
+  predictions intact.
+- Event 783 (Medic vs. Rodriguez): deleted 2 stale opponent-replacement rows, then
+  re-ran the fixed `_load_fight` against the real event page — all 12 previously-stuck
+  fights resolved correctly on the first attempt. Re-ran `log_live_results.py --event`
+  to score the 12 that were never logged (only 2/14 had been scored before, since the
+  other 12 weren't resolved yet at the time). Final: 14/14 resolved, all logged.
+- Event 784 (Gamrot vs. Salkilld): deleted 1 stale opponent-replacement row. Final: 12/12.
+
+**Verified:** re-queried each event post-fix to confirm fight/resolved/prediction counts
+match (12/12/12, 14/14/14, 12/12); re-ran `_load_fight` against live data and watched it
+correctly match+update existing rows instead of creating duplicates; both code fixes
+syntax-checked. This was working from live production data throughout, not a synthetic
+test — each deletion was checked against the current ufcstats.com page first.
+
+---
+
 ## 2026-07-25 — First real closing-odds capture; fixed a cross-workflow git-push race
 
 **What:** live card day (UFC Fight Night: Ankalaev vs. Guskov, Abu Dhabi — an early

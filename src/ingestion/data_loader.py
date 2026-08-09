@@ -24,7 +24,7 @@ from loguru import logger
 from tqdm import tqdm
 from sqlalchemy.orm import Session
 
-from src.database import get_session, init_db, Fighter, Fight, Event, FighterStats, EloRating
+from src.database import get_session, init_db, Fighter, Fight, Event, FighterStats, EloRating, Prediction
 from src.ingestion import fight_scraper
 from src.features.elo_calculator import EloCalculator, update_ratings
 from config import ELO_BASE_RATING, MIN_FIGHTS_REQUIRED
@@ -208,11 +208,15 @@ def _load_fight(
         winner_id = fighter_b.id
 
     # Skip if fight already exists — check both fighter orderings since
-    # the random swap means A/B assignment varies between runs.
-    # Also update result fields if the existing fight has no winner yet
-    # (upcoming fight row gets results filled in on post-event scrape).
+    # the random swap means A/B assignment varies between runs. Matches on
+    # event_id + fighter pair only, NOT fight_date — event_id is a reliable
+    # FK, whereas an exact Fight.fight_date == event.date equality check
+    # is fragile (a manual Event.date backfill that doesn't also touch
+    # every Fight.fight_date value permanently breaks this match; happened
+    # for real 2026-07-23, silently created 12 duplicate Fight rows for
+    # UFC Fight Night: Ankalaev vs. Guskov before being caught and fixed
+    # 2026-08-09 — see SESSION_LOG.md).
     existing = session.query(Fight).filter(
-        Fight.fight_date == event.date,
         Fight.event_id == event.id,
         (
             ((Fight.fighter_a_id == fighter_a.id) & (Fight.fighter_b_id == fighter_b.id)) |
@@ -232,6 +236,33 @@ def _load_fight(
             session.flush()
             logger.debug(f"Updated result for existing fight: {fighter_a.name} vs {fighter_b.name}")
         return
+
+    # Neither fighter-order matched an existing row for this event. If
+    # either fighter already has an UNRESOLVED Fight row for this same
+    # event against someone else, their opponent was swapped (injury
+    # replacement etc.) after that row was created — real, fairly common
+    # occurrence, not a bug. Remove the stale row (and its now-irrelevant
+    # Prediction, since it was scored against a fight that never happened)
+    # rather than leaving it to sit unresolved forever. Only touches
+    # UNRESOLVED rows — never deletes a row that already has a real result.
+    for stale in (
+        session.query(Fight)
+        .filter(
+            Fight.event_id == event.id,
+            Fight.winner_id.is_(None),
+            Fight.finish_round.is_(None),
+            (Fight.fighter_a_id.in_([fighter_a.id, fighter_b.id]))
+            | (Fight.fighter_b_id.in_([fighter_a.id, fighter_b.id])),
+        )
+        .all()
+    ):
+        stale_pred = session.query(Prediction).filter_by(fight_id=stale.id).first()
+        if stale_pred:
+            session.delete(stale_pred)
+        logger.info(f"Removing stale pre-replacement fight row {stale.id} "
+                    f"(opponent changed before the event happened)")
+        session.delete(stale)
+    session.flush()
 
     # Create fight record
     fight = Fight(
