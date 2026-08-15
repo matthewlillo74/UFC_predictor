@@ -1,0 +1,670 @@
+
+══════════════════════════════════════════════════════════════
+  UFC 330: MAKHACHEV VS. MACHADO GARRY
+  Generated: 2026-08-15 14:16 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Islam Makhachev vs Ian Machado Garry
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Islam Makhachev: 62.9%
+  Ian Machado Garry: 37.1%
+  → Predicted winner: Islam Makhachev (62.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.7%
+  Submission:  10.5%
+  Decision:    53.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 50.0%
+  Goes the distance:            50.0%
+
+KEY FACTORS FOR Islam Makhachev
+  + Avg Opponent Elo advantage (+0.269)
+  + Ground Strike Share advantage (+0.207)
+  + Elo advantage (+0.194)
+  + Win Streak advantage (+0.193)
+  + Sub Rate advantage (+0.145)
+
+KEY FACTORS FOR Ian Machado Garry
+  + Style Wrestling L3 advantage (+0.139)
+  + Td Def advantage (+0.118)
+  + Age Vs Peak advantage (+0.086)
+  + Early Output Share advantage (+0.076)
+
+BETTING VALUE
+  Market implied probability (Islam Makhachev): 50.0%
+  Model probability (Islam Makhachev):          62.9%
+  Edge: +12.9%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mackenzie Dern vs Gillian Robertson
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mackenzie Dern: 42.2%
+  Gillian Robertson: 57.8%
+  → Predicted winner: Gillian Robertson (57.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.3%
+  Submission:  26.3%
+  Decision:    45.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.8%
+  Goes the distance:            54.2%
+
+KEY FACTORS FOR Mackenzie Dern
+  + Td Success Prob advantage (+0.116)
+  + Style Wrestling L3 advantage (+0.103)
+  + Sapm advantage (+0.082)
+  + Avg Opponent Elo advantage (+0.069)
+  + Td Def advantage (+0.044)
+
+KEY FACTORS FOR Gillian Robertson
+  + Age Vs Peak advantage (+0.171)
+  + Ground Strike Share advantage (+0.131)
+  + Age advantage (+0.093)
+  + Elo advantage (+0.089)
+  + Sub Avg advantage (+0.080)
+
+BETTING VALUE
+  Market implied probability (Mackenzie Dern): 50.0%
+  Model probability (Mackenzie Dern):          42.2%
+  Edge: -7.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jalin Turner vs Kaue Fernandes
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jalin Turner: 52.2%
+  Kaue Fernandes: 47.8%
+  → Predicted winner: Jalin Turner (52.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.2%
+  Submission:  13.6%
+  Decision:    61.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.6%
+  Goes the distance:            53.4%
+
+KEY FACTORS FOR Jalin Turner
+  + Style Pressure L3 advantage (+0.425)
+  + Avg Opponent Elo advantage (+0.232)
+  + Elo advantage (+0.159)
+  + Reach advantage (+0.140)
+
+KEY FACTORS FOR Kaue Fernandes
+  + Sub Avg advantage (+0.214)
+  + Durability advantage (+0.151)
+  + Style Suppression advantage (+0.146)
+  + Td Def advantage (+0.124)
+  + Striking Edge advantage (+0.123)
+
+BETTING VALUE
+  Market implied probability (Jalin Turner): 50.0%
+  Model probability (Jalin Turner):          52.2%
+  Edge: +2.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mansur Abdul-Malik vs Dustin Stoltzfus
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mansur Abdul-Malik: 56.2%
+  Dustin Stoltzfus: 43.8%
+  → Predicted winner: Mansur Abdul-Malik (56.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.8%
+  Submission:  18.4%
+  Decision:    54.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.7%
+  Goes the distance:            61.3%
+
+KEY FACTORS FOR Mansur Abdul-Malik
+  + Elo advantage (+0.243)
+  + Age Vs Peak advantage (+0.203)
+  + Style Pressure L3 advantage (+0.160)
+  + Strike Def advantage (+0.157)
+  + Ground Strike Share advantage (+0.121)
+
+KEY FACTORS FOR Dustin Stoltzfus
+  + Win Rate advantage (+0.184)
+  + Kd Ratio advantage (+0.149)
+  + Ufc Wins advantage (+0.114)
+  + Style Suppression A advantage (+0.110)
+
+BETTING VALUE
+  Market implied probability (Mansur Abdul-Malik): 50.0%
+  Model probability (Mansur Abdul-Malik):          56.2%
+  Edge: +6.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Edson Barboza vs Esteban Ribovics
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Edson Barboza: 32.8%
+  Esteban Ribovics: 67.2%
+  → Predicted winner: Esteban Ribovics (67.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    23.1%
+  Submission:  9.1%
+  Decision:    67.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.8%
+  Goes the distance:            61.2%
+
+KEY FACTORS FOR Edson Barboza
+  + Elo advantage (+0.130)
+  + Reach advantage (+0.113)
+
+KEY FACTORS FOR Esteban Ribovics
+  + Age advantage (+0.508)
+  + Cardio Decay advantage (+0.303)
+  + Age Vs Peak advantage (+0.279)
+  + Style Pressure L3 advantage (+0.274)
+  + Elo Vs Peak advantage (+0.177)
+
+BETTING VALUE
+  Market implied probability (Edson Barboza): 50.0%
+  Model probability (Edson Barboza):          32.8%
+  Edge: -17.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Chidi Njokuani vs Joel Alvarez
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Chidi Njokuani: 29.4%
+  Joel Alvarez: 70.6%
+  → Predicted winner: Joel Alvarez (70.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.1%
+  Submission:  11.6%
+  Decision:    61.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 37.6%
+  Goes the distance:            62.4%
+
+KEY FACTORS FOR Chidi Njokuani
+  + Style Pressure L5 advantage (+0.095)
+
+KEY FACTORS FOR Joel Alvarez
+  + Elo advantage (+0.788)
+  + Cardio Decay advantage (+0.176)
+  + Td Def advantage (+0.168)
+  + Age Vs Peak advantage (+0.142)
+  + Sub Avg advantage (+0.141)
+
+BETTING VALUE
+  Market implied probability (Chidi Njokuani): 50.0%
+  Model probability (Chidi Njokuani):          29.4%
+  Edge: -20.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Charles Johnson vs Eduardo Chapolin
+Weight Class: Catch Weight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Charles Johnson: 62.5%
+  Eduardo Chapolin: 37.5%
+  → Predicted winner: Charles Johnson (62.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.3%
+  Submission:  14.7%
+  Decision:    52.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.2%
+  Goes the distance:            56.8%
+
+KEY FACTORS FOR Charles Johnson
+  + Elo Uncertainty advantage (+0.381)
+  + Elo advantage (+0.248)
+  + Td Success Prob advantage (+0.073)
+  + Striking Edge advantage (+0.060)
+  + Finish Threat advantage (+0.043)
+
+KEY FACTORS FOR Eduardo Chapolin
+  + Age Vs Peak advantage (+0.092)
+  + Style Suppression A advantage (+0.089)
+  + Age advantage (+0.063)
+  + Durability advantage (+0.059)
+  + Decision Rate advantage (+0.057)
+
+BETTING VALUE
+  Market implied probability (Charles Johnson): 50.0%
+  Model probability (Charles Johnson):          62.5%
+  Edge: +12.5%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Donte Johnson vs Eric McConico
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Donte Johnson: 58.9%
+  Eric McConico: 41.1%
+  → Predicted winner: Donte Johnson (58.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.2%
+  Submission:  25.0%
+  Decision:    36.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.4%
+  Goes the distance:            53.6%
+
+KEY FACTORS FOR Donte Johnson
+  + Age Vs Peak advantage (+0.330)
+  + Elo advantage (+0.246)
+  + Td Success Prob advantage (+0.105)
+  + Sub Rate advantage (+0.089)
+  + Sapm advantage (+0.087)
+
+KEY FACTORS FOR Eric McConico
+  + Early Output Share advantage (+0.156)
+  + Td Def advantage (+0.147)
+  + Win Rate advantage (+0.109)
+
+BETTING VALUE
+  Market implied probability (Donte Johnson): 50.0%
+  Model probability (Donte Johnson):          58.9%
+  Edge: +8.9%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Vicente Luque vs Tresean Gore
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Vicente Luque: 59.5%
+  Tresean Gore: 40.5%
+  → Predicted winner: Vicente Luque (59.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.0%
+  Submission:  14.8%
+  Decision:    55.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.4%
+  Goes the distance:            54.6%
+
+KEY FACTORS FOR Vicente Luque
+  + Style Pressure L3 advantage (+0.329)
+  + Elo advantage (+0.267)
+  + Avg Opponent Elo advantage (+0.265)
+  + Style Pressure L5 advantage (+0.132)
+  + Slpm advantage (+0.093)
+
+KEY FACTORS FOR Tresean Gore
+  + Age Vs Peak advantage (+0.181)
+  + Elo Vs Peak advantage (+0.146)
+  + Td Def advantage (+0.125)
+  + Age advantage (+0.100)
+
+BETTING VALUE
+  Market implied probability (Vicente Luque): 50.0%
+  Model probability (Vicente Luque):          59.5%
+  Edge: +9.5%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Rafael Tobias vs Lucas Fernando
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Rafael Tobias: 44.2%
+  Lucas Fernando: 55.8%
+  → Predicted winner: Lucas Fernando (55.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.8%
+  Submission:  20.9%
+  Decision:    47.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.1%
+  Goes the distance:            54.9%
+
+KEY FACTORS FOR Rafael Tobias
+  + Elo Uncertainty advantage (+0.158)
+  + Elo Vs Peak advantage (+0.029)
+  + Style Suppression advantage (+0.023)
+  + Style Clash Advantage advantage (+0.022)
+
+KEY FACTORS FOR Lucas Fernando
+  + Elo advantage (+0.157)
+  + Reach Strike advantage (+0.082)
+  + Age Vs Peak advantage (+0.047)
+  + Avg Opponent Elo advantage (+0.043)
+  + Td Success Prob advantage (+0.042)
+
+BETTING VALUE
+  Market implied probability (Rafael Tobias): 50.0%
+  Model probability (Rafael Tobias):          44.2%
+  Edge: -5.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Neil Magny vs Ramiz Brahimaj
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Neil Magny: 52.7%
+  Ramiz Brahimaj: 47.3%
+  → Predicted winner: Neil Magny (52.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.7%
+  Submission:  21.5%
+  Decision:    40.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.8%
+  Goes the distance:            57.2%
+
+KEY FACTORS FOR Neil Magny
+  + Reach advantage (+0.385)
+  + Elo advantage (+0.254)
+  + Avg Opponent Elo advantage (+0.237)
+  + Elo Uncertainty advantage (+0.121)
+  + Early Output Share advantage (+0.091)
+
+KEY FACTORS FOR Ramiz Brahimaj
+  + Age Vs Peak advantage (+0.291)
+  + Elo Vs Peak advantage (+0.165)
+  + Td Def advantage (+0.117)
+  + Td Success Prob advantage (+0.113)
+  + Age advantage (+0.099)
+
+BETTING VALUE
+  Market implied probability (Neil Magny): 50.0%
+  Model probability (Neil Magny):          52.7%
+  Edge: +2.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 330: Makhachev vs. Machado Garry
+August 15, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jeremiah Wells vs Myktybek Orolbai
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jeremiah Wells: 36.2%
+  Myktybek Orolbai: 63.7%
+  → Predicted winner: Myktybek Orolbai (63.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.2%
+  Submission:  20.7%
+  Decision:    54.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.2%
+  Goes the distance:            53.8%
+
+KEY FACTORS FOR Jeremiah Wells
+  + Striking Edge advantage (+0.152)
+  + Style Wrestling L3 advantage (+0.128)
+
+KEY FACTORS FOR Myktybek Orolbai
+  + Age advantage (+0.467)
+  + Age Vs Peak advantage (+0.292)
+  + Cardio Decay advantage (+0.223)
+  + Style Pressure L3 advantage (+0.219)
+  + Sub Avg advantage (+0.162)
+
+BETTING VALUE
+  Market implied probability (Jeremiah Wells): 50.0%
+  Model probability (Jeremiah Wells):          36.2%
+  Edge: -13.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-15 14:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Jeremiah Wells  (Model: 36.2%  Edge: +23.9%)
+  2. Edson Barboza  (Model: 32.8%  Edge: +16.8%)
+  3. Eric McConico  (Model: 41.1%  Edge: +14.5%)
+  4. Charles Johnson  (Model: 62.5%  Edge: +10.1%)
+  5. Neil Magny  (Model: 52.7%  Edge: +9.9%)
