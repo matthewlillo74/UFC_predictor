@@ -1,0 +1,718 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: NURMAGOMEDOV VS. SONG
+  Generated: 2026-08-23 15:24 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Umar Nurmagomedov vs Song Yadong
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Umar Nurmagomedov: 80.1%
+  Song Yadong: 19.9%
+  → Predicted winner: Umar Nurmagomedov (80.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.5%
+  Submission:  11.0%
+  Decision:    45.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.0%
+  Goes the distance:            58.0%
+
+KEY FACTORS FOR Umar Nurmagomedov
+  + Age Vs Peak advantage (+0.275)
+  + Age advantage (+0.185)
+  + Style Pressure L3 advantage (+0.174)
+  + Sub Avg advantage (+0.116)
+  + Elo advantage (+0.105)
+
+KEY FACTORS FOR Song Yadong
+  + Style Suppression A advantage (+0.142)
+  + Style Wrestling L3 advantage (+0.134)
+
+BETTING VALUE
+  Market implied probability (Umar Nurmagomedov): 50.0%
+  Model probability (Umar Nurmagomedov):          80.1%
+  Edge: +30.1%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Yan Xiaonan vs Denise Gomes
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Yan Xiaonan: 28.8%
+  Denise Gomes: 71.2%
+  → Predicted winner: Denise Gomes (71.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.0%
+  Submission:  14.6%
+  Decision:    57.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.3%
+  Goes the distance:            60.7%
+
+KEY FACTORS FOR Yan Xiaonan
+  + Style Pressure L5 advantage (+0.067)
+  + Elo advantage (+0.059)
+
+KEY FACTORS FOR Denise Gomes
+  + Decision Rate advantage (+0.154)
+  + Sapm advantage (+0.104)
+  + Style Suppression A advantage (+0.087)
+  + Ground Strike Share advantage (+0.085)
+  + Age Vs Peak advantage (+0.085)
+
+BETTING VALUE
+  Market implied probability (Yan Xiaonan): 50.0%
+  Model probability (Yan Xiaonan):          28.8%
+  Edge: -21.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Aoriqileng vs Kai Asakura
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Aoriqileng: 35.6%
+  Kai Asakura: 64.3%
+  → Predicted winner: Kai Asakura (64.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.9%
+  Submission:  12.4%
+  Decision:    55.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.3%
+  Goes the distance:            55.7%
+
+KEY FACTORS FOR Aoriqileng
+  + Early Output Share advantage (+0.110)
+  + Sapm advantage (+0.075)
+
+KEY FACTORS FOR Kai Asakura
+  + Elo advantage (+0.176)
+  + Elo Vs Peak advantage (+0.166)
+  + Td Def advantage (+0.147)
+  + Decision Rate advantage (+0.084)
+  + Style Suppression advantage (+0.083)
+
+BETTING VALUE
+  Market implied probability (Aoriqileng): 50.0%
+  Model probability (Aoriqileng):          35.6%
+  Edge: -14.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alex Perez vs Sumudaerji
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alex Perez: 58.7%
+  Sumudaerji: 41.3%
+  → Predicted winner: Alex Perez (58.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.1%
+  Submission:  14.5%
+  Decision:    48.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.7%
+  Goes the distance:            55.3%
+
+KEY FACTORS FOR Alex Perez
+  + Style Pressure L3 advantage (+0.404)
+  + Avg Opponent Elo advantage (+0.196)
+  + Elo advantage (+0.148)
+  + Td Avg advantage (+0.139)
+  + Style Pressure L5 advantage (+0.139)
+
+KEY FACTORS FOR Sumudaerji
+  + Reach advantage (+0.250)
+  + Age Vs Peak advantage (+0.221)
+  + Style Wrestling L3 advantage (+0.119)
+  + Age advantage (+0.117)
+  + Head Strike Rate advantage (+0.078)
+
+BETTING VALUE
+  Market implied probability (Alex Perez): 50.0%
+  Model probability (Alex Perez):          58.7%
+  Edge: +8.7%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Liu Ce vs Junior Tafa
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Liu Ce: 51.0%
+  Junior Tafa: 49.0%
+  → Predicted winner: Liu Ce (51.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.2%
+  Submission:  22.8%
+  Decision:    47.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.1%
+  Goes the distance:            54.9%
+
+KEY FACTORS FOR Liu Ce
+  + Elo advantage (+0.244)
+  + Ko Rate advantage (+0.193)
+  + Style Suppression B advantage (+0.124)
+  + Style Finisher advantage (+0.037)
+  + Elo Vs Peak advantage (+0.030)
+
+KEY FACTORS FOR Junior Tafa
+  + Elo Uncertainty advantage (+0.278)
+  + Age Vs Peak advantage (+0.100)
+  + Td Success Prob advantage (+0.088)
+  + Reach Strike advantage (+0.076)
+  + Age advantage (+0.048)
+
+BETTING VALUE
+  Market implied probability (Liu Ce): 50.0%
+  Model probability (Liu Ce):          51.0%
+  Edge: +1.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Bilal Hasan vs Nilson Rojas
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Bilal Hasan: 41.1%
+  Nilson Rojas: 58.9%
+  → Predicted winner: Nilson Rojas (58.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.9%
+  Submission:  20.3%
+  Decision:    48.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.3%
+  Goes the distance:            55.7%
+
+KEY FACTORS FOR Bilal Hasan
+  + Elo Uncertainty advantage (+0.035)
+  + Elo Vs Peak advantage (+0.028)
+  + Style Suppression advantage (+0.021)
+
+KEY FACTORS FOR Nilson Rojas
+  + Reach Strike advantage (+0.075)
+  + Age Vs Peak advantage (+0.075)
+  + Elo advantage (+0.074)
+  + Age advantage (+0.066)
+  + Td Success Prob advantage (+0.053)
+
+BETTING VALUE
+  Market implied probability (Bilal Hasan): 50.0%
+  Model probability (Bilal Hasan):          41.1%
+  Edge: -8.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Namsrai Batbayar vs Andre Lima
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Namsrai Batbayar: 31.6%
+  Andre Lima: 68.4%
+  → Predicted winner: Andre Lima (68.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.5%
+  Submission:  23.8%
+  Decision:    50.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.9%
+  Goes the distance:            52.1%
+
+KEY FACTORS FOR Namsrai Batbayar
+  + Td Success Prob advantage (+0.055)
+  + Decision Rate advantage (+0.041)
+  + Durability advantage (+0.031)
+  + Avg Opponent Elo advantage (+0.023)
+
+KEY FACTORS FOR Andre Lima
+  + Elo Uncertainty advantage (+0.470)
+  + Elo advantage (+0.232)
+  + Age advantage (+0.043)
+  + Age Vs Peak advantage (+0.039)
+  + Recent Win Rate advantage (+0.024)
+
+BETTING VALUE
+  Market implied probability (Namsrai Batbayar): 50.0%
+  Model probability (Namsrai Batbayar):          31.6%
+  Edge: -18.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Rei Tsuruya vs Kevin Borjas
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Rei Tsuruya: 73.6%
+  Kevin Borjas: 26.4%
+  → Predicted winner: Rei Tsuruya (73.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    23.7%
+  Submission:  21.4%
+  Decision:    54.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.4%
+  Goes the distance:            58.6%
+
+KEY FACTORS FOR Rei Tsuruya
+  + Age Vs Peak advantage (+0.262)
+  + Elo advantage (+0.203)
+  + Age advantage (+0.201)
+  + Ground Strike Share advantage (+0.125)
+  + Early Output Share advantage (+0.098)
+
+KEY FACTORS FOR Kevin Borjas
+  + Td Def advantage (+0.128)
+  + Days Since Last Fight advantage (+0.102)
+  + Avg Opponent Elo advantage (+0.061)
+
+BETTING VALUE
+  Market implied probability (Rei Tsuruya): 50.0%
+  Model probability (Rei Tsuruya):          73.6%
+  Edge: +23.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jack Jenkins vs Sean Woodson
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jack Jenkins: 32.7%
+  Sean Woodson: 67.3%
+  → Predicted winner: Sean Woodson (67.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.8%
+  Submission:  8.5%
+  Decision:    55.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.7%
+  Goes the distance:            57.3%
+
+KEY FACTORS FOR Jack Jenkins
+  + Age Vs Peak advantage (+0.102)
+  + Style Suppression B advantage (+0.071)
+
+KEY FACTORS FOR Sean Woodson
+  + Elo advantage (+0.554)
+  + Reach advantage (+0.331)
+  + Style Pressure L3 advantage (+0.194)
+  + Td Def advantage (+0.146)
+  + Win Streak advantage (+0.124)
+
+BETTING VALUE
+  Market implied probability (Jack Jenkins): 50.0%
+  Model probability (Jack Jenkins):          32.7%
+  Edge: -17.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Xiao Long vs Francesco Nuzzi
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Xiao Long: 37.3%
+  Francesco Nuzzi: 62.7%
+  → Predicted winner: Francesco Nuzzi (62.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    41.9%
+  Submission:  14.3%
+  Decision:    43.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.9%
+  Goes the distance:            50.1%
+
+KEY FACTORS FOR Xiao Long
+  + Elo Uncertainty advantage (+0.137)
+  + Avg Opponent Elo advantage (+0.081)
+  + Td Success Prob advantage (+0.069)
+
+KEY FACTORS FOR Francesco Nuzzi
+  + Elo Vs Peak advantage (+0.206)
+  + Elo advantage (+0.189)
+  + Reach Strike advantage (+0.105)
+  + Finish Threat advantage (+0.099)
+  + Durability advantage (+0.077)
+
+BETTING VALUE
+  Market implied probability (Xiao Long): 50.0%
+  Model probability (Xiao Long):          37.3%
+  Edge: -12.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Lawrence Lui vs Hector Santiago
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Lawrence Lui: 55.8%
+  Hector Santiago: 44.2%
+  → Predicted winner: Lawrence Lui (55.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.9%
+  Submission:  20.3%
+  Decision:    48.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.2%
+  Goes the distance:            55.8%
+
+KEY FACTORS FOR Lawrence Lui
+  + Elo advantage (+0.213)
+  + Elo Uncertainty advantage (+0.114)
+  + Elo Vs Peak advantage (+0.032)
+  + Style Suppression advantage (+0.026)
+  + Td Def advantage (+0.025)
+
+KEY FACTORS FOR Hector Santiago
+  + Age Vs Peak advantage (+0.112)
+  + Reach Strike advantage (+0.071)
+  + Age advantage (+0.051)
+  + Td Success Prob advantage (+0.046)
+  + Avg Opponent Elo advantage (+0.034)
+
+BETTING VALUE
+  Market implied probability (Lawrence Lui): 50.0%
+  Model probability (Lawrence Lui):          55.8%
+  Edge: +5.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Xiong Jingnan vs Julia Polastri
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Xiong Jingnan: 25.2%
+  Julia Polastri: 74.8%
+  → Predicted winner: Julia Polastri (74.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.6%
+  Submission:  23.1%
+  Decision:    49.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.6%
+  Goes the distance:            58.4%
+
+KEY FACTORS FOR Xiong Jingnan
+  + Win Rate advantage (+0.056)
+  + Decision Rate advantage (+0.037)
+
+KEY FACTORS FOR Julia Polastri
+  + Elo Uncertainty advantage (+0.376)
+  + Avg Opponent Elo advantage (+0.133)
+  + Reach Strike advantage (+0.107)
+  + Elo advantage (+0.104)
+  + Durability advantage (+0.089)
+
+BETTING VALUE
+  Market implied probability (Xiong Jingnan): 50.0%
+  Model probability (Xiong Jingnan):          25.2%
+  Edge: -24.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Nurmagomedov vs. Song
+August 29, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ding Meng vs Cameron Nelson
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ding Meng: 47.2%
+  Cameron Nelson: 52.8%
+  → Predicted winner: Cameron Nelson (52.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.9%
+  Submission:  20.3%
+  Decision:    48.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.2%
+  Goes the distance:            55.8%
+
+KEY FACTORS FOR Ding Meng
+  + Elo Uncertainty advantage (+0.134)
+  + Elo Vs Peak advantage (+0.028)
+  + Style Suppression advantage (+0.023)
+  + Style Clash Advantage advantage (+0.022)
+
+KEY FACTORS FOR Cameron Nelson
+  + Elo advantage (+0.136)
+  + Reach Strike advantage (+0.080)
+  + Td Success Prob advantage (+0.051)
+  + Age advantage (+0.048)
+  + Age Vs Peak advantage (+0.047)
+
+BETTING VALUE
+  Market implied probability (Ding Meng): 50.0%
+  Model probability (Ding Meng):          47.2%
+  Edge: -2.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-23 15:24 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Aoriqileng  (Model: 35.6%  Edge: +12.1%)
+  2. Julia Polastri  (Model: 74.8%  Edge: +9.0%)
+  3. Sean Woodson  (Model: 67.3%  Edge: +8.7%)
