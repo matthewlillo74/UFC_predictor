@@ -1,0 +1,765 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: HOOKER VS. PARNASSE
+  Generated: 2026-08-29 18:54 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dan Hooker vs Salahdine Parnasse
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dan Hooker: 55.5%
+  Salahdine Parnasse: 44.5%
+  → Predicted winner: Dan Hooker (55.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    53.3%
+  Submission:  14.8%
+  Decision:    31.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 53.5%
+  Goes the distance:            46.5%
+
+KEY FACTORS FOR Dan Hooker
+  + Avg Opponent Elo advantage (+0.265)
+  + Elo advantage (+0.221)
+  + Striking Edge advantage (+0.071)
+  + Reach Strike advantage (+0.062)
+  + Elo Uncertainty advantage (+0.057)
+
+KEY FACTORS FOR Salahdine Parnasse
+  + Age advantage (+0.119)
+  + Durability advantage (+0.110)
+  + Age Vs Peak advantage (+0.096)
+  + Elo Vs Peak advantage (+0.085)
+
+BETTING VALUE
+  Market implied probability (Dan Hooker): 50.0%
+  Model probability (Dan Hooker):          55.5%
+  Edge: +5.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Fares Ziam vs Axel Sola
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Fares Ziam: 64.3%
+  Axel Sola: 35.7%
+  → Predicted winner: Fares Ziam (64.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.9%
+  Submission:  13.6%
+  Decision:    42.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.0%
+  Goes the distance:            54.0%
+
+KEY FACTORS FOR Fares Ziam
+  + Elo advantage (+0.274)
+  + Win Streak advantage (+0.241)
+  + Avg Opponent Elo advantage (+0.221)
+  + Elo Uncertainty advantage (+0.123)
+  + Style Pressure L3 advantage (+0.116)
+
+KEY FACTORS FOR Axel Sola
+  + Age Vs Peak advantage (+0.110)
+  + Age advantage (+0.091)
+
+BETTING VALUE
+  Market implied probability (Fares Ziam): 50.0%
+  Model probability (Fares Ziam):          64.3%
+  Edge: +14.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Michael Page vs Nursulton Ruziboev
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Michael Page: 49.2%
+  Nursulton Ruziboev: 50.8%
+  → Predicted winner: Nursulton Ruziboev (50.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.3%
+  Submission:  8.3%
+  Decision:    48.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.6%
+  Goes the distance:            57.4%
+
+KEY FACTORS FOR Michael Page
+  + Avg Opponent Elo advantage (+0.205)
+  + Early Output Share advantage (+0.142)
+  + Td Acc advantage (+0.104)
+  + Reach Strike advantage (+0.092)
+  + Style Wrestling L3 advantage (+0.087)
+
+KEY FACTORS FOR Nursulton Ruziboev
+  + Style Pressure L3 advantage (+0.319)
+  + Age Vs Peak advantage (+0.220)
+  + Style Pressure L5 advantage (+0.155)
+  + Decision Rate advantage (+0.134)
+  + Ground Strike Share advantage (+0.125)
+
+BETTING VALUE
+  Market implied probability (Michael Page): 50.0%
+  Model probability (Michael Page):          49.2%
+  Edge: -0.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Daniil Donchenko vs Punahele Soriano
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Daniil Donchenko: 64.3%
+  Punahele Soriano: 35.7%
+  → Predicted winner: Daniil Donchenko (64.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.2%
+  Submission:  8.0%
+  Decision:    58.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.9%
+  Goes the distance:            59.1%
+
+KEY FACTORS FOR Daniil Donchenko
+  + Age Vs Peak advantage (+0.268)
+  + Striking Edge advantage (+0.245)
+  + Ufc Fights advantage (+0.173)
+  + Reach Strike advantage (+0.154)
+  + Age advantage (+0.132)
+
+KEY FACTORS FOR Punahele Soriano
+  + Elo Uncertainty advantage (+0.142)
+  + Ground Strike Share advantage (+0.136)
+
+BETTING VALUE
+  Market implied probability (Daniil Donchenko): 50.0%
+  Model probability (Daniil Donchenko):          64.3%
+  Edge: +14.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Morgan Charriere vs Felipe Lima
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Morgan Charriere: 59.3%
+  Felipe Lima: 40.7%
+  → Predicted winner: Morgan Charriere (59.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    22.5%
+  Submission:  18.9%
+  Decision:    58.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.3%
+  Goes the distance:            57.7%
+
+KEY FACTORS FOR Morgan Charriere
+  + Style Pressure L3 advantage (+0.290)
+  + Style Wrestling L3 advantage (+0.127)
+  + Elo Uncertainty advantage (+0.113)
+  + Td Avg advantage (+0.108)
+
+KEY FACTORS FOR Felipe Lima
+  + Striking Edge advantage (+0.262)
+  + Age Vs Peak advantage (+0.129)
+  + Age advantage (+0.116)
+  + Sub Avg advantage (+0.104)
+  + Kd Ratio advantage (+0.086)
+
+BETTING VALUE
+  Market implied probability (Morgan Charriere): 50.0%
+  Model probability (Morgan Charriere):          59.3%
+  Edge: +9.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Losene Keita vs Muhammad Naimov
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Losene Keita: 73.2%
+  Muhammad Naimov: 26.8%
+  → Predicted winner: Losene Keita (73.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.3%
+  Submission:  17.0%
+  Decision:    49.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.6%
+  Goes the distance:            57.4%
+
+KEY FACTORS FOR Losene Keita
+  + Avg Opponent Elo advantage (+0.228)
+  + Age Vs Peak advantage (+0.217)
+  + Strike Def advantage (+0.176)
+  + Win Rate advantage (+0.161)
+  + Td Def advantage (+0.148)
+
+KEY FACTORS FOR Muhammad Naimov
+  + Elo advantage (+0.217)
+  + Elo Uncertainty advantage (+0.167)
+
+BETTING VALUE
+  Market implied probability (Losene Keita): 50.0%
+  Model probability (Losene Keita):          73.2%
+  Edge: +23.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mario Pinto vs Ryan Spann
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mario Pinto: 73.4%
+  Ryan Spann: 26.6%
+  → Predicted winner: Mario Pinto (73.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.8%
+  Submission:  19.0%
+  Decision:    55.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.1%
+  Goes the distance:            54.9%
+
+KEY FACTORS FOR Mario Pinto
+  + Age Vs Peak advantage (+0.279)
+  + Reach Strike advantage (+0.254)
+  + Td Success Prob advantage (+0.135)
+  + Win Rate advantage (+0.134)
+  + Age advantage (+0.123)
+
+KEY FACTORS FOR Ryan Spann
+  + Elo Uncertainty advantage (+0.263)
+  + Elo advantage (+0.104)
+
+BETTING VALUE
+  Market implied probability (Mario Pinto): 50.0%
+  Model probability (Mario Pinto):          73.4%
+  Edge: +23.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Kurtis Campbell vs Trevor Peek
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Kurtis Campbell: 78.8%
+  Trevor Peek: 21.2%
+  → Predicted winner: Kurtis Campbell (78.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.1%
+  Submission:  15.5%
+  Decision:    53.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.0%
+  Goes the distance:            55.0%
+
+KEY FACTORS FOR Kurtis Campbell
+  + Td Success Prob advantage (+0.368)
+  + Striking Edge advantage (+0.257)
+  + Age Vs Peak advantage (+0.227)
+  + Reach Strike advantage (+0.194)
+  + Sub Avg advantage (+0.166)
+
+KEY FACTORS FOR Trevor Peek
+  + Elo Uncertainty advantage (+0.285)
+  + Sapm advantage (+0.127)
+
+BETTING VALUE
+  Market implied probability (Kurtis Campbell): 50.0%
+  Model probability (Kurtis Campbell):          78.8%
+  Edge: +28.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Oumar Sy vs Modestas Bukauskas
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Oumar Sy: 63.1%
+  Modestas Bukauskas: 36.9%
+  → Predicted winner: Oumar Sy (63.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.8%
+  Submission:  13.8%
+  Decision:    59.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.0%
+  Goes the distance:            58.0%
+
+KEY FACTORS FOR Oumar Sy
+  + Age Vs Peak advantage (+0.196)
+  + Style Pressure L3 advantage (+0.184)
+  + Style Pressure L5 advantage (+0.177)
+  + Age advantage (+0.148)
+  + Td Success Prob advantage (+0.124)
+
+KEY FACTORS FOR Modestas Bukauskas
+  + Style Wrestling L3 advantage (+0.245)
+  + Elo advantage (+0.230)
+  + Sub Avg advantage (+0.173)
+  + Style Striker L3 advantage (+0.110)
+
+BETTING VALUE
+  Market implied probability (Oumar Sy): 50.0%
+  Model probability (Oumar Sy):          63.1%
+  Edge: +13.1%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Nathaniel Wood vs Mairon Santos
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Nathaniel Wood: 39.0%
+  Mairon Santos: 61.0%
+  → Predicted winner: Mairon Santos (61.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.0%
+  Submission:  12.2%
+  Decision:    59.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.4%
+  Goes the distance:            61.6%
+
+KEY FACTORS FOR Nathaniel Wood
+  + Elo advantage (+0.181)
+
+KEY FACTORS FOR Mairon Santos
+  + Age Vs Peak advantage (+0.312)
+  + Style Pressure L3 advantage (+0.277)
+  + Td Def advantage (+0.151)
+  + Kd Ratio advantage (+0.102)
+  + Age advantage (+0.088)
+
+BETTING VALUE
+  Market implied probability (Nathaniel Wood): 50.0%
+  Model probability (Nathaniel Wood):          39.0%
+  Edge: -11.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Michael Aljarouj vs Fabia Sintes
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Michael Aljarouj: 41.1%
+  Fabia Sintes: 58.9%
+  → Predicted winner: Fabia Sintes (58.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.9%
+  Submission:  20.3%
+  Decision:    48.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.3%
+  Goes the distance:            55.7%
+
+KEY FACTORS FOR Michael Aljarouj
+  + Elo Uncertainty advantage (+0.035)
+  + Elo Vs Peak advantage (+0.028)
+  + Style Suppression advantage (+0.021)
+
+KEY FACTORS FOR Fabia Sintes
+  + Reach Strike advantage (+0.075)
+  + Age Vs Peak advantage (+0.075)
+  + Elo advantage (+0.074)
+  + Age advantage (+0.066)
+  + Td Success Prob advantage (+0.053)
+
+BETTING VALUE
+  Market implied probability (Michael Aljarouj): 50.0%
+  Model probability (Michael Aljarouj):          41.1%
+  Edge: -8.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Nora Cornolle vs Klaudia Sygula
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Nora Cornolle: 40.2%
+  Klaudia Sygula: 59.9%
+  → Predicted winner: Klaudia Sygula (59.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    16.4%
+  Submission:  13.6%
+  Decision:    70.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.1%
+  Goes the distance:            56.9%
+
+KEY FACTORS FOR Nora Cornolle
+  + Sapm advantage (+0.105)
+  + Avg Opponent Elo advantage (+0.096)
+  + Days Since Last Fight advantage (+0.081)
+  + Td Acc advantage (+0.080)
+  + Elo Uncertainty advantage (+0.077)
+
+KEY FACTORS FOR Klaudia Sygula
+  + Age Vs Peak advantage (+0.271)
+  + Style Pressure L3 advantage (+0.210)
+  + Style Suppression advantage (+0.099)
+  + Style Finisher advantage (+0.095)
+  + Elo Vs Peak advantage (+0.075)
+
+BETTING VALUE
+  Market implied probability (Nora Cornolle): 50.0%
+  Model probability (Nora Cornolle):          40.2%
+  Edge: -9.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Matthieu Duclos vs Luis Felipe Dias
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Matthieu Duclos: 44.9%
+  Luis Felipe Dias: 55.1%
+  → Predicted winner: Luis Felipe Dias (55.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.8%
+  Submission:  25.9%
+  Decision:    40.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.8%
+  Goes the distance:            54.2%
+
+KEY FACTORS FOR Matthieu Duclos
+  + Grapple Dom advantage (+0.130)
+
+KEY FACTORS FOR Luis Felipe Dias
+  + Elo Uncertainty advantage (+0.320)
+  + Elo advantage (+0.166)
+  + Durability advantage (+0.119)
+  + Age Vs Peak advantage (+0.106)
+  + Td Success Prob advantage (+0.071)
+
+BETTING VALUE
+  Market implied probability (Matthieu Duclos): 50.0%
+  Model probability (Matthieu Duclos):          44.9%
+  Edge: -5.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Hooker vs. Parnasse
+September 05, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Delphine Benouaich vs Sofia Montenegro
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Delphine Benouaich: 41.1%
+  Sofia Montenegro: 58.9%
+  → Predicted winner: Sofia Montenegro (58.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.9%
+  Submission:  20.3%
+  Decision:    48.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.3%
+  Goes the distance:            55.7%
+
+KEY FACTORS FOR Delphine Benouaich
+  + Elo Uncertainty advantage (+0.035)
+  + Elo Vs Peak advantage (+0.028)
+  + Style Suppression advantage (+0.021)
+
+KEY FACTORS FOR Sofia Montenegro
+  + Reach Strike advantage (+0.075)
+  + Age Vs Peak advantage (+0.075)
+  + Elo advantage (+0.074)
+  + Age advantage (+0.066)
+  + Td Success Prob advantage (+0.053)
+
+BETTING VALUE
+  Market implied probability (Delphine Benouaich): 50.0%
+  Model probability (Delphine Benouaich):          41.1%
+  Edge: -8.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-08-29 18:54 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Nursulton Ruziboev  (Model: 50.8%  Edge: +10.7%)
