@@ -1,0 +1,724 @@
+
+══════════════════════════════════════════════════════════════
+  NOCHE UFC: SILVA VS. DELGADO
+  Generated: 2026-09-11 18:29 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jean Silva vs Jose Delgado
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jean Silva: 33.5%
+  Jose Delgado: 66.5%
+  → Predicted winner: Jose Delgado (66.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    50.1%
+  Submission:  17.5%
+  Decision:    32.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.7%
+  Goes the distance:            54.3%
+
+KEY FACTORS FOR Jean Silva
+  + Elo advantage (+0.199)
+  + Recent Finish Rate advantage (+0.089)
+  + Avg Opponent Elo advantage (+0.074)
+
+KEY FACTORS FOR Jose Delgado
+  + Age advantage (+0.691)
+  + Age Vs Peak advantage (+0.379)
+  + Style Pressure L3 advantage (+0.233)
+  + Striking Edge advantage (+0.118)
+  + Style Finisher advantage (+0.082)
+
+BETTING VALUE
+  Market implied probability (Jean Silva): 50.0%
+  Model probability (Jean Silva):          33.5%
+  Edge: -16.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Brandon Moreno vs Joseph Morales
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Brandon Moreno: 63.2%
+  Joseph Morales: 36.8%
+  → Predicted winner: Brandon Moreno (63.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.5%
+  Submission:  11.2%
+  Decision:    52.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.9%
+  Goes the distance:            55.1%
+
+KEY FACTORS FOR Brandon Moreno
+  + Avg Opponent Elo advantage (+0.236)
+  + Elo advantage (+0.170)
+  + Style Pressure L3 advantage (+0.157)
+  + Elo Uncertainty advantage (+0.110)
+  + Slpm advantage (+0.108)
+
+KEY FACTORS FOR Joseph Morales
+  + Age advantage (+0.142)
+  + Age Vs Peak advantage (+0.127)
+  + Style Wrestling L3 advantage (+0.125)
+  + Ground Strike Share advantage (+0.098)
+
+BETTING VALUE
+  Market implied probability (Brandon Moreno): 50.0%
+  Model probability (Brandon Moreno):          63.2%
+  Edge: +13.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tommy McMillen vs Marwan Rahiki
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tommy McMillen: 60.4%
+  Marwan Rahiki: 39.6%
+  → Predicted winner: Tommy McMillen (60.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.1%
+  Submission:  19.1%
+  Decision:    47.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.9%
+  Goes the distance:            56.1%
+
+KEY FACTORS FOR Tommy McMillen
+  + Striking Edge advantage (+0.259)
+  + Durability advantage (+0.088)
+  + Elo Vs Peak advantage (+0.037)
+  + Height advantage (+0.034)
+  + Elo Uncertainty advantage (+0.030)
+
+KEY FACTORS FOR Marwan Rahiki
+  + Age Vs Peak advantage (+0.177)
+  + Reach Strike advantage (+0.074)
+  + Finish Threat advantage (+0.047)
+  + Age advantage (+0.039)
+  + Td Success Prob advantage (+0.034)
+
+BETTING VALUE
+  Market implied probability (Tommy McMillen): 50.0%
+  Model probability (Tommy McMillen):          60.4%
+  Edge: +10.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Manon Fiorot vs Alexa Grasso
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Manon Fiorot: 39.0%
+  Alexa Grasso: 61.0%
+  → Predicted winner: Alexa Grasso (61.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.2%
+  Submission:  7.1%
+  Decision:    58.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.5%
+  Goes the distance:            59.5%
+
+KEY FACTORS FOR Manon Fiorot
+  + Elo advantage (+0.138)
+  + Sub Avg advantage (+0.085)
+  + Recent Win Rate advantage (+0.047)
+
+KEY FACTORS FOR Alexa Grasso
+  + Age Vs Peak advantage (+0.255)
+  + Td Def advantage (+0.121)
+  + Slpm advantage (+0.109)
+  + Age advantage (+0.100)
+  + Reach Strike advantage (+0.063)
+
+BETTING VALUE
+  Market implied probability (Manon Fiorot): 50.0%
+  Model probability (Manon Fiorot):          39.0%
+  Edge: -11.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Waldo Cortes Acosta vs Curtis Blaydes
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Waldo Cortes Acosta: 34.3%
+  Curtis Blaydes: 65.7%
+  → Predicted winner: Curtis Blaydes (65.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.6%
+  Submission:  12.7%
+  Decision:    43.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.6%
+  Goes the distance:            57.4%
+
+KEY FACTORS FOR Waldo Cortes Acosta
+  + Td Def advantage (+0.096)
+  + Slpm advantage (+0.087)
+  + Recent Win Rate advantage (+0.074)
+
+KEY FACTORS FOR Curtis Blaydes
+  + Style Pressure L3 advantage (+0.285)
+  + Ground Strike Share advantage (+0.175)
+  + Elo advantage (+0.094)
+  + Avg Opponent Elo advantage (+0.080)
+  + Td Avg advantage (+0.073)
+
+BETTING VALUE
+  Market implied probability (Waldo Cortes Acosta): 50.0%
+  Model probability (Waldo Cortes Acosta):          34.3%
+  Edge: -15.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: David Martinez vs Dan Ige
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  David Martinez: 72.1%
+  Dan Ige: 27.9%
+  → Predicted winner: David Martinez (72.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    39.1%
+  Submission:  11.3%
+  Decision:    49.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.2%
+  Goes the distance:            55.8%
+
+KEY FACTORS FOR David Martinez
+  + Ufc Fights advantage (+0.302)
+  + Age Vs Peak advantage (+0.215)
+  + Elo advantage (+0.205)
+  + Age advantage (+0.123)
+  + Sub Avg advantage (+0.111)
+
+KEY FACTORS FOR Dan Ige
+  + Elo Uncertainty advantage (+0.228)
+  + Ground Strike Share advantage (+0.140)
+  + Td Avg advantage (+0.131)
+
+BETTING VALUE
+  Market implied probability (David Martinez): 50.0%
+  Model probability (David Martinez):          72.1%
+  Edge: +22.1%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tim Elliott vs Edgar Chairez
+Weight Class: Catch Weight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tim Elliott: 56.2%
+  Edgar Chairez: 43.8%
+  → Predicted winner: Tim Elliott (56.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    45.6%
+  Submission:  11.7%
+  Decision:    42.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.0%
+  Goes the distance:            54.0%
+
+KEY FACTORS FOR Tim Elliott
+  + Style Pressure L3 advantage (+0.341)
+  + Avg Opponent Elo advantage (+0.275)
+  + Recent Finish Rate advantage (+0.159)
+  + Style Pressure L5 advantage (+0.150)
+  + Sub Avg advantage (+0.100)
+
+KEY FACTORS FOR Edgar Chairez
+  + Style Wrestling L3 advantage (+0.223)
+  + Age Vs Peak advantage (+0.219)
+  + Strike Def advantage (+0.156)
+  + Cardio Decay advantage (+0.149)
+  + Elo advantage (+0.144)
+
+BETTING VALUE
+  Market implied probability (Tim Elliott): 50.0%
+  Model probability (Tim Elliott):          56.2%
+  Edge: +6.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ignacio Bahamondes vs Muslim Salikhov
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ignacio Bahamondes: 55.5%
+  Muslim Salikhov: 44.5%
+  → Predicted winner: Ignacio Bahamondes (55.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.9%
+  Submission:  15.2%
+  Decision:    49.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.2%
+  Goes the distance:            61.8%
+
+KEY FACTORS FOR Ignacio Bahamondes
+  + Style Pressure L3 advantage (+0.273)
+  + Age Vs Peak advantage (+0.199)
+  + Style Pressure L5 advantage (+0.177)
+  + Age advantage (+0.089)
+  + Style Wrestling L3 advantage (+0.084)
+
+KEY FACTORS FOR Muslim Salikhov
+  + Elo advantage (+0.188)
+  + Slpm advantage (+0.172)
+  + Kd Ratio advantage (+0.105)
+  + Avg Opponent Elo advantage (+0.083)
+  + Ground Strike Share advantage (+0.077)
+
+BETTING VALUE
+  Market implied probability (Ignacio Bahamondes): 50.0%
+  Model probability (Ignacio Bahamondes):          55.5%
+  Edge: +5.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Yousri Belgaroui vs Djorden Santos
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Yousri Belgaroui: 59.7%
+  Djorden Santos: 40.4%
+  → Predicted winner: Yousri Belgaroui (59.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.4%
+  Submission:  11.0%
+  Decision:    57.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.2%
+  Goes the distance:            59.8%
+
+KEY FACTORS FOR Yousri Belgaroui
+  + Avg Opponent Elo advantage (+0.229)
+  + Sapm advantage (+0.191)
+  + Reach Strike advantage (+0.166)
+  + Recent Finish Rate advantage (+0.156)
+  + Striking Edge advantage (+0.154)
+
+KEY FACTORS FOR Djorden Santos
+  + Age Vs Peak advantage (+0.311)
+  + Head Strike Rate advantage (+0.122)
+  + Age advantage (+0.118)
+
+BETTING VALUE
+  Market implied probability (Yousri Belgaroui): 50.0%
+  Model probability (Yousri Belgaroui):          59.7%
+  Edge: +9.7%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Drakkar Klose vs Tommy Gantt
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Drakkar Klose: 45.0%
+  Tommy Gantt: 55.0%
+  → Predicted winner: Tommy Gantt (55.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.3%
+  Submission:  16.8%
+  Decision:    47.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.6%
+  Goes the distance:            60.4%
+
+KEY FACTORS FOR Drakkar Klose
+  + Elo advantage (+0.304)
+  + Avg Opponent Elo advantage (+0.241)
+  + Elo Uncertainty advantage (+0.159)
+
+KEY FACTORS FOR Tommy Gantt
+  + Reach advantage (+0.236)
+  + Win Rate advantage (+0.229)
+  + Age Vs Peak advantage (+0.213)
+  + Td Avg advantage (+0.147)
+  + Td Def advantage (+0.114)
+
+BETTING VALUE
+  Market implied probability (Drakkar Klose): 50.0%
+  Model probability (Drakkar Klose):          45.0%
+  Edge: -5.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Rafa Garcia vs Rongzhu
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Rafa Garcia: 64.9%
+  Rongzhu: 35.1%
+  → Predicted winner: Rafa Garcia (64.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.8%
+  Submission:  10.6%
+  Decision:    56.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.2%
+  Goes the distance:            53.8%
+
+KEY FACTORS FOR Rafa Garcia
+  + Style Pressure L3 advantage (+0.350)
+  + Elo advantage (+0.306)
+  + Sub Avg advantage (+0.148)
+  + Slpm advantage (+0.142)
+  + Style Pressure L5 advantage (+0.134)
+
+KEY FACTORS FOR Rongzhu
+  + Age Vs Peak advantage (+0.284)
+  + Ground Strike Share advantage (+0.122)
+  + Head Strike Rate advantage (+0.089)
+
+BETTING VALUE
+  Market implied probability (Rafa Garcia): 50.0%
+  Model probability (Rafa Garcia):          64.9%
+  Edge: +14.9%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Sean King III vs Jessie Rosas
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Sean King III: 52.0%
+  Jessie Rosas: 48.0%
+  → Predicted winner: Sean King III (52.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.5%
+  Submission:  20.3%
+  Decision:    49.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.5%
+  Goes the distance:            56.5%
+
+KEY FACTORS FOR Sean King III
+  + Elo Uncertainty advantage (+0.035)
+  + Elo Vs Peak advantage (+0.028)
+  + Style Suppression advantage (+0.021)
+
+KEY FACTORS FOR Jessie Rosas
+  + Age Vs Peak advantage (+0.075)
+  + Elo advantage (+0.074)
+  + Reach Strike advantage (+0.074)
+  + Age advantage (+0.066)
+  + Td Success Prob advantage (+0.053)
+
+BETTING VALUE
+  Market implied probability (Sean King III): 50.0%
+  Model probability (Sean King III):          52.0%
+  Edge: +2.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+Noche UFC: Silva vs. Delgado
+September 12, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: JJ Aldrich vs Regina Tarin
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  JJ Aldrich: 42.1%
+  Regina Tarin: 57.9%
+  → Predicted winner: Regina Tarin (57.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    24.0%
+  Submission:  12.6%
+  Decision:    63.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.2%
+  Goes the distance:            58.8%
+
+KEY FACTORS FOR JJ Aldrich
+  + Striking Edge advantage (+0.152)
+  + Elo advantage (+0.148)
+  + Durability advantage (+0.112)
+  + Elo Uncertainty advantage (+0.106)
+  + Reach Strike advantage (+0.055)
+
+KEY FACTORS FOR Regina Tarin
+  + Age Vs Peak advantage (+0.439)
+  + Age advantage (+0.427)
+  + Win Rate advantage (+0.128)
+
+BETTING VALUE
+  Market implied probability (JJ Aldrich): 50.0%
+  Model probability (JJ Aldrich):          42.1%
+  Edge: -7.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-09-11 18:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Jose Delgado  (Model: 66.5%  Edge: +44.2%)
+  2. Muslim Salikhov  (Model: 44.5%  Edge: +25.3%)
+  3. Rafa Garcia  (Model: 64.9%  Edge: +25.3%)
+  4. Brandon Moreno  (Model: 63.2%  Edge: +15.0%)
+  5. JJ Aldrich  (Model: 42.1%  Edge: +13.5%)
