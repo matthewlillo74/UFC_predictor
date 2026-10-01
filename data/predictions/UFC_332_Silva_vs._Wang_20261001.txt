@@ -1,0 +1,782 @@
+
+══════════════════════════════════════════════════════════════
+  UFC 332: SILVA VS. WANG
+  Generated: 2026-10-01 20:14 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Natalia Silva vs Wang Cong
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Natalia Silva: 64.1%
+  Wang Cong: 35.9%
+  → Predicted winner: Natalia Silva (64.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.6%
+  Submission:  13.5%
+  Decision:    49.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.8%
+  Goes the distance:            54.2%
+
+KEY FACTORS FOR Natalia Silva
+  + Elo advantage (+0.273)
+  + Avg Opponent Elo advantage (+0.162)
+  + Early Output Share advantage (+0.111)
+  + Td Def advantage (+0.076)
+  + Sapm advantage (+0.065)
+
+KEY FACTORS FOR Wang Cong
+  + Style Pressure L3 advantage (+0.192)
+  + Age Vs Peak advantage (+0.064)
+  + Td Success Prob advantage (+0.058)
+
+BETTING VALUE
+  Market implied probability (Natalia Silva): 50.0%
+  Model probability (Natalia Silva):          64.1%
+  Edge: +14.1%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Deiveson Figueiredo vs Payton Talbott
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Deiveson Figueiredo: 17.8%
+  Payton Talbott: 82.2%
+  → Predicted winner: Payton Talbott (82.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.7%
+  Submission:  13.3%
+  Decision:    49.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.2%
+  Goes the distance:            55.8%
+
+KEY FACTORS FOR Deiveson Figueiredo
+  + Avg Opponent Elo advantage (+0.282)
+  + Elo advantage (+0.148)
+  + Style Pressure L3 advantage (+0.132)
+
+KEY FACTORS FOR Payton Talbott
+  + Age advantage (+0.520)
+  + Cardio Decay advantage (+0.496)
+  + Style Wrestling L3 advantage (+0.347)
+  + Age Vs Peak advantage (+0.266)
+  + Ground Strike Share advantage (+0.226)
+
+BETTING VALUE
+  Market implied probability (Deiveson Figueiredo): 50.0%
+  Model probability (Deiveson Figueiredo):          17.8%
+  Edge: -32.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: King Green vs Esteban Ribovics
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  King Green: 47.5%
+  Esteban Ribovics: 52.5%
+  → Predicted winner: Esteban Ribovics (52.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.1%
+  Submission:  13.6%
+  Decision:    48.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 48.4%
+  Goes the distance:            51.6%
+
+KEY FACTORS FOR King Green
+  + Elo advantage (+0.310)
+  + Elo Trend advantage (+0.098)
+  + Recent Finish Rate advantage (+0.069)
+  + Style Vuln Pressure advantage (+0.055)
+  + Reach Strike advantage (+0.049)
+
+KEY FACTORS FOR Esteban Ribovics
+  + Age Vs Peak advantage (+0.294)
+  + Style Pressure L3 advantage (+0.242)
+  + Age advantage (+0.194)
+  + Style Suppression advantage (+0.080)
+  + Win Streak advantage (+0.059)
+
+BETTING VALUE
+  Market implied probability (King Green): 50.0%
+  Model probability (King Green):          47.5%
+  Edge: -2.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Roberto Soldic vs Khaos Williams
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Roberto Soldic: 44.8%
+  Khaos Williams: 55.2%
+  → Predicted winner: Khaos Williams (55.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.0%
+  Submission:  15.3%
+  Decision:    49.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.4%
+  Goes the distance:            52.6%
+
+KEY FACTORS FOR Roberto Soldic
+  + Ko Rate advantage (+0.206)
+  + Age advantage (+0.138)
+  + Elo Trend advantage (+0.077)
+  + Elo Vs Peak advantage (+0.068)
+
+KEY FACTORS FOR Khaos Williams
+  + Elo Uncertainty advantage (+0.299)
+  + Elo advantage (+0.237)
+  + Avg Opponent Elo advantage (+0.105)
+  + Reach Strike advantage (+0.081)
+  + Age Vs Peak advantage (+0.072)
+
+BETTING VALUE
+  Market implied probability (Roberto Soldic): 50.0%
+  Model probability (Roberto Soldic):          44.8%
+  Edge: -5.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ateba Gautier vs Roman Kopylov
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ateba Gautier: 63.8%
+  Roman Kopylov: 36.2%
+  → Predicted winner: Ateba Gautier (63.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.3%
+  Submission:  8.5%
+  Decision:    59.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.9%
+  Goes the distance:            58.1%
+
+KEY FACTORS FOR Ateba Gautier
+  + Style Pressure L3 advantage (+0.348)
+  + Age Vs Peak advantage (+0.237)
+  + Elo advantage (+0.198)
+  + Win Streak advantage (+0.197)
+  + Style Pressure L5 advantage (+0.135)
+
+KEY FACTORS FOR Roman Kopylov
+  + Avg Opponent Elo advantage (+0.110)
+  + Style Suppression A advantage (+0.093)
+
+BETTING VALUE
+  Market implied probability (Ateba Gautier): 50.0%
+  Model probability (Ateba Gautier):          63.8%
+  Edge: +13.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Imanol Rodriguez vs Alden Coria
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Imanol Rodriguez: 49.5%
+  Alden Coria: 50.5%
+  → Predicted winner: Alden Coria (50.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.5%
+  Submission:  21.0%
+  Decision:    48.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.7%
+  Goes the distance:            57.3%
+
+KEY FACTORS FOR Imanol Rodriguez
+  + Age Vs Peak advantage (+0.163)
+  + Win Rate advantage (+0.148)
+  + Age advantage (+0.107)
+  + Decision Rate advantage (+0.061)
+  + Elo Uncertainty advantage (+0.054)
+
+KEY FACTORS FOR Alden Coria
+  + Elo advantage (+0.238)
+  + Reach Strike advantage (+0.077)
+  + Td Success Prob advantage (+0.069)
+  + Elo Trend advantage (+0.035)
+  + Reach advantage (+0.023)
+
+BETTING VALUE
+  Market implied probability (Imanol Rodriguez): 50.0%
+  Model probability (Imanol Rodriguez):          49.5%
+  Edge: -0.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Damian Pinas vs Andrey Pulyaev
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Damian Pinas: 62.9%
+  Andrey Pulyaev: 37.1%
+  → Predicted winner: Damian Pinas (62.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.8%
+  Submission:  15.4%
+  Decision:    48.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.7%
+  Goes the distance:            55.3%
+
+KEY FACTORS FOR Damian Pinas
+  + Elo advantage (+0.290)
+  + Kd Ratio advantage (+0.208)
+  + Age Vs Peak advantage (+0.192)
+  + Age advantage (+0.143)
+  + Sapm advantage (+0.105)
+
+KEY FACTORS FOR Andrey Pulyaev
+  + Early Output Share advantage (+0.146)
+  + Win Rate advantage (+0.084)
+  + Td Success Prob advantage (+0.074)
+
+BETTING VALUE
+  Market implied probability (Damian Pinas): 50.0%
+  Model probability (Damian Pinas):          62.9%
+  Edge: +12.9%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Marcus McGhee vs Anthony Romero
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Marcus McGhee: 69.0%
+  Anthony Romero: 31.0%
+  → Predicted winner: Marcus McGhee (69.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    49.9%
+  Submission:  16.4%
+  Decision:    33.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.5%
+  Goes the distance:            50.5%
+
+KEY FACTORS FOR Marcus McGhee
+  + Elo Uncertainty advantage (+0.344)
+  + Elo advantage (+0.269)
+  + Avg Opponent Elo advantage (+0.067)
+  + Td Success Prob advantage (+0.062)
+  + Sub Rate advantage (+0.053)
+
+KEY FACTORS FOR Anthony Romero
+  + Durability advantage (+0.102)
+  + Age Vs Peak advantage (+0.097)
+  + Style Suppression A advantage (+0.094)
+  + Age advantage (+0.084)
+
+BETTING VALUE
+  Market implied probability (Marcus McGhee): 50.0%
+  Model probability (Marcus McGhee):          69.0%
+  Edge: +19.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Anthony Wint vs Lucas Armand
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Anthony Wint: 58.0%
+  Lucas Armand: 42.0%
+  → Predicted winner: Anthony Wint (58.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.6%
+  Submission:  28.2%
+  Decision:    44.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.6%
+  Goes the distance:            55.4%
+
+KEY FACTORS FOR Anthony Wint
+  + Reach Strike advantage (+0.192)
+  + Striking Edge advantage (+0.186)
+  + Elo Uncertainty advantage (+0.147)
+  + Elo Vs Peak advantage (+0.059)
+  + Style Finisher advantage (+0.035)
+
+KEY FACTORS FOR Lucas Armand
+  + Elo advantage (+0.064)
+  + Age Vs Peak advantage (+0.063)
+  + Age advantage (+0.059)
+  + Td Success Prob advantage (+0.044)
+  + Avg Opponent Elo advantage (+0.038)
+
+BETTING VALUE
+  Market implied probability (Anthony Wint): 50.0%
+  Model probability (Anthony Wint):          58.0%
+  Edge: +8.0%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Johnny Walker vs Mick Parkin
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Johnny Walker: 38.5%
+  Mick Parkin: 61.5%
+  → Predicted winner: Mick Parkin (61.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.3%
+  Submission:  17.7%
+  Decision:    45.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.9%
+  Goes the distance:            60.1%
+
+KEY FACTORS FOR Johnny Walker
+  + Avg Opponent Elo advantage (+0.206)
+  + Strike Def advantage (+0.192)
+  + Win Rate advantage (+0.181)
+  + Reach Strike advantage (+0.172)
+  + Slpm advantage (+0.075)
+
+KEY FACTORS FOR Mick Parkin
+  + Elo advantage (+0.414)
+  + Age Vs Peak advantage (+0.300)
+  + Elo Uncertainty advantage (+0.213)
+  + Win Streak advantage (+0.113)
+  + Ufc Wins advantage (+0.113)
+
+BETTING VALUE
+  Market implied probability (Johnny Walker): 50.0%
+  Model probability (Johnny Walker):          38.5%
+  Edge: -11.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jacobe Smith vs Bruce Whitehead
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jacobe Smith: 56.6%
+  Bruce Whitehead: 43.4%
+  → Predicted winner: Jacobe Smith (56.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    39.7%
+  Submission:  17.2%
+  Decision:    43.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 50.5%
+  Goes the distance:            49.5%
+
+KEY FACTORS FOR Jacobe Smith
+  + Td Success Prob advantage (+0.295)
+  + Elo advantage (+0.221)
+  + Reach Strike advantage (+0.206)
+  + Elo Uncertainty advantage (+0.076)
+  + Sub Rate advantage (+0.060)
+
+KEY FACTORS FOR Bruce Whitehead
+  + Avg Opponent Elo advantage (+0.141)
+  + Age Vs Peak advantage (+0.096)
+  + Striking Edge advantage (+0.095)
+  + Finish Threat advantage (+0.074)
+  + Ko Rate advantage (+0.067)
+
+BETTING VALUE
+  Market implied probability (Jacobe Smith): 50.0%
+  Model probability (Jacobe Smith):          56.6%
+  Edge: +6.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Rafael Dos Anjos vs Alexander Hernandez
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Rafael Dos Anjos: 49.0%
+  Alexander Hernandez: 51.0%
+  → Predicted winner: Alexander Hernandez (51.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.1%
+  Submission:  20.7%
+  Decision:    49.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.4%
+  Goes the distance:            57.6%
+
+KEY FACTORS FOR Rafael Dos Anjos
+  + Elo advantage (+0.210)
+  + Elo Uncertainty advantage (+0.089)
+  + Avg Opponent Elo advantage (+0.069)
+  + Ground Strike Share advantage (+0.060)
+  + Sapm advantage (+0.060)
+
+KEY FACTORS FOR Alexander Hernandez
+  + Elo Vs Peak advantage (+0.124)
+  + Age Vs Peak advantage (+0.113)
+  + Reach Strike advantage (+0.086)
+  + Ufc Wins advantage (+0.084)
+  + Td Def advantage (+0.065)
+
+BETTING VALUE
+  Market implied probability (Rafael Dos Anjos): 50.0%
+  Model probability (Rafael Dos Anjos):          49.0%
+  Edge: -1.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Marvin Vettori vs Ismail Naurdiev
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Marvin Vettori: 56.3%
+  Ismail Naurdiev: 43.7%
+  → Predicted winner: Marvin Vettori (56.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.6%
+  Submission:  17.9%
+  Decision:    51.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.0%
+  Goes the distance:            62.0%
+
+KEY FACTORS FOR Marvin Vettori
+  + Style Pressure L3 advantage (+0.223)
+  + Elo advantage (+0.175)
+  + Elo Uncertainty advantage (+0.097)
+  + Slpm advantage (+0.092)
+  + Style Pressure L5 advantage (+0.077)
+
+KEY FACTORS FOR Ismail Naurdiev
+  + Age Vs Peak advantage (+0.130)
+  + Sapm advantage (+0.070)
+  + Kd Ratio advantage (+0.066)
+  + Td Success Prob advantage (+0.062)
+  + Td Def advantage (+0.061)
+
+BETTING VALUE
+  Market implied probability (Marvin Vettori): 50.0%
+  Model probability (Marvin Vettori):          56.3%
+  Edge: +6.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 332: Silva vs. Wang
+October 03, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Court McGee vs Eric Nolan
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Court McGee: 29.4%
+  Eric Nolan: 70.6%
+  → Predicted winner: Eric Nolan (70.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.4%
+  Submission:  20.2%
+  Decision:    45.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.6%
+  Goes the distance:            58.4%
+
+KEY FACTORS FOR Court McGee
+  + Early Output Share advantage (+0.106)
+  + Sapm advantage (+0.078)
+  + Recent Win Rate advantage (+0.075)
+
+KEY FACTORS FOR Eric Nolan
+  + Age advantage (+0.851)
+  + Age Vs Peak advantage (+0.489)
+  + Elo Vs Peak advantage (+0.321)
+  + Td Def advantage (+0.179)
+  + Kd Ratio advantage (+0.137)
+
+BETTING VALUE
+  Market implied probability (Court McGee): 50.0%
+  Model probability (Court McGee):          29.4%
+  Edge: -20.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-01 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Lucas Armand  (Model: 42.0%  Edge: +22.7%)
