@@ -1,0 +1,672 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: ALLEN VS. DUNCAN
+  Generated: 2026-10-09 20:14 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Brendan Allen vs Christian Leroy Duncan
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Brendan Allen: 61.6%
+  Christian Leroy Duncan: 38.4%
+  → Predicted winner: Brendan Allen (61.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    51.9%
+  Submission:  15.8%
+  Decision:    32.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.6%
+  Goes the distance:            56.4%
+
+KEY FACTORS FOR Brendan Allen
+  + Style Pressure L3 advantage (+0.300)
+  + Elo advantage (+0.256)
+  + Elo Uncertainty advantage (+0.168)
+  + Age advantage (+0.140)
+  + Td Success Prob advantage (+0.106)
+
+KEY FACTORS FOR Christian Leroy Duncan
+  + Grapple Dom advantage (+0.119)
+  + Style Suppression A advantage (+0.107)
+  + Style Wrestling L3 advantage (+0.086)
+
+BETTING VALUE
+  Market implied probability (Brendan Allen): 50.0%
+  Model probability (Brendan Allen):          61.6%
+  Edge: +11.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Matheus Camilo vs Jai Herbert
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Matheus Camilo: 53.4%
+  Jai Herbert: 46.6%
+  → Predicted winner: Matheus Camilo (53.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    22.2%
+  Submission:  11.3%
+  Decision:    66.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.1%
+  Goes the distance:            57.9%
+
+KEY FACTORS FOR Matheus Camilo
+  + Age Vs Peak advantage (+0.256)
+  + Elo Uncertainty advantage (+0.186)
+  + Age advantage (+0.149)
+  + Elo advantage (+0.116)
+  + Td Acc advantage (+0.111)
+
+KEY FACTORS FOR Jai Herbert
+  + Reach advantage (+0.439)
+  + Strike Def advantage (+0.151)
+  + Head Strike Rate advantage (+0.094)
+
+BETTING VALUE
+  Market implied probability (Matheus Camilo): 50.0%
+  Model probability (Matheus Camilo):          53.4%
+  Edge: +3.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Loopy Godinez vs Ketlen Souza
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Loopy Godinez: 57.9%
+  Ketlen Souza: 42.1%
+  → Predicted winner: Loopy Godinez (57.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.1%
+  Submission:  20.0%
+  Decision:    51.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.6%
+  Goes the distance:            57.4%
+
+KEY FACTORS FOR Loopy Godinez
+  + Elo advantage (+0.203)
+  + Style Pressure L3 advantage (+0.152)
+  + Elo Uncertainty advantage (+0.104)
+  + Td Success Prob advantage (+0.089)
+  + Style Pressure L5 advantage (+0.085)
+
+KEY FACTORS FOR Ketlen Souza
+  + Age advantage (+0.123)
+  + Age Vs Peak advantage (+0.115)
+  + Sub Avg advantage (+0.112)
+  + Kd Ratio advantage (+0.070)
+
+BETTING VALUE
+  Market implied probability (Loopy Godinez): 50.0%
+  Model probability (Loopy Godinez):          57.9%
+  Edge: +7.9%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Andre Fili vs Kai Kamaka III
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Andre Fili: 59.8%
+  Kai Kamaka III: 40.2%
+  → Predicted winner: Andre Fili (59.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.1%
+  Submission:  15.6%
+  Decision:    49.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.4%
+  Goes the distance:            57.6%
+
+KEY FACTORS FOR Andre Fili
+  + Elo advantage (+0.125)
+  + Elo Uncertainty advantage (+0.096)
+  + Reach Strike advantage (+0.050)
+  + Win Rate advantage (+0.046)
+  + Finish Threat advantage (+0.043)
+
+KEY FACTORS FOR Kai Kamaka III
+  + Elo Vs Peak advantage (+0.231)
+  + Elo Trend advantage (+0.116)
+  + Age Vs Peak advantage (+0.084)
+  + Age advantage (+0.067)
+
+BETTING VALUE
+  Market implied probability (Andre Fili): 50.0%
+  Model probability (Andre Fili):          59.8%
+  Edge: +9.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Malcolm Wellmaker vs Otari Tanzilovi
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Malcolm Wellmaker: 33.5%
+  Otari Tanzilovi: 66.5%
+  → Predicted winner: Otari Tanzilovi (66.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.2%
+  Submission:  14.4%
+  Decision:    51.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.0%
+  Goes the distance:            51.0%
+
+KEY FACTORS FOR Malcolm Wellmaker
+  + Sapm advantage (+0.127)
+  + Recent Finish Rate advantage (+0.103)
+  + Td Acc advantage (+0.096)
+  + Elo advantage (+0.095)
+
+KEY FACTORS FOR Otari Tanzilovi
+  + Age Vs Peak advantage (+0.358)
+  + Win Rate advantage (+0.182)
+  + Td Avg advantage (+0.151)
+  + Elo Vs Peak advantage (+0.150)
+  + Strike Def advantage (+0.131)
+
+BETTING VALUE
+  Market implied probability (Malcolm Wellmaker): 50.0%
+  Model probability (Malcolm Wellmaker):          33.5%
+  Edge: -16.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Julius Walker vs Gerald Meerschaert
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Julius Walker: 75.4%
+  Gerald Meerschaert: 24.6%
+  → Predicted winner: Julius Walker (75.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.4%
+  Submission:  15.1%
+  Decision:    41.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 48.0%
+  Goes the distance:            52.0%
+
+KEY FACTORS FOR Julius Walker
+  + Age Vs Peak advantage (+0.233)
+  + Age advantage (+0.224)
+  + Style Pressure L3 advantage (+0.122)
+  + Td Success Prob advantage (+0.120)
+  + Style Pressure L5 advantage (+0.107)
+
+KEY FACTORS FOR Gerald Meerschaert
+  + Elo Uncertainty advantage (+0.166)
+  + Decision Rate advantage (+0.145)
+  + Style Finisher advantage (+0.107)
+
+BETTING VALUE
+  Market implied probability (Julius Walker): 50.0%
+  Model probability (Julius Walker):          75.4%
+  Edge: +25.4%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Francisco Prado vs Ismael Bonfim
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Francisco Prado: 53.4%
+  Ismael Bonfim: 46.6%
+  → Predicted winner: Francisco Prado (53.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.9%
+  Submission:  14.3%
+  Decision:    48.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.3%
+  Goes the distance:            56.7%
+
+KEY FACTORS FOR Francisco Prado
+  + Age Vs Peak advantage (+0.191)
+  + Td Success Prob advantage (+0.132)
+  + Style Suppression B advantage (+0.121)
+  + Age advantage (+0.085)
+  + Reach Strike advantage (+0.067)
+
+KEY FACTORS FOR Ismael Bonfim
+  + Elo advantage (+0.209)
+  + Style Finisher advantage (+0.095)
+  + Durability advantage (+0.083)
+  + Style Suppression A advantage (+0.060)
+
+BETTING VALUE
+  Market implied probability (Francisco Prado): 50.0%
+  Model probability (Francisco Prado):          53.4%
+  Edge: +3.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Niko Price vs Leon Shahbazyan
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Niko Price: 51.2%
+  Leon Shahbazyan: 48.8%
+  → Predicted winner: Niko Price (51.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  24.9%
+  Decision:    43.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 53.1%
+  Goes the distance:            46.9%
+
+KEY FACTORS FOR Niko Price
+  + Striking Edge advantage (+0.238)
+  + Avg Opponent Elo advantage (+0.195)
+  + Sapm advantage (+0.119)
+  + Elo Uncertainty advantage (+0.092)
+  + Td Success Prob advantage (+0.092)
+
+KEY FACTORS FOR Leon Shahbazyan
+  + Age Vs Peak advantage (+0.325)
+  + Sub Avg advantage (+0.140)
+  + Elo Vs Peak advantage (+0.124)
+  + Elo advantage (+0.108)
+  + Style Finisher advantage (+0.091)
+
+BETTING VALUE
+  Market implied probability (Niko Price): 50.0%
+  Model probability (Niko Price):          51.2%
+  Edge: +1.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Felipe Franco vs Brendson Ribeiro
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Felipe Franco: 55.8%
+  Brendson Ribeiro: 44.2%
+  → Predicted winner: Felipe Franco (55.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.0%
+  Submission:  19.9%
+  Decision:    42.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.8%
+  Goes the distance:            56.2%
+
+KEY FACTORS FOR Felipe Franco
+  + Elo advantage (+0.335)
+  + Style Suppression B advantage (+0.190)
+  + Age Vs Peak advantage (+0.182)
+  + Age advantage (+0.102)
+
+KEY FACTORS FOR Brendson Ribeiro
+  + Elo Uncertainty advantage (+0.219)
+  + Elo Vs Peak advantage (+0.100)
+  + Td Success Prob advantage (+0.074)
+  + Elo Trend advantage (+0.072)
+  + Reach Strike advantage (+0.068)
+
+BETTING VALUE
+  Market implied probability (Felipe Franco): 50.0%
+  Model probability (Felipe Franco):          55.8%
+  Edge: +5.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Allen Frye Jr. vs RJ Harris
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Allen Frye Jr.: 45.1%
+  RJ Harris: 54.9%
+  → Predicted winner: RJ Harris (54.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.6%
+  Submission:  28.2%
+  Decision:    37.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.8%
+  Goes the distance:            50.2%
+
+KEY FACTORS FOR Allen Frye Jr.
+  + Durability advantage (+0.066)
+  + Elo Uncertainty advantage (+0.049)
+  + Reach Strike advantage (+0.044)
+  + Elo Vs Peak advantage (+0.023)
+  + Kd Ratio advantage (+0.021)
+
+KEY FACTORS FOR RJ Harris
+  + Elo advantage (+0.130)
+  + Td Success Prob advantage (+0.055)
+  + Age Vs Peak advantage (+0.055)
+  + Age advantage (+0.045)
+  + Striking Edge advantage (+0.035)
+
+BETTING VALUE
+  Market implied probability (Allen Frye Jr.): 50.0%
+  Model probability (Allen Frye Jr.):          45.1%
+  Edge: -4.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alice Pereira vs Daria Zhelezniakova
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alice Pereira: 50.5%
+  Daria Zhelezniakova: 49.5%
+  → Predicted winner: Alice Pereira (50.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.1%
+  Submission:  18.1%
+  Decision:    41.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.9%
+  Goes the distance:            59.1%
+
+KEY FACTORS FOR Alice Pereira
+  + Elo advantage (+0.263)
+  + Age Vs Peak advantage (+0.246)
+  + Strike Def advantage (+0.147)
+  + Age advantage (+0.108)
+  + Win Rate advantage (+0.102)
+
+KEY FACTORS FOR Daria Zhelezniakova
+  + Elo Uncertainty advantage (+0.317)
+  + Td Def advantage (+0.187)
+  + Avg Opponent Elo advantage (+0.142)
+  + Td Success Prob advantage (+0.133)
+  + Td Avg advantage (+0.113)
+
+BETTING VALUE
+  Market implied probability (Alice Pereira): 50.0%
+  Model probability (Alice Pereira):          50.5%
+  Edge: +0.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Allen vs. Duncan
+October 10, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ernesta Kareckaite vs Melissa Gatto
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ernesta Kareckaite: 27.8%
+  Melissa Gatto: 72.2%
+  → Predicted winner: Melissa Gatto (72.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    20.8%
+  Submission:  16.6%
+  Decision:    62.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.9%
+  Goes the distance:            59.1%
+
+KEY FACTORS FOR Ernesta Kareckaite
+  + Age Vs Peak advantage (+0.109)
+  + Style Finisher advantage (+0.083)
+
+KEY FACTORS FOR Melissa Gatto
+  + Style Pressure L3 advantage (+0.248)
+  + Td Def advantage (+0.222)
+  + Elo advantage (+0.204)
+  + Cardio Decay advantage (+0.168)
+  + Decision Rate advantage (+0.155)
+
+BETTING VALUE
+  Market implied probability (Ernesta Kareckaite): 50.0%
+  Model probability (Ernesta Kareckaite):          27.8%
+  Edge: -22.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-09 20:14 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Otari Tanzilovi  (Model: 66.5%  Edge: +32.9%)
+  2. Melissa Gatto  (Model: 72.2%  Edge: +20.1%)
+  3. Allen Frye Jr.  (Model: 45.1%  Edge: +19.9%)
+  4. Brendan Allen  (Model: 61.6%  Edge: +9.0%)
