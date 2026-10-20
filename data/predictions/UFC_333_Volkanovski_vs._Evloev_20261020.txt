@@ -1,0 +1,785 @@
+
+══════════════════════════════════════════════════════════════
+  UFC 333: VOLKANOVSKI VS. EVLOEV
+  Generated: 2026-10-20 19:16 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alexander Volkanovski vs Movsar Evloev
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alexander Volkanovski: 30.6%
+  Movsar Evloev: 69.4%
+  → Predicted winner: Movsar Evloev (69.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    36.8%
+  Submission:  25.0%
+  Decision:    38.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.1%
+  Goes the distance:            52.9%
+
+KEY FACTORS FOR Alexander Volkanovski
+  + Durability advantage (+0.059)
+  + Style Suppression B advantage (+0.046)
+
+KEY FACTORS FOR Movsar Evloev
+  + Elo advantage (+0.777)
+  + Elo Uncertainty advantage (+0.339)
+  + Age Vs Peak advantage (+0.282)
+  + Avg Opponent Elo advantage (+0.116)
+  + Age advantage (+0.116)
+
+BETTING VALUE
+  Market implied probability (Alexander Volkanovski): 50.0%
+  Model probability (Alexander Volkanovski):          30.6%
+  Edge: -19.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Petr Yan vs Merab Dvalishvili
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Petr Yan: 44.4%
+  Merab Dvalishvili: 55.6%
+  → Predicted winner: Merab Dvalishvili (55.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.7%
+  Submission:  9.2%
+  Decision:    57.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.9%
+  Goes the distance:            60.1%
+
+KEY FACTORS FOR Petr Yan
+  + Head Strike Rate advantage (+0.117)
+  + Style Suppression B advantage (+0.093)
+  + Age advantage (+0.092)
+  + Age Vs Peak advantage (+0.076)
+
+KEY FACTORS FOR Merab Dvalishvili
+  + Style Pressure L3 advantage (+0.236)
+  + Elo advantage (+0.221)
+  + Td Def advantage (+0.140)
+  + Td Avg advantage (+0.115)
+  + Style Pressure L5 advantage (+0.101)
+
+BETTING VALUE
+  Market implied probability (Petr Yan): 50.0%
+  Model probability (Petr Yan):          44.4%
+  Edge: -5.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Lone'er Kavanagh vs Ramazan Temirov
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Lone'er Kavanagh: 29.0%
+  Ramazan Temirov: 71.0%
+  → Predicted winner: Ramazan Temirov (71.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.6%
+  Submission:  16.3%
+  Decision:    51.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.4%
+  Goes the distance:            56.6%
+
+KEY FACTORS FOR Lone'er Kavanagh
+  + Elo Uncertainty advantage (+0.203)
+  + Age Vs Peak advantage (+0.121)
+  + Age advantage (+0.118)
+
+KEY FACTORS FOR Ramazan Temirov
+  + Style Pressure L3 advantage (+0.586)
+  + Style Pressure L5 advantage (+0.234)
+  + Style Suppression A advantage (+0.105)
+  + Td Success Prob advantage (+0.078)
+  + Elo advantage (+0.064)
+
+BETTING VALUE
+  Market implied probability (Lone'er Kavanagh): 50.0%
+  Model probability (Lone'er Kavanagh):          29.0%
+  Edge: -21.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alexander Volkov vs Rizvan Kuniev
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alexander Volkov: 58.3%
+  Rizvan Kuniev: 41.7%
+  → Predicted winner: Alexander Volkov (58.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    51.8%
+  Submission:  12.9%
+  Decision:    35.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.8%
+  Goes the distance:            52.2%
+
+KEY FACTORS FOR Alexander Volkov
+  + Elo advantage (+0.285)
+  + Style Pressure L3 advantage (+0.226)
+  + Style Pressure L5 advantage (+0.089)
+  + Elo Uncertainty advantage (+0.089)
+  + Reach Strike advantage (+0.044)
+
+KEY FACTORS FOR Rizvan Kuniev
+  + Age Vs Peak advantage (+0.232)
+  + Durability advantage (+0.120)
+  + Style Suppression A advantage (+0.114)
+  + Age advantage (+0.080)
+  + Style Suppression B advantage (+0.043)
+
+BETTING VALUE
+  Market implied probability (Alexander Volkov): 50.0%
+  Model probability (Alexander Volkov):          58.3%
+  Edge: +8.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Aaron Pico vs Losene Keita
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Aaron Pico: 63.5%
+  Losene Keita: 36.5%
+  → Predicted winner: Aaron Pico (63.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.4%
+  Submission:  17.8%
+  Decision:    49.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.7%
+  Goes the distance:            54.3%
+
+KEY FACTORS FOR Aaron Pico
+  + Td Success Prob advantage (+0.297)
+  + Elo advantage (+0.183)
+  + Reach Strike advantage (+0.085)
+  + Elo Uncertainty advantage (+0.045)
+  + Elo Vs Peak advantage (+0.028)
+
+KEY FACTORS FOR Losene Keita
+  + Age Vs Peak advantage (+0.180)
+  + Age advantage (+0.075)
+  + Avg Opponent Elo advantage (+0.066)
+  + Durability advantage (+0.047)
+
+BETTING VALUE
+  Market implied probability (Aaron Pico): 50.0%
+  Model probability (Aaron Pico):          63.5%
+  Edge: +13.5%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Azamat Murzakanov vs Dominick Reyes
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Azamat Murzakanov: 44.2%
+  Dominick Reyes: 55.8%
+  → Predicted winner: Dominick Reyes (55.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.0%
+  Submission:  10.5%
+  Decision:    52.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.1%
+  Goes the distance:            54.9%
+
+KEY FACTORS FOR Azamat Murzakanov
+  + Sub Avg advantage (+0.108)
+  + Recent Win Rate advantage (+0.097)
+  + Early Output Share advantage (+0.084)
+  + Sapm advantage (+0.071)
+  + Td Def advantage (+0.061)
+
+KEY FACTORS FOR Dominick Reyes
+  + Reach advantage (+0.318)
+  + Age Vs Peak advantage (+0.083)
+  + Style Pressure L3 advantage (+0.074)
+  + Style Pressure L5 advantage (+0.063)
+
+BETTING VALUE
+  Market implied probability (Azamat Murzakanov): 50.0%
+  Model probability (Azamat Murzakanov):          44.2%
+  Edge: -5.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Nikita Krylov vs Abdul Rakhman Yakhyaev
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Nikita Krylov: 46.5%
+  Abdul Rakhman Yakhyaev: 53.5%
+  → Predicted winner: Abdul Rakhman Yakhyaev (53.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    47.7%
+  Submission:  9.7%
+  Decision:    42.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 53.4%
+  Goes the distance:            46.6%
+
+KEY FACTORS FOR Nikita Krylov
+  + Avg Opponent Elo advantage (+0.230)
+  + Early Output Share advantage (+0.107)
+  + Td Success Prob advantage (+0.105)
+  + Elo Uncertainty advantage (+0.084)
+
+KEY FACTORS FOR Abdul Rakhman Yakhyaev
+  + Age Vs Peak advantage (+0.314)
+  + Ground Strike Share advantage (+0.097)
+  + Age advantage (+0.096)
+  + Grapple Dom advantage (+0.079)
+  + Elo advantage (+0.074)
+
+BETTING VALUE
+  Market implied probability (Nikita Krylov): 50.0%
+  Model probability (Nikita Krylov):          46.5%
+  Edge: -3.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Abus Magomedov vs Cam Rowston
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Abus Magomedov: 51.5%
+  Cam Rowston: 48.5%
+  → Predicted winner: Abus Magomedov (51.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.9%
+  Submission:  14.6%
+  Decision:    44.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.8%
+  Goes the distance:            57.2%
+
+KEY FACTORS FOR Abus Magomedov
+  + Td Success Prob advantage (+0.224)
+  + Sapm advantage (+0.137)
+  + Avg Opponent Elo advantage (+0.134)
+  + Elo Uncertainty advantage (+0.107)
+
+KEY FACTORS FOR Cam Rowston
+  + Age Vs Peak advantage (+0.201)
+  + Head Strike Rate advantage (+0.148)
+  + Kd Ratio advantage (+0.135)
+  + Ground Strike Share advantage (+0.124)
+  + Age advantage (+0.091)
+
+BETTING VALUE
+  Market implied probability (Abus Magomedov): 50.0%
+  Model probability (Abus Magomedov):          51.5%
+  Edge: +1.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Grant Dawson vs Nurullo Aliev
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Grant Dawson: 63.8%
+  Nurullo Aliev: 36.2%
+  → Predicted winner: Grant Dawson (63.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    40.8%
+  Submission:  13.3%
+  Decision:    45.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.1%
+  Goes the distance:            56.9%
+
+KEY FACTORS FOR Grant Dawson
+  + Td Success Prob advantage (+0.465)
+  + Elo advantage (+0.304)
+  + Style Pressure L3 advantage (+0.169)
+  + Style Suppression B advantage (+0.090)
+  + Elo Uncertainty advantage (+0.083)
+
+KEY FACTORS FOR Nurullo Aliev
+  + Age Vs Peak advantage (+0.258)
+  + Style Suppression A advantage (+0.116)
+  + Style Suppression advantage (+0.094)
+  + Age advantage (+0.077)
+
+BETTING VALUE
+  Market implied probability (Grant Dawson): 50.0%
+  Model probability (Grant Dawson):          63.8%
+  Edge: +13.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Colby Thicknesse vs Asaf Chopurov
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Colby Thicknesse: 51.3%
+  Asaf Chopurov: 48.7%
+  → Predicted winner: Colby Thicknesse (51.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    22.6%
+  Submission:  14.2%
+  Decision:    63.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.4%
+  Goes the distance:            59.6%
+
+KEY FACTORS FOR Colby Thicknesse
+  + Elo advantage (+0.151)
+  + Elo Uncertainty advantage (+0.123)
+  + Td Success Prob advantage (+0.068)
+  + Reach Strike advantage (+0.033)
+  + Elo Vs Peak advantage (+0.030)
+
+KEY FACTORS FOR Asaf Chopurov
+  + Age Vs Peak advantage (+0.276)
+  + Age advantage (+0.117)
+  + Decision Rate advantage (+0.066)
+
+BETTING VALUE
+  Market implied probability (Colby Thicknesse): 50.0%
+  Model probability (Colby Thicknesse):          51.3%
+  Edge: +1.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Abubakar Vagaev vs Jacob Malkoun
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Abubakar Vagaev: 44.3%
+  Jacob Malkoun: 55.7%
+  → Predicted winner: Jacob Malkoun (55.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    41.3%
+  Submission:  22.5%
+  Decision:    36.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 53.6%
+  Goes the distance:            46.4%
+
+KEY FACTORS FOR Abubakar Vagaev
+  + Sapm advantage (+0.159)
+  + Td Def advantage (+0.096)
+  + Win Rate advantage (+0.059)
+
+KEY FACTORS FOR Jacob Malkoun
+  + Elo Uncertainty advantage (+0.270)
+  + Age Vs Peak advantage (+0.242)
+  + Td Avg advantage (+0.196)
+  + Elo advantage (+0.135)
+  + Age advantage (+0.112)
+
+BETTING VALUE
+  Market implied probability (Abubakar Vagaev): 50.0%
+  Model probability (Abubakar Vagaev):          44.3%
+  Edge: -5.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Bolaji Oki vs Daniel Santos
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Bolaji Oki: 53.1%
+  Daniel Santos: 46.9%
+  → Predicted winner: Bolaji Oki (53.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.9%
+  Submission:  14.0%
+  Decision:    58.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.1%
+  Goes the distance:            58.9%
+
+KEY FACTORS FOR Bolaji Oki
+  + Style Pressure L3 advantage (+0.377)
+  + Age Vs Peak advantage (+0.197)
+  + Style Pressure L5 advantage (+0.148)
+  + Reach advantage (+0.124)
+  + Sapm advantage (+0.104)
+
+KEY FACTORS FOR Daniel Santos
+  + Elo advantage (+0.379)
+  + Style Wrestling L3 advantage (+0.193)
+  + Decision Rate advantage (+0.139)
+  + Elo Vs Peak advantage (+0.112)
+  + Style Striker L3 advantage (+0.077)
+
+BETTING VALUE
+  Market implied probability (Bolaji Oki): 50.0%
+  Model probability (Bolaji Oki):          53.1%
+  Edge: +3.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Kody Steele vs Noah Gugnon
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Kody Steele: 50.2%
+  Noah Gugnon: 49.8%
+  → Predicted winner: Kody Steele (50.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.1%
+  Submission:  22.8%
+  Decision:    45.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 48.9%
+  Goes the distance:            51.1%
+
+KEY FACTORS FOR Kody Steele
+  + Sapm advantage (+0.152)
+  + Td Success Prob advantage (+0.105)
+  + Sub Avg advantage (+0.098)
+  + Elo Uncertainty advantage (+0.082)
+  + Td Def advantage (+0.060)
+
+KEY FACTORS FOR Noah Gugnon
+  + Age Vs Peak advantage (+0.238)
+  + Strike Def advantage (+0.121)
+  + Age advantage (+0.118)
+  + Elo advantage (+0.090)
+  + Avg Opponent Elo advantage (+0.051)
+
+BETTING VALUE
+  Market implied probability (Kody Steele): 50.0%
+  Model probability (Kody Steele):          50.2%
+  Edge: +0.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 333: Volkanovski vs. Evloev
+October 24, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Iasmin Lucindo vs Nicolle Caliari
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Iasmin Lucindo: 78.7%
+  Nicolle Caliari: 21.3%
+  → Predicted winner: Iasmin Lucindo (78.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.4%
+  Submission:  17.4%
+  Decision:    56.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.2%
+  Goes the distance:            55.8%
+
+KEY FACTORS FOR Iasmin Lucindo
+  + Elo advantage (+0.316)
+  + Style Pressure L3 advantage (+0.258)
+  + Age Vs Peak advantage (+0.203)
+  + Sapm advantage (+0.186)
+  + Age advantage (+0.186)
+
+KEY FACTORS FOR Nicolle Caliari
+  + Win Rate advantage (+0.253)
+  + Td Def advantage (+0.076)
+  + Style Suppression A advantage (+0.065)
+
+BETTING VALUE
+  Market implied probability (Iasmin Lucindo): 50.0%
+  Model probability (Iasmin Lucindo):          78.7%
+  Edge: +28.7%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-10-20 19:16 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Ramazan Temirov  (Model: 71.0%  Edge: +21.0%)
+  2. Dominick Reyes  (Model: 55.8%  Edge: +20.7%)
+  3. Movsar Evloev  (Model: 69.4%  Edge: +19.0%)
+  4. Jacob Malkoun  (Model: 55.7%  Edge: +16.8%)
+  5. Aaron Pico  (Model: 63.5%  Edge: +11.6%)
+  6. Noah Gugnon  (Model: 49.8%  Edge: +10.9%)
+  7. Grant Dawson  (Model: 63.8%  Edge: +10.0%)
+  8. Bolaji Oki  (Model: 53.1%  Edge: +7.8%)
