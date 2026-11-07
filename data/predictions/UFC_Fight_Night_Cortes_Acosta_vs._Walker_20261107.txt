@@ -1,0 +1,779 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: CORTES ACOSTA VS. WALKER
+  Generated: 2026-11-07 19:29 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Waldo Cortes Acosta vs Johnny Walker
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Waldo Cortes Acosta: 34.5%
+  Johnny Walker: 65.5%
+  → Predicted winner: Johnny Walker (65.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    49.6%
+  Submission:  12.5%
+  Decision:    37.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.0%
+  Goes the distance:            53.0%
+
+KEY FACTORS FOR Waldo Cortes Acosta
+  + Elo advantage (+0.221)
+  + Elo Uncertainty advantage (+0.098)
+
+KEY FACTORS FOR Johnny Walker
+  + Win Rate advantage (+0.202)
+  + Age Vs Peak advantage (+0.129)
+  + Style Suppression A advantage (+0.116)
+  + Decision Rate advantage (+0.094)
+  + Avg Opponent Elo advantage (+0.089)
+
+BETTING VALUE
+  Market implied probability (Waldo Cortes Acosta): 50.0%
+  Model probability (Waldo Cortes Acosta):          34.5%
+  Edge: -15.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Tatiana Suarez vs Virna Jandiroba
+Weight Class: Women's Strawweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Tatiana Suarez: 79.5%
+  Virna Jandiroba: 20.5%
+  → Predicted winner: Tatiana Suarez (79.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    33.0%
+  Submission:  12.9%
+  Decision:    54.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.1%
+  Goes the distance:            56.9%
+
+KEY FACTORS FOR Tatiana Suarez
+  + Style Pressure L3 advantage (+0.324)
+  + Age Vs Peak advantage (+0.234)
+  + Elo advantage (+0.221)
+  + Age advantage (+0.175)
+  + Ground Strike Share advantage (+0.153)
+
+KEY FACTORS FOR Virna Jandiroba
+  + Style Suppression A advantage (+0.101)
+  + Early Output Share advantage (+0.073)
+
+BETTING VALUE
+  Market implied probability (Tatiana Suarez): 50.0%
+  Model probability (Tatiana Suarez):          79.5%
+  Edge: +29.5%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Davey Grant vs Elijah Smith
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Davey Grant: 30.4%
+  Elijah Smith: 69.6%
+  → Predicted winner: Elijah Smith (69.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    53.0%
+  Submission:  8.3%
+  Decision:    38.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.4%
+  Goes the distance:            61.6%
+
+KEY FACTORS FOR Davey Grant
+  + Sub Avg advantage (+0.155)
+  + Td Success Prob advantage (+0.130)
+  + Striking Edge advantage (+0.128)
+  + Style Wrestling L3 advantage (+0.110)
+  + Td Def advantage (+0.102)
+
+KEY FACTORS FOR Elijah Smith
+  + Age advantage (+0.657)
+  + Age Vs Peak advantage (+0.423)
+  + Style Pressure L3 advantage (+0.258)
+  + Ground Strike Share advantage (+0.101)
+
+BETTING VALUE
+  Market implied probability (Davey Grant): 50.0%
+  Model probability (Davey Grant):          30.4%
+  Edge: -19.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Billy Elekana vs Lucas Fernando
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Billy Elekana: 61.3%
+  Lucas Fernando: 38.8%
+  → Predicted winner: Billy Elekana (61.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    29.8%
+  Submission:  25.6%
+  Decision:    44.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 48.8%
+  Goes the distance:            51.2%
+
+KEY FACTORS FOR Billy Elekana
+  + Elo advantage (+0.203)
+  + Sapm advantage (+0.130)
+  + Elo Uncertainty advantage (+0.100)
+  + Td Success Prob advantage (+0.092)
+  + Sub Rate advantage (+0.086)
+
+KEY FACTORS FOR Lucas Fernando
+  + Strike Def advantage (+0.176)
+  + Win Rate advantage (+0.148)
+  + Sub Avg advantage (+0.114)
+  + Decision Rate advantage (+0.079)
+
+BETTING VALUE
+  Market implied probability (Billy Elekana): 50.0%
+  Model probability (Billy Elekana):          61.3%
+  Edge: +11.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Priscila Cachoeira vs Nina Milosevic
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Priscila Cachoeira: 29.7%
+  Nina Milosevic: 70.3%
+  → Predicted winner: Nina Milosevic (70.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    32.8%
+  Submission:  14.6%
+  Decision:    52.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.7%
+  Goes the distance:            54.3%
+
+KEY FACTORS FOR Priscila Cachoeira
+  + Avg Opponent Elo advantage (+0.271)
+  + Elo Uncertainty advantage (+0.084)
+  + Win Rate advantage (+0.062)
+  + Td Acc advantage (+0.059)
+
+KEY FACTORS FOR Nina Milosevic
+  + Elo advantage (+0.511)
+  + Age Vs Peak advantage (+0.248)
+  + Age advantage (+0.136)
+  + Td Def advantage (+0.096)
+  + Style Finisher advantage (+0.086)
+
+BETTING VALUE
+  Market implied probability (Priscila Cachoeira): 50.0%
+  Model probability (Priscila Cachoeira):          29.7%
+  Edge: -20.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mitch Raposo vs Marcos Degli
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mitch Raposo: 45.9%
+  Marcos Degli: 54.1%
+  → Predicted winner: Marcos Degli (54.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    23.8%
+  Submission:  11.9%
+  Decision:    64.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.4%
+  Goes the distance:            59.6%
+
+KEY FACTORS FOR Mitch Raposo
+  + Elo Uncertainty advantage (+0.182)
+  + Elo advantage (+0.114)
+  + Td Success Prob advantage (+0.065)
+  + Reach Strike advantage (+0.059)
+  + Elo Vs Peak advantage (+0.036)
+
+KEY FACTORS FOR Marcos Degli
+  + Age Vs Peak advantage (+0.261)
+  + Age advantage (+0.089)
+  + Style Suppression advantage (+0.079)
+  + Decision Rate advantage (+0.065)
+  + Style Suppression A advantage (+0.029)
+
+BETTING VALUE
+  Market implied probability (Mitch Raposo): 50.0%
+  Model probability (Mitch Raposo):          45.9%
+  Edge: -4.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Keiichiro Nakamura vs Ollie Schmid
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Keiichiro Nakamura: 65.3%
+  Ollie Schmid: 34.7%
+  → Predicted winner: Keiichiro Nakamura (65.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.4%
+  Submission:  33.1%
+  Decision:    39.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.7%
+  Goes the distance:            52.3%
+
+KEY FACTORS FOR Keiichiro Nakamura
+  + Striking Edge advantage (+0.249)
+  + Elo advantage (+0.226)
+  + Durability advantage (+0.119)
+  + Is Southpaw A Vs Orthodox B advantage (+0.047)
+  + Elo Vs Peak advantage (+0.037)
+
+KEY FACTORS FOR Ollie Schmid
+  + Age Vs Peak advantage (+0.222)
+  + Age advantage (+0.082)
+  + Td Success Prob advantage (+0.039)
+
+BETTING VALUE
+  Market implied probability (Keiichiro Nakamura): 50.0%
+  Model probability (Keiichiro Nakamura):          65.3%
+  Edge: +15.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Gabriel Lorenco vs Thomas Petersen
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Gabriel Lorenco: 46.2%
+  Thomas Petersen: 53.8%
+  → Predicted winner: Thomas Petersen (53.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    30.1%
+  Submission:  15.8%
+  Decision:    54.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 41.7%
+  Goes the distance:            58.3%
+
+KEY FACTORS FOR Gabriel Lorenco
+  + Age Vs Peak advantage (+0.184)
+  + Elo advantage (+0.145)
+  + Age advantage (+0.131)
+  + Elo Vs Peak advantage (+0.032)
+  + Reach advantage (+0.031)
+
+KEY FACTORS FOR Thomas Petersen
+  + Elo Uncertainty advantage (+0.449)
+  + Td Success Prob advantage (+0.065)
+  + Reach Strike advantage (+0.064)
+  + Avg Opponent Elo advantage (+0.049)
+
+BETTING VALUE
+  Market implied probability (Gabriel Lorenco): 50.0%
+  Model probability (Gabriel Lorenco):          46.2%
+  Edge: -3.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Karine Silva vs Gabriella Fernandes
+Weight Class: Women's Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Karine Silva: 68.1%
+  Gabriella Fernandes: 31.9%
+  → Predicted winner: Karine Silva (68.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.8%
+  Submission:  27.3%
+  Decision:    43.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.4%
+  Goes the distance:            54.6%
+
+KEY FACTORS FOR Karine Silva
+  + Style Pressure L3 advantage (+0.270)
+  + Avg Opponent Elo advantage (+0.207)
+  + Elo advantage (+0.204)
+  + Style Pressure L5 advantage (+0.131)
+  + Age advantage (+0.117)
+
+KEY FACTORS FOR Gabriella Fernandes
+  + Style Wrestling L3 advantage (+0.298)
+  + Sub Avg advantage (+0.149)
+  + Kd Ratio advantage (+0.081)
+
+BETTING VALUE
+  Market implied probability (Karine Silva): 50.0%
+  Model probability (Karine Silva):          68.1%
+  Edge: +18.1%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jose Delano vs Murtazali Magomedov
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jose Delano: 56.5%
+  Murtazali Magomedov: 43.5%
+  → Predicted winner: Jose Delano (56.5% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    29.2%
+  Submission:  25.7%
+  Decision:    45.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.2%
+  Goes the distance:            53.8%
+
+KEY FACTORS FOR Jose Delano
+  + Slpm advantage (+0.151)
+  + Td Acc advantage (+0.122)
+  + Td Def advantage (+0.102)
+  + Reach Strike advantage (+0.100)
+  + Striking Edge advantage (+0.064)
+
+KEY FACTORS FOR Murtazali Magomedov
+  + Age Vs Peak advantage (+0.195)
+  + Age advantage (+0.131)
+  + Strike Def advantage (+0.125)
+  + Sub Avg advantage (+0.077)
+  + Td Avg advantage (+0.071)
+
+BETTING VALUE
+  Market implied probability (Jose Delano): 50.0%
+  Model probability (Jose Delano):          56.5%
+  Edge: +6.5%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Austin Bashi vs Carlos Calderon
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Austin Bashi: 61.6%
+  Carlos Calderon: 38.4%
+  → Predicted winner: Austin Bashi (61.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    43.5%
+  Submission:  21.6%
+  Decision:    35.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.6%
+  Goes the distance:            50.4%
+
+KEY FACTORS FOR Austin Bashi
+  + Age Vs Peak advantage (+0.195)
+  + Age advantage (+0.155)
+  + Elo Uncertainty advantage (+0.136)
+  + Avg Opponent Elo advantage (+0.045)
+  + Sub Rate advantage (+0.044)
+
+KEY FACTORS FOR Carlos Calderon
+  + Elo advantage (+0.134)
+  + Finish Threat advantage (+0.093)
+  + Reach Strike advantage (+0.082)
+  + Td Success Prob advantage (+0.082)
+  + Reach advantage (+0.035)
+
+BETTING VALUE
+  Market implied probability (Austin Bashi): 50.0%
+  Model probability (Austin Bashi):          61.6%
+  Edge: +11.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Mantas Kondratavicius vs Andre Petroski
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Mantas Kondratavicius: 56.3%
+  Andre Petroski: 43.7%
+  → Predicted winner: Mantas Kondratavicius (56.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.8%
+  Submission:  15.3%
+  Decision:    58.9%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.5%
+  Goes the distance:            57.5%
+
+KEY FACTORS FOR Mantas Kondratavicius
+  + Td Success Prob advantage (+0.361)
+  + Age Vs Peak advantage (+0.193)
+  + Age advantage (+0.121)
+  + Reach Strike advantage (+0.104)
+  + Win Rate advantage (+0.100)
+
+KEY FACTORS FOR Andre Petroski
+  + Elo Uncertainty advantage (+0.406)
+  + Striking Edge advantage (+0.192)
+
+BETTING VALUE
+  Market implied probability (Mantas Kondratavicius): 50.0%
+  Model probability (Mantas Kondratavicius):          56.3%
+  Edge: +6.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Seokhyeon Ko vs Wellington Turman
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Seokhyeon Ko: 55.9%
+  Wellington Turman: 44.1%
+  → Predicted winner: Seokhyeon Ko (55.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    34.9%
+  Submission:  14.1%
+  Decision:    51.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.8%
+  Goes the distance:            56.2%
+
+KEY FACTORS FOR Seokhyeon Ko
+  + Elo advantage (+0.303)
+  + Win Streak advantage (+0.189)
+  + Style Suppression B advantage (+0.153)
+  + Elo Trend advantage (+0.113)
+  + Elo Uncertainty advantage (+0.086)
+
+KEY FACTORS FOR Wellington Turman
+  + Age Vs Peak advantage (+0.198)
+  + Win Rate advantage (+0.148)
+  + Reach Strike advantage (+0.080)
+  + Age advantage (+0.064)
+  + Momentum Score advantage (+0.063)
+
+BETTING VALUE
+  Market implied probability (Seokhyeon Ko): 50.0%
+  Model probability (Seokhyeon Ko):          55.9%
+  Edge: +5.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Cortes Acosta vs. Walker
+November 07, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jonny Parsons vs Jose Henrique
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jonny Parsons: 32.8%
+  Jose Henrique: 67.2%
+  → Predicted winner: Jose Henrique (67.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.3%
+  Submission:  19.2%
+  Decision:    49.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.1%
+  Goes the distance:            54.9%
+
+KEY FACTORS FOR Jonny Parsons
+  + Elo advantage (+0.054)
+  + Elo Vs Peak advantage (+0.029)
+  + Style Suppression advantage (+0.028)
+
+KEY FACTORS FOR Jose Henrique
+  + Age advantage (+0.642)
+  + Reach advantage (+0.401)
+  + Age Vs Peak advantage (+0.253)
+  + Reach Strike advantage (+0.066)
+  + Td Success Prob advantage (+0.051)
+
+BETTING VALUE
+  Market implied probability (Jonny Parsons): 50.0%
+  Model probability (Jonny Parsons):          32.8%
+  Edge: -17.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-07 19:29 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Billy Elekana  (Model: 61.3%  Edge: +35.3%)
+  2. Carlos Calderon  (Model: 38.4%  Edge: +20.6%)
+  3. Tatiana Suarez  (Model: 79.5%  Edge: +15.8%)
+  4. Ollie Schmid  (Model: 34.7%  Edge: +9.5%)
