@@ -1,7 +1,7 @@
 
 ══════════════════════════════════════════════════════════════
   UFC 334: GANE VS. HOKIT
-  Generated: 2026-11-10 00:17 UTC
+  Generated: 2026-11-10 21:42 UTC
 ══════════════════════════════════════════════════════════════
 
 
@@ -55,7 +55,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -109,7 +109,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -165,7 +165,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -273,7 +273,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -329,7 +329,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -384,7 +384,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -437,7 +437,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -492,7 +492,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -544,7 +544,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -598,7 +598,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -611,42 +611,40 @@ UFC 334: Gane vs. Hokit
 November 14, 2026
 
 ──────────────────────────────────────────────────────────────
-MATCHUP: Adrian Yanez vs Juan Diaz
+MATCHUP: Alatengheili vs Juan Diaz
 Weight Class: Bantamweight
 ──────────────────────────────────────────────────────────────
 
 WINNER PREDICTION
-  Adrian Yanez: 41.7%
-  Juan Diaz: 58.3%
-  → Predicted winner: Juan Diaz (58.3% confidence)
+  Alatengheili: 38.0%
+  Juan Diaz: 62.0%
+  → Predicted winner: Juan Diaz (62.0% confidence)
 
 METHOD OF VICTORY
-  KO / TKO:    29.8%
-  Submission:  12.9%
-  Decision:    57.2%
+  KO / TKO:    41.2%
+  Submission:  19.1%
+  Decision:    39.7%
 
 ROUNDS
-  Fight ends early (under 2.5): 43.8%
-  Goes the distance:            56.2%
+  Fight ends early (under 2.5): 42.8%
+  Goes the distance:            57.2%
 
-KEY FACTORS FOR Adrian Yanez
-  + Elo advantage (+0.161)
-  + Win Rate advantage (+0.137)
-  + Td Def advantage (+0.123)
-  + Sub Avg advantage (+0.079)
-  + Slpm advantage (+0.072)
+KEY FACTORS FOR Alatengheili
+  + Elo Uncertainty advantage (+0.106)
+  + Grapple Dom advantage (+0.105)
+  + Win Rate advantage (+0.079)
 
 KEY FACTORS FOR Juan Diaz
-  + Age Vs Peak advantage (+0.351)
-  + Elo Vs Peak advantage (+0.136)
-  + Strike Def advantage (+0.132)
-  + Age advantage (+0.108)
-  + Td Avg advantage (+0.087)
+  + Age Vs Peak advantage (+0.248)
+  + Td Success Prob advantage (+0.156)
+  + Age advantage (+0.083)
+  + Striking Edge advantage (+0.074)
+  + Reach advantage (+0.068)
 
 BETTING VALUE
-  Market implied probability (Adrian Yanez): 50.0%
-  Model probability (Adrian Yanez):          41.7%
-  Edge: -8.3%
+  Market implied probability (Alatengheili): 50.0%
+  Model probability (Alatengheili):          38.0%
+  Edge: -12.0%
     No significant edge
 
 UPSET WATCH
@@ -654,7 +652,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -710,7 +708,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-10 00:17 UTC
+Prediction generated: 2026-11-10 21:42 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -718,6 +716,7 @@ Model version: v1
 ══════════════════════════════════════════════════════════════
   TOP VALUE PICKS
 ══════════════════════════════════════════════════════════════
-  1. Josh Hokit  (Model: 60.3%  Edge: +26.7%)
-  2. Yousri Belgaroui  (Model: 48.8%  Edge: +8.8%)
+  1. Josh Hokit  (Model: 60.3%  Edge: +26.1%)
+  2. Alatengheili  (Model: 38.0%  Edge: +12.7%)
   3. Luis Gurule  (Model: 20.7%  Edge: +8.7%)
+  4. Yousri Belgaroui  (Model: 48.8%  Edge: +8.1%)
