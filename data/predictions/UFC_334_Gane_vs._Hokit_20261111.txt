@@ -1,0 +1,722 @@
+
+══════════════════════════════════════════════════════════════
+  UFC 334: GANE VS. HOKIT
+  Generated: 2026-11-11 22:01 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Ciryl Gane vs Josh Hokit
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Ciryl Gane: 39.7%
+  Josh Hokit: 60.3%
+  → Predicted winner: Josh Hokit (60.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    41.0%
+  Submission:  20.3%
+  Decision:    38.8%
+
+ROUNDS
+  Fight ends early (under 2.5): 50.7%
+  Goes the distance:            49.3%
+
+KEY FACTORS FOR Ciryl Gane
+  + Reach advantage (+0.404)
+  + Avg Opponent Elo advantage (+0.224)
+  + Elo advantage (+0.204)
+  + Early Output Share advantage (+0.183)
+
+KEY FACTORS FOR Josh Hokit
+  + Style Pressure L3 advantage (+0.457)
+  + Age Vs Peak advantage (+0.267)
+  + Td Def advantage (+0.137)
+  + Style Pressure L5 advantage (+0.115)
+  + Striking Edge advantage (+0.108)
+
+BETTING VALUE
+  Market implied probability (Ciryl Gane): 50.0%
+  Model probability (Ciryl Gane):          39.7%
+  Edge: -10.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Kayla Harrison vs Amanda Nunes
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Kayla Harrison: 74.8%
+  Amanda Nunes: 25.2%
+  → Predicted winner: Kayla Harrison (74.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    28.7%
+  Submission:  11.8%
+  Decision:    59.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.9%
+  Goes the distance:            57.1%
+
+KEY FACTORS FOR Kayla Harrison
+  + Age Vs Peak advantage (+0.244)
+  + Ufc Fights advantage (+0.230)
+  + Avg Opponent Elo advantage (+0.199)
+  + Style Pressure L3 advantage (+0.181)
+  + Reach Strike advantage (+0.132)
+
+KEY FACTORS FOR Amanda Nunes
+  + Elo advantage (+0.553)
+  + Elo Uncertainty advantage (+0.161)
+  + Kd Ratio advantage (+0.136)
+
+BETTING VALUE
+  Market implied probability (Kayla Harrison): 50.0%
+  Model probability (Kayla Harrison):          74.8%
+  Edge: +24.8%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Caio Borralho vs Yousri Belgaroui
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Caio Borralho: 51.2%
+  Yousri Belgaroui: 48.8%
+  → Predicted winner: Caio Borralho (51.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    44.0%
+  Submission:  12.4%
+  Decision:    43.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 46.8%
+  Goes the distance:            53.2%
+
+KEY FACTORS FOR Caio Borralho
+  + Elo advantage (+0.296)
+  + Td Success Prob advantage (+0.146)
+  + Ko Rate advantage (+0.141)
+  + Elo Uncertainty advantage (+0.136)
+  + Reach Strike advantage (+0.135)
+
+KEY FACTORS FOR Yousri Belgaroui
+  + Style Pressure L3 advantage (+0.442)
+  + Style Wrestling L3 advantage (+0.233)
+  + Style Pressure L5 advantage (+0.196)
+  + Style Striker L3 advantage (+0.118)
+  + Style Suppression A advantage (+0.092)
+
+BETTING VALUE
+  Market implied probability (Caio Borralho): 50.0%
+  Model probability (Caio Borralho):          51.2%
+  Edge: +1.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Uros Medic vs Kevin Holland
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Uros Medic: 49.7%
+  Kevin Holland: 50.3%
+  → Predicted winner: Kevin Holland (50.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.0%
+  Submission:  16.7%
+  Decision:    52.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 48.7%
+  Goes the distance:            51.3%
+
+KEY FACTORS FOR Uros Medic
+  + Style Pressure L3 advantage (+0.397)
+  + Elo advantage (+0.160)
+  + Style Pressure L5 advantage (+0.158)
+  + Age advantage (+0.103)
+  + Recent Finish Rate advantage (+0.086)
+
+KEY FACTORS FOR Kevin Holland
+  + Reach advantage (+0.360)
+  + Avg Opponent Elo advantage (+0.106)
+  + Style Suppression A advantage (+0.096)
+  + Td Success Prob advantage (+0.085)
+  + Striking Edge advantage (+0.077)
+
+BETTING VALUE
+  Market implied probability (Uros Medic): 50.0%
+  Model probability (Uros Medic):          49.7%
+  Edge: -0.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Bilal Hasan vs Luis Gurule
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Bilal Hasan: 79.3%
+  Luis Gurule: 20.7%
+  → Predicted winner: Bilal Hasan (79.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    11.0%
+  Submission:  14.3%
+  Decision:    74.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.4%
+  Goes the distance:            61.6%
+
+KEY FACTORS FOR Bilal Hasan
+  + Elo advantage (+0.255)
+  + Striking Edge advantage (+0.216)
+  + Age Vs Peak advantage (+0.211)
+  + Slpm advantage (+0.164)
+  + Strike Def advantage (+0.112)
+
+KEY FACTORS FOR Luis Gurule
+  + Elo Uncertainty advantage (+0.268)
+
+BETTING VALUE
+  Market implied probability (Bilal Hasan): 50.0%
+  Model probability (Bilal Hasan):          79.3%
+  Edge: +29.3%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Stephen Thompson vs Charles Radtke
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Stephen Thompson: 44.8%
+  Charles Radtke: 55.2%
+  → Predicted winner: Charles Radtke (55.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    21.3%
+  Submission:  15.1%
+  Decision:    63.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 40.6%
+  Goes the distance:            59.4%
+
+KEY FACTORS FOR Stephen Thompson
+  + Avg Opponent Elo advantage (+0.215)
+  + Early Output Share advantage (+0.102)
+  + Elo Uncertainty advantage (+0.087)
+  + Slpm advantage (+0.068)
+  + Td Acc advantage (+0.066)
+
+KEY FACTORS FOR Charles Radtke
+  + Style Pressure L3 advantage (+0.259)
+  + Age Vs Peak advantage (+0.242)
+  + Td Def advantage (+0.101)
+  + Age advantage (+0.062)
+  + Reach Strike advantage (+0.058)
+
+BETTING VALUE
+  Market implied probability (Stephen Thompson): 50.0%
+  Model probability (Stephen Thompson):          44.8%
+  Edge: -5.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Drew Dober vs Chris Duncan
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Drew Dober: 53.8%
+  Chris Duncan: 46.2%
+  → Predicted winner: Drew Dober (53.8% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.4%
+  Submission:  9.1%
+  Decision:    55.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.2%
+  Goes the distance:            57.8%
+
+KEY FACTORS FOR Drew Dober
+  + Style Pressure L3 advantage (+0.252)
+  + Sub Avg advantage (+0.152)
+  + Style Wrestling L3 advantage (+0.106)
+  + Style Pressure L5 advantage (+0.093)
+  + Elo Uncertainty advantage (+0.083)
+
+KEY FACTORS FOR Chris Duncan
+  + Age Vs Peak advantage (+0.167)
+  + Style Suppression advantage (+0.122)
+  + Age advantage (+0.095)
+  + Kd Ratio advantage (+0.087)
+
+BETTING VALUE
+  Market implied probability (Drew Dober): 50.0%
+  Model probability (Drew Dober):          53.8%
+  Edge: +3.8%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jim Miller vs Terrance McKinney
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jim Miller: 28.4%
+  Terrance McKinney: 71.6%
+  → Predicted winner: Terrance McKinney (71.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.2%
+  Submission:  22.4%
+  Decision:    42.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.3%
+  Goes the distance:            55.7%
+
+KEY FACTORS FOR Jim Miller
+  + Elo advantage (+0.282)
+  + Grapple Dom advantage (+0.105)
+
+KEY FACTORS FOR Terrance McKinney
+  + Age advantage (+0.615)
+  + Style Pressure L3 advantage (+0.504)
+  + Elo Vs Peak advantage (+0.271)
+  + Age Vs Peak advantage (+0.269)
+  + Td Avg advantage (+0.184)
+
+BETTING VALUE
+  Market implied probability (Jim Miller): 50.0%
+  Model probability (Jim Miller):          28.4%
+  Edge: -21.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Donte Johnson vs Cesar Almeida
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Donte Johnson: 57.2%
+  Cesar Almeida: 42.8%
+  → Predicted winner: Donte Johnson (57.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    35.8%
+  Submission:  16.6%
+  Decision:    47.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 47.0%
+  Goes the distance:            53.0%
+
+KEY FACTORS FOR Donte Johnson
+  + Elo advantage (+0.288)
+  + Age Vs Peak advantage (+0.287)
+  + Age advantage (+0.115)
+  + Ko Rate advantage (+0.093)
+  + Decision Rate advantage (+0.046)
+
+KEY FACTORS FOR Cesar Almeida
+  + Reach Strike advantage (+0.082)
+  + Avg Opponent Elo advantage (+0.077)
+  + Td Success Prob advantage (+0.045)
+  + Elo Vs Peak advantage (+0.041)
+
+BETTING VALUE
+  Market implied probability (Donte Johnson): 50.0%
+  Model probability (Donte Johnson):          57.2%
+  Edge: +7.2%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jared Gordon vs Melquizael Costa
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jared Gordon: 28.7%
+  Melquizael Costa: 71.3%
+  → Predicted winner: Melquizael Costa (71.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    17.4%
+  Submission:  10.6%
+  Decision:    72.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 36.0%
+  Goes the distance:            64.0%
+
+KEY FACTORS FOR Jared Gordon
+  + Elo Uncertainty advantage (+0.106)
+
+KEY FACTORS FOR Melquizael Costa
+  + Elo advantage (+0.737)
+  + Cardio Decay advantage (+0.345)
+  + Age Vs Peak advantage (+0.287)
+  + Elo Vs Peak advantage (+0.211)
+  + Striking Edge advantage (+0.191)
+
+BETTING VALUE
+  Market implied probability (Jared Gordon): 50.0%
+  Model probability (Jared Gordon):          28.7%
+  Edge: -21.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Macy Chiasson vs Bia Mesquita
+Weight Class: Women's Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Macy Chiasson: 40.4%
+  Bia Mesquita: 59.6%
+  → Predicted winner: Bia Mesquita (59.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.6%
+  Submission:  23.2%
+  Decision:    49.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 37.6%
+  Goes the distance:            62.4%
+
+KEY FACTORS FOR Macy Chiasson
+  + Td Success Prob advantage (+0.223)
+  + Early Output Share advantage (+0.142)
+  + Elo Uncertainty advantage (+0.123)
+
+KEY FACTORS FOR Bia Mesquita
+  + Style Pressure L3 advantage (+0.343)
+  + Style Pressure L5 advantage (+0.178)
+  + Elo Vs Peak advantage (+0.150)
+  + Elo advantage (+0.123)
+  + Striking Edge advantage (+0.088)
+
+BETTING VALUE
+  Market implied probability (Macy Chiasson): 50.0%
+  Model probability (Macy Chiasson):          40.4%
+  Edge: -9.6%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Alatengheili vs Juan Diaz
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Alatengheili: 38.0%
+  Juan Diaz: 62.0%
+  → Predicted winner: Juan Diaz (62.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    41.2%
+  Submission:  19.1%
+  Decision:    39.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.8%
+  Goes the distance:            57.2%
+
+KEY FACTORS FOR Alatengheili
+  + Elo Uncertainty advantage (+0.106)
+  + Grapple Dom advantage (+0.105)
+  + Win Rate advantage (+0.079)
+
+KEY FACTORS FOR Juan Diaz
+  + Age Vs Peak advantage (+0.248)
+  + Td Success Prob advantage (+0.156)
+  + Age advantage (+0.083)
+  + Striking Edge advantage (+0.074)
+  + Reach advantage (+0.068)
+
+BETTING VALUE
+  Market implied probability (Alatengheili): 50.0%
+  Model probability (Alatengheili):          38.0%
+  Edge: -12.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC 334: Gane vs. Hokit
+November 14, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Evan Elder vs Samuel Sanches
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Evan Elder: 47.8%
+  Samuel Sanches: 52.2%
+  → Predicted winner: Samuel Sanches (52.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    48.6%
+  Submission:  15.4%
+  Decision:    36.0%
+
+ROUNDS
+  Fight ends early (under 2.5): 49.4%
+  Goes the distance:            50.6%
+
+KEY FACTORS FOR Evan Elder
+  + Elo advantage (+0.190)
+  + Elo Uncertainty advantage (+0.182)
+  + Elo Trend advantage (+0.108)
+  + Sub Rate advantage (+0.059)
+  + Style Suppression advantage (+0.058)
+
+KEY FACTORS FOR Samuel Sanches
+  + Age Vs Peak advantage (+0.312)
+  + Durability advantage (+0.101)
+  + Style Suppression A advantage (+0.087)
+  + Decision Rate advantage (+0.082)
+  + Avg Opponent Elo advantage (+0.075)
+
+BETTING VALUE
+  Market implied probability (Evan Elder): 50.0%
+  Model probability (Evan Elder):          47.8%
+  Edge: -2.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-11 22:01 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Josh Hokit  (Model: 60.3%  Edge: +24.8%)
+  2. Alatengheili  (Model: 38.0%  Edge: +15.1%)
+  3. Luis Gurule  (Model: 20.7%  Edge: +9.4%)
+  4. Yousri Belgaroui  (Model: 48.8%  Edge: +7.1%)
