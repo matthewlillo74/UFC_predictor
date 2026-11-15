@@ -1,0 +1,612 @@
+
+══════════════════════════════════════════════════════════════
+  UFC FIGHT NIGHT: PROCHAZKA VS. STIRLING
+  Generated: 2026-11-15 20:34 UTC
+══════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jiri Prochazka vs Navajo Stirling
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jiri Prochazka: 51.4%
+  Navajo Stirling: 48.6%
+  → Predicted winner: Jiri Prochazka (51.4% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    58.3%
+  Submission:  9.4%
+  Decision:    32.3%
+
+ROUNDS
+  Fight ends early (under 2.5): 48.2%
+  Goes the distance:            51.8%
+
+KEY FACTORS FOR Jiri Prochazka
+  + Style Pressure L3 advantage (+0.381)
+  + Avg Opponent Elo advantage (+0.266)
+  + Style Pressure L5 advantage (+0.132)
+
+KEY FACTORS FOR Navajo Stirling
+  + Age Vs Peak advantage (+0.300)
+  + Elo advantage (+0.180)
+  + Striking Edge advantage (+0.108)
+  + Win Streak advantage (+0.092)
+  + Style Suppression A advantage (+0.090)
+
+BETTING VALUE
+  Market implied probability (Jiri Prochazka): 50.0%
+  Model probability (Jiri Prochazka):          51.4%
+  Edge: +1.4%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Aljamain Sterling vs Kevin Vallejos
+Weight Class: Featherweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Aljamain Sterling: 64.6%
+  Kevin Vallejos: 35.4%
+  → Predicted winner: Aljamain Sterling (64.6% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    37.9%
+  Submission:  8.9%
+  Decision:    53.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.6%
+  Goes the distance:            56.4%
+
+KEY FACTORS FOR Aljamain Sterling
+  + Style Pressure L3 advantage (+0.420)
+  + Elo advantage (+0.312)
+  + Avg Opponent Elo advantage (+0.264)
+  + Style Suppression B advantage (+0.122)
+  + Style Pressure L5 advantage (+0.118)
+
+KEY FACTORS FOR Kevin Vallejos
+  + Age advantage (+0.653)
+  + Age Vs Peak advantage (+0.386)
+  + Sub Avg advantage (+0.189)
+  + Striking Edge advantage (+0.084)
+
+BETTING VALUE
+  Market implied probability (Aljamain Sterling): 50.0%
+  Model probability (Aljamain Sterling):          64.6%
+  Edge: +14.6%
+  ⚠️  VALUE BET DETECTED
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Dan Hooker vs Brian Ortega
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Dan Hooker: 51.3%
+  Brian Ortega: 48.6%
+  → Predicted winner: Dan Hooker (51.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.9%
+  Submission:  16.8%
+  Decision:    51.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.6%
+  Goes the distance:            54.4%
+
+KEY FACTORS FOR Dan Hooker
+  + Style Pressure L3 advantage (+0.310)
+  + Elo advantage (+0.142)
+  + Ufc Fights advantage (+0.107)
+  + Style Pressure L5 advantage (+0.102)
+  + Reach advantage (+0.061)
+
+KEY FACTORS FOR Brian Ortega
+  + Ufc Wins advantage (+0.124)
+  + Age Vs Peak advantage (+0.096)
+  + Style Suppression B advantage (+0.065)
+  + Avg Opponent Elo advantage (+0.062)
+  + Durability advantage (+0.058)
+
+BETTING VALUE
+  Market implied probability (Dan Hooker): 50.0%
+  Model probability (Dan Hooker):          51.3%
+  Edge: +1.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Kyoji Horiguchi vs Asu Almabayev
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Kyoji Horiguchi: 37.1%
+  Asu Almabayev: 62.9%
+  → Predicted winner: Asu Almabayev (62.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    31.2%
+  Submission:  16.3%
+  Decision:    52.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 38.8%
+  Goes the distance:            61.2%
+
+KEY FACTORS FOR Kyoji Horiguchi
+  + Elo advantage (+0.114)
+  + Recent Win Rate advantage (+0.109)
+  + Td Def advantage (+0.108)
+  + Head Strike Rate advantage (+0.084)
+  + Style Suppression B advantage (+0.061)
+
+KEY FACTORS FOR Asu Almabayev
+  + Style Pressure L3 advantage (+0.370)
+  + Style Pressure L5 advantage (+0.227)
+  + Age Vs Peak advantage (+0.181)
+  + Kd Ratio advantage (+0.077)
+  + Td Avg advantage (+0.068)
+
+BETTING VALUE
+  Market implied probability (Kyoji Horiguchi): 50.0%
+  Model probability (Kyoji Horiguchi):          37.1%
+  Edge: -12.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jared Cannonier vs Ikram Aliskerov
+Weight Class: Middleweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jared Cannonier: 43.0%
+  Ikram Aliskerov: 57.0%
+  → Predicted winner: Ikram Aliskerov (57.0% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    26.3%
+  Submission:  14.6%
+  Decision:    59.1%
+
+ROUNDS
+  Fight ends early (under 2.5): 39.2%
+  Goes the distance:            60.8%
+
+KEY FACTORS FOR Jared Cannonier
+  + Td Success Prob advantage (+0.081)
+
+KEY FACTORS FOR Ikram Aliskerov
+  + Elo Vs Peak advantage (+0.226)
+  + Age Vs Peak advantage (+0.224)
+  + Style Pressure L3 advantage (+0.206)
+  + Elo advantage (+0.146)
+  + Style Pressure L5 advantage (+0.128)
+
+BETTING VALUE
+  Market implied probability (Jared Cannonier): 50.0%
+  Model probability (Jared Cannonier):          43.0%
+  Edge: -7.0%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Aleksandre Topuria vs Santiago Luna
+Weight Class: Bantamweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Aleksandre Topuria: 38.8%
+  Santiago Luna: 61.2%
+  → Predicted winner: Santiago Luna (61.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    39.8%
+  Submission:  11.6%
+  Decision:    48.5%
+
+ROUNDS
+  Fight ends early (under 2.5): 45.5%
+  Goes the distance:            54.5%
+
+KEY FACTORS FOR Aleksandre Topuria
+  + Sapm advantage (+0.224)
+  + Striking Edge advantage (+0.221)
+  + Elo advantage (+0.122)
+
+KEY FACTORS FOR Santiago Luna
+  + Reach advantage (+0.280)
+  + Age Vs Peak advantage (+0.268)
+  + Head Strike Rate advantage (+0.177)
+  + Strike Acc advantage (+0.143)
+  + Strike Def advantage (+0.110)
+
+BETTING VALUE
+  Market implied probability (Aleksandre Topuria): 50.0%
+  Model probability (Aleksandre Topuria):          38.8%
+  Edge: -11.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Shamil Gaziev vs Tallison Teixeira
+Weight Class: Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Shamil Gaziev: 25.7%
+  Tallison Teixeira: 74.3%
+  → Predicted winner: Tallison Teixeira (74.3% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    29.7%
+  Submission:  14.5%
+  Decision:    55.7%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.0%
+  Goes the distance:            56.0%
+
+KEY FACTORS FOR Shamil Gaziev
+  + Elo Uncertainty advantage (+0.089)
+  + Striking Edge advantage (+0.079)
+  + Finish Rate advantage (+0.055)
+  + Style Suppression A advantage (+0.044)
+
+KEY FACTORS FOR Tallison Teixeira
+  + Age advantage (+0.548)
+  + Age Vs Peak advantage (+0.327)
+  + Avg Opponent Elo advantage (+0.102)
+  + Style Suppression advantage (+0.095)
+  + Elo advantage (+0.089)
+
+BETTING VALUE
+  Market implied probability (Shamil Gaziev): 50.0%
+  Model probability (Shamil Gaziev):          25.7%
+  Edge: -24.3%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Amir Albazi vs Alessandro Costa
+Weight Class: Flyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Amir Albazi: 31.8%
+  Alessandro Costa: 68.2%
+  → Predicted winner: Alessandro Costa (68.2% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    38.4%
+  Submission:  18.5%
+  Decision:    43.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.5%
+  Goes the distance:            55.5%
+
+KEY FACTORS FOR Amir Albazi
+  + Avg Opponent Elo advantage (+0.249)
+  + Elo advantage (+0.162)
+  + Sub Rate advantage (+0.128)
+
+KEY FACTORS FOR Alessandro Costa
+  + Style Wrestling L3 advantage (+0.262)
+  + Days Since Last Fight advantage (+0.202)
+  + Age Vs Peak advantage (+0.169)
+  + Style Striker L3 advantage (+0.140)
+  + Sub Avg advantage (+0.140)
+
+BETTING VALUE
+  Market implied probability (Amir Albazi): 50.0%
+  Model probability (Amir Albazi):          31.8%
+  Edge: -18.2%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Jake Matthews vs Tahir Abdullayev
+Weight Class: Welterweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Jake Matthews: 49.1%
+  Tahir Abdullayev: 50.9%
+  → Predicted winner: Tahir Abdullayev (50.9% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    22.6%
+  Submission:  23.8%
+  Decision:    53.6%
+
+ROUNDS
+  Fight ends early (under 2.5): 44.1%
+  Goes the distance:            55.9%
+
+KEY FACTORS FOR Jake Matthews
+  + Elo advantage (+0.265)
+  + Sapm advantage (+0.153)
+  + Elo Uncertainty advantage (+0.120)
+  + Avg Opponent Elo advantage (+0.113)
+
+KEY FACTORS FOR Tahir Abdullayev
+  + Td Def advantage (+0.160)
+  + Win Rate advantage (+0.138)
+  + Age Vs Peak advantage (+0.125)
+  + Td Avg advantage (+0.107)
+  + Decision Rate advantage (+0.097)
+
+BETTING VALUE
+  Market implied probability (Jake Matthews): 50.0%
+  Model probability (Jake Matthews):          49.1%
+  Edge: -0.9%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Nikolas Motta vs Dom Mar Fan
+Weight Class: Lightweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Nikolas Motta: 40.9%
+  Dom Mar Fan: 59.1%
+  → Predicted winner: Dom Mar Fan (59.1% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    27.5%
+  Submission:  8.1%
+  Decision:    64.4%
+
+ROUNDS
+  Fight ends early (under 2.5): 42.0%
+  Goes the distance:            58.0%
+
+KEY FACTORS FOR Nikolas Motta
+  + Elo Trend advantage (+0.072)
+
+KEY FACTORS FOR Dom Mar Fan
+  + Early Output Share advantage (+0.185)
+  + Kd Ratio advantage (+0.083)
+  + Sapm advantage (+0.081)
+  + Striking Edge advantage (+0.081)
+  + Style Finisher advantage (+0.080)
+
+BETTING VALUE
+  Market implied probability (Nikolas Motta): 50.0%
+  Model probability (Nikolas Motta):          40.9%
+  Edge: -9.1%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  UFC PREDICTOR — FIGHT ANALYSIS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+UFC Fight Night: Prochazka vs. Stirling
+November 21, 2026
+
+──────────────────────────────────────────────────────────────
+MATCHUP: Diyar Nurgozhay vs Alik Lorenz
+Weight Class: Light Heavyweight
+──────────────────────────────────────────────────────────────
+
+WINNER PREDICTION
+  Diyar Nurgozhay: 47.3%
+  Alik Lorenz: 52.7%
+  → Predicted winner: Alik Lorenz (52.7% confidence)
+
+METHOD OF VICTORY
+  KO / TKO:    25.1%
+  Submission:  14.7%
+  Decision:    60.2%
+
+ROUNDS
+  Fight ends early (under 2.5): 43.0%
+  Goes the distance:            57.0%
+
+KEY FACTORS FOR Diyar Nurgozhay
+  + Elo Uncertainty advantage (+0.199)
+  + Is Southpaw A Vs Orthodox B advantage (+0.048)
+  + Elo Vs Peak advantage (+0.029)
+
+KEY FACTORS FOR Alik Lorenz
+  + Reach Strike advantage (+0.081)
+  + Decision Rate advantage (+0.079)
+  + Age Vs Peak advantage (+0.078)
+  + Elo advantage (+0.072)
+  + Age advantage (+0.059)
+
+BETTING VALUE
+  Market implied probability (Diyar Nurgozhay): 50.0%
+  Model probability (Diyar Nurgozhay):          47.3%
+  Edge: -2.7%
+    No significant edge
+
+UPSET WATCH
+  Upset score: +0.000
+    Normal favorite/underdog
+
+──────────────────────────────────────────────────────────────
+Prediction generated: 2026-11-15 20:34 UTC
+Model version: v1
+──────────────────────────────────────────────────────────────
+
+
+══════════════════════════════════════════════════════════════
+  TOP VALUE PICKS
+══════════════════════════════════════════════════════════════
+  1. Tallison Teixeira  (Model: 74.3%  Edge: +40.7%)
+  2. Santiago Luna  (Model: 61.2%  Edge: +29.4%)
+  3. Aljamain Sterling  (Model: 64.6%  Edge: +19.7%)
+  4. Tahir Abdullayev  (Model: 50.9%  Edge: +12.5%)
+  5. Jiri Prochazka  (Model: 51.4%  Edge: +9.7%)
