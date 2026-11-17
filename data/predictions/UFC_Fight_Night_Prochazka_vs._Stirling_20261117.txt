@@ -1,7 +1,7 @@
 
 ══════════════════════════════════════════════════════════════
   UFC FIGHT NIGHT: PROCHAZKA VS. STIRLING
-  Generated: 2026-11-17 00:12 UTC
+  Generated: 2026-11-17 21:59 UTC
 ══════════════════════════════════════════════════════════════
 
 
@@ -54,7 +54,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -109,7 +109,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -165,7 +165,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -273,7 +273,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -327,7 +327,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -382,7 +382,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -436,7 +436,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -491,7 +491,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -543,7 +543,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -598,7 +598,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-17 00:12 UTC
+Prediction generated: 2026-11-17 21:59 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -606,8 +606,8 @@ Model version: v1
 ══════════════════════════════════════════════════════════════
   TOP VALUE PICKS
 ══════════════════════════════════════════════════════════════
-  1. Tallison Teixeira  (Model: 74.3%  Edge: +38.0%)
-  2. Santiago Luna  (Model: 61.2%  Edge: +33.0%)
+  1. Tallison Teixeira  (Model: 74.3%  Edge: +38.8%)
+  2. Santiago Luna  (Model: 61.2%  Edge: +32.6%)
   3. Tahir Abdullayev  (Model: 50.9%  Edge: +18.9%)
   4. Aljamain Sterling  (Model: 64.6%  Edge: +18.9%)
-  5. Jiri Prochazka  (Model: 51.4%  Edge: +11.8%)
+  5. Jiri Prochazka  (Model: 51.4%  Edge: +8.6%)
