@@ -1,7 +1,7 @@
 
 ══════════════════════════════════════════════════════════════
   UFC FIGHT NIGHT: ADESANYA VS. MAGOMEDOV
-  Generated: 2026-11-25 00:22 UTC
+  Generated: 2026-11-25 23:55 UTC
 ══════════════════════════════════════════════════════════════
 
 
@@ -56,7 +56,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -111,7 +111,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -166,7 +166,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -277,7 +277,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -333,7 +333,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -388,7 +388,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -444,7 +444,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -496,7 +496,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -551,7 +551,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -606,7 +606,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -662,7 +662,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -717,7 +717,7 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
 
@@ -772,6 +772,6 @@ UPSET WATCH
     Normal favorite/underdog
 
 ──────────────────────────────────────────────────────────────
-Prediction generated: 2026-11-25 00:22 UTC
+Prediction generated: 2026-11-25 23:55 UTC
 Model version: v1
 ──────────────────────────────────────────────────────────────
